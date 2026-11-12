@@ -626,7 +626,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
     </div>
     <div class="legal">
       <span>&copy; <span id="yr">2026</span> ZorbaTech. All rights reserved.</span>
-      <span>Crafted by Manu Brahma</span>
+      <span id="gst" class="hidden"></span>
     </div>
   </div>
 </footer>
@@ -640,13 +640,15 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
    EDIT YOUR CONTACT DETAILS HERE (the only lines you need to change)
    whatsapp : digits only, with country code, e.g. "919876543210"
    phone    : how the number should look, e.g. "+91 98765 43210"
+   gst      : your GSTIN, e.g. "33ABCDE1234F1Z5" (shown in the footer)
    email    : your business email, e.g. "hello@zorbatech.in"
    Leave a value empty ("") to hide that contact option.
 ------------------------------------------------------------------- */
 const CONFIG = {
-  whatsapp: "",
-  phone: "",
-  email: ""
+  whatsapp: "918610212131",
+  phone: "+91 86102 12131",
+  email: "",
+  gst: ""
 };
 /* ----------------------------------------------------------------- */
 
@@ -666,6 +668,8 @@ const CONFIG = {
   burger.addEventListener('click', function () { setMenu(!header.classList.contains('nav-open')); });
   $$('#menu a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  if (CONFIG.gst) { var g = $('#gst'); g.textContent = 'GSTIN: ' + CONFIG.gst; g.classList.remove('hidden'); }
 
   /* footer year */
   $('#yr').textContent = new Date().getFullYear();
