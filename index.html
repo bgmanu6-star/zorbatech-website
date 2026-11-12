@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZorbaTech | Websites, Mobile Apps &amp; Business Software</title>
+<meta name="description" content="ZorbaTech builds websites, mobile apps and billing and inventory software for small and medium businesses. Honest one-time pricing. Get a free quote.">
+<meta name="theme-color" content="#0D0C2B">
+<link rel="canonical" href="https://bgmanu6-star.github.io/zorbatech-website/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ZorbaTech">
+<meta property="og:title" content="ZorbaTech | Digital Solutions for Small Business">
+<meta property="og:description" content="Websites, mobile apps and billing software for growing businesses, at honest one-time prices.">
+<meta property="og:url" content="https://bgmanu6-star.github.io/zorbatech-website/">
+<meta property="og:image" content="https://bgmanu6-star.github.io/zorbatech-website/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ZorbaTech | Digital Solutions for Small Business">
+<meta name="twitter:description" content="Websites, mobile apps and billing software for growing businesses.">
+<meta name="twitter:image" content="https://bgmanu6-star.github.io/zorbatech-website/og-image.png">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Outfit:wght@500;600;700;800&amp;display=swap">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "ZorbaTech",
+  "description": "Websites, mobile apps and billing and inventory software for small and medium businesses.",
+  "url": "https://bgmanu6-star.github.io/zorbatech-website/",
+  "logo": "https://bgmanu6-star.github.io/zorbatech-website/apple-touch-icon.png",
+  "image": "https://bgmanu6-star.github.io/zorbatech-website/og-image.png",
+  "founder": { "@type": "Person", "name": "Manu Brahma" },
+  "areaServed": { "@type": "AdministrativeArea", "name": "Tamil Nadu, India" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Chennai", "addressRegion": "Tamil Nadu", "addressCountry": "IN" },
+  "knowsAbout": ["Website design", "Mobile app development", "Billing software", "Inventory software", "Custom software"]
+}
+</script>
+
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root{
+  --navy:#0D0C2B; --navy-2:#15143A; --navy-3:#1D1C4A; --line-d:#2B2A5E;
+  --lime:#C6F432; --lime-d:#B2E01C;
+  --ink:#16153A; --muted:#55537A; --muted-d:#B8B6D6;
+  --bg:#FFFFFF; --bg-soft:#F4F6FB; --line:#E3E6F0;
+  --olive:#4B5F00;
+  --radius:20px; --max:1180px;
+  --head:"Outfit","Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--body);font-size:17px;line-height:1.65;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--head);line-height:1.12;margin:0;letter-spacing:-.02em;color:inherit}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:16px;top:-60px;z-index:100;background:var(--lime);color:var(--navy);padding:12px 18px;border-radius:12px;font-weight:600;text-decoration:none}
+.skip:focus{top:12px}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:6px}
+.on-light :focus-visible,.light :focus-visible{outline-color:var(--navy)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border-radius:999px;font:600 16px/1 var(--body);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .18s ease,background .18s ease,border-color .18s ease,color .18s ease}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-primary{background:var(--lime);color:var(--navy)}
+.btn-primary:hover{background:#D6FF55;transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
+.btn-ghost:hover{border-color:var(--lime);color:var(--lime)}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-dark:hover{background:var(--navy-3);transform:translateY(-2px)}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(13,12,43,.86);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s ease,background .2s ease}
+.site-header.scrolled{border-color:var(--line-d);background:rgba(13,12,43,.94)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
+.logo{display:block;width:176px;height:auto;flex:none}
+.logo-link{display:block;border-radius:10px}
+.menu{display:flex;align-items:center;gap:6px}
+.menu a:not(.btn){color:#DAD9EE;text-decoration:none;font-weight:500;font-size:15.5px;padding:10px 14px;border-radius:999px;transition:color .15s ease,background .15s ease}
+.menu a:not(.btn):hover{color:#fff;background:rgba(255,255,255,.08)}
+.menu .btn{min-height:44px;padding:0 22px;margin-left:10px;font-size:15px}
+.burger{display:none;width:48px;height:48px;border-radius:14px;border:1px solid var(--line-d);background:transparent;color:#fff;cursor:pointer;align-items:center;justify-content:center}
+.burger svg{width:24px;height:24px}
+.burger .x{display:none}
+.nav-open .burger .x{display:block}
+.nav-open .burger .b{display:none}
+
+/* hero */
+.hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1.2px);background-size:30px 30px;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 85%);mask-image:linear-gradient(180deg,#000 0%,transparent 85%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:96px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+.eyebrow::before{content:"";width:28px;height:2px;background:currentColor;border-radius:2px}
+.light .eyebrow,.on-light .eyebrow{color:var(--olive)}
+.hero h1{font-size:clamp(40px,5.6vw,68px);font-weight:800;margin:22px 0 22px;letter-spacing:-.03em}
+.hero h1 span{color:var(--lime)}
+.hero .lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted-d);max-width:540px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin:34px 0 36px}
+.checks{display:grid;gap:12px}
+.checks li{display:flex;align-items:center;gap:12px;color:#E4E3F5;font-size:16px;font-weight:500}
+.checks svg{width:22px;height:22px;flex:none;color:var(--lime)}
+.hero-art{position:relative}
+.hero-art svg{width:100%;height:auto;overflow:visible}
+@media (prefers-reduced-motion:no-preference){
+  .float-a{animation:floaty 6s ease-in-out infinite}
+  .float-b{animation:floaty 7s ease-in-out -2.5s infinite}
+}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* sections */
+section{position:relative}
+.sec{padding:104px 0}
+.sec-soft{background:var(--bg-soft)}
+.sec-dark{background:var(--navy);color:#fff}
+.sec-head{max-width:720px;margin-bottom:56px}
+.sec-head h2{font-size:clamp(30px,3.8vw,46px);font-weight:700;margin:18px 0 16px}
+.sec-head p{color:var(--muted);font-size:18px}
+.sec-dark .sec-head p{color:var(--muted-d)}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.center .eyebrow{justify-content:center}
+
+/* audience strip */
+.strip{background:var(--bg-soft);border-bottom:1px solid var(--line)}
+.strip .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;padding-top:26px;padding-bottom:26px}
+.strip b{font:600 14px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.strip ul{display:flex;flex-wrap:wrap;gap:10px}
+.strip li{padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;font-weight:500;font-size:15px}
+
+/* services */
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;display:flex;flex-direction:column;gap:16px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(13,12,43,.35);border-color:#CFD4E6}
+.ico{width:56px;height:56px;border-radius:16px;background:var(--navy);display:grid;place-items:center;color:var(--lime);flex:none}
+.ico svg{width:28px;height:28px}
+.card h3{font-size:23px;font-weight:700}
+.card p{color:var(--muted);font-size:16px}
+.card ul{display:grid;gap:9px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.card li{position:relative;padding-left:22px;font-size:15px;color:var(--ink)}
+.card li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:10px;border-radius:3px;background:var(--lime);box-shadow:inset 0 0 0 2px var(--navy)}
+
+/* why */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.tile{padding:32px 30px;border:1px solid var(--line-d);border-radius:var(--radius);background:linear-gradient(180deg,var(--navy-2),var(--navy));display:flex;flex-direction:column;gap:14px}
+.tile .ico{background:var(--lime);color:var(--navy);width:52px;height:52px;border-radius:14px}
+.tile h3{font-size:22px;font-weight:700}
+.tile p{color:var(--muted-d);font-size:16px}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;counter-reset:s;position:relative}
+.step{position:relative;padding-top:8px}
+.step .n{width:56px;height:56px;border-radius:50%;background:var(--lime);color:var(--navy);display:grid;place-items:center;font:800 22px/1 var(--head);position:relative;z-index:1;box-shadow:0 0 0 8px #fff}
+.step::before{content:"";position:absolute;top:36px;left:56px;right:-22px;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 16px)}
+.step:last-child::before{display:none}
+.step h3{font-size:22px;font-weight:700;margin:22px 0 10px}
+.step p{color:var(--muted);font-size:16px}
+
+/* about */
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.about h2{font-size:clamp(30px,3.8vw,46px);font-weight:700;margin:18px 0 20px}
+.about p{color:var(--muted);font-size:18px;margin-bottom:16px}
+.pledge{background:var(--navy);color:#fff;border-radius:28px;padding:40px;display:grid;gap:22px;position:relative;overflow:hidden}
+.pledge::after{content:"";position:absolute;right:-70px;top:-70px;width:200px;height:200px;border-radius:50%;border:34px solid var(--navy-3)}
+.pledge h3{font-size:24px;font-weight:700;position:relative;z-index:1}
+.pledge li{display:flex;gap:14px;align-items:flex-start;color:#E4E3F5;font-size:16.5px;position:relative;z-index:1}
+.pledge svg{width:24px;height:24px;color:var(--lime);flex:none;margin-top:2px}
+
+/* faq */
+.faq{max-width:860px;margin:0 auto;display:grid;gap:14px}
+details{background:#fff;border:1px solid var(--line);border-radius:18px;transition:border-color .2s ease}
+details[open]{border-color:var(--navy)}
+summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 26px;font:600 18px/1.4 var(--head);letter-spacing:-.01em;border-radius:18px}
+summary::-webkit-details-marker{display:none}
+summary .pm{width:30px;height:30px;border-radius:50%;background:var(--bg-soft);display:grid;place-items:center;flex:none;transition:transform .25s ease,background .2s ease}
+summary .pm svg{width:16px;height:16px}
+details[open] summary .pm{transform:rotate(45deg);background:var(--lime)}
+details .ans{padding:0 26px 24px;color:var(--muted);font-size:16.5px;max-width:720px}
+
+/* contact */
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.contact h2{font-size:clamp(30px,3.8vw,46px);font-weight:700;margin:18px 0 18px}
+.contact .lead{color:var(--muted-d);font-size:18px;margin-bottom:34px}
+.info{display:grid;gap:18px}
+.info li{display:flex;gap:16px;align-items:center}
+.info .ico{width:48px;height:48px;border-radius:14px;background:var(--navy-3);color:var(--lime)}
+.info .ico svg{width:22px;height:22px}
+.info small{display:block;color:var(--muted-d);font-size:13.5px;letter-spacing:.04em}
+.info strong,.info a{font-weight:600;font-size:17px;text-decoration:none}
+.info a:hover{color:var(--lime)}
+.hidden{display:none!important}
+.form-card{background:#fff;color:var(--ink);border-radius:28px;padding:40px}
+.form-card h3{font-size:24px;font-weight:700;margin-bottom:6px}
+.form-card .sub{color:var(--muted);font-size:15.5px;margin-bottom:26px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:grid;gap:8px;margin-bottom:18px}
+label{font-weight:600;font-size:14.5px}
+label .opt{font-weight:400;color:var(--muted)}
+input,select,textarea{width:100%;font:400 16px/1.4 var(--body);color:var(--ink);background:var(--bg-soft);border:2px solid transparent;border-radius:14px;padding:14px 16px;min-height:52px;transition:border-color .15s ease,background .15s ease;appearance:none;-webkit-appearance:none}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2355537A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:44px}
+textarea{min-height:130px;resize:vertical}
+input:hover,select:hover,textarea:hover{background:#ECEFF8}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);background:#fff}
+.form-foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:6px}
+.note{font-size:13.5px;color:var(--muted);flex:1 1 220px}
+.status{margin-top:16px;font-size:15px;font-weight:500;color:var(--olive);min-height:1.4em}
+.status.err{color:#B3261E}
+
+/* footer */
+.footer{background:#08071F;color:var(--muted-d);padding:72px 0 28px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid var(--line-d)}
+.foot p{max-width:320px;margin-top:20px;font-size:15.5px}
+.foot h4{font:600 13px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:6px 0 20px}
+.foot li{margin-bottom:12px}
+.foot a{text-decoration:none;font-size:15.5px}
+.foot a:hover{color:var(--lime)}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:26px;font-size:14px}
+
+/* floating whatsapp */
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--lime);color:var(--navy);display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.45);transition:transform .2s ease}
+.wa-float:hover{transform:scale(1.07)}
+.wa-float svg{width:28px;height:28px}
+
+/* reveal */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .btn,.card,.wa-float{transition:none}
+}
+
+/* responsive */
+@media (max-width:1100px){
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
+  .step:nth-child(2)::before{display:none}
+}
+@media (max-width:960px){
+  .hero .wrap{grid-template-columns:1fr;gap:48px;padding-top:48px;padding-bottom:72px}
+  .hero-art{max-width:560px;margin:0 auto;width:100%}
+  .about,.contact{grid-template-columns:1fr;gap:40px}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .burger{display:inline-flex}
+  .menu{position:absolute;left:0;right:0;top:76px;flex-direction:column;align-items:stretch;gap:4px;padding:16px 24px 24px;background:var(--navy);border-bottom:1px solid var(--line-d);display:none}
+  .nav-open .menu{display:flex}
+  .menu a:not(.btn){padding:14px 16px;font-size:17px}
+  .menu .btn{margin:8px 0 0;min-height:52px}
+}
+@media (max-width:640px){
+  body{font-size:16.5px}
+  .sec{padding:72px 0}
+  .sec-head{margin-bottom:40px}
+  .cards,.grid3,.steps,.row{grid-template-columns:1fr}
+  .step::before{display:none}
+  .form-card{padding:28px 22px;border-radius:22px}
+  .pledge{padding:30px 24px}
+  .foot{grid-template-columns:1fr}
+  .logo{width:158px}
+  .hero-cta .btn{width:100%}
+  summary{padding:18px 20px;font-size:17px}
+  details .ans{padding:0 20px 20px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="zt-mark" viewBox="140 263 316 316"><rect x="140" y="263" width="316" height="316" rx="62" fill="#C6F432"/><path d="M222,325.2 L395,325.2 L402.1,376 L290.4,472.8 L404,472.8 L374.5,521 L212.2,521 L199.2,486 L329.6,374 L193,374 Z" fill="#0D0C2B"/></symbol>
+<symbol id="zt-logo" viewBox="138 261 1510 320"><g><rect x="140" y="263" width="316" height="316" rx="62" fill="#C6F432"/><path d="M222,325.2 L395,325.2 L402.1,376 L290.4,472.8 L404,472.8 L374.5,521 L212.2,521 L199.2,486 L329.6,374 L193,374 Z" fill="#0D0C2B"/></g><path fill="#FFFFFF" fill-rule="evenodd" d="M923,485.3 L922.7,486.1 L922.8,495 L921.9,495.5 L890.1,495.5 L889,495.3 L888.8,494.8 L888.6,331.1 L889.2,329.9 L915,329.6 L921.8,329.7 L922.4,330 L922.7,331.1 L922.7,383.9 L923,384.7 L924,384.5 L930,379.6 L935.7,376.2 L942.1,373.6 L948.5,372 L955,371.4 L962.8,371.7 L969.5,373 L976.3,375.2 L982.5,378 L988,381.5 L993.5,386 L998.3,391.2 L1002.8,397.7 L1006.4,404.1 L1009.2,411.3 L1011.4,419.1 L1012.9,429.5 L1013.1,436.8 L1012,447.5 L1009.3,457.8 L1005.8,466.3 L1001,474.5 L995.6,481.1 L989.3,486.8 L982,491.5 L972.8,495.3 L963.6,497.3 L954,497.7 L946.4,497 L937.9,494.6 L930.7,490.8Z M661,495.5 L530.6,495 L530.8,464 L612.4,366 L534,365.6 L534,332.2 L661,332.2 L661.5,364 L580.5,461 L661,461.7Z M739.3,497.1 L733,497.7 L725,497.7 L713.9,496.5 L708.3,495.2 L702.3,493.2 L696.8,490.7 L692.4,488.1 L683.4,481.1 L679.6,476.9 L676.1,472.4 L672.7,466.8 L670.1,461.4 L668.1,455.4 L666.5,449 L665.7,443.8 L665.1,436 L665.4,430 L666.2,423.7 L667.5,418 L669.6,411.1 L672.4,404.9 L675.6,399.1 L679.4,393.9 L683.6,389.1 L687.2,385.7 L693,381.5 L698,378.5 L703.6,376.1 L708.8,374.3 L715.3,372.7 L722.2,371.7 L728,371.5 L734.8,371.7 L740.9,372.6 L747.4,374.1 L752.7,375.8 L758.9,378.6 L764,381.5 L769.2,385.3 L773,388.5 L777.3,393.2 L780.7,397.8 L783.7,402.8 L786.8,409.7 L788.9,415.6 L790.3,421.2 L791.3,428.1 L791.6,435 L791.3,441.9 L790.4,447.9 L789,454.4 L787.2,459.7 L784.4,465.9 L781.1,471.6 L776.8,477.3 L772.9,481.4 L768.6,485.1 L763.3,488.8 L758.1,491.6 L753.2,493.6 L747,495.5Z M802,495.1 L801.8,386 L801.9,375.3 L802.4,374 L834.8,373.8 L835.3,374 L835.7,375.1 L836,386.3 L837,386.1 L840.8,381.3 L845,377.5 L849.4,374.9 L854.5,373 L860.2,371.7 L867,371.5 L873.3,372.2 L878.9,374 L878.9,380.5 L877.3,406.9 L877,407.7 L875.9,407.9 L869.8,405.7 L863.9,404.7 L858.2,404.7 L852.4,405.9 L847.6,408.1 L843.1,411.6 L840,415.5 L837.8,420.3 L836.4,425.9 L835.8,432.1 L835.6,495 L834.9,495.4 L833.7,495.5Z M1109,384.3 L1109.5,382.8 L1109.5,375.1 L1110.2,373.9 L1135,373.7 L1143,374 L1143.3,375.1 L1143.4,383 L1143.3,494.8 L1143,495.4 L1141.9,495.5 L1110.2,495.4 L1109.6,495 L1109.5,486.1 L1109,485.3 L1102,490.5 L1095.7,494.2 L1089.9,496.3 L1083.8,497.4 L1074,497.6 L1066.6,496.8 L1058,494.5 L1049.6,490.9 L1044.8,487.7 L1039.2,483.3 L1035.7,479.8 L1032.5,476 L1029.4,471.1 L1025.6,463.9 L1023.6,458.9 L1021.8,452.7 L1020.7,446.8 L1019.8,437.8 L1019.8,432.2 L1020.5,426 L1021.5,420 L1023.2,413.7 L1025.7,407.2 L1028.7,401.2 L1031.7,396.2 L1035.1,391.6 L1040,386.5 L1044.8,382.3 L1049.6,379.1 L1055.5,376 L1060.6,374.1 L1066.1,372.6 L1072.1,371.7 L1078,371.5 L1083.8,371.8 L1089.6,372.9 L1094.1,374.4 L1099.4,377.1 L1103.7,379.8Z M731.9,465.9 L738,464.4 L742.8,462.3 L747.5,459 L751.9,454.4 L754.9,449.4 L757.1,443.6 L758.2,436.8 L757.9,430.5 L756.5,424 L754.2,418.3 L750.9,413.6 L746.8,409.7 L741.3,406.2 L736.2,404.3 L730.9,403.5 L724.2,403.7 L718.5,405 L713.8,407.3 L708.7,411.2 L705,415.5 L702,420.5 L700.2,425.7 L699,432.4 L699,438.5 L700.4,445.1 L702.4,450.1 L705.5,455 L710,459.5 L714.7,462.7 L719.7,464.8 L725.5,465.9Z M957.7,464.8 L963.2,462.7 L968,459.5 L972.1,455.6 L975.9,450.4 L978.1,445.6 L979.5,439.9 L979.8,434 L979,427.5 L977.3,422.2 L974.1,416.4 L970.5,412 L966.1,408.4 L960.9,405.7 L955.4,404.1 L950,403.7 L944,404.5 L938.7,406.2 L933.7,409.2 L929,413.5 L925.6,418.1 L923.1,423.6 L921.8,429.3 L921.3,436 L922.1,442.4 L923.8,447.7 L926.6,452.9 L930.7,457.8 L935.2,461.3 L939.9,463.6 L945.3,465.2 L951,465.7Z M1089.7,464.8 L1095.2,462.6 L1100,459.5 L1104,455.5 L1107.7,450.2 L1109.7,445.2 L1111.1,438.7 L1111.2,432.2 L1110.3,426.2 L1108.5,421 L1105.6,415.9 L1101.9,411.6 L1096.7,407.8 L1092,405.5 L1086.5,404 L1081,403.7 L1075.8,404.4 L1070.6,406.1 L1065.7,409.2 L1061,413.5 L1057.6,418.1 L1055.1,423.6 L1053.5,430 L1053.1,435.8 L1053.9,441.7 L1055.7,447.8 L1058.2,452.4 L1062.2,457.3 L1066.5,461 L1071.7,463.8 L1077.2,465.3 L1083,465.7Z"/><path fill="#C6F432" fill-rule="nonzero" d="M1209.77 496V335.82H1244.56V496ZM1158.4 363.73V333.28H1295.91V363.73Z M1354.2 498.69Q1335.67 498.69 1321.11 490.52Q1306.56 482.36 1298.23 467.94Q1289.91 453.52 1289.91 435.34Q1289.91 417.23 1298.11 402.89Q1306.32 388.56 1320.34 380.31Q1334.36 372.06 1351.9 372.06Q1368.89 372.06 1381.87 379.77Q1394.85 387.48 1402.25 401.15Q1409.66 414.81 1409.66 432.35Q1409.66 435.39 1409.33 438.8Q1409 442.22 1408.11 446.69L1308.03 446.87V422.75L1393.62 422.58L1380.04 432.5Q1379.87 421.5 1376.61 414.14Q1373.34 406.78 1367.11 402.83Q1360.88 398.89 1351.93 398.89Q1342.49 398.89 1335.46 403.3Q1328.43 407.7 1324.6 415.69Q1320.76 423.68 1320.76 434.93Q1320.76 446.26 1324.84 454.45Q1328.92 462.64 1336.43 467.09Q1343.94 471.53 1354.03 471.53Q1363.03 471.53 1370.37 468.28Q1377.72 465.03 1383.19 458.52L1401.62 477.74Q1393.06 488.14 1380.83 493.41Q1368.6 498.69 1354.2 498.69Z M1479.88 498.69Q1462.1 498.69 1447.66 490.4Q1433.23 482.11 1424.94 467.65Q1416.66 453.2 1416.66 435.34Q1416.66 417.23 1425.03 402.89Q1433.4 388.56 1447.83 380.31Q1462.27 372.06 1480.22 372.06Q1493.87 372.06 1505.32 377.03Q1516.78 382.01 1525.52 391.8L1504.56 413.56Q1500.09 408.26 1493.99 405.66Q1487.89 403.06 1480.22 403.06Q1471.36 403.06 1464.5 407.15Q1457.65 411.25 1453.74 418.44Q1449.83 425.64 1449.83 435.16Q1449.83 444.68 1453.74 451.97Q1457.65 459.25 1464.59 463.47Q1471.53 467.69 1480.22 467.69Q1488.06 467.69 1494.33 464.83Q1500.59 461.96 1505.14 456.66L1525.85 478.42Q1517.02 488.31 1505.44 493.5Q1493.87 498.69 1479.88 498.69Z M1611.55 496V426.42Q1611.55 416.47 1605.71 410.28Q1599.87 404.09 1590.88 404.09Q1584.67 404.09 1579.94 406.86Q1575.21 409.64 1572.47 414.75Q1569.74 419.86 1569.74 426.42L1556.23 419.34Q1556.23 405.09 1561.94 394.32Q1567.65 383.54 1577.87 377.94Q1588.1 372.33 1601.37 372.33Q1614.85 372.33 1625.04 377.92Q1635.23 383.51 1640.83 393.98Q1646.43 404.44 1646.43 418.28V496ZM1534.85 496V331.37H1569.74V496Z"/></symbol>
+</defs>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap nav">
+    <a class="logo-link" href="#top" aria-label="ZorbaTech home">
+      <svg class="logo" viewBox="138 261 1510 320" role="img" aria-label="ZorbaTech"><use href="#zt-logo" x="138" y="261" width="1510" height="320"/></svg>
+    </a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+      <svg class="b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <nav class="menu" id="menu" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-primary" href="#contact">Get a free quote</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Websites &middot; Apps &middot; Software</span>
+      <h1>Digital solutions for <span>small business.</span></h1>
+      <p class="lead">ZorbaTech designs and builds websites, mobile apps and billing software for growing businesses, at honest one-time prices and with support from the person who built it.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contact">Get a free quote
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#services">Explore services</a>
+      </div>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>One-time pricing, no monthly lock-in</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Your data and accounts stay in your name</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Direct support, no call-centre runaround</li>
+      </ul>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 560 470" fill="none">
+        <!-- browser -->
+        <rect x="20" y="40" width="410" height="300" rx="22" fill="#17163A" stroke="#2B2A5E" stroke-width="2"/>
+        <path d="M20 62a22 22 0 0 1 22-22h366a22 22 0 0 1 22 22v22H20z" fill="#1D1C4A"/>
+        <circle cx="46" cy="62" r="5.5" fill="#3A3870"/><circle cx="64" cy="62" r="5.5" fill="#3A3870"/><circle cx="82" cy="62" r="5.5" fill="#3A3870"/>
+        <rect x="112" y="52" width="230" height="20" rx="10" fill="#0F0E33"/>
+        <rect x="54" y="116" width="150" height="15" rx="7.5" fill="#C6F432"/>
+        <rect x="54" y="142" width="214" height="10" rx="5" fill="#3A3870"/>
+        <rect x="54" y="160" width="176" height="10" rx="5" fill="#2B2A5E"/>
+        <rect x="54" y="190" width="100" height="32" rx="16" fill="#C6F432"/>
+        <rect x="286" y="108" width="60" height="116" rx="16" fill="#1F1E4D"/>
+        <use href="#zt-mark" x="290" y="140" width="52" height="52"/>
+        <rect x="54" y="246" width="106" height="68" rx="14" fill="#1F1E4D"/>
+        <rect x="174" y="246" width="106" height="68" rx="14" fill="#1F1E4D"/>
+        <rect x="294" y="246" width="108" height="68" rx="14" fill="#1F1E4D"/>
+        <circle cx="76" cy="268" r="9" fill="#C6F432"/><rect x="68" y="288" width="64" height="8" rx="4" fill="#3A3870"/>
+        <circle cx="196" cy="268" r="9" fill="#FFFFFF" opacity=".9"/><rect x="188" y="288" width="64" height="8" rx="4" fill="#3A3870"/>
+        <circle cx="316" cy="268" r="9" fill="#C6F432"/><rect x="308" y="288" width="64" height="8" rx="4" fill="#3A3870"/>
+        <!-- phone -->
+        <g class="float-b">
+        <rect x="352" y="118" width="170" height="338" rx="32" fill="#0F0E33" stroke="#3A3870" stroke-width="3"/>
+        <rect x="406" y="132" width="62" height="9" rx="4.5" fill="#2B2A5E"/>
+        <rect x="374" y="164" width="86" height="13" rx="6.5" fill="#FFFFFF" opacity=".92"/>
+        <rect x="374" y="186" width="124" height="8" rx="4" fill="#3A3870"/>
+        <rect x="372" y="214" width="134" height="46" rx="13" fill="#1B1A45"/><circle cx="394" cy="237" r="10" fill="#C6F432"/><rect x="412" y="228" width="70" height="7" rx="3.5" fill="#FFFFFF" opacity=".85"/><rect x="412" y="242" width="46" height="6" rx="3" fill="#3A3870"/>
+        <rect x="372" y="270" width="134" height="46" rx="13" fill="#1B1A45"/><circle cx="394" cy="293" r="10" fill="#FFFFFF" opacity=".9"/><rect x="412" y="284" width="70" height="7" rx="3.5" fill="#FFFFFF" opacity=".85"/><rect x="412" y="298" width="46" height="6" rx="3" fill="#3A3870"/>
+        <rect x="372" y="326" width="134" height="46" rx="13" fill="#1B1A45"/><circle cx="394" cy="349" r="10" fill="#C6F432"/><rect x="412" y="340" width="70" height="7" rx="3.5" fill="#FFFFFF" opacity=".85"/><rect x="412" y="354" width="46" height="6" rx="3" fill="#3A3870"/>
+        <rect x="372" y="394" width="134" height="40" rx="14" fill="#1B1A45"/>
+        <circle cx="400" cy="414" r="5" fill="#C6F432"/><circle cx="437" cy="414" r="5" fill="#3A3870"/><circle cx="472" cy="414" r="5" fill="#3A3870"/>
+        </g>
+        <!-- chips -->
+        <g class="float-a">
+        <rect x="6" y="372" width="214" height="58" rx="29" fill="#FFFFFF"/>
+        <circle cx="38" cy="401" r="17" fill="#C6F432"/>
+        <path d="M30 401.5l5.5 5.5 11-11.5" stroke="#0D0C2B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="66" y="407" font-family="Outfit, Inter, sans-serif" font-size="19" font-weight="700" fill="#0D0C2B">Invoice sent</text>
+        </g>
+        <g class="float-b">
+        <rect x="262" y="6" width="236" height="58" rx="29" fill="#C6F432"/>
+        <circle cx="294" cy="35" r="17" fill="#0D0C2B"/>
+        <path d="M294 27a6 6 0 0 0-6 6v4l-1.6 2.6h15.2L299.999 37v-4a6 6 0 0 0-6-6zM291.8 42.5a2.3 2.3 0 0 0 4.4 0" stroke="#C6F432" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="322" y="41" font-family="Outfit, Inter, sans-serif" font-size="19" font-weight="700" fill="#0D0C2B">Low stock alert</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<div class="strip">
+  <div class="wrap">
+    <b>Built for</b>
+    <ul>
+      <li>Retail shops</li>
+      <li>Hardware &amp; trading</li>
+      <li>Clinics &amp; services</li>
+      <li>Training centres</li>
+      <li>Contractors &amp; field teams</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec on-light" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What we build</span>
+      <h2>Everything your business needs to go digital</h2>
+      <p>From a first website to software that runs your daily operations: scoped clearly, built carefully and supported personally.</p>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></div>
+        <h3>Websites</h3>
+        <p>Fast, mobile-friendly websites that build trust and bring in enquiries.</p>
+        <ul><li>Business and portfolio websites</li><li>Google Business Profile setup</li><li>WhatsApp enquiry button</li></ul>
+      </article>
+      <article class="card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></div>
+        <h3>Mobile Apps</h3>
+        <p>Installable apps that work on any phone, with no app-store hassle or fees.</p>
+        <ul><li>Android and iPhone from one app</li><li>Works offline where it matters</li><li>Quick, painless updates</li></ul>
+      </article>
+      <article class="card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h12v19l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div>
+        <h3>Billing &amp; Stock</h3>
+        <p>Invoices, inventory and customer credit in one simple system.</p>
+        <ul><li>Stock in and out, low-stock alerts</li><li>Customer credit book</li><li>Daily sales reports</li></ul>
+      </article>
+      <article class="card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/></svg></div>
+        <h3>Custom Software</h3>
+        <p>Tools built around the way your business actually works.</p>
+        <ul><li>Staff and task tracking</li><li>Records, forms and reports</li><li>Dashboards for owners</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="sec sec-dark" id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Why ZorbaTech</span>
+      <h2>A simpler way to work with a technology partner</h2>
+      <p>No jargon, no surprise bills and no waiting in a support queue.</p>
+    </div>
+    <div class="grid3">
+      <article class="tile reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1"/></svg></div>
+        <h3>Honest, one-time pricing</h3>
+        <p>You receive a written quote with a fixed scope and price before any work begins. No monthly subscription is required.</p>
+      </article>
+      <article class="tile reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+        <h3>Built around your business</h3>
+        <p>Your categories, your workflow, your way of working. Not a generic template that you have to adapt to.</p>
+      </article>
+      <article class="tile reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+        <h3>You own your data</h3>
+        <p>Accounts and data are created in your name, and we hand over all logins in writing when the project is complete.</p>
+      </article>
+      <article class="tile reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></div>
+        <h3>Direct, personal support</h3>
+        <p>Talk straight to the person who built your system. Questions get clear answers and fixes do not get lost in a ticket queue.</p>
+      </article>
+      <article class="tile reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+        <h3>Simple for your team</h3>
+        <p>Clean, fast screens made for busy owners and staff, with training at hand-over so your team is confident from day one.</p>
+      </article>
+      <article class="tile reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div>
+        <h3>Secure and backed up</h3>
+        <p>Access controls and regular data backups are part of the build, because your business records are too important to risk.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec on-light" id="process">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>From first call to launch in four steps</h2>
+      <p>A clear, predictable process so you always know what happens next.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h3>Discuss</h3><p>A free conversation about your business, your daily challenges and what you want to achieve.</p></div>
+      <div class="step reveal"><div class="n">2</div><h3>Quote</h3><p>A written scope, fixed price and timeline, so there are no surprises later.</p></div>
+      <div class="step reveal"><div class="n">3</div><h3>Build</h3><p>We build in stages and show you working progress, so you can steer as we go.</p></div>
+      <div class="step reveal"><div class="n">4</div><h3>Launch &amp; support</h3><p>We go live, train your team and stay available for fixes and improvements.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec sec-soft on-light" id="about">
+  <div class="wrap about">
+    <div class="reveal">
+      <span class="eyebrow">About us</span>
+      <h2>Local, direct and accountable</h2>
+      <p>ZorbaTech is a Chennai-based studio founded by Manu Brahma. We build websites, apps and business software for small and medium businesses that want to work smarter without paying enterprise prices.</p>
+      <p>We take on a limited number of projects at a time, so every client gets personal attention from the first conversation to long after launch.</p>
+    </div>
+    <div class="pledge reveal">
+      <h3>What you can expect</h3>
+      <ul style="display:grid;gap:18px">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>A clear written quote before we start</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Regular progress updates you can actually follow</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Full hand-over of your accounts, data and training</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Support that answers when you call</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec on-light" id="faq">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions, answered</h2>
+    </div>
+    <div class="faq reveal">
+      <details>
+        <summary>How much will it cost?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">It depends on what you need. After a short conversation you receive a written quote with a fixed scope and price. We favour one-time pricing, with an optional support plan afterwards.</div>
+      </details>
+      <details>
+        <summary>Do I have to pay monthly fees?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">No monthly fee is required to use what we build. If a project needs a paid service such as a domain name, it is listed clearly in your quote. Ongoing support is optional and priced separately.</div>
+      </details>
+      <details>
+        <summary>Will I own my data and accounts?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">Yes. Your accounts and data are set up in your name, and we hand over every login in writing when the project is finished.</div>
+      </details>
+      <details>
+        <summary>Will the app work on both Android and iPhone?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">Yes. We build installable web apps that run on Android, iPhone and computers from a single codebase, without app-store fees or review delays.</div>
+      </details>
+      <details>
+        <summary>Can you improve my existing website or app?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">Usually, yes. Share what you have and we will advise honestly on whether to improve it or rebuild it.</div>
+      </details>
+      <details>
+        <summary>What happens after the project is live?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">We train your team at hand-over and stay available afterwards. An optional support plan covers fixes, small changes and data backups, so you are never left on your own.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec sec-dark" id="contact">
+  <div class="wrap contact">
+    <div class="reveal">
+      <span class="eyebrow">Contact</span>
+      <h2>Tell us about your project</h2>
+      <p class="lead">Share a few details and we will reply with next steps and a written quote. There is no obligation.</p>
+      <ul class="info">
+        <li>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><small>Based in</small><strong>Chennai, Tamil Nadu, India</strong></div>
+        </li>
+        <li class="hidden" data-show="whatsapp">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></div>
+          <div><small>WhatsApp</small><a data-wa href="#contact">Chat with us</a></div>
+        </li>
+        <li class="hidden" data-show="phone">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div><small>Phone</small><a data-tel href="#contact"></a></div>
+        </li>
+        <li class="hidden" data-show="email">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="M22 6L12 13 2 6"/></svg></div>
+          <div><small>Email</small><a data-mail href="#contact"></a></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="form-card reveal">
+      <h3>Request a free quote</h3>
+      <p class="sub">Tell us what you need. We will take it from there.</p>
+      <form id="quote" novalidate>
+        <div class="row">
+          <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="f-biz">Business type</label>
+            <select id="f-biz" name="business" required>
+              <option value="" selected disabled>Select</option>
+              <option>Retail shop</option><option>Hardware &amp; trading</option><option>Clinic or service</option><option>Training centre</option><option>Contractor or field team</option><option>Other</option>
+            </select></div>
+          <div class="field"><label for="f-need">What do you need?</label>
+            <select id="f-need" name="need" required>
+              <option value="" selected disabled>Select</option>
+              <option>Website</option><option>Mobile app</option><option>Billing &amp; stock software</option><option>Custom software</option><option>Not sure yet</option>
+            </select></div>
+        </div>
+        <div class="field"><label for="f-msg">Tell us a little more <span class="opt">(optional)</span></label><textarea id="f-msg" name="message"></textarea></div>
+        <div class="form-foot">
+          <button class="btn btn-dark" type="submit">Send enquiry
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="note">Your details are used only to reply to your enquiry.</p>
+        </div>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <svg class="logo" viewBox="138 261 1510 320" role="img" aria-label="ZorbaTech"><use href="#zt-logo" x="138" y="261" width="1510" height="320"/></svg>
+        <p>Digital solutions for small business. Websites, mobile apps and software, built in Chennai.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul><li><a href="#services">Websites</a></li><li><a href="#services">Mobile Apps</a></li><li><a href="#services">Billing &amp; Stock</a></li><li><a href="#services">Custom Software</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="#why">Why ZorbaTech</a></li><li><a href="#process">Process</a></li><li><a href="#about">About</a></li><li><a href="#faq">FAQ</a></li></ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul><li>Chennai, Tamil Nadu, India</li><li><a href="#contact">Request a free quote</a></li></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; <span id="yr">2026</span> ZorbaTech. All rights reserved.</span>
+      <span>Crafted by Manu Brahma</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float hidden" data-wa href="#contact" aria-label="Chat with ZorbaTech on WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/><path d="M9 9.5c.3 1.7 2.3 4 4.8 4.8l1.2-1.1 2 .9"/></svg>
+</a>
+
+<script>
+/* ------------------------------------------------------------------
+   EDIT YOUR CONTACT DETAILS HERE (the only lines you need to change)
+   whatsapp : digits only, with country code, e.g. "919876543210"
+   phone    : how the number should look, e.g. "+91 98765 43210"
+   email    : your business email, e.g. "hello@zorbatech.in"
+   Leave a value empty ("") to hide that contact option.
+------------------------------------------------------------------- */
+const CONFIG = {
+  whatsapp: "",
+  phone: "",
+  email: ""
+};
+/* ----------------------------------------------------------------- */
+
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* header: shadow on scroll + mobile menu */
+  var header = $('.site-header'), burger = $('.burger'), menu = $('#menu');
+  function onScroll() { header.classList.toggle('scrolled', window.scrollY > 8); }
+  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+  function setMenu(open) {
+    header.classList.toggle('nav-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  burger.addEventListener('click', function () { setMenu(!header.classList.contains('nav-open')); });
+  $$('#menu a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  /* footer year */
+  $('#yr').textContent = new Date().getFullYear();
+
+  /* contact options driven by CONFIG */
+  var wa = (CONFIG.whatsapp || '').replace(/\D/g, '');
+  var tel = (CONFIG.phone || '').replace(/[^\d+]/g, '');
+  var waText = 'Hello ZorbaTech, I would like to discuss a project.';
+  if (wa) {
+    $$('[data-wa]').forEach(function (a) {
+      a.href = 'https://wa.me/' + wa + '?text=' + encodeURIComponent(waText);
+      a.target = '_blank'; a.rel = 'noopener'; a.classList.remove('hidden');
+    });
+    $('[data-show="whatsapp"]').classList.remove('hidden');
+  }
+  if (CONFIG.phone) {
+    var t = $('[data-tel]'); t.textContent = CONFIG.phone; t.href = 'tel:' + tel;
+    $('[data-show="phone"]').classList.remove('hidden');
+  }
+  if (CONFIG.email) {
+    var m = $('[data-mail]'); m.textContent = CONFIG.email; m.href = 'mailto:' + CONFIG.email;
+    $('[data-show="email"]').classList.remove('hidden');
+  }
+
+  /* quote form: opens WhatsApp (preferred) or the email app with the details filled in */
+  var form = $('#quote'), status = $('#status');
+  function say(msg, err) { status.textContent = msg; status.classList.toggle('err', !!err); }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); say('Please complete the required fields.', true); return; }
+    var d = new FormData(form);
+    var lines = [
+      'Hello ZorbaTech, I would like a quote.',
+      '',
+      'Name: ' + d.get('name'),
+      'Business: ' + d.get('business'),
+      'Need: ' + d.get('need')
+    ];
+    if (d.get('phone')) lines.push('Phone: ' + d.get('phone'));
+    if (d.get('message')) lines.push('', String(d.get('message')));
+    var body = lines.join('\n');
+    if (wa) {
+      window.open('https://wa.me/' + wa + '?text=' + encodeURIComponent(body), '_blank', 'noopener');
+      say('Thank you. Your enquiry is ready to send in WhatsApp.');
+    } else if (CONFIG.email) {
+      window.location.href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent('Quote request from ' + d.get('name')) + '&body=' + encodeURIComponent(body);
+      say('Thank you. Your email app should open with the details filled in.');
+    } else {
+      say('Our contact details are being updated. Please check back shortly.', true);
+      console.warn('ZorbaTech: add your WhatsApp number or email in the CONFIG block near the bottom of index.html.');
+    }
+  });
+
+  /* reveal on scroll */
+  var items = $$('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  } else { items.forEach(function (el) { el.classList.add('in'); }); }
+})();
+</script>
+</body>
+</html>
