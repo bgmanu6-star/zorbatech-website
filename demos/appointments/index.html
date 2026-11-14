@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GlowUp Appointments (sample app)</title><meta name="robots" content="noindex"><meta name="theme-color" content="#b4326e">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GlowUp Appointments (demo app)</title><meta name="robots" content="noindex"><meta name="theme-color" content="#b4326e">
 <style>*{box-sizing:border-box}:root{--a:#b4326e;--bg:#f5f6fa;--ink:#16182b;--mut:#6b7088;--card:#fff;--ln:#e4e6ef;--ok:#14915a;--bad:#d23b3b}
 body{margin:0;font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
 .zt{position:sticky;top:0;z-index:50;background:#0D0C2B;color:#fff;font-size:12.5px;display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between;align-items:center;padding:8px 14px}.zt b{color:#C6F432}.zt a{color:#fff;text-decoration:none;margin-left:12px}.zt a.go{background:#C6F432;color:#0D0C2B;font-weight:700;padding:5px 12px;border-radius:99px}
@@ -14,8 +14,8 @@ input,select{font:inherit;width:100%;padding:10px;border:1px solid var(--ln);bor
 .bar{display:flex;gap:8px;overflow:auto;padding:2px 0}.chip{white-space:nowrap;background:#eceef6;color:var(--ink);border-radius:99px}.chip.on{background:var(--a);color:#fff}
 table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:6px;border-bottom:1px solid var(--ln);text-align:center}th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:#fff}.sc{overflow:auto}
 </style></head><body>
-<div class="zt"><span><b>Sample app</b> by ZorbaTech. Fictional business, made-up data.</span><span><a href="https://zorbatech.in/#demos">&larr; All demos</a><a class="go" href="https://wa.me/918610212131?text=Hi%20ZorbaTech%2C%20I%20tried%20the%20GlowUp%20Salon%20demo%20and%20want%20one%20for%20my%20business." target="_blank" rel="noopener">Get one like this</a></span></div>
-<div class="app"><h1>GlowUp Salon</h1><div class="sm">Appointment book · Anna Nagar, Chennai (sample)</div>
+<div class="zt"><span><b>Demo app</b> by ZorbaTech. Placeholder data. Yours is set up with your own items.</span><span><a href="https://zorbatech.in/#demos">&larr; All demos</a><a class="go" href="https://wa.me/918610212131?text=Hi%20ZorbaTech%2C%20I%20tried%20the%20GlowUp%20Salon%20demo%20and%20want%20one%20for%20my%20business." target="_blank" rel="noopener">Get one like this</a></span></div>
+<div class="app"><h1>Your Salon Name</h1><div class="sm">Appointment book · Anna Nagar, Chennai (placeholder)</div>
 <div class="card"><div class="bar" id="days"></div></div><div class="grid"><div class="kpi"><small>Booked</small><b id="k1"></b></div><div class="kpi"><small>Free slots</small><b id="k2"></b></div><div class="kpi"><small>Expected income</small><b id="k3"></b></div></div>
 <div class="card" id="slots"></div><div class="sm"><button class="g sm2" onclick="resetDemo()">Reset demo data</button></div><div class="sheet" id="sh"></div></div>
 <script>

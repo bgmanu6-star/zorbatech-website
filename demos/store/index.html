@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Online Store (sample app)</title><meta name="robots" content="noindex"><meta name="theme-color" content="#e4572e">
+<style>*{box-sizing:border-box}:root{--a:#e4572e;--bg:#f5f6fa;--ink:#16182b;--mut:#6b7088;--card:#fff;--ln:#e4e6ef;--ok:#14915a;--bad:#d23b3b}
+body{margin:0;font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+.zt{position:sticky;top:0;z-index:50;background:#0D0C2B;color:#fff;font-size:12.5px;display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between;align-items:center;padding:8px 14px}.zt b{color:#C6F432}.zt a{color:#fff;text-decoration:none;margin-left:12px}.zt a.go{background:#C6F432;color:#0D0C2B;font-weight:700;padding:5px 12px;border-radius:99px}
+.app{max-width:760px;margin:0 auto;padding:14px 14px 90px}h1{font-size:20px;margin:6px 0 2px}.sm{color:var(--mut);font-size:13px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:14px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.kpi{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:12px}.kpi small{color:var(--mut);display:block}.kpi b{font-size:20px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--ln)}.row:last-child{border:0}.row .l{min-width:0}.row .t{font-weight:600}
+button,.btn{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--a);color:#fff;font-weight:600}button.g{background:#eceef6;color:var(--ink)}button.sm2{padding:6px 10px;font-size:13px}
+input,select{font:inherit;width:100%;padding:10px;border:1px solid var(--ln);border-radius:10px;background:#fff;color:var(--ink)}label{display:block;font-size:12.5px;color:var(--mut);margin:8px 0 3px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pos{color:var(--ok);font-weight:700}.neg{color:var(--bad);font-weight:700}
+.tag{font-size:12px;padding:2px 8px;border-radius:99px;background:#eceef6}.fab{position:fixed;right:16px;bottom:16px;box-shadow:0 8px 20px -8px #0006;padding:14px 20px;border-radius:99px}
+.sheet{position:fixed;inset:0;background:#0008;display:none;align-items:flex-end;justify-content:center;z-index:60}.sheet.on{display:flex}.sheet>div{background:#fff;width:100%;max-width:560px;border-radius:18px 18px 0 0;padding:16px;max-height:90vh;overflow:auto}
+.bar{display:flex;gap:8px;overflow:auto;padding:2px 0}.chip{white-space:nowrap;background:#eceef6;color:var(--ink);border-radius:99px}.chip.on{background:var(--a);color:#fff}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:6px;border-bottom:1px solid var(--ln);text-align:center}th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:#fff}.sc{overflow:auto}
+</style></head><body>
+<div class="zt"><span><b>Sample app</b> by ZorbaTech. Fictional business, made-up data.</span><span><a href="https://zorbatech.in/#demos">&larr; All demos</a><a class="go" href="https://wa.me/918610212131?text=Hi%20ZorbaTech%2C%20I%20tried%20the%20Your%20Online%20Store%20demo%20and%20want%20one%20for%20my%20business." target="_blank" rel="noopener">Get one like this</a></span></div>
+<div class="app"><h1>Your Online Store</h1><div class="sm">Online store with cart and WhatsApp ordering. Product names, photos and prices are placeholders.</div><div class="card"><div class="bar" id="cats"></div></div><div class="grid" id="pg" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))"></div><button class="fab" onclick="cart()" id="cb">Cart (0)</button><div class="sheet" id="sh"></div><div class="sm" style="margin-top:14px"><button class="g sm2" onclick="resetDemo()">Reset demo</button></div></div>
+<script>
+const $=s=>document.querySelector(s),rs=n=>"₹"+Math.round(n).toLocaleString("en-IN"),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY="zt-demo-store-1";let S;try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+function sheet(h){$("#sh").innerHTML="<div>"+h+"</div>";$("#sh").classList.add("on")}function closeSh(){$("#sh").classList.remove("on")}
+$("#sh").onclick=e=>{if(e.target.id==="sh")closeSh()};
+function resetDemo(){S=null;try{localStorage.removeItem(KEY)}catch(e){}init();}
+
+const P=[["Product name 1","Home",499,799],["Product name 2","Home",349,599],["Product name 3","Kitchen",249,449],["Product name 4","Kitchen",899,1399],["Product name 5","Gadgets",599,999],["Product name 6","Gadgets",1299,1999],["Product name 7","Fashion",399,699],["Product name 8","Fashion",649,1099]];
+const CL=["#f4a259","#5b8e7d","#bc4b51","#8cb369","#3d5a80","#e4572e","#7b6d8d","#2a9d8f"];let cat="All";
+function init(){if(!S){S={c:{}};save()}draw()}
+function draw(){const cs=["All",...new Set(P.map(p=>p[1]))];$("#cats").innerHTML=cs.map(c=>`<button class="chip ${c===cat?"on":""}" onclick="cat='${c}';draw()">${c}</button>`).join("");
+$("#pg").innerHTML=P.map((p,i)=>[p,i]).filter(([p])=>cat==="All"||p[1]===cat).map(([p,i])=>`<div class="kpi" style="padding:0;overflow:hidden"><div style="height:110px;background:linear-gradient(135deg,${CL[i]},#fff8);display:grid;place-items:center;color:#fff;font-weight:700">Photo</div><div style="padding:10px"><div style="font-weight:600">${p[0]}</div><div class="sm">${p[1]}</div><div><b>${rs(p[2])}</b> <s class="sm">${rs(p[3])}</s></div><button class="sm2" style="width:100%;margin-top:8px" onclick="add(${i})">Add to cart</button></div></div>`).join("");
+const n=Object.values(S.c).reduce((a,b)=>a+b,0);$("#cb").textContent="Cart ("+n+")"}
+function add(i){S.c[i]=(S.c[i]||0)+1;save();draw()}
+function cart(){const ks=Object.keys(S.c);let t=0;const L=ks.map(k=>{const p=P[k],q=S.c[k];t+=p[2]*q;return`<div class="row"><div class="l"><div class="t">${p[0]}</div><div class="sm">${rs(p[2])} x ${q}</div></div><button class="g sm2" onclick="rm(${k})">Remove</button></div>`}).join("")||"<div class='sm' style='padding:14px 0'>Your cart is empty</div>";
+const msg=encodeURIComponent("Hi, I want to order: "+ks.map(k=>P[k][0]+" x"+S.c[k]).join(", ")+". Total "+rs(t));
+sheet(`<b>Your cart</b>${L}<div class="row"><span>Total</span><b style="font-size:18px">${rs(t)}</b></div><div class="f2"><button class="g" onclick="closeSh()">Close</button><a class="btn" style="text-align:center;text-decoration:none" target="_blank" rel="noopener" href="https://wa.me/918610212131?text=${msg}">Order on WhatsApp</a></div>`)}
+function rm(k){delete S.c[k];save();draw();cart()}
+init();
+</script></body></html>
