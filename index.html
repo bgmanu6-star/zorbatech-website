@@ -274,6 +274,20 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
   summary{padding:18px 20px;font-size:17px}
   details .ans{padding:0 20px 20px}
 }
+
+/* demos */
+.demos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.demo{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .2s ease,box-shadow .2s ease}
+.demo:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(13,12,43,.35)}
+.demo .th{height:150px;position:relative;display:grid;place-items:center;color:#fff;font-weight:800;font-size:19px;letter-spacing:.02em;text-align:center;padding:12px}
+.demo .th small{position:absolute;left:12px;top:12px;font:700 11px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,.35);padding:6px 9px;border-radius:999px}
+.demo .tx{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.demo h3{font-size:20px;font-weight:700}.demo p{color:var(--muted);font-size:15px}
+.demo .go{margin-top:auto;padding-top:10px;font-weight:700;color:var(--navy)}
+.demo .go::after{content:" \2192"}
+.th-hw{background:linear-gradient(120deg,#22262e 78%,#ff8a1f 78%)}.th-rs{background:#6b1420}.th-cl{background:linear-gradient(135deg,#0b7a85,#7fd0d8)}.th-sb{background:linear-gradient(135deg,#0D0C2B,#2B2A5E);color:#C6F432}
+@media(max-width:1000px){.demos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.demos{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -296,6 +310,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
     </button>
     <nav class="menu" id="menu" aria-label="Main">
       <a href="#services">Services</a>
+      <a href="#demos">Demos</a>
       <a href="#process">Process</a>
       <a href="#about">About</a>
       <a href="#faq">FAQ</a>
@@ -422,6 +437,23 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
         <p>Tools built around the way your business actually works.</p>
         <ul><li>Staff and task tracking</li><li>Records, forms and reports</li><li>Dashboards for owners</li></ul>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- DEMOS -->
+<section class="sec sec-soft on-light" id="demos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">See it first</span>
+      <h2>Try our live demos</h2>
+      <p>Open a sample website or app and click around, exactly as your customers and staff would. These are fictional businesses made for demonstration.</p>
+    </div>
+    <div class="demos">
+      <a class="demo reveal" href="demos/hardware/" target="_blank" rel="noopener"><div class="th th-hw"><small>Website</small>BuildMart Hardware</div><div class="tx"><h3>Hardware shop</h3><p>Categories, popular items and a material list sent on WhatsApp.</p><span class="go">Open demo</span></div></a>
+      <a class="demo reveal" href="demos/restaurant/" target="_blank" rel="noopener"><div class="th th-rs"><small>Website</small>Spice Route Kitchen</div><div class="tx"><h3>Restaurant</h3><p>Menu with categories, customer favourites and pick-up orders.</p><span class="go">Open demo</span></div></a>
+      <a class="demo reveal" href="demos/clinic/" target="_blank" rel="noopener"><div class="th th-cl"><small>Website</small>CareFirst Clinic</div><div class="tx"><h3>Clinic</h3><p>Services, doctor profile, timings and an appointment form.</p><span class="go">Open demo</span></div></a>
+      <a class="demo reveal" href="https://bgmanu6-star.github.io/stockbook-demo/" target="_blank" rel="noopener"><div class="th th-sb"><small>App</small>StockBook</div><div class="tx"><h3>Stock register app</h3><p>Record stock in and out, see live stock and download Excel reports. Works on any phone.</p><span class="go">Open demo</span></div></a>
     </div>
   </div>
 </section>
@@ -617,7 +649,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
       </div>
       <div>
         <h4>Company</h4>
-        <ul><li><a href="#why">Why ZorbaTech</a></li><li><a href="#process">Process</a></li><li><a href="#about">About</a></li><li><a href="#faq">FAQ</a></li></ul>
+        <ul><li><a href="#demos">Live demos</a></li><li><a href="#why">Why ZorbaTech</a></li><li><a href="#process">Process</a></li><li><a href="#about">About</a></li><li><a href="#faq">FAQ</a></li></ul>
       </div>
       <div>
         <h4>Get in touch</h4>
