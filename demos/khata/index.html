@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KhataBook Credit Ledger (sample app)</title><meta name="robots" content="noindex"><meta name="theme-color" content="#0f8a5f">
+<style>*{box-sizing:border-box}:root{--a:#0f8a5f;--bg:#f5f6fa;--ink:#16182b;--mut:#6b7088;--card:#fff;--ln:#e4e6ef;--ok:#14915a;--bad:#d23b3b}
+body{margin:0;font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+.zt{position:sticky;top:0;z-index:50;background:#0D0C2B;color:#fff;font-size:12.5px;display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between;align-items:center;padding:8px 14px}.zt b{color:#C6F432}.zt a{color:#fff;text-decoration:none;margin-left:12px}.zt a.go{background:#C6F432;color:#0D0C2B;font-weight:700;padding:5px 12px;border-radius:99px}
+.app{max-width:760px;margin:0 auto;padding:14px 14px 90px}h1{font-size:20px;margin:6px 0 2px}.sm{color:var(--mut);font-size:13px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:14px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.kpi{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:12px}.kpi small{color:var(--mut);display:block}.kpi b{font-size:20px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--ln)}.row:last-child{border:0}.row .l{min-width:0}.row .t{font-weight:600}
+button,.btn{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--a);color:#fff;font-weight:600}button.g{background:#eceef6;color:var(--ink)}button.sm2{padding:6px 10px;font-size:13px}
+input,select{font:inherit;width:100%;padding:10px;border:1px solid var(--ln);border-radius:10px;background:#fff;color:var(--ink)}label{display:block;font-size:12.5px;color:var(--mut);margin:8px 0 3px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pos{color:var(--ok);font-weight:700}.neg{color:var(--bad);font-weight:700}
+.tag{font-size:12px;padding:2px 8px;border-radius:99px;background:#eceef6}.fab{position:fixed;right:16px;bottom:16px;box-shadow:0 8px 20px -8px #0006;padding:14px 20px;border-radius:99px}
+.sheet{position:fixed;inset:0;background:#0008;display:none;align-items:flex-end;justify-content:center;z-index:60}.sheet.on{display:flex}.sheet>div{background:#fff;width:100%;max-width:560px;border-radius:18px 18px 0 0;padding:16px;max-height:90vh;overflow:auto}
+.bar{display:flex;gap:8px;overflow:auto;padding:2px 0}.chip{white-space:nowrap;background:#eceef6;color:var(--ink);border-radius:99px}.chip.on{background:var(--a);color:#fff}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:6px;border-bottom:1px solid var(--ln);text-align:center}th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:#fff}.sc{overflow:auto}
+</style></head><body>
+<div class="zt"><span><b>Sample app</b> by ZorbaTech. Fictional business, made-up data.</span><span><a href="https://zorbatech.in/#demos">&larr; All demos</a><a class="go" href="https://wa.me/918610212131?text=Hi%20ZorbaTech%2C%20I%20tried%20the%20KhataBook%20demo%20and%20want%20one%20for%20my%20business." target="_blank" rel="noopener">Get one like this</a></span></div>
+<div class="app"><h1>KhataBook</h1><div class="sm">Customer credit ledger · Annapoorani Provisions (sample)</div>
+<div class="grid" style="margin-top:10px"><div class="kpi"><small>Total to receive</small><b class="neg" id="k1"></b></div><div class="kpi"><small>Customers with dues</small><b id="k2"></b></div><div class="kpi"><small>Collected this week</small><b class="pos" id="k3"></b></div></div>
+<div class="card"><input id="qs" placeholder="Search customer" oninput="draw()"><div id="list"></div></div><div class="sm"><button class="g sm2" onclick="resetDemo()">Reset demo data</button></div>
+<button class="fab" onclick="addC()">+ Customer</button><div class="sheet" id="sh"></div></div>
+<script>
+const $=s=>document.querySelector(s),rs=n=>"₹"+Math.round(n).toLocaleString("en-IN"),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY="zt-demo-khata-1";let S;try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+function sheet(h){$("#sh").innerHTML="<div>"+h+"</div>";$("#sh").classList.add("on")}function closeSh(){$("#sh").classList.remove("on")}
+$("#sh").onclick=e=>{if(e.target.id==="sh")closeSh()};
+function resetDemo(){S=null;try{localStorage.removeItem(KEY)}catch(e){}init();}
+
+function init(){if(!S){const day=n=>new Date(Date.now()-n*864e5).toISOString();const mk=(n,ph,e)=>({n,ph,e:e.map(x=>({t:day(x[0]),k:x[1],a:x[2],note:x[3]||""}))});
+S={c:[mk("Lakshmi Amma","98400 11122",[[20,"c",850,"Groceries"],[12,"p",500],[3,"c",420,"Rice, oil"]]),mk("Ramesh Anna","98410 22233",[[25,"c",1900,"Monthly items"],[9,"p",1900],[2,"c",260]]),mk("Fathima Begum","98420 33344",[[18,"c",640],[6,"c",980,"Festival items"]]),mk("Selvi Akka","98430 44455",[[15,"c",300],[4,"p",300]]),mk("Murugan Tea Stall","98440 55566",[[30,"c",2400,"Milk, sugar"],[14,"p",1200],[1,"c",780]]),mk("Dinesh","98450 66677",[[7,"c",150]])]};save()}draw()}
+const bal=c=>c.e.reduce((a,x)=>a+(x.k==="c"?x.a:-x.a),0);
+function draw(){const q=$("#qs").value.toLowerCase(),wk=Date.now()-7*864e5;$("#k1").textContent=rs(S.c.reduce((a,c)=>a+Math.max(0,bal(c)),0));$("#k2").textContent=S.c.filter(c=>bal(c)>0).length;$("#k3").textContent=rs(S.c.reduce((a,c)=>a+c.e.filter(x=>x.k==="p"&&new Date(x.t)>wk).reduce((s,x)=>s+x.a,0),0));
+$("#list").innerHTML=S.c.map((c,i)=>[c,i]).filter(([c])=>c.n.toLowerCase().includes(q)).sort((a,b)=>bal(b[0])-bal(a[0])).map(([c,i])=>{const b=bal(c);return`<div class="row" style="cursor:pointer" onclick="open_(${i})"><div class="l"><div class="t">${esc(c.n)}</div><div class="sm">${c.ph}</div></div><div style="text-align:right"><b class="${b>0?"neg":"pos"}">${rs(Math.abs(b))}</b><div class="sm">${b>0?"to receive":"settled"}</div></div></div>`}).join("")}
+function open_(i){const c=S.c[i],b=bal(c);sheet(`<b>${esc(c.n)}</b> <span class="sm">${c.ph}</span><div class="row"><span>Balance</span><b class="${b>0?"neg":"pos"}">${rs(b)} ${b>0?"due":""}</b></div>${c.e.slice().reverse().map(x=>`<div class="row"><div class="l"><div class="t">${x.k==="c"?"Credit given":"Payment received"}</div><div class="sm">${new Date(x.t).toLocaleDateString("en-IN",{day:"numeric",month:"short"})} ${esc(x.note)}</div></div><b class="${x.k==="c"?"neg":"pos"}">${x.k==="c"?"+":"−"}${rs(x.a)}</b></div>`).join("")}<label>Amount ₹</label><input id="am" type="number" inputmode="numeric"><label>Note (optional)</label><input id="nt"><div class="f2" style="margin-top:12px"><button class="g" onclick="ent(${i},'c')">Gave credit</button><button onclick="ent(${i},'p')">Got payment</button></div>`)}
+function ent(i,k){const a=+$("#am").value;if(!a)return;S.c[i].e.push({t:new Date().toISOString(),k,a,note:$("#nt").value});save();draw();open_(i)}
+function addC(){sheet(`<b>New customer</b><label>Name</label><input id="nn"><label>Phone</label><input id="np" inputmode="tel"><button style="width:100%;margin-top:12px" onclick="if($('#nn').value){S.c.push({n:$('#nn').value,ph:$('#np').value||'-',e:[]});save();draw();closeSh()}">Save</button>`)}
+init();
+</script></body></html>

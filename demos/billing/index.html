@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QuickBill GST Billing (sample app)</title><meta name="robots" content="noindex"><meta name="theme-color" content="#0b6bcb">
+<style>*{box-sizing:border-box}:root{--a:#0b6bcb;--bg:#f5f6fa;--ink:#16182b;--mut:#6b7088;--card:#fff;--ln:#e4e6ef;--ok:#14915a;--bad:#d23b3b}
+body{margin:0;font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+.zt{position:sticky;top:0;z-index:50;background:#0D0C2B;color:#fff;font-size:12.5px;display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between;align-items:center;padding:8px 14px}.zt b{color:#C6F432}.zt a{color:#fff;text-decoration:none;margin-left:12px}.zt a.go{background:#C6F432;color:#0D0C2B;font-weight:700;padding:5px 12px;border-radius:99px}
+.app{max-width:760px;margin:0 auto;padding:14px 14px 90px}h1{font-size:20px;margin:6px 0 2px}.sm{color:var(--mut);font-size:13px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:14px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.kpi{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:12px}.kpi small{color:var(--mut);display:block}.kpi b{font-size:20px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--ln)}.row:last-child{border:0}.row .l{min-width:0}.row .t{font-weight:600}
+button,.btn{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--a);color:#fff;font-weight:600}button.g{background:#eceef6;color:var(--ink)}button.sm2{padding:6px 10px;font-size:13px}
+input,select{font:inherit;width:100%;padding:10px;border:1px solid var(--ln);border-radius:10px;background:#fff;color:var(--ink)}label{display:block;font-size:12.5px;color:var(--mut);margin:8px 0 3px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pos{color:var(--ok);font-weight:700}.neg{color:var(--bad);font-weight:700}
+.tag{font-size:12px;padding:2px 8px;border-radius:99px;background:#eceef6}.fab{position:fixed;right:16px;bottom:16px;box-shadow:0 8px 20px -8px #0006;padding:14px 20px;border-radius:99px}
+.sheet{position:fixed;inset:0;background:#0008;display:none;align-items:flex-end;justify-content:center;z-index:60}.sheet.on{display:flex}.sheet>div{background:#fff;width:100%;max-width:560px;border-radius:18px 18px 0 0;padding:16px;max-height:90vh;overflow:auto}
+.bar{display:flex;gap:8px;overflow:auto;padding:2px 0}.chip{white-space:nowrap;background:#eceef6;color:var(--ink);border-radius:99px}.chip.on{background:var(--a);color:#fff}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:6px;border-bottom:1px solid var(--ln);text-align:center}th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:#fff}.sc{overflow:auto}
+</style></head><body>
+<div class="zt"><span><b>Sample app</b> by ZorbaTech. Fictional business, made-up data.</span><span><a href="https://zorbatech.in/#demos">&larr; All demos</a><a class="go" href="https://wa.me/918610212131?text=Hi%20ZorbaTech%2C%20I%20tried%20the%20QuickBill%20demo%20and%20want%20one%20for%20my%20business." target="_blank" rel="noopener">Get one like this</a></span></div>
+<div class="app"><h1>QuickBill</h1><div class="sm">GST bills in seconds · Sri Sai Mobile Accessories (sample)</div>
+<div class="grid" style="margin-top:10px"><div class="kpi"><small>Today's sales</small><b id="k1"></b></div><div class="kpi"><small>Bills today</small><b id="k2"></b></div><div class="kpi"><small>GST collected</small><b id="k3"></b></div></div>
+<div class="card"><b>Recent bills</b><div id="list"></div></div><div class="sm"><button class="g sm2" onclick="resetDemo()">Reset demo data</button></div>
+<button class="fab" onclick="newBill()">+ New bill</button><div class="sheet" id="sh"></div></div>
+<script>
+const $=s=>document.querySelector(s),rs=n=>"₹"+Math.round(n).toLocaleString("en-IN"),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY="zt-demo-billing-1";let S;try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+function sheet(h){$("#sh").innerHTML="<div>"+h+"</div>";$("#sh").classList.add("on")}function closeSh(){$("#sh").classList.remove("on")}
+$("#sh").onclick=e=>{if(e.target.id==="sh")closeSh()};
+function resetDemo(){S=null;try{localStorage.removeItem(KEY)}catch(e){}init();}
+
+const ITEMS=[["Phone case",250,18],["Tempered glass",150,18],["USB-C cable 1m",220,18],["Fast charger 20W",699,18],["Earphones",499,18],["Power bank 10000mAh",1299,18],["Memory card 64GB",450,18],["Screen cleaning kit",120,12]];
+const NAMES=["Arun Kumar","Priya S","Walk-in customer","Karthik R","Meena Stores","Walk-in customer"];
+function init(){if(!S){const bills=[];let n=1040;for(let i=0;i<14;i++){const it=[ITEMS[(i*3)%8],ITEMS[(i*5+1)%8]];const d=new Date(Date.now()-Math.floor(i/4)*864e5);bills.push({no:n++,t:d.toISOString(),cust:NAMES[i%6],lines:it.map((x,j)=>({n:x[0],p:x[1],g:x[2],q:1+(i+j)%3}))})}S={bills,next:n};save()}draw()}
+const tot=b=>{let s=0,g=0;b.lines.forEach(l=>{const a=l.p*l.q;s+=a;g+=a*l.g/100});return{s,g,t:s+g}};
+function draw(){const td=new Date().toDateString(),tb=S.bills.filter(b=>new Date(b.t).toDateString()===td);$("#k1").textContent=rs(tb.reduce((a,b)=>a+tot(b).t,0));$("#k2").textContent=tb.length;$("#k3").textContent=rs(tb.reduce((a,b)=>a+tot(b).g,0));
+$("#list").innerHTML=S.bills.slice().reverse().slice(0,12).map(b=>`<div class="row" onclick="view(${b.no})" style="cursor:pointer"><div class="l"><div class="t">#${b.no} · ${esc(b.cust)}</div><div class="sm">${new Date(b.t).toLocaleString("en-IN",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}</div></div><b>${rs(tot(b).t)}</b></div>`).join("")}
+let cur;function newBill(){cur={cust:"",lines:[]};form()}
+function form(){const t=tot(cur);sheet(`<b>New bill #${S.next}</b><label>Customer</label><input id="cn" value="${esc(cur.cust)}" placeholder="Customer name" oninput="cur.cust=this.value"><label>Add item</label><div class="f2"><select id="si">${ITEMS.map((x,i)=>`<option value="${i}">${x[0]} · ${rs(x[1])}</option>`).join("")}</select><button onclick="addL()">Add</button></div>
+${cur.lines.map((l,i)=>`<div class="row"><div class="l"><div class="t">${l.n}</div><div class="sm">${rs(l.p)} × ${l.q} · GST ${l.g}%</div></div><div><button class="g sm2" onclick="q(${i},-1)">−</button> ${l.q} <button class="g sm2" onclick="q(${i},1)">+</button></div></div>`).join("")}
+<div class="row"><span class="sm">Subtotal ${rs(t.s)} + GST ${rs(t.g)}</span><b style="font-size:18px">${rs(t.t)}</b></div><div class="f2"><button class="g" onclick="closeSh()">Cancel</button><button onclick="done()">Save bill</button></div>`)}
+function addL(){const x=ITEMS[$("#si").value],f=cur.lines.find(l=>l.n===x[0]);f?f.q++:cur.lines.push({n:x[0],p:x[1],g:x[2],q:1});form()}
+function q(i,d){cur.lines[i].q+=d;if(cur.lines[i].q<1)cur.lines.splice(i,1);form()}
+function done(){if(!cur.lines.length)return;S.bills.push({no:S.next++,t:new Date().toISOString(),cust:cur.cust||"Walk-in customer",lines:cur.lines});save();draw();view(S.next-1)}
+function view(no){const b=S.bills.find(x=>x.no===no),t=tot(b);sheet(`<div style="text-align:center"><b>Sri Sai Mobile Accessories</b><div class="sm">Sample GSTIN 33AAAAA0000A1Z5 · Chennai</div></div><div class="sm" style="margin:8px 0">Bill #${b.no} · ${esc(b.cust)}</div>${b.lines.map(l=>`<div class="row"><span>${l.n} × ${l.q}</span><span>${rs(l.p*l.q)}</span></div>`).join("")}<div class="row"><span class="sm">CGST+SGST (${rs(t.g)})</span><b>${rs(t.t)}</b></div><button class="g" style="width:100%" onclick="closeSh()">Close</button>`)}
+init();
+</script></body></html>

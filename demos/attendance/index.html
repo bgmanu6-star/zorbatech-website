@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>StaffDesk Attendance (sample app)</title><meta name="robots" content="noindex"><meta name="theme-color" content="#5b3fd0">
+<style>*{box-sizing:border-box}:root{--a:#5b3fd0;--bg:#f5f6fa;--ink:#16182b;--mut:#6b7088;--card:#fff;--ln:#e4e6ef;--ok:#14915a;--bad:#d23b3b}
+body{margin:0;font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+.zt{position:sticky;top:0;z-index:50;background:#0D0C2B;color:#fff;font-size:12.5px;display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between;align-items:center;padding:8px 14px}.zt b{color:#C6F432}.zt a{color:#fff;text-decoration:none;margin-left:12px}.zt a.go{background:#C6F432;color:#0D0C2B;font-weight:700;padding:5px 12px;border-radius:99px}
+.app{max-width:760px;margin:0 auto;padding:14px 14px 90px}h1{font-size:20px;margin:6px 0 2px}.sm{color:var(--mut);font-size:13px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:14px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.kpi{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:12px}.kpi small{color:var(--mut);display:block}.kpi b{font-size:20px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--ln)}.row:last-child{border:0}.row .l{min-width:0}.row .t{font-weight:600}
+button,.btn{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--a);color:#fff;font-weight:600}button.g{background:#eceef6;color:var(--ink)}button.sm2{padding:6px 10px;font-size:13px}
+input,select{font:inherit;width:100%;padding:10px;border:1px solid var(--ln);border-radius:10px;background:#fff;color:var(--ink)}label{display:block;font-size:12.5px;color:var(--mut);margin:8px 0 3px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pos{color:var(--ok);font-weight:700}.neg{color:var(--bad);font-weight:700}
+.tag{font-size:12px;padding:2px 8px;border-radius:99px;background:#eceef6}.fab{position:fixed;right:16px;bottom:16px;box-shadow:0 8px 20px -8px #0006;padding:14px 20px;border-radius:99px}
+.sheet{position:fixed;inset:0;background:#0008;display:none;align-items:flex-end;justify-content:center;z-index:60}.sheet.on{display:flex}.sheet>div{background:#fff;width:100%;max-width:560px;border-radius:18px 18px 0 0;padding:16px;max-height:90vh;overflow:auto}
+.bar{display:flex;gap:8px;overflow:auto;padding:2px 0}.chip{white-space:nowrap;background:#eceef6;color:var(--ink);border-radius:99px}.chip.on{background:var(--a);color:#fff}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:6px;border-bottom:1px solid var(--ln);text-align:center}th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:#fff}.sc{overflow:auto}
+</style></head><body>
+<div class="zt"><span><b>Sample app</b> by ZorbaTech. Fictional business, made-up data.</span><span><a href="https://zorbatech.in/#demos">&larr; All demos</a><a class="go" href="https://wa.me/918610212131?text=Hi%20ZorbaTech%2C%20I%20tried%20the%20StaffDesk%20demo%20and%20want%20one%20for%20my%20business." target="_blank" rel="noopener">Get one like this</a></span></div>
+<div class="app"><h1>StaffDesk</h1><div class="sm">Attendance and salary · Metro Packaging Works (sample)</div>
+<div class="grid" style="margin-top:10px"><div class="kpi"><small>Staff</small><b id="k1"></b></div><div class="kpi"><small>Present today</small><b class="pos" id="k2"></b></div><div class="kpi"><small>Salary payable</small><b id="k3"></b></div></div>
+<div class="card"><b>Mark today</b> <span class="sm">tap to change P → A → H (half day)</span><div id="today"></div></div>
+<div class="card"><b>This month</b><div class="sc"><table id="tb"></table></div></div><div class="sm"><button class="g sm2" onclick="resetDemo()">Reset demo data</button></div><div class="sheet" id="sh"></div></div>
+<script>
+const $=s=>document.querySelector(s),rs=n=>"₹"+Math.round(n).toLocaleString("en-IN"),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY="zt-demo-attendance-1";let S;try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+function sheet(h){$("#sh").innerHTML="<div>"+h+"</div>";$("#sh").classList.add("on")}function closeSh(){$("#sh").classList.remove("on")}
+$("#sh").onclick=e=>{if(e.target.id==="sh")closeSh()};
+function resetDemo(){S=null;try{localStorage.removeItem(KEY)}catch(e){}init();}
+
+const ND=new Date().getDate(),ST=["P","A","H"];
+function init(){if(!S){const st=[["Suresh K","Supervisor",24000],["Manoj R","Machine operator",18000],["Bala S","Packer",13500],["Geetha M","Packer",13000],["Ibrahim","Driver",16000],["Vimala","Helper",11000]];
+S={s:st.map((x,i)=>({n:x[0],r:x[1],w:x[2],a:Array.from({length:ND},(_,d)=>d===ND-1?"":((d+1+i)%7===0?"A":(d*3+i)%11===0?"H":((d+i)%7===6?"-":"P")))}))};save()}draw()}
+const pay=s=>{const p=s.a.filter(x=>x==="P").length,h=s.a.filter(x=>x==="H").length,wd=s.a.filter(x=>x&&x!=="-").length||1;return{p,h,a:s.a.filter(x=>x==="A").length,amt:s.w/26*(p+h/2+ (26-wd>0?0:0))}};
+function draw(){$("#k1").textContent=S.s.length;$("#k2").textContent=S.s.filter(s=>s.a[ND-1]==="P"||s.a[ND-1]==="H").length;$("#k3").textContent=rs(S.s.reduce((a,s)=>a+Math.min(s.w,pay(s).amt),0));
+$("#today").innerHTML=S.s.map((s,i)=>{const v=s.a[ND-1];return`<div class="row"><div class="l"><div class="t">${esc(s.n)}</div><div class="sm">${s.r} · ${rs(s.w)}/month</div></div><button class="${v==="P"?"":"g"}" style="min-width:64px" onclick="tg(${i})">${v||"Mark"}</button></div>`}).join("");
+$("#tb").innerHTML="<tr><th>Name</th><th>P</th><th>H</th><th>A</th><th>Pay so far</th></tr>"+S.s.map(s=>{const p=pay(s);return`<tr><td>${esc(s.n)}</td><td>${p.p}</td><td>${p.h}</td><td>${p.a}</td><td><b>${rs(Math.min(s.w,p.amt))}</b></td></tr>`}).join("")}
+function tg(i){const a=S.s[i].a,v=a[ND-1];a[ND-1]=ST[(ST.indexOf(v)+1)%3];save();draw()}
+init();
+</script></body></html>

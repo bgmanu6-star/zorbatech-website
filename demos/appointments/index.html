@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GlowUp Appointments (sample app)</title><meta name="robots" content="noindex"><meta name="theme-color" content="#b4326e">
+<style>*{box-sizing:border-box}:root{--a:#b4326e;--bg:#f5f6fa;--ink:#16182b;--mut:#6b7088;--card:#fff;--ln:#e4e6ef;--ok:#14915a;--bad:#d23b3b}
+body{margin:0;font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+.zt{position:sticky;top:0;z-index:50;background:#0D0C2B;color:#fff;font-size:12.5px;display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between;align-items:center;padding:8px 14px}.zt b{color:#C6F432}.zt a{color:#fff;text-decoration:none;margin-left:12px}.zt a.go{background:#C6F432;color:#0D0C2B;font-weight:700;padding:5px 12px;border-radius:99px}
+.app{max-width:760px;margin:0 auto;padding:14px 14px 90px}h1{font-size:20px;margin:6px 0 2px}.sm{color:var(--mut);font-size:13px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:14px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.kpi{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:12px}.kpi small{color:var(--mut);display:block}.kpi b{font-size:20px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--ln)}.row:last-child{border:0}.row .l{min-width:0}.row .t{font-weight:600}
+button,.btn{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--a);color:#fff;font-weight:600}button.g{background:#eceef6;color:var(--ink)}button.sm2{padding:6px 10px;font-size:13px}
+input,select{font:inherit;width:100%;padding:10px;border:1px solid var(--ln);border-radius:10px;background:#fff;color:var(--ink)}label{display:block;font-size:12.5px;color:var(--mut);margin:8px 0 3px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pos{color:var(--ok);font-weight:700}.neg{color:var(--bad);font-weight:700}
+.tag{font-size:12px;padding:2px 8px;border-radius:99px;background:#eceef6}.fab{position:fixed;right:16px;bottom:16px;box-shadow:0 8px 20px -8px #0006;padding:14px 20px;border-radius:99px}
+.sheet{position:fixed;inset:0;background:#0008;display:none;align-items:flex-end;justify-content:center;z-index:60}.sheet.on{display:flex}.sheet>div{background:#fff;width:100%;max-width:560px;border-radius:18px 18px 0 0;padding:16px;max-height:90vh;overflow:auto}
+.bar{display:flex;gap:8px;overflow:auto;padding:2px 0}.chip{white-space:nowrap;background:#eceef6;color:var(--ink);border-radius:99px}.chip.on{background:var(--a);color:#fff}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:6px;border-bottom:1px solid var(--ln);text-align:center}th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:#fff}.sc{overflow:auto}
+</style></head><body>
+<div class="zt"><span><b>Sample app</b> by ZorbaTech. Fictional business, made-up data.</span><span><a href="https://zorbatech.in/#demos">&larr; All demos</a><a class="go" href="https://wa.me/918610212131?text=Hi%20ZorbaTech%2C%20I%20tried%20the%20GlowUp%20Salon%20demo%20and%20want%20one%20for%20my%20business." target="_blank" rel="noopener">Get one like this</a></span></div>
+<div class="app"><h1>GlowUp Salon</h1><div class="sm">Appointment book · Anna Nagar, Chennai (sample)</div>
+<div class="card"><div class="bar" id="days"></div></div><div class="grid"><div class="kpi"><small>Booked</small><b id="k1"></b></div><div class="kpi"><small>Free slots</small><b id="k2"></b></div><div class="kpi"><small>Expected income</small><b id="k3"></b></div></div>
+<div class="card" id="slots"></div><div class="sm"><button class="g sm2" onclick="resetDemo()">Reset demo data</button></div><div class="sheet" id="sh"></div></div>
+<script>
+const $=s=>document.querySelector(s),rs=n=>"₹"+Math.round(n).toLocaleString("en-IN"),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY="zt-demo-appointments-1";let S;try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+function sheet(h){$("#sh").innerHTML="<div>"+h+"</div>";$("#sh").classList.add("on")}function closeSh(){$("#sh").classList.remove("on")}
+$("#sh").onclick=e=>{if(e.target.id==="sh")closeSh()};
+function resetDemo(){S=null;try{localStorage.removeItem(KEY)}catch(e){}init();}
+
+const SV={"Haircut":300,"Hair spa":800,"Facial":900,"Threading":60,"Bridal makeup":6000,"Manicure":450};const TM=["10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00"];let dy=0;
+const dk=n=>new Date(Date.now()+n*864e5).toISOString().slice(0,10);
+function init(){if(!S){S={b:{}};const nm=["Divya","Sunitha","Kavya","Anjali","Revathi","Nisha","Pooja"],sv=Object.keys(SV);for(let d=0;d<4;d++)TM.forEach((t,i)=>{if((i*7+d*3)%5<2){S.b[dk(d)+" "+t]={n:nm[(i+d)%7],s:sv[(i+d*2)%6],ph:"98"+(40000000+i*1111+d*77777)}}});save()}draw()}
+function draw(){$("#days").innerHTML=[0,1,2,3,4,5,6].map(n=>`<button class="chip ${n===dy?"on":""}" onclick="dy=${n};draw()">${new Date(Date.now()+n*864e5).toLocaleDateString("en-IN",{weekday:"short",day:"numeric"})}</button>`).join("");
+const bk=TM.filter(t=>S.b[dk(dy)+" "+t]);$("#k1").textContent=bk.length;$("#k2").textContent=TM.length-bk.length;$("#k3").textContent=rs(bk.reduce((a,t)=>a+SV[S.b[dk(dy)+" "+t].s],0));
+$("#slots").innerHTML=TM.map(t=>{const b=S.b[dk(dy)+" "+t];return`<div class="row"><div class="l"><div class="t">${t}</div>${b?`<div class="sm">${esc(b.n)} · ${b.s} · ${rs(SV[b.s])}</div>`:`<div class="sm">Free</div>`}</div>${b?`<button class="g sm2" onclick="cancel('${t}')">Cancel</button>`:`<button class="sm2" onclick="book('${t}')">Book</button>`}</div>`}).join("")}
+function book(t){sheet(`<b>Book ${t}</b><label>Customer name</label><input id="bn"><label>Phone</label><input id="bp" inputmode="tel"><label>Service</label><select id="bs">${Object.keys(SV).map(s=>`<option>${s} · ${rs(SV[s])}</option>`).join("")}</select><button style="width:100%;margin-top:12px" onclick="sv('${t}')">Confirm booking</button>`)}
+function sv(t){const n=$("#bn").value;if(!n)return;S.b[dk(dy)+" "+t]={n,s:$("#bs").value.split(" · ")[0],ph:$("#bp").value};save();closeSh();draw()}
+function cancel(t){delete S.b[dk(dy)+" "+t];save();draw()}
+init();
+</script></body></html>
