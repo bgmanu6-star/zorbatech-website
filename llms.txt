@@ -24,4 +24,4 @@
 - Stock notebook to mobile app (Tamil): https://zorbatech.in/blog/stock-notebook-to-mobile-app.html
 
 ## How we price
-- Free demo first; a written quote with one fixed, one-time price for each project; 50% advance, balance on delivery; 3 months free maintenance; no monthly fees
+- A written quote with one fixed, one-time price for each project; 3 months free maintenance; no monthly fees
