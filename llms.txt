@@ -18,3 +18,10 @@
 ## Projects
 - ZorbaKart (https://zorbakart.in/): online store for home, kitchen and lifestyle products, built and run by ZorbaTech
 - Live demos of websites and apps: https://zorbatech.in/#demos
+
+## Guides
+- Does your shop in Chennai need a website? An honest checklist: https://zorbatech.in/blog/does-my-shop-need-a-website-chennai.html
+- Stock notebook to mobile app (Tamil): https://zorbatech.in/blog/stock-notebook-to-mobile-app.html
+
+## Pricing
+- Stock and billing app from ₹6,500 one-time; websites and online stores by fixed written quote after a free demo; 50% advance, balance on delivery; 3 months free maintenance
