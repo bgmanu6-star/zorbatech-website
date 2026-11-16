@@ -24,11 +24,11 @@
 
 ## Packages (launch offer starting prices, one-time, before 18% GST; SAC 998314)
 Launch offer: these prices are for the first 10 clients, valid till 31 January 2027. Regular prices after that: Digital Start ₹6,999, Business Website ₹13,999, Stock Register ₹9,999, Smart Shop ₹19,999, Online Store Starter ₹19,999, Online Store Pro ₹34,999.
-- Digital Start – from ₹5,999: Google Business Profile, one-page website, domain setup
-- Business Website – from ₹11,999: website up to 5 pages, SEO, Google Business Profile, Instagram page, domain setup
+- Digital Start – from ₹5,999: Google Business Profile, one-page website, free domain for the first year
+- Business Website – from ₹11,999: website up to 5 pages, SEO, Google Business Profile, Instagram page, free domain for the first year
 - Stock Register – from ₹6,500: stock app with alerts, Excel reports, opening stock entry, training
 - Smart Shop – from ₹14,999: stock app, GST billing app, barcode/QR scanning, Google Business Profile
 - Online Store Starter – from ₹14,999: 50-product store, WhatsApp orders, cash on delivery
 - Online Store Pro – from ₹27,999: 200-product store, online payment and COD, supplier CSV import
 - Final price depends on products, pages and features; a written quote is given before work starts. Custom software is quote only
-- All packages include 3 months free maintenance; no monthly fees; the domain name is extra for every package, paid yearly by the client at actual cost
+- All packages include 3 months free maintenance; no monthly fees; website and store packages include a free .in or .com domain for the first year, registered in the client's name, with renewal from year 2 paid by the client at actual cost; app packages include a free web address under zorbatech.in (own domain optional)
