@@ -1,6 +1,6 @@
 # ZorbaTech
 
-> ZorbaTech is a website and app development business in India, founded by Manu B, working with small businesses across India. It builds websites, mobile-friendly apps (progressive web apps, PWAs) and e-commerce stores for small businesses, with one-time pricing and no monthly fees. Support is available in English and Tamil.
+> ZorbaTech is a website and app development business in India, founded by Manu B, working with small businesses across India. It builds websites, mobile-friendly apps (progressive web apps, PWAs) and e-commerce stores for small businesses, with one-time pricing and no monthly fees. Support is available in English, Tamil and Hindi.
 
 ## Key facts
 - Business name: ZorbaTech (tagline: Digital Solutions for Small Business)
@@ -30,4 +30,4 @@
 - Smart Shop – ₹14,999: stock app, GST billing app, barcode/QR scanning, Google Business Profile
 - Online Store Starter – ₹14,999: 50-product store, WhatsApp orders, cash on delivery
 - Online Store Pro – ₹27,999: 200-product store, online payment and COD, supplier CSV import
-- All packages include 3 months free maintenance; no monthly fees; domain paid at actual cost
+- All packages include 3 months free maintenance; no monthly fees; the domain name is extra for every package, paid yearly by the client at actual cost
