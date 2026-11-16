@@ -22,11 +22,12 @@
 - Does your shop need a website? An honest checklist: https://zorbatech.in/blog/does-my-shop-need-a-website.html
 - Stock notebook to mobile app (Tamil): https://zorbatech.in/blog/stock-notebook-to-mobile-app.html
 
-## Packages (one-time price, before 18% GST; SAC 998314)
-- Digital Start – ₹5,999: Google Business Profile, one-page website, domain setup
-- Business Website – ₹11,999: website up to 5 pages, SEO, Google Business Profile, Instagram page, domain setup
-- Stock Register – ₹6,500: stock app with alerts, Excel reports, opening stock entry, training
-- Smart Shop – ₹14,999: stock app, GST billing app, barcode/QR scanning, Google Business Profile
-- Online Store Starter – ₹14,999: 50-product store, WhatsApp orders, cash on delivery
-- Online Store Pro – ₹27,999: 200-product store, online payment and COD, supplier CSV import
+## Packages (starting prices, one-time, before 18% GST; SAC 998314)
+- Digital Start – from ₹5,999: Google Business Profile, one-page website, domain setup
+- Business Website – from ₹11,999: website up to 5 pages, SEO, Google Business Profile, Instagram page, domain setup
+- Stock Register – from ₹6,500: stock app with alerts, Excel reports, opening stock entry, training
+- Smart Shop – from ₹14,999: stock app, GST billing app, barcode/QR scanning, Google Business Profile
+- Online Store Starter – from ₹14,999: 50-product store, WhatsApp orders, cash on delivery
+- Online Store Pro – from ₹27,999: 200-product store, online payment and COD, supplier CSV import
+- Final price depends on products, pages and features; a written quote is given before work starts. Custom software is quote only
 - All packages include 3 months free maintenance; no monthly fees; the domain name is extra for every package, paid yearly by the client at actual cost

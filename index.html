@@ -41,7 +41,7 @@
  "image": "https://zorbatech.in/og-image.png",
  "telephone": "+91-86102-12131",
  "email": "manu@zorbatech.in",
- "priceRange": "₹5,999 – ₹27,999",
+ "priceRange": "From ₹5,999",
  "areaServed": {
   "@type": "Country",
   "name": "India"
@@ -73,13 +73,12 @@
     "@type": "Offer",
     "name": "Digital Start package",
     "description": "Get found online",
-    "price": "5999",
     "priceCurrency": "INR",
     "priceSpecification": {
      "@type": "PriceSpecification",
-     "price": "5999",
      "priceCurrency": "INR",
-     "valueAddedTaxIncluded": false
+     "valueAddedTaxIncluded": false,
+     "minPrice": "5999"
     },
     "itemOffered": {
      "@type": "Service",
@@ -90,13 +89,12 @@
     "@type": "Offer",
     "name": "Business Website package",
     "description": "Full website for your business",
-    "price": "11999",
     "priceCurrency": "INR",
     "priceSpecification": {
      "@type": "PriceSpecification",
-     "price": "11999",
      "priceCurrency": "INR",
-     "valueAddedTaxIncluded": false
+     "valueAddedTaxIncluded": false,
+     "minPrice": "11999"
     },
     "itemOffered": {
      "@type": "Service",
@@ -107,13 +105,12 @@
     "@type": "Offer",
     "name": "Stock Register package",
     "description": "Stock app for your shop",
-    "price": "6500",
     "priceCurrency": "INR",
     "priceSpecification": {
      "@type": "PriceSpecification",
-     "price": "6500",
      "priceCurrency": "INR",
-     "valueAddedTaxIncluded": false
+     "valueAddedTaxIncluded": false,
+     "minPrice": "6500"
     },
     "itemOffered": {
      "@type": "Service",
@@ -124,13 +121,12 @@
     "@type": "Offer",
     "name": "Smart Shop package",
     "description": "Stock + billing + Google listing",
-    "price": "14999",
     "priceCurrency": "INR",
     "priceSpecification": {
      "@type": "PriceSpecification",
-     "price": "14999",
      "priceCurrency": "INR",
-     "valueAddedTaxIncluded": false
+     "valueAddedTaxIncluded": false,
+     "minPrice": "14999"
     },
     "itemOffered": {
      "@type": "Service",
@@ -141,13 +137,12 @@
     "@type": "Offer",
     "name": "Online Store Starter package",
     "description": "Sell online with WhatsApp orders",
-    "price": "14999",
     "priceCurrency": "INR",
     "priceSpecification": {
      "@type": "PriceSpecification",
-     "price": "14999",
      "priceCurrency": "INR",
-     "valueAddedTaxIncluded": false
+     "valueAddedTaxIncluded": false,
+     "minPrice": "14999"
     },
     "itemOffered": {
      "@type": "Service",
@@ -158,13 +153,12 @@
     "@type": "Offer",
     "name": "Online Store Pro package",
     "description": "Full store with online payment",
-    "price": "27999",
     "priceCurrency": "INR",
     "priceSpecification": {
      "@type": "PriceSpecification",
-     "price": "27999",
      "priceCurrency": "INR",
-     "valueAddedTaxIncluded": false
+     "valueAddedTaxIncluded": false,
+     "minPrice": "27999"
     },
     "itemOffered": {
      "@type": "Service",
@@ -513,6 +507,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
 .person b{display:block;font:700 17px var(--head);color:var(--navy)}.person span{display:block;font-size:14px;color:var(--olive);font-weight:600}.person small{display:block;color:var(--muted);margin-top:4px;line-height:1.5}
 @media(max-width:900px){.prices{grid-template-columns:1fr}.promise{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.promise{grid-template-columns:1fr}}
+.price .amt .from{font:600 14px var(--body);color:var(--muted);margin-right:2px;vertical-align:middle}.price.hot .amt .from{color:var(--muted-d)}
+.sec-head .final{font-weight:600;color:var(--navy);background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-top:12px;display:inline-block}
 .price .gstl{font-size:13px;color:var(--muted);font-weight:600}.price.hot .gstl{color:var(--muted-d)}
 .price .dom{font-size:12.5px;font-weight:600;color:var(--muted);background:var(--bg-soft);border:1px dashed var(--line);border-radius:8px;padding:6px 10px;margin-top:4px}.price.hot .dom{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.25);color:var(--muted-d)}
 .price .was{font-size:13px;color:var(--olive);font-weight:600}.price.hot .was{color:var(--lime)}
@@ -835,15 +831,16 @@ setInterval(function(){if(!paused&&!document.hidden&&!matchMedia("(prefers-reduc
     <div class="sec-head center reveal">
       <span class="eyebrow">Packages</span>
       <h2>Simple packages. One-time price.</h2>
-      <p>Pay once, no monthly fees. Prices are before GST; GST is charged at 18% (SAC 998314, IT design and development services) and shown on your invoice.</p>
+      <p>Pay once, no monthly fees. Prices are starting prices before GST; GST is charged at 18% (SAC 998314, IT design and development services) and shown on your invoice.</p>
+      <p class="final">The final price depends on the number of products, pages and features you need. You get a written quote before any work starts.</p>
     </div>
     <div class="prices reveal">
       <div class="price">
         
         <h3>Digital Start</h3>
         <small>Get found online</small>
-        <div class="amt">₹5,999 <span>+ 18% GST</span></div>
-        <div class="gstl">₹7,079 including GST · one-time</div>
+        <div class="amt"><span class="from">from</span> ₹5,999 <span>+ 18% GST</span></div>
+        <div class="gstl">from ₹7,079 including GST · one-time</div>
         <span class="was"><s>₹6,998</s> · save ₹999</span>
         <div class="dom">+ Domain name extra · paid yearly by you, at actual cost</div>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google Business Profile setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>One-page mobile website</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>WhatsApp and call buttons, Google Maps</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Domain connection and HTTPS</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
@@ -853,8 +850,8 @@ setInterval(function(){if(!paused&&!document.hidden&&!matchMedia("(prefers-reduc
         
         <h3>Business Website</h3>
         <small>Full website for your business</small>
-        <div class="amt">₹11,999 <span>+ 18% GST</span></div>
-        <div class="gstl">₹14,159 including GST · one-time</div>
+        <div class="amt"><span class="from">from</span> ₹11,999 <span>+ 18% GST</span></div>
+        <div class="gstl">from ₹14,159 including GST · one-time</div>
         <span class="was"><s>₹12,997</s> · save ₹998</span>
         <div class="dom">+ Domain name extra · paid yearly by you, at actual cost</div>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Website up to 5 pages</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Basic SEO and sitemap</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google Business Profile setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Instagram / Facebook page setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Domain connection and HTTPS</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
@@ -864,8 +861,8 @@ setInterval(function(){if(!paused&&!document.hidden&&!matchMedia("(prefers-reduc
         
         <h3>Stock Register</h3>
         <small>Stock app for your shop</small>
-        <div class="amt">₹6,500 <span>+ 18% GST</span></div>
-        <div class="gstl">₹7,670 including GST · one-time</div>
+        <div class="amt"><span class="from">from</span> ₹6,500 <span>+ 18% GST</span></div>
+        <div class="gstl">from ₹7,670 including GST · one-time</div>
         <span class="was">&nbsp;</span>
         <div class="dom">+ Domain name extra · paid yearly by you, at actual cost</div>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Stock in and out on phone and PC</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Low-stock and non-moving stock alerts</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Excel reports and backup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Opening stock entry</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>1-hour training</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
@@ -875,8 +872,8 @@ setInterval(function(){if(!paused&&!document.hidden&&!matchMedia("(prefers-reduc
         <span class="badge">Most popular</span>
         <h3>Smart Shop</h3>
         <small>Stock + billing + Google listing</small>
-        <div class="amt">₹14,999 <span>+ 18% GST</span></div>
-        <div class="gstl">₹17,699 including GST · one-time</div>
+        <div class="amt"><span class="from">from</span> ₹14,999 <span>+ 18% GST</span></div>
+        <div class="gstl">from ₹17,699 including GST · one-time</div>
         <span class="was"><s>₹16,498</s> · save ₹1,499</span>
         <div class="dom">+ Domain name extra · paid yearly by you, at actual cost</div>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Stock register app</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>GST billing app linked to stock</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Barcode / QR scanning and labels</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google Business Profile setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Opening stock entry and training</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
@@ -886,8 +883,8 @@ setInterval(function(){if(!paused&&!document.hidden&&!matchMedia("(prefers-reduc
         
         <h3>Online Store Starter</h3>
         <small>Sell online with WhatsApp orders</small>
-        <div class="amt">₹14,999 <span>+ 18% GST</span></div>
-        <div class="gstl">₹17,699 including GST · one-time</div>
+        <div class="amt"><span class="from">from</span> ₹14,999 <span>+ 18% GST</span></div>
+        <div class="gstl">from ₹17,699 including GST · one-time</div>
         <span class="was"><s>₹15,997</s> · save ₹998</span>
         <div class="dom">+ Domain name extra · paid yearly by you, at actual cost</div>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Up to 50 products with categories</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Cart, WhatsApp orders, cash on delivery</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google Business Profile setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Instagram / Facebook page setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Domain connection and HTTPS</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
@@ -897,8 +894,8 @@ setInterval(function(){if(!paused&&!document.hidden&&!matchMedia("(prefers-reduc
         
         <h3>Online Store Pro</h3>
         <small>Full store with online payment</small>
-        <div class="amt">₹27,999 <span>+ 18% GST</span></div>
-        <div class="gstl">₹33,039 including GST · one-time</div>
+        <div class="amt"><span class="from">from</span> ₹27,999 <span>+ 18% GST</span></div>
+        <div class="gstl">from ₹33,039 including GST · one-time</div>
         <span class="was"><s>₹32,996</s> · save ₹4,997</span>
         <div class="dom">+ Domain name extra · paid yearly by you, at actual cost</div>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Up to 200 products</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Online payment (Razorpay) and COD</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Delivery-charge rules and order emails</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Supplier CSV import for daily updates</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google profile and Instagram setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
@@ -908,7 +905,7 @@ setInterval(function(){if(!paused&&!document.hidden&&!matchMedia("(prefers-reduc
     <div class="extras reveal">
       <h3>Popular extras</h3>
       <ul><li><span>Barcode / QR scanning and label printing</span><b>₹2,000</b></li><li><span>Supplier and customer ledger</span><b>₹3,500</b></li><li><span>Automatic daily backup</span><b>₹1,500</b></li><li><span>Extra staff login (each)</span><b>₹200</b></li><li><span>Extra website page (each)</span><b>₹999</b></li><li><span>Appointment / enquiry form</span><b>₹2,499</b></li><li><span>Play Store app version</span><b>₹4,999</b></li><li><span>On-site training visit</span><b>₹500</b></li></ul>
-      <p class="fine">All prices are in Indian rupees, before 18% GST. The domain name is extra for every package: you pay its actual yearly cost (it varies by name and extension), and it is registered in your name. Need something different? We'll give you a written quote with one fixed price.</p>
+      <p class="fine">All prices are in Indian rupees, before 18% GST. The domain name is extra for every package: you pay its actual yearly cost (it varies by name and extension), and it is registered in your name. Custom software and anything outside these packages is priced by written quote.</p>
     </div>
     <div class="promise reveal">
       <div><b>Written quote first</b><span>Scope and price agreed before work starts.</span></div>
