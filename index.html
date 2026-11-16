@@ -74,6 +74,7 @@
     "name": "Digital Start package",
     "description": "Get found online",
     "priceCurrency": "INR",
+    "priceValidUntil": "2027-01-31",
     "priceSpecification": {
      "@type": "PriceSpecification",
      "priceCurrency": "INR",
@@ -90,6 +91,7 @@
     "name": "Business Website package",
     "description": "Full website for your business",
     "priceCurrency": "INR",
+    "priceValidUntil": "2027-01-31",
     "priceSpecification": {
      "@type": "PriceSpecification",
      "priceCurrency": "INR",
@@ -106,6 +108,7 @@
     "name": "Stock Register package",
     "description": "Stock app for your shop",
     "priceCurrency": "INR",
+    "priceValidUntil": "2027-01-31",
     "priceSpecification": {
      "@type": "PriceSpecification",
      "priceCurrency": "INR",
@@ -122,6 +125,7 @@
     "name": "Smart Shop package",
     "description": "Stock + billing + Google listing",
     "priceCurrency": "INR",
+    "priceValidUntil": "2027-01-31",
     "priceSpecification": {
      "@type": "PriceSpecification",
      "priceCurrency": "INR",
@@ -138,6 +142,7 @@
     "name": "Online Store Starter package",
     "description": "Sell online with WhatsApp orders",
     "priceCurrency": "INR",
+    "priceValidUntil": "2027-01-31",
     "priceSpecification": {
      "@type": "PriceSpecification",
      "priceCurrency": "INR",
@@ -154,6 +159,7 @@
     "name": "Online Store Pro package",
     "description": "Full store with online payment",
     "priceCurrency": "INR",
+    "priceValidUntil": "2027-01-31",
     "priceSpecification": {
      "@type": "PriceSpecification",
      "priceCurrency": "INR",
@@ -509,6 +515,26 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
 @media(max-width:520px){.promise{grid-template-columns:1fr}}
 .price .amt .from{font:600 14px var(--body);color:var(--muted);margin-right:2px;vertical-align:middle}.price.hot .amt .from{color:var(--muted-d)}
 .sec-head .final{font-weight:600;color:var(--navy);background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-top:12px;display:inline-block}
+.offerbar{display:block;background:linear-gradient(90deg,#C6F432,#E4FF7A,#C6F432);color:#0D0C2B;text-decoration:none;overflow:hidden;border-bottom:1px solid rgba(13,12,43,.15)}
+.mq{overflow:hidden;white-space:nowrap}.mq-in{display:inline-flex;gap:0;animation:mq 32s linear infinite;padding:8px 0}
+.mq-in span{font:700 13px var(--body);letter-spacing:.04em;padding:0 22px;position:relative}.mq-in span:after{content:"";position:absolute;right:-3px;top:50%;width:6px;height:6px;border-radius:50%;background:#0D0C2B;transform:translateY(-50%)}
+.offerbar:hover .mq-in{animation-play-state:paused}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.mq-in{animation:none}}
+.hero-offer{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;padding:6px 14px 6px 6px;border-radius:99px;background:rgba(198,244,50,.14);border:1px solid rgba(198,244,50,.55);color:inherit;text-decoration:none;font:600 14px var(--body)}
+.hero-offer span{background:var(--lime);color:var(--navy);font-weight:800;padding:4px 10px;border-radius:99px;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+.offerbox{margin:22px auto 22px;max-width:860px;display:flex;flex-wrap:wrap;gap:18px 26px;align-items:center;justify-content:space-between;text-align:left;background:var(--navy);color:#fff;border-radius:22px;padding:22px 26px;position:relative;overflow:hidden;box-shadow:0 24px 50px -28px rgba(13,12,43,.6)}
+.offerbox:before{content:"";position:absolute;right:-60px;top:-80px;width:220px;height:220px;border-radius:50%;border:2px solid rgba(198,244,50,.5)}
+.ob-l{flex:1 1 300px;min-width:0;position:relative;display:flex;flex-direction:column;gap:4px}.ob-k{display:inline-block;align-self:flex-start;background:var(--lime);color:var(--navy);font:800 12px var(--body);letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:99px}
+.ob-l b{font:700 20px var(--head)}.ob-l small{color:var(--muted-d);font-size:14px}
+.spots{display:flex;align-items:center;gap:12px;margin-top:8px;font-size:14px}.sp-bar{flex:1;max-width:220px;height:8px;border-radius:99px;background:rgba(255,255,255,.15);overflow:hidden}.sp-bar i{display:block;height:100%;background:var(--lime);border-radius:99px;transition:width .6s}
+.spots b{font:800 16px var(--head);color:var(--lime)}
+.cd{display:flex;gap:10px;position:relative}.cd div{min-width:64px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 8px;text-align:center;display:flex;flex-direction:column}
+.cd b{font:800 26px var(--head);color:var(--lime);font-variant-numeric:tabular-nums;line-height:1.1}.cd span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-d)}
+.price .ltag{position:absolute;top:16px;right:16px;background:#FFF1D6;color:#8A4B00;font:800 11px var(--body);letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:99px}
+.price.hot .ltag{background:var(--lime);color:var(--navy)}
+.price .amt .pv{font:inherit;color:inherit}
+@media(max-width:520px){.hero-offer{font-size:13px;border-radius:16px}.cd div{min-width:0;flex:1}.cd b{font-size:22px}.offerbox{padding:20px}}
 .price .gstl{font-size:13px;color:var(--muted);font-weight:600}.price.hot .gstl{color:var(--muted-d)}
 .price .dom{font-size:12.5px;font-weight:600;color:var(--muted);background:var(--bg-soft);border:1px dashed var(--line);border-radius:8px;padding:6px 10px;margin-top:4px}.price.hot .dom{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.25);color:var(--muted-d)}
 .price .was{font-size:13px;color:var(--olive);font-weight:600}.price.hot .was{color:var(--lime)}
@@ -540,6 +566,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
 </svg>
 <a class="skip" href="#main">Skip to content</a>
 
+<a class="offerbar" href="#pricing" data-offer aria-label="Launch offer: first 10 clients, valid till 31 January 2027"><div class="mq" aria-hidden="true"><div class="mq-in"><span>LAUNCH OFFER</span><span>First 10 clients only</span><span>Save up to ₹7,000</span><span>Valid till 31 January 2027</span><span><b class="mq-spots">10</b> of 10 spots left</span><span>One-time price · no monthly fees</span><span>LAUNCH OFFER</span><span>First 10 clients only</span><span>Save up to ₹7,000</span><span>Valid till 31 January 2027</span><span><b class="mq-spots">10</b> of 10 spots left</span><span>One-time price · no monthly fees</span></div></div></a>
 <header class="site-header" id="top">
   <div class="wrap nav">
     <a class="logo-link" href="#top" aria-label="ZorbaTech home">
@@ -569,6 +596,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
 <section class="hero">
   <div class="wrap">
     <div>
+      <a class="hero-offer" href="#pricing" data-offer><span>Launch offer</span>Save up to ₹7,000 · first 10 clients · till 31 Jan 2027 →</a>
       <span class="eyebrow">Websites &middot; Apps &middot; Software</span>
       <h1>Digital solutions for <span>small business.</span></h1>
       <p class="lead">ZorbaTech designs and builds websites, mobile apps and billing software for growing businesses, at honest one-time prices and with support from the person who built it.</p>
@@ -831,72 +859,77 @@ setInterval(function(){if(!paused&&!document.hidden&&!matchMedia("(prefers-reduc
     <div class="sec-head center reveal">
       <span class="eyebrow">Packages</span>
       <h2>Simple packages. One-time price.</h2>
+      <div class="offerbox" data-offer>
+        <div class="ob-l"><span class="ob-k">Launch offer</span><b>Launch prices for our first 10 clients</b><small>Valid till 31 January 2027 or until all 10 spots are taken, whichever comes first.</small>
+          <div class="spots"><div class="sp-bar"><i style="width:0%" id="spbar"></i></div><span><b id="spleft">10</b> of 10 spots left</span></div></div>
+        <div class="cd" aria-label="Time left in the launch offer"><div><b id="cdd">--</b><span>days</span></div><div><b id="cdh">--</b><span>hrs</span></div><div><b id="cdm">--</b><span>mins</span></div><div><b id="cds">--</b><span>secs</span></div></div>
+      </div>
       <p>Pay once, no monthly fees. Prices are starting prices before GST; GST is charged at 18% (SAC 998314, IT design and development services) and shown on your invoice.</p>
       <p class="final">The final price depends on the number of products, pages and features you need. You get a written quote before any work starts.</p>
     </div>
     <div class="prices reveal">
       <div class="price">
-        
+        <span class="ltag" data-offer>Launch price</span>
         <h3>Digital Start</h3>
         <small>Get found online</small>
-        <div class="amt"><span class="from">from</span> ₹5,999 <span>+ 18% GST</span></div>
-        <div class="gstl">from ₹7,079 including GST · one-time</div>
-        <span class="was"><s>₹6,998</s> · save ₹999</span>
+        <div class="amt" data-reg="6,999" data-regg="8,259"><span class="from">from</span> <b class="pv">₹5,999</b> <span>+ 18% GST</span></div>
+        <div class="gstl">from <b class="pg">₹7,079</b> including GST · one-time</div>
+        <span class="was" data-offer>Regular <s>₹6,999</s> · <b>you save ₹1,000</b></span>
         <div class="dom">+ Domain name extra · paid yearly by you, at actual cost</div>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google Business Profile setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>One-page mobile website</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>WhatsApp and call buttons, Google Maps</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Domain connection and HTTPS</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
         <a class="btn btn-dark" href="https://wa.me/918610212131?text=Digital%20Start%20package%20enquiry" target="_blank" rel="noopener">Enquire on WhatsApp</a>
       </div>
       <div class="price">
-        
+        <span class="ltag" data-offer>Launch price</span>
         <h3>Business Website</h3>
         <small>Full website for your business</small>
-        <div class="amt"><span class="from">from</span> ₹11,999 <span>+ 18% GST</span></div>
-        <div class="gstl">from ₹14,159 including GST · one-time</div>
-        <span class="was"><s>₹12,997</s> · save ₹998</span>
+        <div class="amt" data-reg="13,999" data-regg="16,519"><span class="from">from</span> <b class="pv">₹11,999</b> <span>+ 18% GST</span></div>
+        <div class="gstl">from <b class="pg">₹14,159</b> including GST · one-time</div>
+        <span class="was" data-offer>Regular <s>₹13,999</s> · <b>you save ₹2,000</b></span>
         <div class="dom">+ Domain name extra · paid yearly by you, at actual cost</div>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Website up to 5 pages</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Basic SEO and sitemap</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google Business Profile setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Instagram / Facebook page setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Domain connection and HTTPS</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
         <a class="btn btn-dark" href="https://wa.me/918610212131?text=Business%20Website%20package%20enquiry" target="_blank" rel="noopener">Enquire on WhatsApp</a>
       </div>
       <div class="price">
-        
+        <span class="ltag" data-offer>Launch price</span>
         <h3>Stock Register</h3>
         <small>Stock app for your shop</small>
-        <div class="amt"><span class="from">from</span> ₹6,500 <span>+ 18% GST</span></div>
-        <div class="gstl">from ₹7,670 including GST · one-time</div>
-        <span class="was">&nbsp;</span>
+        <div class="amt" data-reg="9,999" data-regg="11,799"><span class="from">from</span> <b class="pv">₹6,500</b> <span>+ 18% GST</span></div>
+        <div class="gstl">from <b class="pg">₹7,670</b> including GST · one-time</div>
+        <span class="was" data-offer>Regular <s>₹9,999</s> · <b>you save ₹3,499</b></span>
         <div class="dom">+ Domain name extra · paid yearly by you, at actual cost</div>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Stock in and out on phone and PC</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Low-stock and non-moving stock alerts</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Excel reports and backup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Opening stock entry</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>1-hour training</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
         <a class="btn btn-dark" href="https://wa.me/918610212131?text=Stock%20Register%20package%20enquiry" target="_blank" rel="noopener">Enquire on WhatsApp</a>
       </div>
       <div class="price hot">
-        <span class="badge">Most popular</span>
+        <span class="badge">Most popular</span><span class="ltag" data-offer>Launch price</span>
         <h3>Smart Shop</h3>
         <small>Stock + billing + Google listing</small>
-        <div class="amt"><span class="from">from</span> ₹14,999 <span>+ 18% GST</span></div>
-        <div class="gstl">from ₹17,699 including GST · one-time</div>
-        <span class="was"><s>₹16,498</s> · save ₹1,499</span>
+        <div class="amt" data-reg="19,999" data-regg="23,599"><span class="from">from</span> <b class="pv">₹14,999</b> <span>+ 18% GST</span></div>
+        <div class="gstl">from <b class="pg">₹17,699</b> including GST · one-time</div>
+        <span class="was" data-offer>Regular <s>₹19,999</s> · <b>you save ₹5,000</b></span>
         <div class="dom">+ Domain name extra · paid yearly by you, at actual cost</div>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Stock register app</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>GST billing app linked to stock</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Barcode / QR scanning and labels</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google Business Profile setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Opening stock entry and training</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
         <a class="btn btn-primary" href="https://wa.me/918610212131?text=Smart%20Shop%20package%20enquiry" target="_blank" rel="noopener">Enquire on WhatsApp</a>
       </div>
       <div class="price">
-        
+        <span class="ltag" data-offer>Launch price</span>
         <h3>Online Store Starter</h3>
         <small>Sell online with WhatsApp orders</small>
-        <div class="amt"><span class="from">from</span> ₹14,999 <span>+ 18% GST</span></div>
-        <div class="gstl">from ₹17,699 including GST · one-time</div>
-        <span class="was"><s>₹15,997</s> · save ₹998</span>
+        <div class="amt" data-reg="19,999" data-regg="23,599"><span class="from">from</span> <b class="pv">₹14,999</b> <span>+ 18% GST</span></div>
+        <div class="gstl">from <b class="pg">₹17,699</b> including GST · one-time</div>
+        <span class="was" data-offer>Regular <s>₹19,999</s> · <b>you save ₹5,000</b></span>
         <div class="dom">+ Domain name extra · paid yearly by you, at actual cost</div>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Up to 50 products with categories</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Cart, WhatsApp orders, cash on delivery</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google Business Profile setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Instagram / Facebook page setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Domain connection and HTTPS</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
         <a class="btn btn-dark" href="https://wa.me/918610212131?text=Online%20Store%20Starter%20package%20enquiry" target="_blank" rel="noopener">Enquire on WhatsApp</a>
       </div>
       <div class="price">
-        
+        <span class="ltag" data-offer>Launch price</span>
         <h3>Online Store Pro</h3>
         <small>Full store with online payment</small>
-        <div class="amt"><span class="from">from</span> ₹27,999 <span>+ 18% GST</span></div>
-        <div class="gstl">from ₹33,039 including GST · one-time</div>
-        <span class="was"><s>₹32,996</s> · save ₹4,997</span>
+        <div class="amt" data-reg="34,999" data-regg="41,299"><span class="from">from</span> <b class="pv">₹27,999</b> <span>+ 18% GST</span></div>
+        <div class="gstl">from <b class="pg">₹33,039</b> including GST · one-time</div>
+        <span class="was" data-offer>Regular <s>₹34,999</s> · <b>you save ₹7,000</b></span>
         <div class="dom">+ Domain name extra · paid yearly by you, at actual cost</div>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Up to 200 products</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Online payment (Razorpay) and COD</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Delivery-charge rules and order emails</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Supplier CSV import for daily updates</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google profile and Instagram setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
         <a class="btn btn-dark" href="https://wa.me/918610212131?text=Online%20Store%20Pro%20package%20enquiry" target="_blank" rel="noopener">Enquire on WhatsApp</a>
@@ -1139,6 +1172,25 @@ const CONFIG = {
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     items.forEach(function (el) { io.observe(el); });
   } else { items.forEach(function (el) { el.classList.add('in'); }); }
+})();
+</script>
+
+<script>
+(function(){
+  var OFFER={end:new Date("2027-01-31T23:59:59+05:30"),total:10,spotsLeft:10};
+  function q(s){return document.querySelectorAll(s)}
+  function expire(){
+    q('[data-offer]').forEach(function(e){e.style.display='none'});
+    q('.price .amt[data-reg]').forEach(function(a){var pv=a.querySelector('.pv');if(pv)pv.textContent='\u20b9'+a.dataset.reg;var g=a.parentNode.querySelector('.pg');if(g)g.textContent='\u20b9'+a.dataset.regg});
+  }
+  if(new Date()>OFFER.end||OFFER.spotsLeft<=0){expire();return}
+  q('#spleft,.mq-spots').forEach(function(e){e.textContent=OFFER.spotsLeft});
+  var bar=document.getElementById('spbar');if(bar)bar.style.width=Math.round(OFFER.spotsLeft/OFFER.total*100)+'%';
+  function pad(n){return (n<10?'0':'')+n}
+  function tick(){var ms=OFFER.end-new Date();if(ms<=0){expire();return}
+    var s=Math.floor(ms/1000),d=Math.floor(s/86400);s-=d*86400;var h=Math.floor(s/3600);s-=h*3600;var m=Math.floor(s/60);s-=m*60;
+    var el=function(id,v){var x=document.getElementById(id);if(x)x.textContent=v};el('cdd',d);el('cdh',pad(h));el('cdm',pad(m));el('cds',pad(s));}
+  tick();setInterval(tick,1000);
 })();
 </script>
 </body>
