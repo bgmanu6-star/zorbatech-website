@@ -1,12 +1,11 @@
 # ZorbaTech
 
-> ZorbaTech is a website and app development business in India, founded by Manu B, working with small businesses across India. It builds websites, mobile-friendly apps (progressive web apps, PWAs) and e-commerce stores for small businesses, with one-time pricing and no monthly fees. Support is available in English, Tamil and Hindi.
+> ZorbaTech is a website and app development business in India, working with small businesses across India. It builds websites, mobile-friendly apps (progressive web apps, PWAs) and e-commerce stores for small businesses, with one-time pricing and no monthly fees. Support is available in English, Tamil and Hindi.
 
 ## Key facts
 - Business name: ZorbaTech (tagline: Digital Solutions for Small Business)
 - Location: based in Chennai, India; works with clients anywhere in India
-- Founder: Manu B. Marketing Manager: Dhanu B
-- Contact: +91 86102 12131 (phone and WhatsApp), manu@zorbatech.in, dhanu@zorbatech.in
+- Contact: +91 86102 12131 (phone and WhatsApp), manu@zorbatech.in
 - Website: https://zorbatech.in/
 
 ## Services
