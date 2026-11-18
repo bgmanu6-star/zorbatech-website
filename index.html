@@ -246,6 +246,38 @@
     "@type": "Answer",
     "text": "We train your team at hand-over and stay available afterwards. An optional support plan covers fixes, small changes and data backups, so you are never left on your own."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I try it before I decide?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Open any of our live demos on your phone and use them like your staff would. You can also read about a real stock app we delivered for a hardware shop."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "My staff are not comfortable with phones. Will they manage?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "If you can use WhatsApp, you can use the apps we build. Screens are simple with big buttons. At hand-over we train your team using your own products, and we give you a one-page usage guide to keep at the counter."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Who can see my shop's data?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Only people you give a login to. Owners have full access. Staff can add entries but cannot edit or delete them. For setup and support we may hold editor access to your cloud account; we use it only for maintenance or when you ask, and you can remove it any time."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What if the internet goes down at my shop?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The stock apps we build keep working on the phone when the internet drops, and sync your entries once you are back online."
+   }
   }
  ]
 }
@@ -605,7 +637,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
         <a class="btn btn-primary" href="#contact">Get a free quote
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a class="btn btn-ghost" href="#services">Explore services</a>
+        <a class="btn btn-ghost" href="#demos">Try live demos</a>
       </div>
       <ul class="checks">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>One-time pricing, no monthly lock-in</li>
@@ -720,7 +752,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
     <div class="sec-head reveal">
       <span class="eyebrow">See it first</span>
       <h2>Try our live demos</h2>
-      <p>Swipe through websites, online stores and apps we build. Open any of them and click around exactly as your customers and staff would. Your name, logo and products replace the placeholders.</p>
+      <p>Swipe through websites, online stores and apps we build. Open any of them on your phone and click around exactly as your customers and staff would. Nothing to install. Your name, logo and products replace the placeholders.</p>
+      <p><a href="/work/dr-build-care/"><strong>See a real project we delivered: Dr Build Care stock app →</strong></a></p>
     </div>
     <div class="slider" id="slider" aria-roledescription="carousel"><div class="track" id="track">
 <article class="slide"><div class="sl-tx"><span class="sl-k">Website</span><h3>Hardware shop website</h3><p>Categories, popular items and a material list sent straight to your WhatsApp.</p><a class="btn btn-dark" href="demos/hardware/" target="_blank" rel="noopener">Open live demo</a></div><div class="sl-mock" style="--c:#22262e;--a:#ff8a1f"><div class="mk-bar"><b></b><b></b><b></b></div><div class="mk-hd">Your Hardware Shop</div><div class="mk-ch"><i>Cement</i><i>Paints</i><i>Pipes</i></div><div class="mk-g"><u></u><u></u><u></u><u></u></div></div></article>
@@ -995,6 +1028,22 @@ setInterval(function(){if(!paused&&!document.hidden&&!matchMedia("(prefers-reduc
       <details>
         <summary>What happens after the project is live?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
         <div class="ans">We train your team at hand-over and stay available afterwards. An optional support plan covers fixes, small changes and data backups, so you are never left on your own.</div>
+      </details>
+      <details>
+        <summary>Can I try it before I decide?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">Yes. Open any of our <a href="#demos">live demos</a> on your phone and use them like your staff would. You can also read about a <a href="/work/dr-build-care/">real stock app we delivered for a hardware shop</a>.</div>
+      </details>
+      <details>
+        <summary>My staff are not comfortable with phones. Will they manage?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">If you can use WhatsApp, you can use the apps we build. Screens are simple with big buttons. At hand-over we train your team using your own products, and we give you a one-page usage guide to keep at the counter.</div>
+      </details>
+      <details>
+        <summary>Who can see my shop's data?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">Only people you give a login to. Owners have full access. Staff can add entries but cannot edit or delete them. For setup and support we may hold editor access to your cloud account; we use it only for maintenance or when you ask, and you can remove it any time.</div>
+      </details>
+      <details>
+        <summary>What if the internet goes down at my shop?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">The stock apps we build keep working on the phone when the internet drops, and sync your entries once you are back online.</div>
       </details>
     </div>
   </div>
