@@ -21,8 +21,8 @@
 <meta name="twitter:description" content="Websites, mobile apps and billing software for growing businesses.">
 <meta name="twitter:image" content="https://zorbatech.in/og-image.png">
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -192,94 +192,6 @@
   "name": "ZorbaKart online store (project by ZorbaTech)",
   "url": "https://zorbakart.in/"
  }
-}
-</script>
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "FAQPage",
- "mainEntity": [
-  {
-   "@type": "Question",
-   "name": "How much will it cost?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "It depends on what you need. After a short conversation you receive a written quote with a fixed scope and price. We favour one-time pricing, with an optional support plan afterwards."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Do I have to pay monthly fees?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "No monthly fee is required to use what we build. Your domain is free for the first year on website and store packages; after that you pay only its yearly renewal, at actual cost, directly in your name. Any other paid service is listed clearly in your quote. Ongoing support is optional and priced separately."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Will I own my data and accounts?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Yes. Your accounts and data are set up in your name, and we hand over every login in writing when the project is finished."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Will the app work on both Android and iPhone?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Yes. We build installable web apps that run on Android, iPhone and computers from a single codebase, without app-store fees or review delays."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Can you improve my existing website or app?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Usually, yes. Share what you have and we will advise honestly on whether to improve it or rebuild it."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "What happens after the project is live?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "We train your team at hand-over and stay available afterwards. An optional support plan covers fixes, small changes and data backups, so you are never left on your own."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Can I try it before I decide?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Yes. Open any of our live demos on your phone and use them like your staff would. You can also read about a real stock app we delivered for a hardware shop."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "My staff are not comfortable with phones. Will they manage?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "If you can use WhatsApp, you can use the apps we build. Screens are simple with big buttons. At hand-over we train your team using your own products, and we give you a one-page usage guide to keep at the counter."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Who can see my shop's data?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Only people you give a login to. Owners have full access. Staff can add entries but cannot edit or delete them. For setup and support we may hold editor access to your cloud account; we use it only for maintenance or when you ask, and you can remove it any time."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "What if the internet goes down at my shop?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "The stock apps we build keep working on the phone when the internet drops, and sync your entries once you are back online."
-   }
-  }
- ]
 }
 </script>
 
@@ -623,6 +535,27 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
 .band h2{font-size:clamp(22px,2.6vw,30px);margin:0 0 6px;color:#fff}.band p{margin:0;color:var(--muted-d)}
 @media(max-width:820px){.hero-phones{aspect-ratio:1/1;max-width:420px}.hc-a{left:0}.hchip{font-size:13px;padding:8px 13px}}
 @media(max-width:520px){.proof-t{font-size:14px}.proof-b{flex-wrap:wrap}}
+
+/* ---- multi-page ---- */
+.page-hero{background:var(--navy);color:#fff;padding:clamp(40px,6vw,72px) 0 clamp(32px,5vw,56px)}
+.page-hero h1{font-size:clamp(30px,5vw,48px);line-height:1.1;margin:10px 0 14px;max-width:18ch;text-wrap:balance}
+.page-hero p{color:var(--muted-d);max-width:56ch;margin:0;font-size:clamp(16px,2vw,19px);line-height:1.55}
+.pt-list{display:grid;gap:12px;max-width:760px;margin:0 auto}
+.pt{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;text-decoration:none;color:inherit;transition:transform .2s ease,box-shadow .2s ease}
+.pt:hover{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(13,12,43,.5)}
+.pt>div:first-child{flex:1;min-width:0}.pt h3{margin:0;font-size:18px}.pt small{color:var(--muted);font-size:14px}
+.pt .amt{font-size:15px;text-align:right;white-space:nowrap}.pt .amt b{font:800 22px var(--head);color:var(--navy)}.pt .amt .from{display:block;font-size:12px;color:var(--muted)}
+.pt-go{color:var(--navy);font-weight:800;font-size:20px}
+.pt-note{text-align:center;color:var(--muted);font-size:14px;margin:16px 0}
+.pt-cta{text-align:center}
+.work-mini{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.work-mini a{display:block;text-decoration:none;color:inherit}
+.why-chips{list-style:none;margin:0 auto;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));max-width:980px}
+.why-chips li{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:600;color:var(--navy)}
+.why-chips svg{width:22px;height:22px;flex:none;color:var(--olive)}
+.home-more{text-align:center;margin-top:22px}
+@media(max-width:700px){.home-services .card ul{display:none}.home-services .card{padding-bottom:20px}.home-services .cards{gap:12px}}
+.btn-ghost-dark{background:transparent;color:var(--navy);border-color:rgba(13,12,43,.3)}.btn-ghost-dark:hover{border-color:var(--navy);background:rgba(13,12,43,.05)}
 </style>
 </head>
 <body>
@@ -634,10 +567,10 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
 </svg>
 <a class="skip" href="#main">Skip to content</a>
 
-<a class="offerbar" href="#pricing" data-offer aria-label="Launch offer: first 10 clients, valid till 31 January 2027"><div class="mq" aria-hidden="true"><div class="mq-in"><span>LAUNCH OFFER</span><span>First 10 clients only</span><span>Save up to ₹7,000</span><span>Free domain for the 1st year</span><span>Valid till 31 January 2027</span><span><b class="mq-spots">9</b> of 10 spots left</span><span>One-time price · no monthly fees</span><span>LAUNCH OFFER</span><span>First 10 clients only</span><span>Save up to ₹7,000</span><span>Free domain for the 1st year</span><span>Valid till 31 January 2027</span><span><b class="mq-spots">9</b> of 10 spots left</span><span>One-time price · no monthly fees</span></div></div></a>
+<a class="offerbar" href="/pricing/" data-offer aria-label="Launch offer: first 10 clients, valid till 31 January 2027"><div class="mq" aria-hidden="true"><div class="mq-in"><span>LAUNCH OFFER</span><span>First 10 clients only</span><span>Save up to ₹7,000</span><span>Free domain for the 1st year</span><span>Valid till 31 January 2027</span><span><b class="mq-spots">9</b> of 10 spots left</span><span>One-time price · no monthly fees</span><span>LAUNCH OFFER</span><span>First 10 clients only</span><span>Save up to ₹7,000</span><span>Free domain for the 1st year</span><span>Valid till 31 January 2027</span><span><b class="mq-spots">9</b> of 10 spots left</span><span>One-time price · no monthly fees</span></div></div></a>
 <header class="site-header" id="top">
   <div class="wrap nav">
-    <a class="logo-link" href="#top" aria-label="ZorbaTech home">
+    <a class="logo-link" href="/" aria-label="ZorbaTech home">
       <svg class="logo" viewBox="138 261 1510 320" role="img" aria-label="ZorbaTech"><use href="#zt-logo" x="138" y="261" width="1510" height="320"/></svg>
     </a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
@@ -645,26 +578,23 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
       <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
     <nav class="menu" id="menu" aria-label="Main">
-      <a href="#services">Services</a>
-      <a href="#work">Our work</a>
-      <a href="#demos">Demos</a>
-      <a href="#pricing">Packages</a>
+      <a href="/#services">Services</a>
+      <a href="/work/">Our work</a>
+      <a href="/#demos">Demos</a>
+      <a href="/pricing/">Packages</a>
+      <a href="/about/">About</a>
       <a href="/blog/">Blog</a>
-      <a href="#process">Process</a>
-      <a href="#about">About</a>
-      <a href="#faq">FAQ</a>
       <a class="btn btn-primary" href="#contact">Get a free quote</a>
     </nav>
   </div>
 </header>
 
 <main id="main">
-
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
     <div>
-      <a class="hero-offer" href="#pricing" data-offer><span>Launch offer</span>Save up to ₹7,000 · first 10 clients · till 31 Jan 2027 →</a>
+      <a class="hero-offer" href="/pricing/" data-offer><span>Launch offer</span>Save up to ₹7,000 · first 10 clients · till 31 Jan 2027 →</a>
       <span class="eyebrow">Websites &middot; Apps &middot; Software</span>
       <h1>Digital solutions for <span>small business.</span></h1>
       <p class="lead">ZorbaTech designs and builds websites, mobile apps and billing software for growing businesses, at honest one-time prices and with support from the person who built it.</p>
@@ -682,8 +612,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
     </div>
 
     <div class="hero-art hero-phones" aria-hidden="true">
-      <div class="ph ph-back"><img src="work/dr-build-care/stock.jpg" alt="" width="780" height="1688" loading="eager" decoding="async"></div>
-      <div class="ph ph-front"><img src="work/dr-build-care/home.jpg" alt="" width="780" height="1688" loading="eager" decoding="async"></div>
+      <div class="ph ph-back"><img src="/work/dr-build-care/stock.jpg" alt="" width="780" height="1688" loading="eager" decoding="async"></div>
+      <div class="ph ph-front"><img src="/work/dr-build-care/home.jpg" alt="" width="780" height="1688" loading="eager" decoding="async"></div>
       <div class="hchip hc-a float-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><b>Low stock alert</b></div>
       <div class="hchip hc-b float-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg><b>Stock updated</b></div>
     </div>
@@ -694,8 +624,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
 <div class="proof">
   <div class="wrap proof-in">
     <span class="proof-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.4 1.9 3-.2 1 2.9 2.6 1.5-.9 2.9.9 2.9-2.6 1.5-1 2.9-3-.2-2.4 1.9-2.4-1.9-3 .2-1-2.9-2.6-1.5.9-2.9-.9-2.9 2.6-1.5 1-2.9 3 .2z"/><path d="M8.5 12.2l2.5 2.5 4.5-4.8"/></svg>Trusted by</span>
-    <div class="proof-b"><a class="proof-logo" href="work/dr-build-care/" aria-label="Dr Build Care case study"><img src="work/dr-build-care/logo.png" alt="Dr Build Care, Construction Chemicals" width="720" height="185"></a><span class="proof-t">Runs its daily stock, alerts and price list on our app.</span></div>
-    <a class="proof-a" href="work/dr-build-care/">Read the case study &rarr;</a>
+    <div class="proof-b"><a class="proof-logo" href="/work/dr-build-care/" aria-label="Dr Build Care case study"><img src="/work/dr-build-care/logo.png" alt="Dr Build Care, Construction Chemicals" width="720" height="185"></a><span class="proof-t">Runs its daily stock, alerts and price list on our app.</span></div>
+    <a class="proof-a" href="/work/dr-build-care/">Read the case study &rarr;</a>
   </div>
 </div>
 
@@ -714,7 +644,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);ba
 </div>
 
 <!-- SERVICES -->
-<section class="sec on-light" id="services">
+<section class="sec on-light home-services" id="services">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">What we build</span>
@@ -781,284 +711,47 @@ setInterval(function(){if(!paused&&!document.hidden&&!matchMedia("(prefers-reduc
   </div>
 </section>
 
-<!-- WORK -->
-<section class="sec" id="work">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Our work</span>
-      <h2>Projects we have built and run</h2>
-      <p>Real products in use today, built by ZorbaTech.</p>
-    </div>
-    <article class="case reveal">
-      <div class="case-shot" aria-hidden="true">
-        <div class="cs-bar"><i></i><i></i><i></i><span>zorbakart.in</span></div>
-        <div class="cs-body"><b>ZorbaKart</b><div class="cs-grid"><u></u><u></u><u></u><u></u><u></u><u></u></div></div>
-      </div>
-      <div class="case-tx">
-        <span class="eyebrow">E-commerce store · Live</span>
-        <h3>ZorbaKart — online store</h3>
-        <p>An online shopping store for home, kitchen and lifestyle products, designed, built and run by ZorbaTech. It shows the same kind of store we build for clients.</p>
-        <ul class="case-list">
-          <li>Mobile-first product catalogue with categories and search</li>
-          <li>Product list refreshed from the supplier's inventory file</li>
-          <li>Cart and checkout with online payment and cash on delivery</li>
-          <li>Fast hosting on Cloudflare with its own domain and SSL</li>
-        </ul>
-        <a class="btn btn-primary" href="https://zorbakart.in/" target="_blank" rel="noopener">Visit zorbakart.in</a>
-      </div>
-    </article>
-    <article class="case reveal" style="margin-top:28px">
-      <div class="case-shot" style="transform:rotate(1.5deg);max-width:280px;margin:0 auto"><img src="work/dr-build-care/home.jpg" alt="Dr Build Care Stock Register home screen with sample data" loading="lazy" width="780" height="1688" style="width:100%;height:auto;border-radius:12px;display:block"></div>
-      <div class="case-tx">
-        <span class="eyebrow">Stock app · Delivered</span>
-        <h3>Dr Build Care — stock register</h3>
-        <p>A mobile stock register for a construction chemicals and hardware shop, with owner and staff logins and low-stock alerts.</p>
-        <ul class="case-list">
-          <li>Inward and outward entries in a few taps</li>
-          <li>Low-stock alerts and a ready reorder list</li>
-          <li>One shared record on every phone, stored in the shop's own account</li>
-        </ul>
-        <a class="btn btn-primary" href="/work/dr-build-care/">Read the case study</a>
-      </div>
-    </article>
-  </div>
+<!-- PACKAGES TEASER -->
+<section class="sec on-light" id="packages-teaser">
+<div class="wrap">
+<div class="sec-head center reveal">
+<span class="eyebrow">Packages</span>
+<h2>Simple packages. One-time price.</h2>
+<p>Launch prices for our first 10 clients. Pay once, no monthly fees.</p>
+</div>
+<div class="pt-list reveal"><a class="pt" href="/pricing/"><div><h3>Digital Start</h3><small>Get found online</small></div><div class="amt" data-reg="6,999"><span class="from">from</span> <b class="pv">&#8377;5,999</b></div><span class="pt-go" aria-hidden="true">&rarr;</span></a><a class="pt" href="/pricing/"><div><h3>Business Website</h3><small>Full website for your business</small></div><div class="amt" data-reg="13,999"><span class="from">from</span> <b class="pv">&#8377;11,999</b></div><span class="pt-go" aria-hidden="true">&rarr;</span></a><a class="pt" href="/pricing/"><div><h3>Stock Register</h3><small>Stock app for your shop</small></div><div class="amt" data-reg="9,999"><span class="from">from</span> <b class="pv">&#8377;6,500</b></div><span class="pt-go" aria-hidden="true">&rarr;</span></a><a class="pt" href="/pricing/"><div><h3>Smart Shop</h3><small>Stock + billing + Google listing</small></div><div class="amt" data-reg="19,999"><span class="from">from</span> <b class="pv">&#8377;14,999</b></div><span class="pt-go" aria-hidden="true">&rarr;</span></a><a class="pt" href="/pricing/"><div><h3>Online Store Starter</h3><small>Sell online with WhatsApp orders</small></div><div class="amt" data-reg="19,999"><span class="from">from</span> <b class="pv">&#8377;14,999</b></div><span class="pt-go" aria-hidden="true">&rarr;</span></a><a class="pt" href="/pricing/"><div><h3>Online Store Pro</h3><small>Full store with online payment</small></div><div class="amt" data-reg="34,999"><span class="from">from</span> <b class="pv">&#8377;27,999</b></div><span class="pt-go" aria-hidden="true">&rarr;</span></a></div>
+<p class="pt-note">Starting prices before 18% GST. The final price depends on what you need.</p>
+<div class="pt-cta"><a class="btn btn-primary" href="/pricing/">See what is included</a></div>
+</div>
 </section>
 
-<!-- WHY -->
-<section class="sec sec-dark" id="why">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Why ZorbaTech</span>
-      <h2>A simpler way to work with a technology partner</h2>
-      <p>No jargon, no surprise bills and no waiting in a support queue.</p>
-    </div>
-    <div class="grid3">
-      <article class="tile reveal">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1"/></svg></div>
-        <h3>Honest, one-time pricing</h3>
-        <p>You receive a written quote with a fixed scope and price before any work begins. No monthly subscription is required.</p>
-      </article>
-      <article class="tile reveal">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
-        <h3>Built around your business</h3>
-        <p>Your categories, your workflow, your way of working. Not a generic template that you have to adapt to.</p>
-      </article>
-      <article class="tile reveal">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
-        <h3>You own your data</h3>
-        <p>Accounts and data are created in your name, and we hand over all logins in writing when the project is complete.</p>
-      </article>
-      <article class="tile reveal">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></div>
-        <h3>Direct, personal support</h3>
-        <p>Talk straight to the person who built your system. Questions get clear answers and fixes do not get lost in a ticket queue.</p>
-      </article>
-      <article class="tile reveal">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
-        <h3>Simple for your team</h3>
-        <p>Clean, fast screens made for busy owners and staff, with training at hand-over so your team is confident from day one.</p>
-      </article>
-      <article class="tile reveal">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div>
-        <h3>Secure and backed up</h3>
-        <p>Access controls and regular data backups are part of the build, because your business records are too important to risk.</p>
-      </article>
-    </div>
-  </div>
+<!-- WORK TEASER -->
+<section class="sec sec-dark" id="work-teaser">
+<div class="wrap">
+<div class="sec-head reveal">
+<span class="eyebrow">Our work</span>
+<h2>Projects we have built and run</h2>
+<p>Real products in use today.</p>
+</div>
+<div class="work-mini reveal">
+<a class="tile" href="/work/dr-build-care/"><span class="eyebrow">Stock app &middot; Delivered</span><h3>Dr Build Care</h3><p>A mobile stock register for a construction chemicals and hardware shop, with owner and staff logins and low-stock alerts.</p></a>
+<a class="tile" href="/work/"><span class="eyebrow">E-commerce store &middot; Live</span><h3>ZorbaKart</h3><p>An online store for home, kitchen and lifestyle products, designed, built and run by ZorbaTech.</p></a>
+</div>
+<div class="home-more"><a class="btn btn-primary" href="/work/">See all our work</a></div>
+</div>
 </section>
 
-<!-- PROCESS -->
-<section class="sec sec-soft on-light" id="process">
-  <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="eyebrow">How it works</span>
-      <h2>From first call to launch in four steps</h2>
-      <p>A clear, predictable process so you always know what happens next.</p>
-    </div>
-    <div class="steps">
-      <div class="step reveal"><div class="n">1</div><h3>Discuss</h3><p>A free conversation about your business, your daily challenges and what you want to achieve.</p></div>
-      <div class="step reveal"><div class="n">2</div><h3>Quote</h3><p>A written scope, fixed price and timeline, so there are no surprises later.</p></div>
-      <div class="step reveal"><div class="n">3</div><h3>Build</h3><p>We build in stages and show you working progress, so you can steer as we go.</p></div>
-      <div class="step reveal"><div class="n">4</div><h3>Launch &amp; support</h3><p>We go live, train your team and stay available for fixes and improvements.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="sec on-light" id="about">
-  <div class="wrap about">
-    <div class="reveal">
-      <span class="eyebrow">About us</span>
-      <h2>Direct, personal and accountable</h2>
-      <p>ZorbaTech is an Indian studio working with businesses across India. We build websites, apps and business software for small and medium businesses that want to work smarter without paying enterprise prices.</p>
-      <p>We take on a limited number of projects at a time, so every client gets personal attention from the first conversation to long after launch.</p>
-    </div>
-    <div class="pledge reveal">
-      <h3>What you can expect</h3>
-      <ul style="display:grid;gap:18px">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>A clear written quote before we start</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Regular progress updates you can actually follow</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Full hand-over of your accounts, data and training</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Support that answers when you call</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="sec sec-soft on-light" id="pricing">
-  <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="eyebrow">Packages</span>
-      <h2>Simple packages. One-time price.</h2>
-      <div class="offerbox" data-offer>
-        <div class="ob-l"><span class="ob-k">Launch offer</span><b>Launch prices for our first 10 clients</b><small>Valid till 31 January 2027 or until all 10 spots are taken, whichever comes first.</small>
-          <div class="spots"><div class="sp-bar"><i style="width:0%" id="spbar"></i></div><span><b id="spleft">9</b> of 10 spots left</span></div></div>
-        <div class="cd" aria-label="Time left in the launch offer"><div><b id="cdd">--</b><span>days</span></div><div><b id="cdh">--</b><span>hrs</span></div><div><b id="cdm">--</b><span>mins</span></div><div><b id="cds">--</b><span>secs</span></div></div>
-      </div>
-      <p>Pay once, no monthly fees. Prices are starting prices before GST; GST is charged at 18% (SAC 998314, IT design and development services) and shown on your invoice.</p>
-      <p class="final">The final price depends on the number of products, pages and features you need. You get a written quote before any work starts.</p>
-    </div>
-    <div class="prices reveal">
-      <div class="price">
-        <span class="ltag" data-offer>Launch price</span>
-        <h3>Digital Start</h3>
-        <small>Get found online</small>
-        <div class="amt" data-reg="6,999" data-regg="8,259"><span class="from">from</span> <b class="pv">₹5,999</b> <span>+ 18% GST</span></div>
-        <div class="gstl">from <b class="pg">₹7,079</b> including GST · one-time</div>
-        <span class="was" data-offer>Regular <s>₹6,999</s> · <b>you save ₹1,000</b></span>
-        <div class="dom free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7z"/></svg><span><b>Free .in or .com domain for the 1st year</b>, in your name. From year 2, renewal at actual cost (about ₹800–1,000 a year).</span></div>
-        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google Business Profile setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>One-page mobile website</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>WhatsApp and call buttons, Google Maps</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Free domain for 1st year, with HTTPS</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
-        <a class="btn btn-dark" href="https://wa.me/918610212131?text=Digital%20Start%20package%20enquiry" target="_blank" rel="noopener">Enquire on WhatsApp</a>
-      </div>
-      <div class="price">
-        <span class="ltag" data-offer>Launch price</span>
-        <h3>Business Website</h3>
-        <small>Full website for your business</small>
-        <div class="amt" data-reg="13,999" data-regg="16,519"><span class="from">from</span> <b class="pv">₹11,999</b> <span>+ 18% GST</span></div>
-        <div class="gstl">from <b class="pg">₹14,159</b> including GST · one-time</div>
-        <span class="was" data-offer>Regular <s>₹13,999</s> · <b>you save ₹2,000</b></span>
-        <div class="dom free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7z"/></svg><span><b>Free .in or .com domain for the 1st year</b>, in your name. From year 2, renewal at actual cost (about ₹800–1,000 a year).</span></div>
-        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Website up to 5 pages</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Basic SEO and sitemap</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google Business Profile setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Instagram / Facebook page setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Free domain for 1st year, with HTTPS</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
-        <a class="btn btn-dark" href="https://wa.me/918610212131?text=Business%20Website%20package%20enquiry" target="_blank" rel="noopener">Enquire on WhatsApp</a>
-      </div>
-      <div class="price">
-        <span class="ltag" data-offer>Launch price</span>
-        <h3>Stock Register</h3>
-        <small>Stock app for your shop</small>
-        <div class="amt" data-reg="9,999" data-regg="11,799"><span class="from">from</span> <b class="pv">₹6,500</b> <span>+ 18% GST</span></div>
-        <div class="gstl">from <b class="pg">₹7,670</b> including GST · one-time</div>
-        <span class="was" data-offer>Regular <s>₹9,999</s> · <b>you save ₹3,499</b></span>
-        <div class="dom free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7z"/></svg><span><b>Free web address</b> like <em>yourshop.zorbatech.in</em>. Want your own domain instead? Just ask.</span></div>
-        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Stock in and out on phone and PC</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Free web address with HTTPS</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Low-stock and non-moving stock alerts</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Excel reports and backup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Opening stock entry</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>On-call or video-call support</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
-        <a class="btn btn-dark" href="https://wa.me/918610212131?text=Stock%20Register%20package%20enquiry" target="_blank" rel="noopener">Enquire on WhatsApp</a>
-      </div>
-      <div class="price hot">
-        <span class="badge">Most popular</span><span class="ltag" data-offer>Launch price</span>
-        <h3>Smart Shop</h3>
-        <small>Stock + billing + Google listing</small>
-        <div class="amt" data-reg="19,999" data-regg="23,599"><span class="from">from</span> <b class="pv">₹14,999</b> <span>+ 18% GST</span></div>
-        <div class="gstl">from <b class="pg">₹17,699</b> including GST · one-time</div>
-        <span class="was" data-offer>Regular <s>₹19,999</s> · <b>you save ₹5,000</b></span>
-        <div class="dom free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7z"/></svg><span><b>Free web address</b> like <em>yourshop.zorbatech.in</em>. Want your own domain instead? Just ask.</span></div>
-        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Stock register app</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>GST billing app linked to stock</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Free web address with HTTPS</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Barcode / QR scanning and labels</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google Business Profile setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Opening stock entry</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>On-call or video-call support</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
-        <a class="btn btn-primary" href="https://wa.me/918610212131?text=Smart%20Shop%20package%20enquiry" target="_blank" rel="noopener">Enquire on WhatsApp</a>
-      </div>
-      <div class="price">
-        <span class="ltag" data-offer>Launch price</span>
-        <h3>Online Store Starter</h3>
-        <small>Sell online with WhatsApp orders</small>
-        <div class="amt" data-reg="19,999" data-regg="23,599"><span class="from">from</span> <b class="pv">₹14,999</b> <span>+ 18% GST</span></div>
-        <div class="gstl">from <b class="pg">₹17,699</b> including GST · one-time</div>
-        <span class="was" data-offer>Regular <s>₹19,999</s> · <b>you save ₹5,000</b></span>
-        <div class="dom free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7z"/></svg><span><b>Free .in or .com domain for the 1st year</b>, in your name. From year 2, renewal at actual cost (about ₹800–1,000 a year).</span></div>
-        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Up to 50 products with categories</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Cart, WhatsApp orders, cash on delivery</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google Business Profile setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Instagram / Facebook page setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Free domain for 1st year, with HTTPS</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
-        <a class="btn btn-dark" href="https://wa.me/918610212131?text=Online%20Store%20Starter%20package%20enquiry" target="_blank" rel="noopener">Enquire on WhatsApp</a>
-      </div>
-      <div class="price">
-        <span class="ltag" data-offer>Launch price</span>
-        <h3>Online Store Pro</h3>
-        <small>Full store with online payment</small>
-        <div class="amt" data-reg="34,999" data-regg="41,299"><span class="from">from</span> <b class="pv">₹27,999</b> <span>+ 18% GST</span></div>
-        <div class="gstl">from <b class="pg">₹33,039</b> including GST · one-time</div>
-        <span class="was" data-offer>Regular <s>₹34,999</s> · <b>you save ₹7,000</b></span>
-        <div class="dom free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7z"/></svg><span><b>Free .in or .com domain for the 1st year</b>, in your name. From year 2, renewal at actual cost (about ₹800–1,000 a year).</span></div>
-        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Up to 200 products</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Online payment (Razorpay) and COD</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Delivery-charge rules and order emails</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Supplier CSV import for daily updates</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Google profile and Instagram setup</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>3 months free maintenance</li></ul>
-        <a class="btn btn-dark" href="https://wa.me/918610212131?text=Online%20Store%20Pro%20package%20enquiry" target="_blank" rel="noopener">Enquire on WhatsApp</a>
-      </div>
-    </div>
-    <div class="extras reveal">
-      <h3>Popular extras</h3>
-      <ul><li><span>Barcode / QR scanning and label printing</span><b>₹2,000</b></li><li><span>Supplier and customer ledger</span><b>₹3,500</b></li><li><span>Automatic daily backup</span><b>₹1,500</b></li><li><span>Extra staff login (each)</span><b>₹200</b></li><li><span>Extra website page (each)</span><b>₹999</b></li><li><span>Appointment / enquiry form</span><b>₹2,499</b></li><li><span>Play Store app version</span><b>₹4,999</b></li><li><span>On-site training visit</span><b>₹500</b></li><li><span>Own domain for an app (plus domain cost)</span><b>₹500</b></li></ul>
-      <p class="fine">All prices are in Indian rupees, before 18% GST. Website and store packages include a free .in or .com domain for the first year (premium names are charged at cost), registered in your name; from the second year you pay only the renewal, at actual cost. App packages include a free web address under zorbatech.in, or we connect your own domain. Custom software and anything outside these packages is priced by written quote.</p>
-    </div>
-    <div class="promise reveal">
-      <div><b>Written quote first</b><span>Scope and price agreed before work starts.</span></div>
-      <div><b>Anywhere in India</b><span>We work over WhatsApp, calls and video, in English, Tamil or Hindi.</span></div>
-      <div><b>3 months free support</b><span>Small changes after that at a fair, fixed rate.</span></div>
-      <div><b>Your data is yours</b><span>No lock-in. Backup any time.</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- NOT SURE BAND -->
-<section class="band">
-  <div class="wrap band-in">
-    <div><h2>Not sure which package fits?</h2><p>Tell us what your shop does. We will suggest the right one, with no pressure.</p></div>
-    <a class="btn btn-primary" href="https://wa.me/918610212131?text=Help%20me%20choose%20a%20package" target="_blank" rel="noopener">Ask on WhatsApp</a>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="sec on-light" id="faq">
-  <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="eyebrow">FAQ</span>
-      <h2>Questions, answered</h2>
-    </div>
-    <div class="faq reveal">
-      <details>
-        <summary>How much will it cost?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-        <div class="ans">It depends on what you need. After a short conversation you receive a written quote with a fixed scope and price. We favour one-time pricing, with an optional support plan afterwards.</div>
-      </details>
-      <details>
-        <summary>Do I have to pay monthly fees?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-        <div class="ans">No monthly fee is required to use what we build. Your domain is free for the first year on website and store packages; after that you pay only its yearly renewal, at actual cost, directly in your name. Any other paid service is listed clearly in your quote. Ongoing support is optional and priced separately.</div>
-      </details>
-      <details>
-        <summary>Will I own my data and accounts?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-        <div class="ans">Yes. Your accounts and data are set up in your name, and we hand over every login in writing when the project is finished.</div>
-      </details>
-      <details>
-        <summary>Will the app work on both Android and iPhone?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-        <div class="ans">Yes. We build installable web apps that run on Android, iPhone and computers from a single codebase, without app-store fees or review delays.</div>
-      </details>
-      <details>
-        <summary>Can you improve my existing website or app?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-        <div class="ans">Usually, yes. Share what you have and we will advise honestly on whether to improve it or rebuild it.</div>
-      </details>
-      <details>
-        <summary>What happens after the project is live?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-        <div class="ans">We train your team at hand-over and stay available afterwards. An optional support plan covers fixes, small changes and data backups, so you are never left on your own.</div>
-      </details>
-      <details>
-        <summary>Can I try it before I decide?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-        <div class="ans">Yes. Open any of our <a href="#demos">live demos</a> on your phone and use them like your staff would. You can also read about a <a href="/work/dr-build-care/">real stock app we delivered for a hardware shop</a>.</div>
-      </details>
-      <details>
-        <summary>My staff are not comfortable with phones. Will they manage?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-        <div class="ans">If you can use WhatsApp, you can use the apps we build. Screens are simple with big buttons. At hand-over we train your team using your own products, and we give you a one-page usage guide to keep at the counter.</div>
-      </details>
-      <details>
-        <summary>Who can see my shop's data?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-        <div class="ans">Only people you give a login to. Owners have full access. Staff can add entries but cannot edit or delete them. For setup and support we may hold editor access to your cloud account; we use it only for maintenance or when you ask, and you can remove it any time.</div>
-      </details>
-      <details>
-        <summary>What if the internet goes down at my shop?<span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-        <div class="ans">The stock apps we build keep working on the phone when the internet drops, and sync your entries once you are back online.</div>
-      </details>
-    </div>
-  </div>
+<!-- WHY BRIEF -->
+<section class="sec sec-soft on-light" id="why-brief">
+<div class="wrap">
+<div class="sec-head center reveal">
+<span class="eyebrow">Why ZorbaTech</span>
+<h2>A simpler way to work with a technology partner</h2>
+<p>No jargon, no surprise bills and no waiting in a support queue.</p>
+</div>
+<ul class="why-chips reveal"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Honest, one-time pricing</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Built around your business</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>You own your data</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Direct, personal support</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Simple for your team</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>Secure and backed up</li></ul>
+<div class="home-more"><a class="btn btn-ghost-dark" href="/about/">More about how we work</a></div>
+</div>
 </section>
 
 <!-- CONTACT -->
@@ -1135,7 +828,7 @@ setInterval(function(){if(!paused&&!document.hidden&&!matchMedia("(prefers-reduc
       </div>
       <div>
         <h4>Company</h4>
-        <ul><li><a href="#demos">Live demos</a></li><li><a href="#why">Why ZorbaTech</a></li><li><a href="#process">Process</a></li><li><a href="#pricing">Packages</a></li><li><a href="#about">About</a></li><li><a href="/blog/">Blog</a></li><li><a href="#faq">FAQ</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li></ul>
+        <ul><li><a href="#demos">Live demos</a></li><li><a href="/about/#why">Why ZorbaTech</a></li><li><a href="/about/#process">Process</a></li><li><a href="/pricing/">Packages</a></li><li><a href="/about/#about">About</a></li><li><a href="/blog/">Blog</a></li><li><a href="/pricing/#faq">FAQ</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li></ul>
       </div>
       <div>
         <h4>Get in touch</h4>
@@ -1257,7 +950,7 @@ const CONFIG = {
   function q(s){return document.querySelectorAll(s)}
   function expire(){
     q('[data-offer]').forEach(function(e){e.style.display='none'});
-    q('.price .amt[data-reg]').forEach(function(a){var pv=a.querySelector('.pv');if(pv)pv.textContent='\u20b9'+a.dataset.reg;var g=a.parentNode.querySelector('.pg');if(g)g.textContent='\u20b9'+a.dataset.regg});
+    q('.price .amt[data-reg],.pt .amt[data-reg]').forEach(function(a){var pv=a.querySelector('.pv');if(pv)pv.textContent='\u20b9'+a.dataset.reg;var g=a.parentNode.querySelector('.pg');if(g)g.textContent='\u20b9'+a.dataset.regg});
   }
   if(new Date()>OFFER.end||OFFER.spotsLeft<=0){expire();return}
   q('#spleft,.mq-spots').forEach(function(e){e.textContent=OFFER.spotsLeft});
