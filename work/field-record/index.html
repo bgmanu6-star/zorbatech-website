@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Field Record: Site Diesel and Energy App | ZorbaTech</title>
+<meta name="description" content="How ZorbaTech built Field Record, a phone app for a telecom tower maintenance professional to log diesel filling and energy readings across 15 sites and send diesel requests on WhatsApp.">
+<link rel="canonical" href="https://zorbatech.in/work/field-record/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Field Record: Site Diesel and Energy App | ZorbaTech">
+<meta property="og:description" content="A phone app that logs diesel and energy readings across 15 sites and writes the diesel request message on WhatsApp.">
+<meta property="og:url" content="https://zorbatech.in/work/field-record/">
+<meta property="og:image" content="https://zorbatech.in/og-image.png">
+<meta name="theme-color" content="#0D0C2B">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap">
+<style>
+:root{--navy:#0D0C2B;--lime:#C6F432;--ink:#16153A;--muted:#55537A;--line:#E3E6F0;--soft:#F4F6FB}
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.7 Inter,system-ui,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:#3B48C8}
+.top{background:var(--navy)}
+.top .in{max-width:1080px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{color:#fff;text-decoration:none;font:800 21px Outfit,Inter,sans-serif}.brand i{font-style:normal;color:var(--lime)}
+.top nav{display:flex;gap:18px;flex-wrap:wrap}.top nav a{color:#D9D8EE;text-decoration:none;font:600 14px Inter,sans-serif}
+main{max-width:860px;margin:0 auto;padding:36px max(16px,env(safe-area-inset-left,0px)) 40px}
+.crumb{font:600 13px Inter,sans-serif;color:var(--muted)}.crumb a{color:var(--muted)}
+.tag{display:inline-block;margin-top:18px;background:var(--lime);color:var(--navy);font:800 12px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:99px}
+h1{font:800 clamp(30px,5vw,44px)/1.12 Outfit,Inter,sans-serif;margin:12px 0 10px;text-wrap:balance}
+.lead{font-size:19px;color:var(--muted);margin:0 0 26px;max-width:640px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:0 0 36px}
+.facts div{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.facts small{display:block;font:700 11px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.facts b{font:700 16px/1.35 Inter,sans-serif}
+h2{font:800 26px/1.2 Outfit,Inter,sans-serif;margin:38px 0 10px}
+ul{padding-left:22px;display:grid;gap:7px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;margin:26px 0 8px}
+.shots figure{margin:0}.shots img{width:100%;height:auto;border-radius:22px;border:1px solid var(--line);box-shadow:0 18px 40px -26px rgba(13,12,43,.5);display:block}
+.shots figcaption{font:600 13.5px/1.4 Inter,sans-serif;color:var(--muted);margin-top:9px;text-align:center}
+.note{font-size:14px;color:var(--muted);margin:6px 0 0}
+.quote{margin:30px 0 0;border-left:4px solid var(--lime);background:var(--soft);padding:16px 20px;border-radius:0 14px 14px 0;color:var(--muted)}
+.cta{margin:44px 0 0;background:var(--navy);color:#fff;border-radius:20px;padding:28px}
+.cta h3{margin:0 0 8px;font:800 24px Outfit,Inter,sans-serif}.cta p{margin:0 0 18px;color:#D9D8EE}
+.btn{display:inline-block;background:var(--lime);color:var(--navy);font-weight:800;text-decoration:none;padding:12px 20px;border-radius:99px}
+footer{border-top:1px solid var(--line);color:var(--muted);font:14px Inter,sans-serif}
+footer .in{max-width:1080px;margin:0 auto;padding:22px max(16px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="/">Zorba<i>Tech</i></a><nav><a href="/work/">Our work</a><a href="/pricing/">Pricing</a><a href="/blog/">Blog</a></nav></div></header>
+<main>
+<div class="crumb"><a href="/">Home</a> / <a href="/work/">Our work</a> / Field Record</div>
+<span class="tag">Case study &middot; Field app</span>
+<h1>Field Record: diesel and energy logging for tower sites</h1>
+<p class="lead">A phone app built for a client who looks after telecom tower sites. It records diesel filling and energy readings at 15 sites and writes the diesel request message, ready to send on WhatsApp.</p>
+
+<div class="facts">
+<div><small>Client</small><b>A telecom tower maintenance professional</b></div>
+<div><small>What we built</small><b>Phone app for site records and reports</b></div>
+<div><small>Sites covered</small><b>15 tower sites</b></div>
+<div><small>Access</small><b>Google sign-in, approved users only</b></div>
+</div>
+
+<h2>The problem</h2>
+<p>Each site needs regular records: the diesel filled, the generator running hours, the electricity meter readings and the readings for each operator. These were noted by hand or in phone messages. At the end of the period, the diesel request had to be worked out by comparing today's readings with readings from weeks earlier, then typed out as a message. It took time, and one wrong number meant the wrong amount of diesel.</p>
+
+<h2>What we built</h2>
+<ul>
+<li><b>Diesel filling entry.</b> Pick a site, enter the readings and the diesel filled. The app carries over the last closing balance and works out the new one from the running hours.</li>
+<li><b>Energy readings</b> for the electricity meter and each operator, kept together and saved in one tap.</li>
+<li><b>Diesel request message.</b> The app compares the latest readings with the readings from about 30 days earlier, works out the diesel needed, and prepares the message. One tap opens it in WhatsApp.</li>
+<li><b>Meter photo reading.</b> A photo of the meter can fill in the digits. The user always checks the number before using it.</li>
+<li><b>Clear marking of estimates.</b> If a reading is estimated, it is shown in orange and marked in the message, so nobody mistakes it for a real reading.</li>
+<li><b>Safety checks.</b> A warning for a negative balance, and a question before a duplicate record replaces an old one.</li>
+<li><b>Dashboard, history and Excel export</b> for all 15 sites.</li>
+<li><b>Works without network.</b> It saves on the phone and syncs when the signal returns. It installs on the home screen like a normal app.</li>
+<li><b>Fuel and travel log</b> for the client's own scooter, with distance and petrol used.</li>
+</ul>
+
+<div class="shots">
+<figure><img src="home.jpg" alt="Field Record home screen with diesel, energy, request message, stock and travel options" width="780" height="1688" loading="lazy"><figcaption>Home</figcaption></figure>
+<figure><img src="diesel.jpg" alt="Diesel filling form showing the previous readings and the opening diesel" width="780" height="1688" loading="lazy"><figcaption>Diesel filling entry</figcaption></figure>
+<figure><img src="request.jpg" alt="Generated diesel request message with current and previous readings" width="780" height="1688" loading="lazy"><figcaption>Diesel request message</figcaption></figure>
+<figure><img src="dash.jpg" alt="Dashboard with total sites, diesel balance, DG hours and latest readings by site" width="780" height="1688" loading="lazy"><figcaption>Dashboard</figcaption></figure>
+</div>
+<p class="note">Screens above use sample readings and generic site names, not the client's real records.</p>
+
+<h2>Delivered</h2>
+<p>The app was built in November 2026 around the way the client already records and reports.</p>
+
+<div class="cta">
+<h3>Need a simple app for your field work?</h3>
+<p>If your team records readings, visits, deliveries or collections on paper or in WhatsApp, we can build an app around it. You can talk to us in Tamil or English.</p>
+<a class="btn" href="https://wa.me/918610212131?text=Hello%20ZorbaTech%2C%20I%20saw%20the%20Field%20Record%20app%20and%20want%20to%20talk%20about%20an%20app%20for%20my%20work." target="_blank" rel="noopener">Talk on WhatsApp</a>
+</div>
+</main>
+<footer><div class="in"><span>&copy; 2026 ZorbaTech &middot; India &middot; <a href="mailto:manu@zorbatech.in">manu@zorbatech.in</a> &middot; +91 86102 12131</span><span><a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot; <a href="/blog/">Blog</a></span></div></footer>
+</body>
+</html>
