@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0d5aa7">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>StockBook Hardware Demo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: one phone-width app column, sticky header, bottom tab bar; stock rows are scanned, not read. */
+:root{
+  --bg:#eef2f5; --surface:#ffffff; --sunk:#e4e9ee; --ink:#13202b; --muted:#5a6a77; --line:#d6dee5;
+  --accent:#0d5aa7; --accent-soft:#dbe8f6; --on-accent:#ffffff;
+  --in:#1d7f47; --in-soft:#dcf1e4; --out:#b8420f; --out-soft:#fbe6da;
+  --low:#a86a00; --low-soft:#fbefd2; --crit:#bf2430; --crit-soft:#f9dcde; --idle:#5b5fc7; --idle-soft:#e5e5f8;
+  --shadow:0 1px 2px rgba(19,32,43,.06),0 4px 14px rgba(19,32,43,.06); --in-solid:#1d7f47; --out-solid:#b8420f;
+  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f161d; --surface:#17212b; --sunk:#1e2a35; --ink:#e6edf3; --muted:#93a4b3; --line:#283744;
+  --accent:#5aa2ee; --accent-soft:#183552; --on-accent:#08131e;
+  --in:#5cc98a; --in-soft:#173527; --out:#f08a5b; --out-soft:#3b2216;
+  --low:#e9b44c; --low-soft:#3a2d10; --crit:#f2747c; --crit-soft:#3d1a1d; --idle:#a5a8f5; --idle-soft:#26284a;
+  --shadow:0 1px 2px rgba(0,0,0,.3); --in-solid:#1e6e40; --out-solid:#a8441a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f161d; --surface:#17212b; --sunk:#1e2a35; --ink:#e6edf3; --muted:#93a4b3; --line:#283744;
+  --accent:#5aa2ee; --accent-soft:#183552; --on-accent:#08131e;
+  --in:#5cc98a; --in-soft:#173527; --out:#f08a5b; --out-soft:#3b2216;
+  --low:#e9b44c; --low-soft:#3a2d10; --crit:#f2747c; --crit-soft:#3d1a1d; --idle:#a5a8f5; --idle-soft:#26284a;
+  --shadow:0 1px 2px rgba(0,0,0,.3); --in-solid:#1e6e40; --out-solid:#a8441a; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 var(--f-body);-webkit-font-smoothing:antialiased;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:12px;padding-block:10px}
+.logo{width:36px;height:36px;border-radius:9px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;flex:none}
+.shop{min-width:0;flex:1}
+.shop b{display:block;font:700 17px/1.15 var(--f-display);letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shop span{font-size:12px;color:var(--muted)}
+.iconbtn{position:relative;width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;flex:none}
+.iconbtn .dot{position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;padding:0 5px;border-radius:10px;background:var(--crit);color:#fff;font:600 11px/19px var(--f-body);text-align:center}
+.demo{background:var(--accent-soft);color:var(--ink);font-size:12.5px}
+.demo .wrap{padding-block:7px;display:flex;gap:8px;align-items:center}
+
+main .wrap{padding-block:16px;display:flex;flex-direction:column;gap:18px}
+h2{font:700 13px/1.2 var(--f-display);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0}
+.sechead{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.link{background:none;border:0;color:var(--accent);font-weight:600;font-size:13.5px;padding:4px 0}
+
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:left;display:flex;flex-direction:column;gap:2px;min-width:0}
+button.kpi:hover{border-color:var(--accent)}
+.kpi .v{font:800 24px/1.1 var(--f-display);font-variant-numeric:tabular-nums}
+.kpi .l{font-size:12px;color:var(--muted)}
+.kpi.low .v{color:var(--low)} .kpi.idle .v{color:var(--idle)} .kpi.crit .v{color:var(--crit)}
+@media (max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}}
+
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.big{border:0;border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px;text-align:left;font-weight:600}
+.big small{display:block;font-weight:400;font-size:12px;opacity:.85}
+.big.in{background:var(--in-solid);color:#fff} .big.out{background:var(--out-solid);color:#fff}
+.big svg{flex:none}
+
+/* lists */
+.list{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.row{display:flex;gap:12px;align-items:center;padding:11px 14px;border-top:1px solid var(--line);width:100%;background:none;border-left:0;border-right:0;border-bottom:0;text-align:left}
+.row:first-child{border-top:0}
+button.row:hover{background:var(--sunk)}
+.row .main{flex:1;min-width:0}
+.row .t{font-weight:600;font-size:14.5px;line-height:1.3;overflow-wrap:anywhere}
+.row .s{font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+.row .r{text-align:right;flex:none}
+.qty{font:800 19px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.qty small{font:500 11px var(--f-body);color:var(--muted);margin-left:2px}
+.empty{padding:22px 14px;color:var(--muted);text-align:center;font-size:14px}
+
+.pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap;letter-spacing:.01em}
+.p-ok{background:var(--in-soft);color:var(--in)} .p-low{background:var(--low-soft);color:var(--low)}
+.p-out{background:var(--crit-soft);color:var(--crit)} .p-idle{background:var(--idle-soft);color:var(--idle)}
+.p-in{background:var(--in-soft);color:var(--in)} .p-outw{background:var(--out-soft);color:var(--out)}
+.brand{font-weight:600;color:var(--ink);opacity:.8}
+
+.tx{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;flex:none;font:800 13px var(--f-display)}
+.tx.in{background:var(--in-soft);color:var(--in)} .tx.out{background:var(--out-soft);color:var(--out)}
+
+/* toolbar */
+.toolbar{display:flex;flex-direction:column;gap:10px}
+.search{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:0 12px}
+.search input{border:0;background:none;outline:none;padding:11px 0;flex:1;min-width:0}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:20px;padding:6px 12px;font-size:13px;font-weight:500;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip .c{font-variant-numeric:tabular-nums;opacity:.75;margin-left:4px}
+.count{font-size:12.5px;color:var(--muted)}
+
+/* bottom nav */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav.tabs .wrap{display:grid;grid-template-columns:repeat(5,1fr);padding-block:0}
+nav.tabs button{background:none;border:0;padding:9px 2px 8px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11.5px;color:var(--muted);position:relative}
+nav.tabs button[aria-current="page"]{color:var(--accent);font-weight:600}
+nav.tabs .dot{position:absolute;top:4px;left:calc(50% + 6px);width:8px;height:8px;border-radius:50%;background:var(--crit)}
+
+/* sheet */
+.backdrop{position:fixed;inset:0;background:rgba(10,18,25,.45);z-index:40;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--surface);width:100%;max-width:640px;max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:6px 0 calc(20px + env(safe-area-inset-bottom,0px))}
+@media (min-width:700px){.backdrop{align-items:center}.sheet{border-radius:16px;max-height:86vh}}
+.sheet .grab{width:40px;height:4px;border-radius:2px;background:var(--line);margin:6px auto 4px}
+.sheet .inner{padding:8px 20px 0;display:flex;flex-direction:column;gap:14px}
+.sheet h3{margin:0;font:700 20px/1.2 var(--f-display);text-wrap:balance}
+.sub{color:var(--muted);font-size:13px;margin-top:-8px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:12.5px;font-weight:600;color:var(--muted)}
+.field input,.field select,.field textarea{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:11px 12px;width:100%;min-width:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--sunk);border-radius:11px;padding:4px;gap:4px}
+.seg button{border:0;border-radius:8px;padding:9px;background:none;font-weight:600;color:var(--muted)}
+.seg button[aria-pressed="true"].in{background:var(--in-solid);color:#fff}
+.seg button[aria-pressed="true"].out{background:var(--out-solid);color:#fff}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:11px 16px;font-weight:600;flex:1}
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn.danger{color:var(--crit);border-color:var(--crit)}
+.btn.danger.solid{background:var(--crit);color:#fff}
+.btn.sm{padding:8px 12px;flex:none;font-size:13.5px}
+.picked{display:flex;gap:10px;align-items:center;border:1px solid var(--accent);background:var(--accent-soft);border-radius:10px;padding:10px 12px}
+.picked .main{flex:1;min-width:0}
+.picklist{border:1px solid var(--line);border-radius:10px;max-height:260px;overflow:auto}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.fact{background:var(--sunk);border-radius:10px;padding:10px}
+.fact .l{font-size:11.5px;color:var(--muted)} .fact .v{font:700 17px/1.2 var(--f-display);font-variant-numeric:tabular-nums}
+.err{color:var(--crit);font-size:13px;font-weight:500}
+.note{background:var(--sunk);border-radius:12px;padding:12px 14px;font-size:13.5px;color:var(--muted)}
+.note b{color:var(--ink)}
+.confirm{border:1px solid var(--crit);background:var(--crit-soft);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:10px;font-size:14px}
+
+.timer{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--surface);border-bottom:1px solid var(--line)}
+.timer .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:8px;flex-wrap:wrap;width:100%}
+.timer .left{display:flex;align-items:baseline;gap:8px;min-width:0}
+.timer .cd{font:800 16px/1 var(--f-display);font-variant-numeric:tabular-nums;color:var(--low)}
+.timer .lbl{font-size:12.5px;color:var(--muted)}
+.timer.urgent .cd{color:var(--crit)}
+.lock{position:fixed;inset:0;z-index:80;background:var(--bg);overflow:auto;display:flex;align-items:center;justify-content:center;padding:calc(24px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lock .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 20px;max-width:440px;width:100%;display:flex;flex-direction:column;gap:14px;text-align:center}
+.lock h3,.contact h3{margin:0;font:800 22px/1.2 var(--f-display);text-wrap:balance}
+.phone{font:800 26px/1.1 var(--f-display);letter-spacing:.02em;font-variant-numeric:tabular-nums;user-select:all}
+.cbtn{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:11px;padding:13px 16px;font-weight:600;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.cbtn.wa{background:var(--in-solid);border-color:var(--in-solid);color:#fff}
+.cbtn.call{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(86px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;max-width:calc(100% - 32px);box-shadow:var(--shadow)}
+.toast.warn{background:var(--low);color:#fff}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:8px 0 4px}
+@media (prefers-reduced-motion:no-preference){.sheet{animation:up .22s ease-out}@keyframes up{from{transform:translateY(24px);opacity:.6}}}
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="logo" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div>
+    <div class="shop"><b id="shopName">Hardware Store</b><span id="shopSub">Stock Register</span></div>
+    <button class="iconbtn" id="bell" aria-label="Alerts"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 8a6 6 0 1112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21h4"/></svg><span class="dot" id="bellDot" hidden>0</span></button>
+  </div>
+</header>
+<div class="timer" id="timerBar"><div class="wrap"><div class="left"><span class="lbl" id="cdLbl">Demo ends in</span><span class="cd" id="cd">—</span></div><button class="btn sm primary" data-contact>Get full version</button></div></div>
+<div id="lockRoot"></div>
+<div class="demo"><div class="wrap"><span class="pill p-idle">DEMO</span><span id="demoTxt">Demo with placeholder items and entries. Your own products, prices and shop name go here.</span></div></div>
+
+<main><div class="wrap" id="view"></div></main>
+
+<nav class="tabs" aria-label="Sections"><div class="wrap" id="tabs"></div></nav>
+<div id="sheetRoot"></div>
+<div id="toastRoot"></div>
+
+<script>
+const RAW = [{"b":"BuildPro","c":"Cement & Mortar","n":"Tile adhesive 20kg","s":"","cp":385,"sp":425},{"b":"BuildPro","c":"Cement & Mortar","n":"Wall putty 20kg","s":"","cp":610,"sp":675},{"b":"BuildPro","c":"Cement & Mortar","n":"Cement primer 1L","s":"","cp":210,"sp":245},{"b":"BuildPro","c":"Cement & Mortar","n":"Cement primer 4L","s":"","cp":760,"sp":845},{"b":"BuildPro","c":"Cement & Mortar","n":"Block-joint mortar 25kg","s":"","cp":340,"sp":380},{"b":"BuildPro","c":"Cement & Mortar","n":"Epoxy grout 1kg","s":"","cp":290,"sp":340},{"b":"AquaSeal","c":"Waterproofing","n":"Waterproof coating 1L","s":"","cp":320,"sp":365},{"b":"AquaSeal","c":"Waterproofing","n":"Waterproof coating 4L","s":"","cp":1180,"sp":1320},{"b":"AquaSeal","c":"Waterproofing","n":"Waterproof coating 10L","s":"","cp":2760,"sp":3050},{"b":"AquaSeal","c":"Waterproofing","n":"Roof sealant 5L","s":"","cp":1450,"sp":1620},{"b":"AquaSeal","c":"Waterproofing","n":"Crack filler 500g","s":"","cp":95,"sp":120},{"b":"AquaSeal","c":"Waterproofing","n":"Bonding agent 1L","s":"","cp":230,"sp":270},{"b":"AquaSeal","c":"Waterproofing","n":"Bonding agent 5L","s":"","cp":980,"sp":1090},{"b":"FixWell","c":"Adhesives","n":"Wood adhesive 100g","s":"","cp":38,"sp":48},{"b":"FixWell","c":"Adhesives","n":"Wood adhesive 500g","s":"","cp":150,"sp":185},{"b":"FixWell","c":"Adhesives","n":"Wood adhesive 1kg","s":"","cp":275,"sp":330},{"b":"FixWell","c":"Adhesives","n":"All-purpose adhesive 50ml","s":"","cp":42,"sp":55},{"b":"FixWell","c":"Adhesives","n":"Silicone sealant clear","s":"","cp":110,"sp":145},{"b":"FixWell","c":"Adhesives","n":"PVC solvent cement 100ml","s":"","cp":55,"sp":70},{"b":"FixWell","c":"Adhesives","n":"M-seal putty 100g","s":"","cp":48,"sp":62},{"b":"ColourCraft","c":"Paints","n":"Interior emulsion white 4L","s":"","cp":1050,"sp":1190},{"b":"ColourCraft","c":"Paints","n":"Interior emulsion white 10L","s":"","cp":2480,"sp":2780},{"b":"ColourCraft","c":"Paints","n":"Exterior emulsion 10L","s":"","cp":3150,"sp":3520},{"b":"ColourCraft","c":"Paints","n":"Enamel gloss black 1L","s":"","cp":360,"sp":420},{"b":"ColourCraft","c":"Paints","n":"Enamel gloss white 1L","s":"","cp":350,"sp":410},{"b":"ColourCraft","c":"Paints","n":"Wood primer 1L","s":"","cp":245,"sp":290},{"b":"ColourCraft","c":"Paints","n":"Thinner 1L","s":"","cp":120,"sp":150},{"b":"AquaFlow","c":"Plumbing","n":"CPVC pipe 1/2 in","s":"3m","cp":165,"sp":210},{"b":"AquaFlow","c":"Plumbing","n":"CPVC pipe 3/4 in","s":"3m","cp":245,"sp":310},{"b":"AquaFlow","c":"Plumbing","n":"PVC elbow 1 in","s":"","cp":18,"sp":26},{"b":"AquaFlow","c":"Plumbing","n":"Ball valve 1/2 in","s":"","cp":140,"sp":190},{"b":"AquaFlow","c":"Plumbing","n":"Tap bib cock","s":"","cp":120,"sp":165},{"b":"AquaFlow","c":"Plumbing","n":"Teflon tape","s":"","cp":12,"sp":20},{"b":"AquaFlow","c":"Plumbing","n":"Overhead tank 500L","s":"","cp":3100,"sp":3500},{"b":"AquaFlow","c":"Plumbing","n":"Hose pipe 1/2 in","s":"30m","cp":620,"sp":740},{"b":"BrightLite","c":"Electrical","n":"LED bulb 9W","s":"","cp":55,"sp":80},{"b":"BrightLite","c":"Electrical","n":"LED batten 20W","s":"","cp":180,"sp":245},{"b":"BrightLite","c":"Electrical","n":"Switch 6A","s":"","cp":28,"sp":42},{"b":"BrightLite","c":"Electrical","n":"Socket 6/16A","s":"","cp":65,"sp":95},{"b":"BrightLite","c":"Electrical","n":"Wire 1.5 sq mm","s":"90m coil","cp":1650,"sp":1880},{"b":"BrightLite","c":"Electrical","n":"Wire 2.5 sq mm","s":"90m coil","cp":2580,"sp":2900},{"b":"BrightLite","c":"Electrical","n":"MCB 16A","s":"","cp":210,"sp":285},{"b":"BrightLite","c":"Electrical","n":"Extension board 4-way","s":"","cp":260,"sp":340},{"b":"SteelCraft","c":"Fasteners & Hardware","n":"Wood screw 1.5 in","s":"100 pcs","cp":70,"sp":95},{"b":"SteelCraft","c":"Fasteners & Hardware","n":"Wall plug & screw kit","s":"50 pcs","cp":85,"sp":115},{"b":"SteelCraft","c":"Fasteners & Hardware","n":"Door hinge 4 in","s":"pair","cp":90,"sp":125},{"b":"SteelCraft","c":"Fasteners & Hardware","n":"Tower bolt 6 in","s":"","cp":75,"sp":105},{"b":"SteelCraft","c":"Fasteners & Hardware","n":"Padlock 50mm","s":"","cp":160,"sp":225},{"b":"SteelCraft","c":"Fasteners & Hardware","n":"Nut & bolt set M8","s":"20 pcs","cp":120,"sp":160},{"b":"SteelCraft","c":"Fasteners & Hardware","n":"Binding wire","s":"1 kg","cp":78,"sp":98},{"b":"SteelCraft","c":"Fasteners & Hardware","n":"Nails 2 in","s":"1 kg","cp":72,"sp":92},{"b":"ProGrip","c":"Tools","n":"Hammer 500g","s":"","cp":210,"sp":290},{"b":"ProGrip","c":"Tools","n":"Screwdriver set","s":"6 pc","cp":260,"sp":360},{"b":"ProGrip","c":"Tools","n":"Measuring tape 5m","s":"","cp":85,"sp":125},{"b":"ProGrip","c":"Tools","n":"Paint brush 4 in","s":"","cp":70,"sp":105},{"b":"ProGrip","c":"Tools","n":"Roller set 9 in","s":"","cp":150,"sp":210},{"b":"ProGrip","c":"Tools","n":"Hacksaw frame","s":"","cp":130,"sp":185},{"b":"ProGrip","c":"Tools","n":"Spirit level 12 in","s":"","cp":110,"sp":160},{"b":"ProGrip","c":"Tools","n":"Hand gloves","s":"pair","cp":35,"sp":55}];
+
+/* ---------- i18n ---------- */
+const T = {
+  en:{home:"Home",stock:"Stock",register:"Register",alerts:"Alerts",more:"More",inward:"Inward",outward:"Outward",inwardSub:"Goods received",outwardSub:"Sold / issued",
+    products:"Products",value:"Stock value",low:"Low stock",idle:"Not moving",out:"Out of stock",ok:"In stock",all:"All",search:"Search product, size or brand",
+    recent:"Recent entries",seeAll:"See all",needs:"Needs attention",qty:"Quantity",supplier:"Supplier",customer:"Customer / site",bill:"Bill / DC no.",date:"Date",note:"Note",
+    save:"Save entry",cancel:"Cancel",del:"Delete",edit:"Edit",addProduct:"Add product",brand:"Brand",cat:"Category",name:"Product name",size:"Pack / size",unit:"Unit",
+    cost:"Purchase price ₹",price:"Selling price ₹",min:"Alert when stock falls to",history:"Stock movement",lastSold:"Last sold",never:"Never",days:"days",
+    settings:"Settings",shop:"Shop name",lang:"Language",idleDays:"Mark 'not moving' after no sale for",reset:"Reset demo data",notify:"Turn on phone notifications",
+    today:"Today",d7:"7 days",d30:"30 days",inStock:"in stock",pick:"Choose product",change:"Change",entries:"entries",saveProduct:"Save product",
+    lowMsg:"Low stock",reorder:"Reorder",exportXl:"Download Excel (stock + register)",salesVal:"Sales value",devices:"Multiple devices"},
+};
+const t = k => T.en[k] || k;
+
+/* ---------- storage ---------- */
+const KEY = "zt-stockbook-v1";
+let S;
+function load(){ try{ const j = localStorage.getItem(KEY); if(j) return JSON.parse(j); }catch(e){} return null; }
+function persist(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+/* ---------- utils ---------- */
+const DAY = 864e5;
+const today0 = () => { const d = new Date(); d.setHours(0,0,0,0); return d.getTime(); };
+const iso = ts => { const d = new Date(ts); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); };
+const parseIso = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y,m-1,d).getTime(); };
+const fmtDate = s => new Date(parseIso(s)).toLocaleDateString("en-IN",{day:"numeric",month:"short"});
+const rupee = n => "₹" + Math.round(n).toLocaleString("en-IN");
+const rupeeShort = n => n >= 1e7 ? "₹"+(n/1e7).toFixed(2)+" Cr" : n >= 1e5 ? "₹"+(n/1e5).toFixed(2)+" L" : rupee(n);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const daysAgo = s => Math.round((today0() - parseIso(s)) / DAY);
+function rng(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+
+function fixCat(b, c, n){
+  c = c.replace(/\s+/g," ").trim().replace("Acrilic","Acrylic");
+  return c;
+}
+
+/* ---------- demo seed ---------- */
+function seed(){
+  const r = rng(20261112), t0 = today0();
+  const day = n => iso(t0 + n*DAY);
+  const customers = ["Walk-in customer","Walk-in customer","Walk-in customer","Sample Builders","Demo Constructions","Sample Contractor","Demo Site A","Sample Waterproofing Co"];
+  let seq = 1, txns = [];
+  const products = RAW.map((p,i) => {
+    const cost = p.cp;
+    return { id:"p"+(i+1), brand:p.b, cat:fixCat(p.b,p.c,p.n), name:p.n, size:p.s||"", unit:"Nos",
+      cost, price:p.sp, min: cost > 4000 ? 2 : cost > 1000 ? 3 : 5 };
+  });
+  const add = (pid,type,qty,date,party,bill,note) => txns.push({id:"t"+(seq++),pid,type,qty,date,party,bill,note:note||""});
+  products.forEach(p => {
+    const sup = ["Sample Traders","Demo Wholesale Supply","Sample Distributors"][(+p.id.slice(1)) % 3];
+    let stock = p.min*3 + Math.floor(r()*p.min*4) + 3;
+    add(p.id,"IN",stock,day(-62 + Math.floor(r()*4)),sup,"OPN-"+(100+seq),"Opening stock");
+    const x = r();
+    if(x < 0.07) return;                          // never sold → not moving
+    const stopped = x < 0.13, fast = x > 0.92;
+    const n = fast ? 6 + Math.floor(r()*5) : 2 + Math.floor(r()*6);
+    const days = Array.from({length:n}, () => stopped ? -57 + Math.floor(r()*20) : -55 + Math.floor(r()*56)).sort((a,b)=>a-b);
+    let restocked = false;
+    for(const d of days){
+      let q = 1 + Math.floor(r()*(fast?4:3)); if(q > stock) q = stock; if(q <= 0) break;
+      stock -= q; add(p.id,"OUT",q,day(d),customers[Math.floor(r()*customers.length)],"B-"+(2400+seq));
+      if(!fast && !restocked && stock <= p.min && d < -10 && r() < .7){
+        const q2 = p.min*2 + Math.floor(r()*4); stock += q2; restocked = true;
+        add(p.id,"IN",q2,day(d+3),sup,"INV-"+(5100+seq));
+      }
+    }
+    if(fast && stock > p.min){ const q = stock - Math.floor(r()*(p.min+1)); if(q>0){ stock -= q; add(p.id,"OUT",q,day(-1 - Math.floor(r()*3)),customers[3+Math.floor(r()*4)],"B-"+(2400+seq)); } }
+  });
+  txns.sort((a,b) => a.date < b.date ? -1 : a.date > b.date ? 1 : 0);
+  return { v:1, sample:3, settings:{shop:"Your Shop Name", lang:"en", idleDays:30}, products, txns, seq };
+}
+
+/* ---------- derived ---------- */
+let D = {};
+function derive(){
+  const stock = {}, lastOut = {}, lastIn = {}, count = {};
+  for(const x of S.txns){
+    stock[x.pid] = (stock[x.pid]||0) + (x.type==="IN" ? x.qty : -x.qty);
+    count[x.pid] = (count[x.pid]||0) + 1;
+    if(x.type==="OUT"){ if(!lastOut[x.pid] || x.date > lastOut[x.pid]) lastOut[x.pid] = x.date; }
+    else if(!lastIn[x.pid] || x.date > lastIn[x.pid]) lastIn[x.pid] = x.date;
+  }
+  const N = +S.settings.idleDays || 30;
+  let value = 0; const low = [], out = [], idle = [];
+  for(const p of S.products){
+    const s = stock[p.id] || 0; value += s * p.cost;
+    const lo = lastOut[p.id];
+    const since = lo ? daysAgo(lo) : (lastIn[p.id] ? daysAgo(lastIn[p.id]) : 0);
+    p._s = s; p._lastOut = lo; p._since = since; p._count = count[p.id]||0;
+    p._status = s <= 0 ? "out" : s <= p.min ? "low" : "ok";
+    p._idle = s > 0 && since >= N;
+    if(s <= 0) out.push(p); else if(s <= p.min) low.push(p);
+    if(p._idle) idle.push(p);
+  }
+  low.sort((a,b) => a._s/a.min - b._s/b.min);
+  idle.sort((a,b) => b._since - a._since || b._s*b.cost - a._s*a.cost);
+  D = { value, low, out, idle, alertCount: low.length + out.length + idle.length };
+}
+const P = id => S.products.find(p => p.id === id);
+
+/* ---------- icons ---------- */
+const I = {
+  down:'<path d="M12 4v11M7 11l5 5 5-5M5 20h14"/>',
+  home:'<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1z"/>',
+  stock:'<path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/>',
+  register:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>',
+  alerts:'<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/>',
+  more:'<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>',
+  in:'<path d="M12 4v13M6 11l6 6 6-6"/><path d="M4 20h16"/>',
+  out:'<path d="M12 20V7M6 13l6-6 6 6"/><path d="M4 4h16"/>',
+  search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>'
+};
+const svg = (k,s=22) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[k]}</svg>`;
+
+/* ---------- pieces ---------- */
+function statusPill(p){
+  let h = "";
+  if(p._status==="out") h += `<span class="pill p-out">${t("out")}</span>`;
+  else if(p._status==="low") h += `<span class="pill p-low">${t("low")}</span>`;
+  if(p._idle) h += ` <span class="pill p-idle">${t("idle")} · ${p._since}d</span>`;
+  return h;
+}
+function productRow(p, extra){
+  return `<button class="row" data-prod="${p.id}">
+    <div class="main"><div class="t">${esc(p.name)}${p.size?` <span style="font-weight:500;color:var(--muted)">· ${esc(p.size)}</span>`:""}</div>
+    <div class="s"><span class="brand">${esc(p.brand)}</span><span>${esc(p.cat)}</span>${statusPill(p)}${extra||""}</div></div>
+    <div class="r"><div class="qty">${p._s}<small>${esc(p.unit)}</small></div><div class="count">min ${p.min}</div></div></button>`;
+}
+function txRow(x){
+  const p = P(x.pid); if(!p) return "";
+  const isIn = x.type==="IN";
+  return `<button class="row" data-tx="${x.id}">
+    <div class="tx ${isIn?"in":"out"}">${isIn?"IN":"OUT"}</div>
+    <div class="main"><div class="t">${esc(p.name)}${p.size?` · ${esc(p.size)}`:""}</div>
+    <div class="s"><span>${fmtDate(x.date)}</span><span>${esc(x.party||"")}</span>${x.bill?`<span>#${esc(x.bill)}</span>`:""}</div></div>
+    <div class="r"><div class="qty" style="color:var(${isIn?"--in":"--out"})">${isIn?"+":"−"}${x.qty}</div></div></button>`;
+}
+
+/* ---------- views ---------- */
+const VIEWS = ["home","stock","register","alerts","more"];
+let view = "home", stockFilter = "all", stockBrand = "all", stockQ = "", regFilter = "all", regRange = "d30", regBrand = "all", regQ = "", lastStockList = [], lastRegList = [];
+
+function renderTabs(){
+  document.getElementById("tabs").innerHTML = VIEWS.map(v =>
+    `<button data-go="${v}" ${v===view?'aria-current="page"':""}>${svg(v,22)}<span>${t(v)}</span>${v==="alerts"&&D.alertCount?'<i class="dot"></i>':""}</button>`).join("");
+  const dot = document.getElementById("bellDot");
+  dot.hidden = !D.alertCount; dot.textContent = D.alertCount;
+  document.getElementById("shopName").textContent = S.settings.shop;
+  document.getElementById("shopSub").textContent = "Stock Register";
+}
+
+function vHome(){
+  const td = iso(today0());
+  const todayIn = S.txns.filter(x => x.date===td && x.type==="IN").reduce((a,x)=>a+x.qty,0);
+  const todayOut = S.txns.filter(x => x.date===td && x.type==="OUT").reduce((a,x)=>a+x.qty,0);
+  const attention = [...D.out, ...D.low].slice(0,5);
+  const recent = S.txns.slice(-6).reverse();
+  return `
+  <div class="kpis">
+    <button class="kpi" data-go="stock" data-filter="all"><span class="v">${S.products.length}</span><span class="l">${t("products")}</span></button>
+    <div class="kpi"><span class="v">${rupeeShort(D.value)}</span><span class="l">${t("value")}</span></div>
+    <button class="kpi low" data-go="stock" data-filter="low"><span class="v">${D.low.length + D.out.length}</span><span class="l">${t("low")}</span></button>
+    <button class="kpi idle" data-go="stock" data-filter="idle"><span class="v">${D.idle.length}</span><span class="l">${t("idle")}</span></button>
+  </div>
+  <div class="actions">
+    <button class="big in" data-entry="IN">${svg("in",26)}<span>${t("inward")}<small>${t("inwardSub")} · ${t("today")} +${todayIn}</small></span></button>
+    <button class="big out" data-entry="OUT">${svg("out",26)}<span>${t("outward")}<small>${t("outwardSub")} · ${t("today")} −${todayOut}</small></span></button>
+  </div>
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <div class="sechead"><h2>${t("needs")}</h2><button class="link" data-go="alerts">${t("seeAll")} (${D.alertCount})</button></div>
+    <div class="list">${attention.map(p=>productRow(p)).join("") || `<div class="empty">All stock above alert levels.</div>`}</div>
+  </section>
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <div class="sechead"><h2>${t("recent")}</h2><button class="link" data-go="register">${t("seeAll")}</button></div>
+    <div class="list">${recent.map(txRow).join("") || `<div class="empty">No entries yet.</div>`}</div>
+  </section>`;
+}
+
+function vStock(){
+  const q = stockQ.trim().toLowerCase();
+  const base = S.products.filter(p => stockBrand==="all" || p.brand===stockBrand);
+  const n = { all:base.length, low:base.filter(p=>p._status!=="ok").length, idle:base.filter(p=>p._idle).length, ok:base.filter(p=>p._status==="ok").length };
+  let list = base.filter(p => stockFilter==="all" ? true : stockFilter==="low" ? p._status!=="ok" : stockFilter==="idle" ? p._idle : p._status==="ok");
+  if(q) list = list.filter(p => (p.name+" "+p.size+" "+p.brand+" "+p.cat).toLowerCase().includes(q));
+  const brands = ["all", ...new Set(S.products.map(p=>p.brand))];
+  const chip = (k,l) => `<button class="chip" data-sf="${k}" aria-pressed="${stockFilter===k}">${l}<span class="c">${n[k]}</span></button>`;
+  lastStockList = list;
+  const shown = list.slice(0,150);
+  return `
+  <div class="toolbar">
+    <div class="search">${svg("search",18)}<input id="stockQ" type="search" placeholder="${t("search")}" value="${esc(stockQ)}" autocomplete="off"></div>
+    <div class="chips">${chip("all",t("all"))}${chip("low",t("low"))}${chip("idle",t("idle"))}${chip("ok",t("ok"))}</div>
+    <div class="chips">${brands.map(b=>`<button class="chip" data-sb="${esc(b)}" aria-pressed="${stockBrand===b}">${b==="all"?t("all")+" "+t("brand").toLowerCase():esc(b)}</button>`).join("")}</div>
+  </div>
+  <div class="sechead"><span class="count" id="stockCount">${list.length} ${t("products").toLowerCase()}${list.length>150?" · showing 150, search to narrow":""}</span>
+    <span style="display:flex;gap:8px"><button class="btn sm" data-xl="stock">${svg("down",16)} Excel</button><button class="btn sm primary" data-addprod>${svg("plus",16)} ${t("addProduct")}</button></span></div>
+  <div class="list" id="stockList">${shown.map(p=>productRow(p)).join("") || `<div class="empty">No products match.</div>`}</div>`;
+}
+
+function vRegister(){
+  const lim = regRange==="today" ? 0 : regRange==="d7" ? 6 : regRange==="d30" ? 29 : 99999;
+  const from = iso(today0() - lim*DAY);
+  const rq = regQ.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const list = S.txns.filter(x => {
+    if(x.date < from || !(regFilter==="all" || x.type===regFilter)) return false;
+    const p = P(x.pid); if(!p) return false;
+    if(regBrand!=="all" && p.brand!==regBrand) return false;
+    if(!rq.length) return true;
+    const h = (p.name+" "+p.size+" "+p.brand+" "+p.cat+" "+(x.party||"")+" "+(x.bill||"")+" "+(x.note||"")).toLowerCase();
+    return rq.every(w => h.includes(w));
+  }).slice().reverse();
+  lastRegList = list;
+  const regBrands = ["all", ...new Set(S.products.map(p=>p.brand))];
+  const inQ = list.filter(x=>x.type==="IN").reduce((a,x)=>a+x.qty,0), outQ = list.filter(x=>x.type==="OUT").reduce((a,x)=>a+x.qty,0);
+  const outVal = list.filter(x=>x.type==="OUT").reduce((a,x)=>a+x.qty*(P(x.pid)?.price||0),0);
+  const c = (attr,k,l,cur) => `<button class="chip" ${attr}="${k}" aria-pressed="${cur===k}">${l}</button>`;
+  return `
+  <div class="toolbar">
+    <div class="search">${svg("search",18)}<input id="regQ" type="search" placeholder="Search product, supplier, customer or bill no." value="${esc(regQ)}" autocomplete="off"></div>
+    <div class="chips">${c("data-rf","all",t("all"),regFilter)}${c("data-rf","IN",t("inward"),regFilter)}${c("data-rf","OUT",t("outward"),regFilter)}</div>
+    <div class="chips">${c("data-rr","today",t("today"),regRange)}${c("data-rr","d7",t("d7"),regRange)}${c("data-rr","d30",t("d30"),regRange)}${c("data-rr","allt",t("all"),regRange)}</div>
+    <div class="chips">${regBrands.map(b=>c("data-rb",b,b==="all"?t("all")+" "+t("brand").toLowerCase():esc(b),regBrand)).join("")}</div>
+  </div>
+  <div class="facts" id="regFacts">
+    <div class="fact"><div class="l">${t("inward")}</div><div class="v" style="color:var(--in)">+${inQ}</div></div>
+    <div class="fact"><div class="l">${t("outward")}</div><div class="v" style="color:var(--out)">−${outQ}</div></div>
+    <div class="fact"><div class="l">${t("salesVal")}</div><div class="v">${rupeeShort(outVal)}</div></div>
+  </div>
+  <div class="actions">
+    <button class="big in" data-entry="IN">${svg("in",22)}<span>${t("inward")}</span></button>
+    <button class="big out" data-entry="OUT">${svg("out",22)}<span>${t("outward")}</span></button>
+  </div>
+  <div class="sechead"><span class="count" id="regCount">${list.length} ${t("entries")}${list.length>200?" · showing latest 200":""}</span>
+    <button class="btn sm" data-xl="register">${svg("down",16)} Excel</button></div>
+  <div class="list" id="regList">${list.slice(0,200).map(txRow).join("") || `<div class="empty">No entries in this period.</div>`}</div>`;
+}
+
+function vAlerts(){
+  const N = S.settings.idleDays;
+  const reorderVal = [...D.out,...D.low].reduce((a,p)=>a+Math.max(p.min*2-p._s,0)*p.cost,0);
+  return `
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <div class="sechead"><h2>${t("out")} · ${D.out.length}</h2></div>
+    <div class="list">${D.out.map(p=>productRow(p)).join("") || `<div class="empty">Nothing is out of stock.</div>`}</div>
+  </section>
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <div class="sechead"><h2>${t("low")} · ${D.low.length}</h2><span class="count">${t("reorder")} ≈ ${rupeeShort(reorderVal)}</span></div>
+    <div class="list">${D.low.map(p=>productRow(p)).join("") || `<div class="empty">No products below their alert level.</div>`}</div>
+  </section>
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <div class="sechead"><h2>${t("idle")} · ${D.idle.length}</h2><span class="count">no sale in ${N}+ ${t("days")} · ${rupeeShort(D.idle.reduce((a,p)=>a+p._s*p.cost,0))} blocked</span></div>
+    <div class="list">${D.idle.map(p=>productRow(p, `<span>${t("lastSold")}: ${p._lastOut?fmtDate(p._lastOut):t("never")}</span>`)).join("") || `<div class="empty">Every product sold within ${N} days.</div>`}</div>
+  </section>`;
+}
+
+function vMore(){
+  const s = S.settings;
+  return `
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <h2>${t("settings")}</h2>
+    <div class="list" style="padding:14px;display:flex;flex-direction:column;gap:14px">
+      <div class="field"><label for="setShop">${t("shop")}</label><input id="setShop" value="${esc(s.shop)}"></div>
+      <div class="field"><label for="setIdle">${t("idleDays")}</label>
+        <select id="setIdle">${[15,30,45,60,90].map(d=>`<option value="${d}" ${+s.idleDays===d?"selected":""}>${d} ${t("days")}</option>`).join("")}</select></div>
+      <button class="btn" id="btnNotify">${t("notify")}</button>
+      <button class="btn" data-xl="all">${svg("down",16)} ${t("exportXl")}</button>
+    </div>
+  </section>
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <h2>${t("devices")}</h2>
+    <div class="note"><b>Live version:</b> the counter PC, the owner's phone and staff phones all share one register in real time, and work offline then sync. Every entry records who made it.<br><br><b>This demo</b> keeps its data on this device only, so you can try anything freely.</div>
+  </section>
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <h2>How alerts work</h2>
+    <div class="note"><b>${t("low")}:</b> each product has its own alert level (min). When an outward entry takes stock to that level or below, the app warns at once and lists it under Alerts.<br><br><b>${t("idle")}:</b> stock that has not sold for the number of days set above, with the money it is holding.</div>
+  </section>
+  <div id="resetBox"><button class="btn danger" id="btnReset" style="width:100%">${t("reset")}</button></div>
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <h2>Full version</h2>
+    <div class="note" style="display:flex;flex-direction:column;gap:10px;text-align:center"><b>Demo ends 19 Nov 2026, 11:59 PM</b>${contactHtml()}</div>
+  </section>
+  <footer>StockBook demo by <b>ZorbaTech</b> · Digital Solutions for Small Business<br>© ${new Date().getFullYear()} ZorbaTech</footer>`;
+}
+
+function render(){
+  derive();
+  renderTabs();
+  const el = document.getElementById("view");
+  el.innerHTML = ({home:vHome,stock:vStock,register:vRegister,alerts:vAlerts,more:vMore})[view]();
+  document.getElementById("demoTxt").textContent = "Demo with placeholder items and entries. Your own products, prices and shop name go here.";
+}
+function go(v){ if(!VIEWS.includes(v)) v="home"; view=v; if(location.hash.slice(1)!==v){ try{ history.replaceState(null,"","#"+v); }catch(e){ location.hash=v; } } render(); window.scrollTo(0,0); }
+
+/* ---------- toast ---------- */
+let toastT;
+function toast(msg, warn){
+  const r = document.getElementById("toastRoot");
+  r.innerHTML = `<div class="toast ${warn?"warn":""}" role="status">${esc(msg)}</div>`;
+  clearTimeout(toastT); toastT = setTimeout(()=>{ r.innerHTML=""; }, warn?4200:2400);
+}
+
+/* ---------- sheets ---------- */
+function openSheet(html){
+  const root = document.getElementById("sheetRoot");
+  root.innerHTML = `<div class="backdrop" id="bd"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><div class="inner">${html}</div></div></div>`;
+  document.getElementById("bd").addEventListener("click", e => { if(e.target.id==="bd") closeSheet(); });
+  const f = root.querySelector("[autofocus]"); if(f && matchMedia("(min-width:700px)").matches) f.focus();
+}
+function closeSheet(){ document.getElementById("sheetRoot").innerHTML = ""; }
+
+/* entry form */
+let entry = null;
+function openEntry(type, pid){
+  entry = { type, pid: pid||null, q:"", pb:"all", pc:"all", ps:"all" };
+  drawEntry();
+}
+function drawEntry(){
+  derive();
+  const e = entry, p = e.pid ? P(e.pid) : null, isIn = e.type==="IN";
+  const picker = p
+    ? `<div class="picked"><div class="main"><div class="t" style="font-weight:600">${esc(p.name)}${p.size?" · "+esc(p.size):""}</div><div class="count">${esc(p.brand)} · ${t("inStock")}: <b class="num">${p._s}</b> · min ${p.min}</div></div><button class="btn sm" id="chg">${t("change")}</button></div>`
+    : pickerHtml(e);
+  openSheet(`
+    <h3>${isIn ? t("inward") : t("outward")}</h3>
+    <div class="seg"><button class="in" data-et="IN" aria-pressed="${isIn}">${t("inward")}</button><button class="out" data-et="OUT" aria-pressed="${!isIn}">${t("outward")}</button></div>
+    <div class="field"><label>${t("pick")}</label>${picker}</div>
+    <form id="ef" style="display:flex;flex-direction:column;gap:14px" ${p?"":"hidden"}>
+      <div class="grid2">
+        <div class="field"><label for="eq">${t("qty")} (${p?esc(p.unit):"Nos"})</label><input id="eq" type="number" inputmode="numeric" min="1" step="1" required></div>
+        <div class="field"><label for="ed">${t("date")}</label><input id="ed" type="date" value="${iso(today0())}" max="${iso(today0())}" required></div>
+      </div>
+      <div class="field"><label for="ep">${isIn ? t("supplier") : t("customer")}</label><input id="ep" list="parties" autocomplete="off" placeholder="${isIn?"e.g. Sample Traders":"e.g. Walk-in customer"}"></div>
+      <datalist id="parties">${[...new Set(S.txns.filter(x=>x.type===e.type).map(x=>x.party))].slice(0,30).map(x=>`<option value="${esc(x)}">`).join("")}</datalist>
+      <div class="field"><label for="eb">${t("bill")}</label><input id="eb" autocomplete="off"></div>
+      <div class="err" id="eerr" hidden></div>
+      <div class="btns"><button type="button" class="btn" data-close>${t("cancel")}</button><button type="submit" class="btn primary">${t("save")}</button></div>
+    </form>`);
+}
+function pickMatches(q){
+  const e = entry, words = (q||"").trim().toLowerCase().split(/\s+/).filter(Boolean);
+  return S.products.filter(p => (e.pb==="all"||p.brand===e.pb) && (e.pc==="all"||p.cat===e.pc) && (e.ps==="all"||p._status===e.ps)
+    && (() => { const h=(p.name+" "+p.size+" "+p.brand+" "+p.cat).toLowerCase(); return words.every(w=>h.includes(w)); })());
+}
+function pickerHtml(e){
+  const brands = ["all", ...new Set(S.products.map(p=>p.brand))];
+  const cats = ["all", ...new Set(S.products.filter(p=>e.pb==="all"||p.brand===e.pb).map(p=>p.cat))];
+  const ch = (a,k,l,cur) => `<button type="button" class="chip" ${a}="${esc(k)}" aria-pressed="${cur===k}">${l}</button>`;
+  return `<div class="search">${svg("search",18)}<input id="pq" type="search" placeholder="${t("search")}" value="${esc(e.q)}" autocomplete="off" autofocus></div>
+    <div class="chips" style="margin-top:8px">${[["all",t("all")],["ok",t("ok")],["low",t("low")],["out",t("out")]].map(([k,l])=>ch("data-ps",k,l,e.ps)).join("")}</div>
+    <div class="chips" style="margin-top:8px">${brands.map(b=>ch("data-pb",b,b==="all"?t("all")+" "+t("brand").toLowerCase():esc(b),e.pb)).join("")}</div>
+    <select id="pcat" aria-label="${t("cat")}" style="margin-top:8px;width:100%">${cats.map(c=>`<option value="${esc(c)}" ${e.pc===c?"selected":""}>${c==="all"?t("all")+" "+t("cat").toLowerCase():esc(c)}</option>`).join("")}</select>
+    <div class="count" id="pcount" style="margin:8px 0 4px">${Math.min(pickMatches(e.q).length,40)} of ${pickMatches(e.q).length} ${t("products").toLowerCase()}</div>
+    <div class="picklist" id="plist">${pickList(e.q)}</div>`;
+}
+function pickList(q){
+  const list = pickMatches(q).slice(0,40);
+  return list.map(p => `<button class="row" type="button" data-pick="${p.id}"><div class="main"><div class="t">${esc(p.name)}${p.size?" · "+esc(p.size):""}</div><div class="s"><span class="brand">${esc(p.brand)}</span>${statusPill(p)}</div></div><div class="r"><div class="qty">${p._s}</div></div></button>`).join("") || `<div class="empty">No product found. Add it from the Stock tab.</div>`;
+}
+function saveEntry(){
+  const p = P(entry.pid), qty = Math.floor(+document.getElementById("eq").value), date = document.getElementById("ed").value;
+  const err = document.getElementById("eerr");
+  const fail = m => { err.textContent = m; err.hidden = false; };
+  if(!(qty > 0)) return fail("Enter a quantity of 1 or more.");
+  if(!date) return fail("Choose a date.");
+  if(entry.type==="OUT" && qty > p._s) return fail(`Only ${p._s} ${p.unit} in stock. Record the inward entry first, or reduce the quantity.`);
+  const before = p._s;
+  S.seq = (S.seq||1) + 1;
+  S.txns.push({ id:"t"+S.seq, pid:p.id, type:entry.type, qty, date, party:document.getElementById("ep").value.trim() || (entry.type==="IN"?"Supplier":"Walk-in customer"), bill:document.getElementById("eb").value.trim(), note:"" });
+  S.txns.sort((a,b) => a.date < b.date ? -1 : a.date > b.date ? 1 : 0);
+  persist(); closeSheet(); render();
+  const after = P(p.id)._s;
+  if(entry.type==="OUT" && after <= p.min){
+    const m = after <= 0 ? `${t("out")}: ${p.name} ${p.size}` : `${t("lowMsg")}: ${p.name} ${p.size} — ${after} left (min ${p.min})`;
+    toast(m, true); sysNotify(m);
+  } else toast(`${entry.type==="IN"?t("inward"):t("outward")} saved · ${p.name} ${entry.type==="IN"?"+":"−"}${qty}`);
+}
+
+/* product detail */
+let confirmDel = false;
+function openProduct(id){
+  derive();
+  const p = P(id); if(!p) return;
+  const hist = S.txns.filter(x=>x.pid===id).slice().reverse();
+  openSheet(`
+    <div><h3>${esc(p.name)}</h3><div class="count" style="margin-top:4px">${esc(p.brand)} · ${esc(p.cat)}${p.size?" · "+esc(p.size):""}</div></div>
+    <div>${statusPill(p) || `<span class="pill p-ok">${t("ok")}</span>`}</div>
+    <div class="facts">
+      <div class="fact"><div class="l">${t("inStock")}</div><div class="v">${p._s} <span style="font-size:12px;font-weight:500">${esc(p.unit)}</span></div></div>
+      <div class="fact"><div class="l">Alert at</div><div class="v">${p.min}</div></div>
+      <div class="fact"><div class="l">${t("lastSold")}</div><div class="v" style="font-size:15px">${p._lastOut?fmtDate(p._lastOut):t("never")}</div></div>
+      <div class="fact"><div class="l">${t("cost").replace(" ₹","")}</div><div class="v" style="font-size:15px">${rupee(p.cost)}</div></div>
+      <div class="fact"><div class="l">${t("price").replace(" ₹","")}</div><div class="v" style="font-size:15px">${rupee(p.price)}</div></div>
+      <div class="fact"><div class="l">${t("value")}</div><div class="v" style="font-size:15px">${rupee(p._s*p.cost)}</div></div>
+    </div>
+    <div class="actions">
+      <button class="big in" data-entry="IN" data-pid="${p.id}">${svg("in",22)}<span>${t("inward")}</span></button>
+      <button class="big out" data-entry="OUT" data-pid="${p.id}">${svg("out",22)}<span>${t("outward")}</span></button>
+    </div>
+    <h2>${t("history")} · ${hist.length}</h2>
+    <div class="list">${hist.slice(0,30).map(txRow).join("") || `<div class="empty">No entries yet.</div>`}</div>
+    <div id="pdel" class="btns"><button class="btn" data-editprod="${p.id}">${t("edit")}</button><button class="btn danger" data-askdel="${p.id}">${t("del")}</button></div>`);
+}
+function askDelete(id){
+  const p = P(id), n = S.txns.filter(x=>x.pid===id).length;
+  document.getElementById("pdel").outerHTML = `<div class="confirm" id="pdel">Delete <b>${esc(p.name)} ${esc(p.size)}</b> and its ${n} ${t("entries")}? This cannot be undone.
+    <div class="btns"><button class="btn" data-prod="${id}">${t("cancel")}</button><button class="btn danger solid" data-dodel="${id}">${t("del")}</button></div></div>`;
+}
+function doDelete(id){
+  const p = P(id);
+  S.products = S.products.filter(x=>x.id!==id); S.txns = S.txns.filter(x=>x.pid!==id);
+  persist(); closeSheet(); render(); toast(`Deleted ${p.name}`);
+}
+
+/* add / edit product */
+function openProductForm(id){
+  const p = id ? P(id) : { brand:"", cat:"", name:"", size:"", unit:"Nos", cost:"", price:"", min:5 };
+  const brands = [...new Set(S.products.map(x=>x.brand))], cats = [...new Set(S.products.map(x=>x.cat))];
+  openSheet(`
+    <h3>${id ? t("edit") : t("addProduct")}</h3>
+    <form id="pf" data-id="${id||""}" style="display:flex;flex-direction:column;gap:14px">
+      <div class="field"><label for="fn">${t("name")}</label><input id="fn" required value="${esc(p.name)}" placeholder="e.g. Asian Paints SmartCare Damp Proof" autofocus></div>
+      <div class="grid2">
+        <div class="field"><label for="fb">${t("brand")}</label><input id="fb" list="bl" required value="${esc(p.brand)}"></div>
+        <div class="field"><label for="fc">${t("cat")}</label><input id="fc" list="cl" value="${esc(p.cat)}"></div>
+      </div>
+      <datalist id="bl">${brands.map(b=>`<option value="${esc(b)}">`).join("")}</datalist>
+      <datalist id="cl">${cats.map(b=>`<option value="${esc(b)}">`).join("")}</datalist>
+      <div class="grid2">
+        <div class="field"><label for="fs">${t("size")}</label><input id="fs" value="${esc(p.size)}" placeholder="e.g. 20L"></div>
+        <div class="field"><label for="fu">${t("unit")}</label><select id="fu">${["Nos","Bag","Box","Kg","Litre","Roll","Set"].map(u=>`<option ${p.unit===u?"selected":""}>${u}</option>`).join("")}</select></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label for="fcp">${t("cost")}</label><input id="fcp" type="number" inputmode="decimal" min="0" step="0.01" value="${p.cost}"></div>
+        <div class="field"><label for="fsp">${t("price")}</label><input id="fsp" type="number" inputmode="decimal" min="0" step="0.01" value="${p.price}"></div>
+      </div>
+      <div class="field"><label for="fm">${t("min")}</label><input id="fm" type="number" inputmode="numeric" min="0" step="1" required value="${p.min}"></div>
+      ${id?"":`<div class="field"><label for="fo">Opening stock</label><input id="fo" type="number" inputmode="numeric" min="0" step="1" value="0"></div>`}
+      <div class="btns"><button type="button" class="btn" data-close>${t("cancel")}</button><button type="submit" class="btn primary">${t("saveProduct")}</button></div>
+    </form>`);
+}
+function saveProduct(form){
+  const id = form.dataset.id, v = k => document.getElementById(k).value.trim();
+  const data = { name:v("fn"), brand:v("fb"), cat:v("fc")||"General", size:v("fs"), unit:v("fu"), cost:+v("fcp")||0, price:+v("fsp")||0, min:Math.max(0,Math.floor(+v("fm")||0)) };
+  if(id){ Object.assign(P(id), data); persist(); closeSheet(); render(); toast("Product updated"); openProduct(id); return; }
+  const nid = "p" + Date.now().toString(36);
+  S.products.unshift({ id:nid, ...data });
+  const o = Math.floor(+v("fo")||0);
+  if(o > 0){ S.seq++; S.txns.push({ id:"t"+S.seq, pid:nid, type:"IN", qty:o, date:iso(today0()), party:"Opening stock", bill:"", note:"Opening stock" }); }
+  persist(); closeSheet(); stockFilter="all"; stockQ=""; go("stock"); toast(`Added ${data.name}`);
+}
+
+/* transaction detail */
+function openTx(id){
+  const x = S.txns.find(y=>y.id===id), p = P(x.pid);
+  openSheet(`
+    <h3>${x.type==="IN"?t("inward"):t("outward")} · ${x.type==="IN"?"+":"−"}${x.qty} ${esc(p.unit)}</h3>
+    <div class="sub">${esc(p.name)}${p.size?" · "+esc(p.size):""}</div>
+    <div class="facts">
+      <div class="fact"><div class="l">${t("date")}</div><div class="v" style="font-size:15px">${fmtDate(x.date)}</div></div>
+      <div class="fact"><div class="l">${t("bill")}</div><div class="v" style="font-size:15px">${esc(x.bill||"—")}</div></div>
+      <div class="fact"><div class="l">Value</div><div class="v" style="font-size:15px">${rupee(x.qty*(x.type==="IN"?p.cost:p.price))}</div></div>
+    </div>
+    <div class="note"><b>${x.type==="IN"?t("supplier"):t("customer")}:</b> ${esc(x.party||"—")}${x.note?`<br><b>${t("note")}:</b> ${esc(x.note)}`:""}</div>
+    <div class="btns" id="txdel"><button class="btn" data-prod="${p.id}">Open product</button><button class="btn danger" data-asktx="${id}">${t("del")}</button></div>`);
+}
+
+/* ---------- notifications ---------- */
+function sysNotify(msg){
+  try{
+    if(!("Notification" in window) || Notification.permission!=="granted") return;
+    const title = S.settings.shop+" · StockBook", opt = { body:msg, icon:"icon-192.png", badge:"icon-192.png", tag:"stockbook" };
+    if("serviceWorker" in navigator && navigator.serviceWorker.controller){ navigator.serviceWorker.ready.then(r => r.showNotification(title,opt)).catch(()=>{}); }
+    else new Notification(title,opt);
+  }catch(e){}
+}
+async function enableNotify(){
+  try{
+    if(!("Notification" in window)) throw 0;
+    const r = await Notification.requestPermission();
+    if(r==="granted"){ toast("Notifications on"); sysNotify(`${D.low.length+D.out.length} low stock · ${D.idle.length} not moving`); }
+    else throw 0;
+  }catch(e){ toast("Phone notifications work once the app is installed on the phone. In-app alerts are already on."); }
+}
+function dailyNotify(){
+  try{
+    const k = "zt-notified", d = iso(today0());
+    if(localStorage.getItem(k)===d) return;
+    if("Notification" in window && Notification.permission==="granted" && D.alertCount){
+      sysNotify(`${D.low.length+D.out.length} products low on stock, ${D.idle.length} not moving`);
+      localStorage.setItem(k,d);
+    }
+  }catch(e){}
+}
+
+/* ---------- Excel export (built in, no library) ---------- */
+const XL = (() => {
+  const enc = new TextEncoder();
+  const X = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,"");
+  const crcT = (() => { const t = new Uint32Array(256); for(let n=0;n<256;n++){ let c=n; for(let k=0;k<8;k++) c = c&1 ? 0xEDB88320^(c>>>1) : c>>>1; t[n]=c>>>0; } return t; })();
+  const crc = b => { let c = 0xFFFFFFFF; for(let i=0;i<b.length;i++) c = crcT[(c^b[i])&255]^(c>>>8); return (c^0xFFFFFFFF)>>>0; };
+  function zip(files){
+    const parts = [], cen = []; let off = 0;
+    const d = new Date(), dt = ((d.getFullYear()-1980)<<9)|((d.getMonth()+1)<<5)|d.getDate(), tm = (d.getHours()<<11)|(d.getMinutes()<<5)|(d.getSeconds()>>1);
+    for(const f of files){
+      const nm = enc.encode(f.name), c = crc(f.data), n = f.data.length;
+      const lh = new DataView(new ArrayBuffer(30));
+      lh.setUint32(0,0x04034b50,true); lh.setUint16(4,20,true); lh.setUint16(6,0x0800,true); lh.setUint16(10,tm,true); lh.setUint16(12,dt,true);
+      lh.setUint32(14,c,true); lh.setUint32(18,n,true); lh.setUint32(22,n,true); lh.setUint16(26,nm.length,true);
+      parts.push(new Uint8Array(lh.buffer), nm, f.data);
+      const ch = new DataView(new ArrayBuffer(46));
+      ch.setUint32(0,0x02014b50,true); ch.setUint16(4,20,true); ch.setUint16(6,20,true); ch.setUint16(8,0x0800,true); ch.setUint16(12,tm,true); ch.setUint16(14,dt,true);
+      ch.setUint32(16,c,true); ch.setUint32(20,n,true); ch.setUint32(24,n,true); ch.setUint16(28,nm.length,true); ch.setUint32(42,off,true);
+      cen.push(new Uint8Array(ch.buffer), nm);
+      off += 30 + nm.length + n;
+    }
+    const cs = cen.reduce((a,x)=>a+x.length,0), end = new DataView(new ArrayBuffer(22));
+    end.setUint32(0,0x06054b50,true); end.setUint16(8,files.length,true); end.setUint16(10,files.length,true); end.setUint32(12,cs,true); end.setUint32(16,off,true);
+    return new Blob([...parts, ...cen, new Uint8Array(end.buffer)], {type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+  }
+  const colName = i => { let s = ""; for(i++; i>0; i = Math.floor((i-1)/26)) s = String.fromCharCode(65+(i-1)%26) + s; return s; };
+  const serial = iso => { const [y,m,d] = String(iso).split("-").map(Number); return (Date.UTC(y,m-1,d) - Date.UTC(1899,11,30)) / 864e5; };
+
+  /* styles */
+  const font = (o={}) => `<font>${o.b?"<b/>":""}${o.i?"<i/>":""}<sz val="${o.sz||11}"/><color rgb="${o.c||"FF16153A"}"/><name val="Calibri"/><family val="2"/></font>`;
+  const fonts = [font(), font({b:1,c:"FFFFFFFF"}), font({b:1,sz:16,c:"FF0D0C2B"}), font({i:1,sz:10,c:"FF55537A"}), font({b:1}),
+    font({b:1,c:"FF9B1C1C"}), font({b:1,c:"FF8A5A00"}), font({b:1,c:"FF1F6B3A"}), font({b:1,c:"FF4A4880"})];
+  const solid = c => `<fill><patternFill patternType="solid"><fgColor rgb="${c}"/><bgColor indexed="64"/></patternFill></fill>`;
+  const fills = ['<fill><patternFill patternType="none"/></fill>','<fill><patternFill patternType="gray125"/></fill>', solid("FF0D0C2B"), solid("FFF4F6FB"), solid("FFFDE8E8"), solid("FFFFF3D6"), solid("FFE6F6EC"), solid("FFE9E8F7"), solid("FFE3E6F0")];
+  const bd = (s,c) => `<${s} style="thin"><color rgb="${c}"/></${s}>`;
+  const line = "FFD5D9E8";
+  const borders = ['<border><left/><right/><top/><bottom/><diagonal/></border>',
+    `<border>${bd("left",line)}${bd("right",line)}${bd("top",line)}${bd("bottom",line)}<diagonal/></border>`,
+    `<border>${bd("left",line)}${bd("right",line)}<top style="medium"><color rgb="FF0D0C2B"/></top>${bd("bottom",line)}<diagonal/></border>`];
+  const numFmts = {money:'"₹"#,##0.00', int:'#,##0', date:'dd\\-mmm\\-yyyy', rupee:'"₹"#,##0'};
+  const fmtId = {money:164, int:165, date:166, rupee:167};
+  const xfs = [], xfKey = new Map();
+  const xf = o => {
+    const k = JSON.stringify(o); if(xfKey.has(k)) return xfKey.get(k);
+    const a = `<alignment horizontal="${o.h||"left"}" vertical="center"${o.wrap?' wrapText="1"':""}${o.ind?` indent="${o.ind}"`:""}/>`;
+    xfs.push(`<xf numFmtId="${o.n?fmtId[o.n]:0}" fontId="${o.f||0}" fillId="${o.fill||0}" borderId="${o.bd||0}" xfId="0" applyNumberFormat="1" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1">${a}</xf>`);
+    xfKey.set(k, xfs.length-1); return xfs.length-1;
+  };
+  xf({}); // 0 default
+  const ST = {
+    title: () => xf({f:2}), sub: () => xf({f:3}),
+    head: () => xf({f:1, fill:2, bd:1, h:"center", wrap:1}),
+    text: z => xf({fill:z?3:0, bd:1, ind:1}), center: z => xf({fill:z?3:0, bd:1, h:"center"}),
+    int: z => xf({fill:z?3:0, bd:1, h:"right", n:"int"}), money: z => xf({fill:z?3:0, bd:1, h:"right", n:"money"}),
+    date: z => xf({fill:z?3:0, bd:1, h:"center", n:"date"}),
+    out: () => xf({f:5, fill:4, bd:1, h:"center"}), low: () => xf({f:6, fill:5, bd:1, h:"center"}),
+    idle: () => xf({f:8, fill:7, bd:1, h:"center"}), ok: () => xf({f:7, fill:6, bd:1, h:"center"}),
+    tin: () => xf({f:7, fill:6, bd:1, h:"center"}), tout: () => xf({f:5, fill:4, bd:1, h:"center"}),
+    totText: () => xf({f:4, fill:8, bd:2, ind:1}), totInt: () => xf({f:4, fill:8, bd:2, h:"right", n:"int"}), totMoney: () => xf({f:4, fill:8, bd:2, h:"right", n:"money"}), totBlank: () => xf({f:4, fill:8, bd:2})
+  };
+
+  function sheetXml(sh, idx){
+    const C = sh.cols, n = C.length, last = colName(n-1), HR = 4, rows = [];
+    const cell = (r, c, v, s) => {
+      const ref = colName(c) + r;
+      if(v === null || v === undefined || v === "") return `<c r="${ref}" s="${s}"/>`;
+      if(typeof v === "number") return `<c r="${ref}" s="${s}"><v>${v}</v></c>`;
+      return `<c r="${ref}" s="${s}" t="inlineStr"><is><t xml:space="preserve">${X(v)}</t></is></c>`;
+    };
+    rows.push(`<row r="1" ht="30" customHeight="1">${cell(1,0,sh.title,ST.title())}</row>`);
+    rows.push(`<row r="2" ht="18" customHeight="1">${cell(2,0,sh.sub,ST.sub())}</row>`);
+    rows.push(`<row r="3" ht="8" customHeight="1"/>`);
+    rows.push(`<row r="${HR}" ht="32" customHeight="1">${C.map((c,i)=>cell(HR,i,c.h,ST.head())).join("")}</row>`);
+    sh.rows.forEach((row, ri) => {
+      const r = HR + 1 + ri, z = ri % 2;
+      rows.push(`<row r="${r}" ht="22" customHeight="1">${C.map((c,i)=>{
+        let v = row[i], k = c.k;
+        if(c.k === "status"){ k = ({out:"out", low:"low", idle:"idle", ok:"ok"})[row._st] || "ok"; return cell(r,i,v,ST[k]()); }
+        if(c.k === "type"){ return cell(r,i,v,ST[v==="Inward"?"tin":"tout"]()); }
+        if(c.k === "date"){ return v ? cell(r,i,serial(v),ST.date(z)) : cell(r,i,"",ST.center(z)); }
+        return cell(r,i,v,ST[k](z));
+      }).join("")}</row>`);
+    });
+    let endRow = HR + sh.rows.length;
+    if(sh.total){
+      const r = endRow + 1; endRow = r;
+      rows.push(`<row r="${r}" ht="26" customHeight="1">${C.map((c,i)=>{ const v = sh.total[i]; const k = typeof v === "number" ? (c.k==="money"?"totMoney":"totInt") : (v ? "totText" : "totBlank"); return cell(r,i,v,ST[k]()); }).join("")}</row>`);
+    }
+    const dataEnd = HR + Math.max(sh.rows.length, 1);
+    const cols = C.map((c,i)=>`<col min="${i+1}" max="${i+1}" width="${c.w}" customWidth="1"/>`).join("");
+    return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetPr><pageSetUpPr fitToPage="1"/></sheetPr><sheetViews><sheetView workbookViewId="0" showGridLines="0"${idx===0?' tabSelected="1"':""}><pane ySplit="${HR}" topLeftCell="A${HR+1}" activePane="bottomLeft" state="frozen"/><selection pane="bottomLeft" activeCell="A${HR+1}" sqref="A${HR+1}"/></sheetView></sheetViews><sheetFormatPr defaultRowHeight="20"/><cols>${cols}</cols><sheetData>${rows.join("")}</sheetData><autoFilter ref="A${HR}:${last}${dataEnd}"/><mergeCells count="2"><mergeCell ref="A1:${last}1"/><mergeCell ref="A2:${last}2"/></mergeCells><pageMargins left="0.4" right="0.4" top="0.5" bottom="0.5" header="0.3" footer="0.3"/><pageSetup paperSize="9" orientation="landscape" fitToWidth="1" fitToHeight="0"/></worksheet>`;
+  }
+  function build(sheets){
+    const safe = (s,i) => (String(s).replace(/[\\\/\?\*\[\]:]/g,"").slice(0,31) || "Sheet"+(i+1));
+    const sx = sheets.map((s,i)=>sheetXml(s,i));
+    const names = sheets.map((s,i)=>safe(s.name,i));
+    const files = [
+      ["[Content_Types].xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>${sheets.map((s,i)=>`<Override PartName="/xl/worksheets/sheet${i+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join("")}</Types>`],
+      ["_rels/.rels", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`],
+      ["xl/workbook.xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><bookViews><workbookView/></bookViews><sheets>${names.map((n,i)=>`<sheet name="${X(n)}" sheetId="${i+1}" r:id="rId${i+1}"/>`).join("")}</sheets><definedNames>${sheets.map((s,i)=>{ const q = "'"+names[i].replace(/'/g,"''")+"'"; return `<definedName name="_xlnm._FilterDatabase" localSheetId="${i}" hidden="1">${X(q)}!$A$4:$${colName(s.cols.length-1)}$${4+Math.max(s.rows.length,1)}</definedName><definedName name="_xlnm.Print_Titles" localSheetId="${i}">${X(q)}!$4:$4</definedName>`; }).join("")}</definedNames></workbook>`],
+      ["xl/_rels/workbook.xml.rels", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${sheets.map((s,i)=>`<Relationship Id="rId${i+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i+1}.xml"/>`).join("")}<Relationship Id="rId${sheets.length+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`],
+      ["xl/styles.xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><numFmts count="4">${Object.keys(numFmts).map(k=>`<numFmt numFmtId="${fmtId[k]}" formatCode="${X(numFmts[k])}"/>`).join("")}</numFmts><fonts count="${fonts.length}">${fonts.join("")}</fonts><fills count="${fills.length}">${fills.join("")}</fills><borders count="${borders.length}">${borders.join("")}</borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="${xfs.length}">${xfs.join("")}</cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>`]
+    ].concat(sx.map((x,i)=>[`xl/worksheets/sheet${i+1}.xml`, x]));
+    return zip(files.map(([name,s])=>({name, data: enc.encode(s)})));
+  }
+  /* width helper: fit the longest value, within limits */
+  const fit = (head, vals, min, max) => Math.max(min, Math.min(max, Math.ceil(Math.max(String(head).length + 3, ...vals.map(v=>String(v==null?"":v).length)) * 1.12 + 3)));
+  return { build, fit };
+})();
+
+
+function stockSheet(list, desc){
+  const dnow = new Date().toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"});
+  const st = {out:"Out of stock", low:"Low stock", ok:"In stock"};
+  const rows = list.map((p,i) => { const r = [i+1,p.brand,p.cat,p.name,p.size||"",p.unit,p._s,p.min,p.cost,p.price,Math.round(p._s*p.cost*100)/100,p._lastOut||"",p._idle ? "Not moving" : st[p._status]]; r._st = p._idle && p._status==="ok" ? "idle" : p._status; return r; });
+  const col = (h,k,min,max,i) => ({h,k,w:XL.fit(h,rows.map(r=>r[i]),min,max)});
+  const cols = [{h:"#",k:"center",w:6}, col("Brand","text",12,24,1), col("Category","text",14,30,2), col("Product","text",24,60,3), col("Pack / size","text",12,22,4), {h:"Unit",k:"center",w:8},
+    {h:"Stock",k:"int",w:10}, {h:"Alert level",k:"int",w:11}, {h:"Purchase price",k:"money",w:15}, {h:"Selling price",k:"money",w:15}, {h:"Stock value",k:"money",w:17}, {h:"Last sold",k:"date",w:14}, {h:"Status",k:"status",w:16}];
+  const total = ["","","",`Total · ${rows.length} products`,"","",rows.reduce((a,r)=>a+r[6],0),"","","",rows.reduce((a,r)=>a+r[10],0),"",""];
+  return { name:"Stock", title:S.settings.shop, sub:`Stock list · ${dnow}${desc?" · "+desc:""}`, cols, rows, total };
+}
+function registerSheet(list, desc){
+  const dnow = new Date().toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"});
+  const rows = list.map(x => { const p = P(x.pid); const rate = x.type==="OUT" ? p.price : p.cost;
+    return [x.date, x.type==="IN"?"Inward":"Outward", p.name+(p.size?" · "+p.size:""), p.brand, p.cat, x.qty, p.unit, x.party||"", x.bill||"", Math.round(x.qty*rate*100)/100]; });
+  const inQ = list.filter(x=>x.type==="IN").reduce((a,x)=>a+x.qty,0), outQ = list.filter(x=>x.type==="OUT").reduce((a,x)=>a+x.qty,0);
+  const col = (h,k,min,max,i) => ({h,k,w:XL.fit(h,rows.map(r=>r[i]),min,max)});
+  const cols = [{h:"Date",k:"date",w:14}, {h:"Type",k:"type",w:12}, col("Product","text",24,66,2), col("Brand","text",12,24,3), col("Category","text",14,30,4), {h:"Qty",k:"int",w:9}, {h:"Unit",k:"center",w:8},
+    col("Supplier / Customer","text",22,36,7), col("Bill / DC no.","text",14,24,8), {h:"Value",k:"money",w:17}];
+  return { name:"Register", title:S.settings.shop, sub:`Stock register · ${dnow} · Inward ${inQ} · Outward ${outQ}${desc?" · "+desc:""}`, cols, rows };
+}
+function exportExcel(kind){
+  derive();
+  try{
+    const sheets = [];
+    if(kind==="stock"){
+      const bits = [stockFilter!=="all" && ({low:"Low stock",idle:"Not moving",ok:"In stock"})[stockFilter], stockBrand!=="all" && stockBrand, stockQ.trim() && `"${stockQ.trim()}"`].filter(Boolean);
+      sheets.push(stockSheet(lastStockList, bits.join(", ")));
+    } else if(kind==="register"){
+      const rng = {today:"Today",d7:"Last 7 days",d30:"Last 30 days",allt:"All dates"}[regRange];
+      const bits = [rng, regFilter!=="all" && (regFilter==="IN"?"Inward only":"Outward only"), regBrand!=="all" && regBrand, regQ.trim() && `"${regQ.trim()}"`].filter(Boolean);
+      sheets.push(registerSheet(lastRegList, bits.join(", ")));
+    } else {
+      sheets.push(stockSheet(S.products.slice(), ""), registerSheet(S.txns.slice().reverse(), "All entries"));
+    }
+    const blob = XL.build(sheets);
+    const day = iso(today0()), nm = (S.settings.shop||"StockBook").replace(/[^\w\- ]+/g,"").trim().replace(/\s+/g,"-") || "StockBook";
+    const fname = `${nm}-${kind==="stock"?"Stock":kind==="register"?"Register":"Stock-Register"}-${day}.xlsx`;
+    saveFile(blob, fname);
+  }catch(err){ console.error(err); toast("Could not create the Excel file on this device.", true); }
+}
+async function saveFile(blob, fname){
+  try{
+    const f = new File([blob], fname, {type:blob.type});
+    if(matchMedia("(pointer:coarse)").matches && navigator.canShare && navigator.canShare({files:[f]})){
+      try{ await navigator.share({files:[f], title:fname}); return toast("Excel file ready"); }catch(e){ if(e && e.name==="AbortError") return; }
+    }
+  }catch(e){}
+  const url = URL.createObjectURL(blob), a = document.createElement("a");
+  a.href = url; a.download = fname; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url), 4000);
+  toast("Excel file downloaded: " + fname);
+}
+
+/* ---------- events ---------- */
+document.addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  const d = b.dataset;
+  if(b.id==="bell") return go("alerts");
+  if("contact" in d) return openContact();
+  if(d.go){ if(d.filter){ stockFilter=d.filter; stockQ=""; } return go(d.go); }
+  if(d.entry) return openEntry(d.entry, d.pid);
+  if(d.et){ entry.type = d.et; return drawEntry(); }
+  if(d.pick){ entry.pid = d.pick; return drawEntry(); }
+  if(d.ps){ entry.ps = d.ps; return drawEntry(); }
+  if(d.pb){ entry.pb = d.pb; entry.pc = "all"; return drawEntry(); }
+  if(b.id==="chg"){ entry.pid = null; return drawEntry(); }
+  if(d.prod) return openProduct(d.prod);
+  if(d.tx) return openTx(d.tx);
+  if(d.close!==undefined && "close" in d) return closeSheet();
+  if(d.askdel) return askDelete(d.askdel);
+  if(d.dodel) return doDelete(d.dodel);
+  if(d.editprod) return openProductForm(d.editprod);
+  if("addprod" in d) return openProductForm();
+  if(d.asktx){ document.getElementById("txdel").outerHTML = `<div class="confirm" id="txdel">Delete this entry? Stock will be recalculated.<div class="btns"><button class="btn" data-tx="${d.asktx}">${t("cancel")}</button><button class="btn danger solid" data-dotx="${d.asktx}">${t("del")}</button></div></div>`; return; }
+  if(d.dotx){ S.txns = S.txns.filter(x=>x.id!==d.dotx); persist(); closeSheet(); render(); return toast("Entry deleted"); }
+  if(d.sf){ stockFilter = d.sf; return render(); }
+  if(d.sb){ stockBrand = d.sb; return render(); }
+  if(d.rf){ regFilter = d.rf; return render(); }
+  if(d.rr){ regRange = d.rr; return render(); }
+  if(d.rb){ regBrand = d.rb; return render(); }
+  if(d.xl) return exportExcel(d.xl);
+  if(b.id==="btnNotify") return enableNotify();
+  if(b.id==="btnReset"){ document.getElementById("resetBox").innerHTML = `<div class="confirm">Replace all data with fresh demo data?<div class="btns"><button class="btn" data-go="more">${t("cancel")}</button><button class="btn danger solid" id="doReset">${t("reset")}</button></div></div>`; return; }
+  if(b.id==="doReset"){ S = seed(); persist(); go("home"); return toast("Demo data reset"); }
+});
+document.addEventListener("change", e => {
+  if(e.target.id==="pcat"){ entry.pc = e.target.value; const m = pickMatches(entry.q).length; document.getElementById("plist").innerHTML = pickList(entry.q); document.getElementById("pcount").textContent = `${Math.min(m,40)} of ${m} ${t("products").toLowerCase()}`; }
+});
+document.addEventListener("submit", e => {
+  e.preventDefault();
+  if(e.target.id==="ef") saveEntry();
+  if(e.target.id==="pf") saveProduct(e.target);
+});
+document.addEventListener("input", e => {
+  if(e.target.id==="regQ"){ regQ = e.target.value; const tmp = document.createElement("div"); tmp.innerHTML = vRegister(); ["regList","regCount","regFacts"].forEach(id => document.getElementById(id).innerHTML = tmp.querySelector("#"+id).innerHTML); }
+  if(e.target.id==="stockQ"){ stockQ = e.target.value; const tmp = document.createElement("div"); tmp.innerHTML = vStock(); ["stockList","stockCount"].forEach(id => document.getElementById(id).innerHTML = tmp.querySelector("#"+id).innerHTML); }
+  if(e.target.id==="pq"){ entry.q = e.target.value; document.getElementById("plist").innerHTML = pickList(entry.q); const m = pickMatches(entry.q).length; document.getElementById("pcount").textContent = `${Math.min(m,40)} of ${m} ${t("products").toLowerCase()}`; }
+});
+document.addEventListener("change", e => {
+  if(e.target.id==="setShop"){ S.settings.shop = e.target.value.trim() || "My Hardware Store"; persist(); renderTabs(); toast("Shop name saved"); }
+  if(e.target.id==="setIdle"){ S.settings.idleDays = +e.target.value; persist(); render(); toast("Not-moving rule updated"); }
+});
+document.addEventListener("keydown", e => { if(e.key==="Escape") closeSheet(); });
+window.addEventListener("hashchange", () => { const h = location.hash.slice(1); if(VIEWS.includes(h) && h!==view) go(h); });
+
+/* ---------- demo period ---------- */
+const DEMO_END = 0; /* no expiry: this copy is the always-open demo on zorbatech.in */
+const PHONE = "8610212131", PHONE_SHOW = "+91 86102 12131";
+const WA_MSG = encodeURIComponent("Hello, I tried the StockBook demo. I'd like the full version for my shop.");
+const contactHtml = () => `
+  <div class="phone">${PHONE_SHOW}</div>
+  <a class="cbtn wa" href="https://wa.me/91${PHONE}?text=${WA_MSG}" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="cbtn call" href="tel:+91${PHONE}">Call now</a>
+  <div class="count">Manu B · ZorbaTech – Digital Solutions for Small Business</div>`;
+function openContact(){
+  openSheet(`<div class="contact" style="display:flex;flex-direction:column;gap:14px;text-align:center">
+    <h3>Get the full version</h3>
+    <div class="sub" style="margin-top:0">All shop phones and the PC share one register, staff logins, alerts even when the app is closed, reports and Excel export.</div>
+    ${contactHtml()}
+    <button class="btn" data-close>Back to demo</button></div>`);
+}
+function fmtLeft(ms){
+  const d = Math.floor(ms/DAY), h = Math.floor(ms%DAY/36e5), m = Math.floor(ms%36e5/6e4), sec = Math.floor(ms%6e4/1e3);
+  return d > 0 ? `${d}d ${String(h).padStart(2,"0")}h ${String(m).padStart(2,"0")}m` : `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+}
+let locked = false;
+function tick(){
+  if(!DEMO_END){ const tb = document.getElementById("timerBar"); if(tb) tb.hidden = true; return; }
+  const left = DEMO_END - Date.now();
+  if(left <= 0){ if(!locked) lockDemo(); return; }
+  document.getElementById("cd").textContent = fmtLeft(left);
+  document.getElementById("timerBar").classList.toggle("urgent", left < DAY);
+}
+function lockDemo(){
+  locked = true; closeSheet();
+  document.getElementById("timerBar").hidden = true;
+  document.getElementById("lockRoot").innerHTML = `<div class="lock" role="dialog" aria-modal="true"><div class="card">
+    <h3>The demo period has ended</h3>
+    <div class="sub" style="margin-top:0">Thank you for trying StockBook. Contact us to set up the full version for your shop.</div>
+    ${contactHtml()}</div></div>`;
+}
+
+/* ---------- boot ---------- */
+S = load();
+if(!S || S.v!==1 || S.sample!==3) { S = seed(); persist(); }
+view = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "home";
+render();
+dailyNotify();
+tick(); setInterval(tick, 1000);
+if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script>
+</body>
+</html>
