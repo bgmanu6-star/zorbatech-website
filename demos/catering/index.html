@@ -141,6 +141,21 @@ nav.links a:hover{background:var(--cream2)}
 .dish .nm2{font-size:13px;color:var(--gold);font-weight:600}
 .empty{padding:40px;text-align:center;color:var(--muted)}
 
+/* compact menu rows */
+#menuGrid{grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px}
+.dish{display:flex;align-items:stretch;border-radius:14px}
+.dish:hover{transform:none}
+.dish .img{flex:none;width:118px;aspect-ratio:auto;min-height:92px}
+.dish .img svg{width:100%;height:100%;object-fit:cover}
+.dish .body{padding:8px 52px 8px 12px;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:1px}
+.dish h3{font-size:15px;line-height:1.25}
+.dish .cat{font-size:10px}
+.dish .nm2{font-size:12px}
+.dish .price{margin-top:3px;font-size:14px}
+.dish .vd{left:6px;top:6px;width:14px;height:14px;border-width:1.5px;border-radius:3px}
+.dish .vd::after{width:6px;height:6px}
+.dish>.tick{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:28px;height:28px;font-size:16px}
+@media(max-width:560px){#menuGrid{grid-template-columns:1fr;gap:10px}.dish .img{width:104px}}
 /* packages */
 .pk{display:flex;flex-direction:column}
 .pk .body{display:flex;flex-direction:column;flex:1}
@@ -371,7 +386,7 @@ footer a{color:var(--gold2)}
         <label class="f" data-k="type">Event type<select id="fType"></select></label>
         <label class="f" data-k="date">Event date<input id="fDate" type="date"></label>
         <label class="f" data-k="slot">Meal / time<select id="fSlot"><option>Breakfast</option><option selected>Lunch</option><option>Dinner</option><option>Breakfast + Lunch</option><option>Full day</option></select></label>
-        <label class="f" data-k="guests">Number of guests<input id="fGuests" type="number" min="10" step="10" value="200" inputmode="numeric"></label>
+        <label class="f" data-k="guests">Number of guests<input id="fGuests" type="number" min="10" step="1" inputmode="numeric" placeholder="e.g. 250"></label>
         <label class="f" data-k="venue" style="grid-column:1/-1">Venue / city<input id="fVenue" placeholder="Hall name and town"></label>
         <label class="f" data-k="email" style="grid-column:1/-1">Email (optional)<input id="fEmail" type="email" autocomplete="email" placeholder="you@example.com"></label>
         <label class="f" data-k="notes" style="grid-column:1/-1">Anything else we should know?<textarea id="fNotes" rows="3" placeholder="Special diet, jain food, timing, budget idea…"></textarea></label>
@@ -415,7 +430,7 @@ footer a{color:var(--gold2)}
 </div></footer>
 
 <div class="fbar" id="fbar"><div class="in">
-  <div><small id="fbCount">0 dishes</small><b id="fbTotal">₹0</b> <small style="display:inline">estimate</small></div>
+  <div><small id="fbCount">0 dishes</small><b id="fbTotal">₹0</b></div>
   <a class="btn btn-gold" href="#quote">Review &amp; get quote</a>
 </div></div>
 </div>
@@ -729,9 +744,9 @@ function renderTabs(){$("#tabs").innerHTML=TABS.map(([k,l])=>`<button class="tab
 function renderMenu(){
   const list=MENU.filter(m=>(tab==="all"||m.reg===tab)&&(diet==="all"||m.diet===diet)&&(!qs||(m.name+" "+m.ta+" "+m.cat).toLowerCase().includes(qs)));
   $("#menuGrid").innerHTML=list.length?list.map(m=>`<article class="card dish ${sel.has(m.id)?"sel":""}" data-id="${m.id}" tabindex="0" role="checkbox" aria-checked="${sel.has(m.id)}">
-    <div class="img">${dishArt(m)}<span class="vd ${m.diet==="n"?"n":""}" title="${m.diet==="n"?"Non-veg":"Veg"}"></span><span class="tick">${sel.has(m.id)?"✓":"+"}</span></div>
-    <div class="body"><div class="cat">${m.cat}</div><h3>${m.name}</h3><div class="nm2 ta">${m.ta}</div>
-    <div class="meta"><span class="price">${inr(m.price)} <small>/ plate</small></span><span style="font-size:12px;font-weight:600;color:${sel.has(m.id)?"var(--leaf)":"var(--muted)"}">${sel.has(m.id)?"Added":"Tap to add"}</span></div></div></article>`).join(""):`<div class="empty">No dishes match. Try another filter.</div>`;
+    <div class="img">${dishArt(m)}<span class="vd ${m.diet==="n"?"n":""}" title="${m.diet==="n"?"Non-veg":"Veg"}"></span></div>
+    <div class="body"><div class="cat">${m.cat}</div><h3>${m.name}</h3><div class="nm2 ta">${m.ta}</div><div class="price">${inr(m.price)} <small>/ plate</small></div></div>
+    <span class="tick">${sel.has(m.id)?"✓":"+"}</span></article>`).join(""):`<div class="empty">No dishes match. Try another filter.</div>`;
 }
 function renderPacks(){
   $("#pkGrid").innerHTML=PACKS.map(p=>{const pr=p.items.reduce((s,i)=>s+MAP[i].price,0),on=p.items.length===sel.size&&p.items.every(i=>sel.has(i));
@@ -756,16 +771,16 @@ function renderSum(){
   if(!items.length&&!adds.length){h+=`<div class="empty">Nothing selected yet.<br>Choose dishes from the <a href="#menu" style="color:var(--maroon);font-weight:600">menu</a> or start with a <a href="#packages" style="color:var(--maroon);font-weight:600">package</a>.</div>`}
   else{
     if(items.length){h+=`<div class="grp">Menu · ${items.length} dishes</div>`+items.map(m=>`<div class="ln"><span>${m.name}</span><span>${inr(m.price)} <button data-rm="${m.id}" aria-label="Remove ${esc(m.name)}">×</button></span></div>`).join("");
-      h+=`<div class="sub"><span>Price per plate</span><b style="color:var(--ink)">${inr(c.pp)}</b></div><div class="sub"><span>Food (${c.g} guests × ${inr(c.pp)})</span><span>${inr(c.food)}</span></div>`}
+      h+=`<div class="sub"><span>Price per plate</span><b style="color:var(--ink)">${inr(c.pp)}</b></div>`+(c.g?`<div class="sub"><span>Food (${c.g} guests × ${inr(c.pp)})</span><span>${inr(c.food)}</span></div>`:`<div class="sub" style="color:var(--nonveg)"><span>Enter the number of guests in the form to see the food total</span></div>`)}
     if(adds.length){h+=`<div class="grp">Add-on services</div>`+adds.map(a=>{const q=ad[a.id];return `<div class="ln"><span>${a.name}${a.unit==="unit"?` × ${q}`:a.unit==="guest"?` (${c.g} guests)`:""}</span><span>${inr(addonCost(a,c.g))} <button data-rma="${a.id}" aria-label="Remove">×</button></span></div>`}).join("");
       h+=`<div class="sub"><span>Services total</span><span>${inr(c.svc)}</span></div>`}
-    h+=`<div class="tot"><span>Estimated total</span><b>${inr(c.total)}</b></div>`;
+    h+=c.g||!items.length?`<div class="tot"><span>Estimated total</span><b>${inr(c.total)}</b></div>`:`<div class="tot"><span>Estimated total</span><b style="font-size:18px">Add guest count</b></div>`;
   }
   h+=`<p class="note">This is an estimate. The final quotation may change with venue, timing and quantity. GST extra as applicable.</p>`;
   $("#sum").innerHTML=h;
   const n=sel.size+Object.keys(ad).filter(k=>ad[k]).length;
   $("#fbCount").textContent=`${sel.size} dish${sel.size===1?"":"es"}${adds.length?` + ${adds.length} service${adds.length>1?"s":""}`:""}`;
-  $("#fbTotal").textContent=inr(c.total);
+  $("#fbTotal").textContent=(c.g||!sel.size)?inr(c.total):inr(c.pp)+" / plate";
   barState.has=n>0;updateBar();
 }
 const barState={has:false,qvis:false,admin:false};
@@ -780,7 +795,7 @@ $("#dietSeg").addEventListener("click",e=>{const b=e.target.closest("[data-d]");
 $("#q").addEventListener("input",e=>{qs=e.target.value.trim().toLowerCase();renderMenu()});
 function toggleDish(card){const id=card.dataset.id;if(sel.has(id))sel.delete(id);else sel.add(id);
   const on=sel.has(id);card.classList.toggle("sel",on);card.setAttribute("aria-checked",on);card.querySelector(".tick").textContent=on?"✓":"+";
-  const s=card.querySelector(".meta span:last-child");s.textContent=on?"Added":"Tap to add";s.style.color=on?"var(--leaf)":"var(--muted)";refresh()}
+  refresh()}
 $("#menuGrid").addEventListener("click",e=>{const c=e.target.closest(".dish");if(c)toggleDish(c)});
 $("#menuGrid").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("dish")){e.preventDefault();toggleDish(e.target)}});
 $("#pkGrid").addEventListener("click",e=>{const b=e.target.closest("[data-pk]");if(!b)return;const p=PACKS.find(x=>x.id===b.dataset.pk);
