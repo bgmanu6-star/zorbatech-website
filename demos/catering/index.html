@@ -141,6 +141,13 @@ nav.links a:hover{background:var(--cream2)}
 .dish .nm2{font-size:13px;color:var(--gold);font-weight:600}
 .empty{padding:40px;text-align:center;color:var(--muted)}
 
+/* guests box */
+.gbox{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--maroon);background:#fff;border:1.5px solid var(--gold);border-radius:999px;padding:4px 6px 4px 14px}
+.gbox input{width:104px;border:0;background:var(--cream2);border-radius:999px;padding:7px 12px;font:600 14px var(--sans);color:var(--ink)}
+.gbox input:focus{outline:2px solid var(--gold)}
+.gbox.sm{padding:3px 4px 3px 10px;border-color:var(--gold2)}
+.gbox.sm input{width:84px;padding:7px 10px}
+.fbar .in{gap:10px}.fbar .in>div:first-child{flex:1;min-width:0}
 /* compact menu rows */
 #menuGrid{grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px}
 .dish{display:flex;align-items:stretch;border-radius:14px}
@@ -328,6 +335,7 @@ footer a{color:var(--gold2)}
     <div class="tool-row">
       <div class="seg" id="dietSeg"><button data-d="all" class="on">All</button><button data-d="v">Veg</button><button data-d="n">Non-veg</button></div>
       <input class="search" id="q" type="search" placeholder="Search dishes…">
+      <label class="gbox">👥 Guests <input class="gsync" type="number" min="10" inputmode="numeric" placeholder="How many?"></label>
     </div>
   </div>
   <div class="grid" id="menuGrid"></div>
@@ -386,7 +394,7 @@ footer a{color:var(--gold2)}
         <label class="f" data-k="type">Event type<select id="fType"></select></label>
         <label class="f" data-k="date">Event date<input id="fDate" type="date"></label>
         <label class="f" data-k="slot">Meal / time<select id="fSlot"><option>Breakfast</option><option selected>Lunch</option><option>Dinner</option><option>Breakfast + Lunch</option><option>Full day</option></select></label>
-        <label class="f" data-k="guests">Number of guests<input id="fGuests" type="number" min="10" step="1" inputmode="numeric" placeholder="e.g. 250"></label>
+        <label class="f" data-k="guests">Number of guests<input id="fGuests" class="gsync" type="number" min="10" step="1" inputmode="numeric" placeholder="e.g. 250"></label>
         <label class="f" data-k="venue" style="grid-column:1/-1">Venue / city<input id="fVenue" placeholder="Hall name and town"></label>
         <label class="f" data-k="email" style="grid-column:1/-1">Email (optional)<input id="fEmail" type="email" autocomplete="email" placeholder="you@example.com"></label>
         <label class="f" data-k="notes" style="grid-column:1/-1">Anything else we should know?<textarea id="fNotes" rows="3" placeholder="Special diet, jain food, timing, budget idea…"></textarea></label>
@@ -431,7 +439,8 @@ footer a{color:var(--gold2)}
 
 <div class="fbar" id="fbar"><div class="in">
   <div><small id="fbCount">0 dishes</small><b id="fbTotal">₹0</b></div>
-  <a class="btn btn-gold" href="#quote">Review &amp; get quote</a>
+  <label class="gbox sm">👥 <input class="gsync" type="number" min="10" inputmode="numeric" placeholder="Guests"></label>
+  <a class="btn btn-gold" href="#quote">Get quote</a>
 </div></div>
 </div>
 
@@ -771,7 +780,7 @@ function renderSum(){
   if(!items.length&&!adds.length){h+=`<div class="empty">Nothing selected yet.<br>Choose dishes from the <a href="#menu" style="color:var(--maroon);font-weight:600">menu</a> or start with a <a href="#packages" style="color:var(--maroon);font-weight:600">package</a>.</div>`}
   else{
     if(items.length){h+=`<div class="grp">Menu · ${items.length} dishes</div>`+items.map(m=>`<div class="ln"><span>${m.name}</span><span>${inr(m.price)} <button data-rm="${m.id}" aria-label="Remove ${esc(m.name)}">×</button></span></div>`).join("");
-      h+=`<div class="sub"><span>Price per plate</span><b style="color:var(--ink)">${inr(c.pp)}</b></div>`+(c.g?`<div class="sub"><span>Food (${c.g} guests × ${inr(c.pp)})</span><span>${inr(c.food)}</span></div>`:`<div class="sub" style="color:var(--nonveg)"><span>Enter the number of guests in the form to see the food total</span></div>`)}
+      h+=`<div class="sub"><span>Price per plate</span><b style="color:var(--ink)">${inr(c.pp)}</b></div>`+(c.g?`<div class="sub"><span>Food (${c.g} guests × ${inr(c.pp)})</span><span>${inr(c.food)}</span></div>`:`<div class="sub" style="color:var(--nonveg)"><span>Enter the number of guests (box at the top of the menu) to see the food total</span></div>`)}
     if(adds.length){h+=`<div class="grp">Add-on services</div>`+adds.map(a=>{const q=ad[a.id];return `<div class="ln"><span>${a.name}${a.unit==="unit"?` × ${q}`:a.unit==="guest"?` (${c.g} guests)`:""}</span><span>${inr(addonCost(a,c.g))} <button data-rma="${a.id}" aria-label="Remove">×</button></span></div>`}).join("");
       h+=`<div class="sub"><span>Services total</span><span>${inr(c.svc)}</span></div>`}
     h+=c.g||!items.length?`<div class="tot"><span>Estimated total</span><b>${inr(c.total)}</b></div>`:`<div class="tot"><span>Estimated total</span><b style="font-size:18px">Add guest count</b></div>`;
@@ -806,7 +815,7 @@ $("#adGrid").addEventListener("click",e=>{const t=e.target.closest("[data-tog],[
   renderAddons();renderSum()});
 $("#sum").addEventListener("click",e=>{const r=e.target.closest("[data-rm],[data-rma]");if(!r)return;
   if(r.dataset.rm){sel.delete(r.dataset.rm);renderMenu();renderPacks()}else{ad[r.dataset.rma]=0;renderAddons()}renderSum()});
-$("#fGuests").addEventListener("input",renderSum);
+$$(".gsync").forEach(i=>i.addEventListener("input",()=>{$$(".gsync").forEach(o=>{if(o!==i)o.value=i.value});renderSum()}));
 new IntersectionObserver(es=>{barState.qvis=es[0].isIntersecting;updateBar()},{threshold:.15}).observe($("#quote"));
 
 /* ============ WHATSAPP ============ */
