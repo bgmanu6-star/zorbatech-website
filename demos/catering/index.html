@@ -273,6 +273,30 @@ footer a{color:var(--gold2)}
 .enq details{margin:8px 0 12px;background:#fffdf8}
 .enq-act{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
 .enq-act input{width:130px;padding:9px 12px;border:1.5px solid var(--line);border-radius:999px;font:14px var(--sans)}
+/* 3D layer */
+.hero-art.is3d .c,.hero-art.is3d .tag{display:none}
+.hint3d,.v3d-tag{position:absolute;left:50%;transform:translateX(-50%);background:rgba(30,10,10,.45);color:#fff;font-size:12px;padding:5px 12px;border-radius:999px;pointer-events:none;white-space:nowrap}
+.hint3d{bottom:0}
+.v3d{display:none;position:absolute;left:6px;bottom:6px;z-index:2;border:0;background:rgba(94,22,38,.88);color:#fff;font:700 11px var(--sans);letter-spacing:.04em;padding:4px 9px;border-radius:999px;cursor:pointer}
+.has3d .v3d{display:block}
+.v3d-box{max-width:460px;padding:0;overflow:hidden;position:relative}
+.v3d-box canvas{display:block;width:100%;height:300px;background:radial-gradient(circle at 50% 40%,#fff3dc,#f2d9ac)}
+.v3d-box .v3d-tag{top:262px}
+.v3d-x{position:absolute;right:10px;top:10px;z-index:3;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.9);font-size:22px;cursor:pointer;color:var(--maroon)}
+.v3d-info{padding:14px 20px 4px;text-align:left}
+.v3d-info h3{font-size:22px;color:var(--maroon)}
+.v3d-info .price{font-size:18px;margin-top:4px}
+.v3d-act{display:flex;gap:10px;padding:12px 20px 20px}
+.v3d-act .btn{flex:1;padding:12px 10px;font-size:14px}
+.table3d{display:none;position:relative;margin-bottom:24px;padding:0;overflow:hidden;background:linear-gradient(160deg,#fff3dc,#f2d9ac)}
+.has3d .table3d{display:block}
+.table3d canvas{display:block;width:100%;height:340px}
+.t3h{position:absolute;left:18px;top:14px;z-index:2;pointer-events:none}
+.t3h h3{font-size:22px;margin:0;color:var(--maroon)}
+.t3h span{font-size:13px;color:var(--muted)}
+.table3d .v3d-tag{bottom:10px}
+.t3empty{display:none;position:absolute;inset:auto 0 60px;text-align:center;color:var(--maroon);font-weight:600;pointer-events:none;padding:0 20px}
+.table3d.empty3d .t3empty{display:block}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -385,6 +409,7 @@ footer a{color:var(--gold2)}
   <div class="eyebrow">Get your quotation</div>
   <h2 class="sec-h">Tell us about your function</h2>
   <p class="sec-p">Fill this in and we will send your detailed quotation on WhatsApp, usually within two hours. This is only an enquiry, so there is no payment and no commitment.</p>
+  <div class="panel table3d empty3d" id="tableBox"><div class="t3h"><h3>Your table</h3><span id="tableCount"></span></div><canvas id="tableCv"></canvas><div class="t3empty">Pick dishes from the menu and watch them fill your table</div><div class="v3d-tag">Drag to rotate ↻</div></div>
   <div class="qb">
     <form class="panel" id="form" novalidate>
       <h3>Event details</h3>
@@ -753,7 +778,7 @@ function renderTabs(){$("#tabs").innerHTML=TABS.map(([k,l])=>`<button class="tab
 function renderMenu(){
   const list=MENU.filter(m=>(tab==="all"||m.reg===tab)&&(diet==="all"||m.diet===diet)&&(!qs||(m.name+" "+m.ta+" "+m.cat).toLowerCase().includes(qs)));
   $("#menuGrid").innerHTML=list.length?list.map(m=>`<article class="card dish ${sel.has(m.id)?"sel":""}" data-id="${m.id}" tabindex="0" role="checkbox" aria-checked="${sel.has(m.id)}">
-    <div class="img">${dishArt(m)}<span class="vd ${m.diet==="n"?"n":""}" title="${m.diet==="n"?"Non-veg":"Veg"}"></span></div>
+    <div class="img">${dishArt(m)}<span class="vd ${m.diet==="n"?"n":""}" title="${m.diet==="n"?"Non-veg":"Veg"}"></span><button class="v3d" data-v3d="${m.id}" aria-label="View ${esc(m.name)} in 3D">⟲ 3D</button></div>
     <div class="body"><div class="cat">${m.cat}</div><h3>${m.name}</h3><div class="nm2 ta">${m.ta}</div><div class="price">${inr(m.price)} <small>/ plate</small></div></div>
     <span class="tick">${sel.has(m.id)?"✓":"+"}</span></article>`).join(""):`<div class="empty">No dishes match. Try another filter.</div>`;
 }
@@ -805,7 +830,7 @@ $("#q").addEventListener("input",e=>{qs=e.target.value.trim().toLowerCase();rend
 function toggleDish(card){const id=card.dataset.id;if(sel.has(id))sel.delete(id);else sel.add(id);
   const on=sel.has(id);card.classList.toggle("sel",on);card.setAttribute("aria-checked",on);card.querySelector(".tick").textContent=on?"✓":"+";
   refresh()}
-$("#menuGrid").addEventListener("click",e=>{const c=e.target.closest(".dish");if(c)toggleDish(c)});
+$("#menuGrid").addEventListener("click",e=>{const v=e.target.closest("[data-v3d]");if(v){e.stopPropagation();if(window.open3D)open3D(v.dataset.v3d);return}const c=e.target.closest(".dish");if(c)toggleDish(c)});
 $("#menuGrid").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("dish")){e.preventDefault();toggleDish(e.target)}});
 $("#pkGrid").addEventListener("click",e=>{const b=e.target.closest("[data-pk]");if(!b)return;const p=PACKS.find(x=>x.id===b.dataset.pk);
   sel.clear();p.items.forEach(i=>sel.add(i));renderMenu();refresh();toast(`${p.name} added. You can still change dishes in the menu.`);});
@@ -891,5 +916,194 @@ function route(){const adm=location.hash==="#admin";barState.admin=adm;$("#site"
 addEventListener("hashchange",route);
 renderStatic();heroArt();renderTabs();renderMenu();renderPacks();renderAddons();renderSum();route();
 </script>
-</body>
-</html>
+<script src="three.min.js"></script>
+<script>
+"use strict";
+/* ============ 3D LAYER (Three.js r160, loaded from three.min.js beside this page) ============ */
+(function(){
+if(!window.THREE)return;
+const T=THREE;
+let ok=false;try{const c=document.createElement("canvas");ok=!!(c.getContext("webgl2")||c.getContext("webgl"))}catch(e){}
+if(!ok)return;
+document.body.classList.add("has3d");
+const REDUCE=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const M=(c,o)=>new T.MeshStandardMaterial(Object.assign({color:new T.Color(c||"#ffffff"),roughness:.62,metalness:0},o||{}));
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const TAU=Math.PI*2;
+const dummy=new T.Object3D();
+let shadowTex;function shadowMat(){if(!shadowTex){const c=document.createElement("canvas");c.width=c.height=64;const x=c.getContext("2d"),g=x.createRadialGradient(32,32,2,32,32,32);g.addColorStop(0,"rgba(40,10,10,.55)");g.addColorStop(1,"rgba(40,10,10,0)");x.fillStyle=g;x.fillRect(0,0,64,64);shadowTex=new T.CanvasTexture(c)}
+  return new T.MeshBasicMaterial({map:shadowTex,transparent:true,depthWrite:false})}
+
+/* ---------- stage: renderer, lights, drag-to-rotate ---------- */
+function stage(canvas,opt){opt=opt||{};
+  const r=new T.WebGLRenderer({canvas,antialias:true,alpha:true});
+  r.setPixelRatio(Math.min(devicePixelRatio||1,2));r.outputColorSpace=T.SRGBColorSpace;
+  const scene=new T.Scene(),cam=new T.PerspectiveCamera(opt.fov||34,1,.1,100);
+  const cp=opt.cam||[0,6,9];cam.position.set(cp[0],cp[1],cp[2]);cam.lookAt(0,opt.lookY||0,0);
+  scene.add(new T.HemisphereLight(0xfff4e0,0x7a3a2a,1.0));
+  const dl=new T.DirectionalLight(0xffffff,1.9);dl.position.set(4,9,5);scene.add(dl);
+  const dl2=new T.DirectionalLight(0xffd29a,.6);dl2.position.set(-6,3,-4);scene.add(dl2);
+  const root=new T.Group();scene.add(root);
+  const base=opt.auto===false||REDUCE?0:(opt.spin||.004);let spin=base,drag=false,lx=0,ly=0,tilt=opt.tilt||0;root.rotation.x=tilt;
+  canvas.style.touchAction="pan-y";canvas.style.cursor="grab";
+  canvas.addEventListener("pointerdown",e=>{drag=true;lx=e.clientX;ly=e.clientY;try{canvas.setPointerCapture(e.pointerId)}catch(x){}canvas.style.cursor="grabbing"});
+  canvas.addEventListener("pointermove",e=>{if(!drag)return;const dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;root.rotation.y+=dx*.012;spin=clamp(dx*.0016,-.06,.06);
+    if(e.pointerType==="mouse")tilt=clamp(tilt+dy*.004,(opt.tilt||0)-.25,(opt.tilt||0)+.3)});
+  const end=()=>{drag=false;canvas.style.cursor="grab"};canvas.addEventListener("pointerup",end);canvas.addEventListener("pointercancel",end);
+  const ticks=[];let running=false,raf=0,vis=true;
+  function size(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;const pr=r.getPixelRatio();if(canvas.width!==Math.round(w*pr)||canvas.height!==Math.round(h*pr)){r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}}
+  function frame(now){raf=requestAnimationFrame(frame);size();
+    if(!drag)spin+=(base-spin)*.03;root.rotation.y+=spin;root.rotation.x+=(tilt-root.rotation.x)*.12;
+    for(const f of ticks)f(now/1000);r.render(scene,cam)}
+  function start(){if(!running&&vis&&!document.hidden){running=true;raf=requestAnimationFrame(frame)}}
+  function stop(){running=false;cancelAnimationFrame(raf)}
+  const io=new IntersectionObserver(es=>{vis=es[0].isIntersecting;vis?start():stop()},{threshold:.01});io.observe(canvas);
+  document.addEventListener("visibilitychange",()=>document.hidden?stop():start());
+  function dispose(){stop();io.disconnect();scene.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material)(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>m.dispose())});r.dispose()}
+  start();return{scene,cam,root,ticks,start,stop,dispose}}
+
+/* ---------- food builders ---------- */
+function plateMesh(g){const pts=[[0,0],[1.1,0],[1.45,.1],[1.66,.26],[1.72,.26],[1.72,.22],[1.5,.1],[1.15,.05],[0,.05]].map(p=>new T.Vector2(p[0],p[1]));
+  g.add(new T.Mesh(new T.LatheGeometry(pts,56),M("#fffdf8",{roughness:.3,side:T.DoubleSide})));
+  const s=new T.Mesh(new T.CircleGeometry(2.3,40),shadowMat());s.rotation.x=-Math.PI/2;s.position.y=-.01;g.add(s)}
+function mound(g,c1,c2,seed,h,r,x,z){const R=rng(seed),grp=new T.Group();grp.position.set(x||0,.05,z||0);
+  const m=new T.Mesh(new T.SphereGeometry(1,32,16,0,TAU,0,Math.PI/2),M(c1));m.scale.set(r,h,r);grp.add(m);
+  const n=170,im=new T.InstancedMesh(new T.SphereGeometry(.03,6,4),M("#fff6d2",{roughness:.5}),n);
+  for(let i=0;i<n;i++){const th=R()*TAU,ph=Math.acos(.08+R()*.92);dummy.position.set(r*Math.sin(ph)*Math.cos(th)*1.01,h*Math.cos(ph)*1.01,r*Math.sin(ph)*Math.sin(th)*1.01);
+    dummy.rotation.set(R()*3,R()*3,R()*3);dummy.scale.set(1.9,.8,.8);dummy.updateMatrix();im.setMatrixAt(i,dummy.matrix)}grp.add(im);
+  if(c2){const sp=new T.InstancedMesh(new T.SphereGeometry(.04,6,4),M(c2),26);for(let i=0;i<26;i++){const th=R()*TAU,ph=Math.acos(.35+R()*.65);
+    dummy.position.set(r*Math.sin(ph)*Math.cos(th),h*Math.cos(ph)+.02,r*Math.sin(ph)*Math.sin(th));dummy.rotation.set(0,0,0);dummy.scale.set(1,1,1);dummy.updateMatrix();sp.setMatrixAt(i,dummy.matrix)}grp.add(sp)}
+  g.add(grp);return grp}
+function bowl(g,x,z,s,liq,opt){opt=opt||{};const b=new T.Group();b.position.set(x,.05,z);b.scale.setScalar(s);
+  const pts=[[0,0],[.45,0],[.75,.12],[.92,.45],[.98,.5],[.98,.46],[.9,.4],[.7,.1],[.4,.04],[0,.04]].map(p=>new T.Vector2(p[0],p[1]));
+  b.add(new T.Mesh(new T.LatheGeometry(pts,40),M(opt.rim||"#fffdf8",{roughness:.3,side:T.DoubleSide})));
+  const l=new T.Mesh(new T.CylinderGeometry(.9,.82,.03,36),M(liq,{roughness:.25}));l.position.y=.4;b.add(l);g.add(b);return b}
+function bits(b,c,n,rad,y,seed,sz,flat){const R=rng(seed);for(let i=0;i<n;i++){const a=R()*TAU,d=Math.sqrt(R())*rad;const m=new T.Mesh(new T.SphereGeometry(sz*(.8+R()*.5),12,8),M(c));
+  m.position.set(Math.cos(a)*d,y,Math.sin(a)*d);m.scale.set(1,flat||.7,.9);m.rotation.y=R()*3;b.add(m)}}
+function steam(g,x,z,c){const ps=[];for(let i=0;i<4;i++){const m=new T.Mesh(new T.SphereGeometry(.14,10,8),new T.MeshBasicMaterial({color:c||0xffffff,transparent:true,opacity:0,depthWrite:false}));g.add(m);ps.push(m)}
+  g.userData.tick=t=>{ps.forEach((m,i)=>{const p=((t*.28+i/4)%1);m.position.set(x+Math.sin(t+i*2)*.12,.9+p*1.5,z+Math.cos(t*.8+i)*.1);m.scale.setScalar(.7+p*1.5);m.material.opacity=Math.sin(p*Math.PI)*.22})}}
+function disc(g,x,z,r,h,y,c,rot){const m=new T.Mesh(new T.CylinderGeometry(r,r,h,36),M(c));m.position.set(x,y,z);if(rot)m.rotation.set(rot[0],rot[1],rot[2]);g.add(m);return m}
+function lemon(g,x,z){const m=new T.Mesh(new T.CylinderGeometry(.22,.22,.08,24,1,false,0,Math.PI),M("#f7d84a",{roughness:.4}));m.rotation.z=Math.PI/2;m.rotation.y=.6;m.scale.set(1,1,1.2);m.position.set(x,.2,z);g.add(m)}
+function glass(g,x,z,s,liq,straw){const gr=new T.Group();gr.position.set(x,.06,z);gr.scale.setScalar(s);
+  const gl=new T.Mesh(new T.CylinderGeometry(.5,.38,1.4,32,1,true),M("#dfefff",{transparent:true,opacity:.32,roughness:.1,side:T.DoubleSide}));gl.position.y=.7;gr.add(gl);
+  const lq=new T.Mesh(new T.CylinderGeometry(.46,.37,1.15,32),M(liq,{roughness:.3,transparent:true,opacity:.95}));lq.position.y=.62;gr.add(lq);
+  const st=new T.Mesh(new T.CylinderGeometry(.04,.04,1.6,8),M(straw||"#e9549a"));st.position.set(.15,.9,0);st.rotation.z=-.2;gr.add(st);g.add(gr)}
+const KIND={
+ leafbase:(g)=>{const sh=new T.Shape();sh.moveTo(-2.3,0);sh.bezierCurveTo(-1.5,1.6,1.4,1.8,2.4,.2);sh.bezierCurveTo(1.4,-1.6,-1.5,-1.6,-2.3,0);const lf=new T.Mesh(new T.ExtrudeGeometry(sh,{depth:.05,bevelEnabled:false,curveSegments:24}),M("#3a8a3f",{roughness:.7}));lf.rotation.x=-Math.PI/2;lf.position.y=.02;g.add(lf);const rib=new T.Mesh(new T.BoxGeometry(4.6,.02,.04),M("#2a6b30"));rib.position.y=.08;g.add(rib)},
+ rice:(g,d)=>mound(g,d.c1,d.c2,d.id,.8,1.15),
+ biryani:(g,d)=>{mound(g,d.c1,d.c2||"#8a4a1c",d.id,.95,1.1,-.1,0);
+   [[1.15,.7],[.8,-.95]].forEach(p=>{const w=new T.Mesh(new T.SphereGeometry(.26,16,10),M("#fffefa"));w.scale.set(1,.5,1);w.position.set(p[0],.2,p[1]);g.add(w);const y=new T.Mesh(new T.SphereGeometry(.12,12,8),M("#f4b400"));y.position.set(p[0],.27,p[1]);g.add(y)});
+   const R=rng(d.id+"m");for(let i=0;i<3;i++){const l=new T.Mesh(new T.SphereGeometry(.14,10,8),M("#2f8f3f"));l.scale.set(1,.3,.6);l.position.set(-.3+R()*.4,1.0,-.1+R()*.3);l.rotation.y=R()*3;g.add(l)}
+   steam(g,0,0)},
+ dry:(g,d)=>{const R=rng(d.id),n=240,im=new T.InstancedMesh(new T.BoxGeometry(.13,.06,.07),M("#ffffff",{roughness:.7}),n);const A=new T.Color(d.c1),B=new T.Color(d.c2);
+   for(let i=0;i<n;i++){const th=R()*TAU,ph=Math.acos(.05+R()*.95),rr=1.1,h=.75;dummy.position.set(rr*Math.sin(ph)*Math.cos(th)*R(),.05+h*Math.cos(ph),rr*Math.sin(ph)*Math.sin(th)*R()+0);
+     dummy.rotation.set(R()*3,R()*3,R()*3);dummy.scale.set(1,1,1);dummy.updateMatrix();im.setMatrixAt(i,dummy.matrix);im.setColorAt(i,R()>.35?A:B)}g.add(im);
+   const c=new T.Mesh(new T.SphereGeometry(.08,8,6),M("#b7312c"));c.position.set(1.3,.12,.5);g.add(c)},
+ curry:(g,d)=>{const b=bowl(g,0,0,1.15,d.c1);bits(b,d.c2,7,.55,.46,d.id,.2);const sw=new T.Mesh(new T.TorusGeometry(.4,.025,6,32,Math.PI*1.3),M("#fff4e0",{transparent:true,opacity:.8}));sw.rotation.x=-Math.PI/2;sw.position.y=.43;b.add(sw);
+   bits(b,"#2f9a45",8,.7,.45,d.id+"c",.05,.5);steam(g,0,0,0xfff0e0)},
+ payasam:(g,d)=>{const b=bowl(g,0,0,1.15,d.c1);const R=rng(d.id);for(let i=0;i<22;i++){const a=R()*TAU,r=Math.sqrt(R())*.7,m=new T.Mesh(new T.SphereGeometry(.07,8,6),M(i%4?d.c2:"#5a2a14"));m.scale.set(1.4,.5,.9);m.position.set(Math.cos(a)*r,.43,Math.sin(a)*r);b.add(m)}
+   const sp=new T.Mesh(new T.CylinderGeometry(.03,.03,1.4,8),M("#d7dce3",{metalness:.8,roughness:.25}));sp.position.set(1.15,.6,.5);sp.rotation.z=.9;g.add(sp)},
+ sweet:(g,d)=>{const b=bowl(g,0,0,1.15,d.c2,{});const R=rng(d.id);[[0,0],[.35,.12],[-.34,.1],[.1,.36],[-.12,-.34],[.3,-.28]].forEach((p,i)=>{const m=new T.Mesh(new T.SphereGeometry(.26,18,14),M(d.c1,{roughness:.35}));m.position.set(p[0],.55+(i===0?.18:0),p[1]);b.add(m)})},
+ fry:(g,d)=>{const R=rng(d.id);[[-.5,.2],[.1,-.5],[.7,.3],[.2,.55],[-.7,-.5],[.8,-.3],[0,0]].forEach((p,i)=>{const m=new T.Mesh(new T.SphereGeometry(.34,18,12),M(d.c1,{roughness:.55}));m.scale.set(1.05,.62,.8);m.position.set(p[0],.35+(i===6?.2:0),p[1]);m.rotation.y=R()*3;g.add(m)});
+   lemon(g,1.2,.9);const t=new T.Mesh(new T.TorusGeometry(.2,.04,8,20),M("#9b5ca0"));t.rotation.x=Math.PI/2;t.position.set(-1.2,.12,.8);g.add(t)},
+ vada:(g,d)=>{[[-.6,.3],[.6,.3],[0,-.55],[0,.5]].forEach((p,i)=>{if(i>2)return;const m=new T.Mesh(new T.TorusGeometry(.42,.2,16,32),M(d.c1,{roughness:.55}));m.rotation.x=Math.PI/2;m.position.set(p[0],.28,p[1]);g.add(m)});bowl(g,1.2,-.9,.4,"#e8e0cd")},
+ snack:(g,d)=>{[[-.65,.3,.4],[.55,.4,-.5],[.1,-.6,.1]].forEach(p=>{const m=new T.Mesh(new T.ConeGeometry(.5,.7,3),M(d.c1,{roughness:.55}));m.rotation.set(Math.PI/2.4,p[2],0);m.scale.set(1,1,.7);m.position.set(p[0],.4,p[1]);g.add(m)});bowl(g,1.3,.9,.32,"#4b9b3a");bowl(g,-1.25,-.8,.3,"#c43b2a")},
+ halwa:(g,d)=>{[[-.55,-.3,0],[.1,-.3,0],[.75,-.3,0],[-.2,.35,0],[.45,.35,0],[.12,0,.35]].forEach((p,i)=>{const m=new T.Mesh(new T.BoxGeometry(.6,.3,.6),M(d.c1,{roughness:.5}));m.position.set(p[0]+(i===5?0:0),.2+(i===5?.32:0),p[1]);m.rotation.y=(i%3)*.2;g.add(m);
+     const n=new T.Mesh(new T.SphereGeometry(.05,8,6),M("#6a8f3a"));n.position.set(p[0],.38+(i===5?.32:0),p[1]);g.add(n)})},
+ papad:(g,d)=>{[[-.5,.2,.1],[.5,.1,-.15],[0,-.5,.2]].forEach((p,i)=>{const m=disc(g,p[0],p[1],.85,.04,.12+i*.05,d.c1,[p[2],0,-p[2]]);const R=rng(d.id+i);for(let k=0;k<7;k++){const s=new T.Mesh(new T.SphereGeometry(.03,6,4),M(d.c2));s.position.set((R()-.5)*1.1,.03,(R()-.5)*1.1);m.add(s)}})},
+ naan:(g,d)=>{const m=new T.Mesh(new T.SphereGeometry(1,28,14),M(d.c1,{roughness:.6}));m.scale.set(1.35,.07,.9);m.position.set(-.1,.14,0);m.rotation.y=.3;g.add(m);const R=rng(d.id);for(let i=0;i<9;i++){const s=new T.Mesh(new T.SphereGeometry(.06,8,6),M("#8a5a2b"));s.scale.set(1,.3,1);s.position.set(-.8+R()*1.4,.22,-.5+R()),g.add(s)}
+   const bt=new T.Mesh(new T.BoxGeometry(.25,.1,.2),M("#fff3a8"));bt.position.set(-.1,.27,0);g.add(bt);bowl(g,1.15,.9,.42,"#e58a2f")},
+ parotta:(g,d)=>{for(let i=0;i<6;i++)disc(g,0,0,1.0-i*.02,.1,.1+i*.1,i%2?d.c1:d.c2,[0,i*.4,0]);disc(g,.3,.1,.5,.02,.74,d.c1)},
+ appam:(g,d)=>{[[-.65,.3],[.45,-.55]].forEach(p=>{const m=new T.Mesh(new T.LatheGeometry([[0,0],[.5,.02],[.78,.12],[.84,.2],[.8,.2],[.74,.14],[.45,.07],[0,.06]].map(q=>new T.Vector2(q[0],q[1])),32),M(d.c1,{side:T.DoubleSide}));m.position.set(p[0],.1,p[1]);g.add(m);const c=new T.Mesh(new T.CylinderGeometry(.5,.5,.1,24),M("#ffffff"));c.position.set(p[0],.12,p[1]);g.add(c)});bowl(g,1.0,.8,.42,"#f7f1e1");},
+ idli:(g,d)=>{[[-.75,.1],[0,-.2],[.7,.2]].forEach(p=>{const m=new T.Mesh(new T.SphereGeometry(.5,24,12,0,TAU,0,Math.PI/2),M("#fffefa",{roughness:.8}));m.scale.set(1.05,.7,1.05);m.position.set(p[0],.06,p[1]);g.add(m)});bowl(g,-1.2,-.9,.36,d.c1);bowl(g,1.25,-.9,.36,d.c2)},
+ dosa:(g,d)=>{const m=new T.Mesh(new T.CylinderGeometry(.22,.46,2.6,28,1,true,0,TAU*.92),M(d.c1,{side:T.DoubleSide,roughness:.6}));m.rotation.z=Math.PI/2;m.rotation.y=.35;m.position.set(-.1,.48,0);g.add(m);
+   const f=new T.Mesh(new T.SphereGeometry(.28,12,8),M("#f2c14e"));f.position.set(1.15,.5,.1);g.add(f);bowl(g,-1.1,.95,.36,"#f8f8f2");bowl(g,1.1,-.95,.36,d.c2)},
+ puttu:(g,d)=>{[[-.55,.2],[.1,-.35]].forEach(p=>{const m=new T.Mesh(new T.CylinderGeometry(.3,.3,1.0,24),M("#fffefa",{roughness:.8}));m.position.set(p[0],.55,p[1]);g.add(m)});const b=bowl(g,1.0,.7,.6,d.c1);bits(b,d.c2,4,.45,.45,d.id,.14)},
+ chicken:(g,d)=>{[[-.5,.35,.2],[.2,-.4,-.3]].forEach(p=>{const gr=new T.Group();gr.position.set(p[0],.38,p[1]);gr.rotation.y=p[2];const m=new T.Mesh(new T.SphereGeometry(.5,22,16),M(d.c1,{roughness:.45}));m.scale.set(1.2,.78,.8);gr.add(m);
+     const bn=new T.Mesh(new T.CylinderGeometry(.07,.07,.9,10),M("#f3ead5"));bn.rotation.z=Math.PI/2;bn.position.x=.9;gr.add(bn);[-.07,.07].forEach(z=>{const k=new T.Mesh(new T.SphereGeometry(.11,10,8),M("#f3ead5"));k.position.set(1.35,0,z);gr.add(k)});g.add(gr)});
+   const t=new T.Mesh(new T.TorusGeometry(.2,.04,8,20),M("#9b5ca0"));t.rotation.x=Math.PI/2;t.position.set(1.0,.12,.9);g.add(t)},
+ fish:(g,d)=>{const f=new T.Group();f.position.y=.34;const body=new T.Mesh(new T.SphereGeometry(.7,26,16),M(d.c1,{roughness:.45}));body.scale.set(1.45,.5,.72);f.add(body);
+   const tail=new T.Mesh(new T.ConeGeometry(.5,.8,3),M(d.c1,{roughness:.5}));tail.rotation.set(0,0,Math.PI/2);tail.scale.set(1,1,.2);tail.position.x=-1.25;tail.rotation.z=-Math.PI/2;f.add(tail);
+   const e=new T.Mesh(new T.SphereGeometry(.07,8,6),M("#111"));e.position.set(.75,.1,.38);f.add(e);const R=rng(d.id);for(let i=0;i<8;i++){const s=new T.Mesh(new T.SphereGeometry(.06,6,4),M(d.c2));s.position.set(-.7+R()*1.3,.28+(R()-.5)*.1,(R()-.5)*.5);f.add(s)}g.add(f);lemon(g,1.1,1.0)},
+ icecream:(g,d)=>{const cup=new T.Mesh(new T.CylinderGeometry(.85,.5,.6,28,1,true),M("#ffffff",{side:T.DoubleSide,roughness:.3}));cup.position.y=.42;g.add(cup);
+   [[-.4,.95,.1,d.c1],[.4,.95,-.05,d.c2],[0,1.35,0,"#fff3dc"]].forEach(p=>{const s=new T.Mesh(new T.SphereGeometry(.46,22,16),M(p[3],{roughness:.5}));s.position.set(p[0],p[1],p[2]);g.add(s)});
+   const ch=new T.Mesh(new T.SphereGeometry(.11,10,8),M("#c43b2a",{roughness:.2}));ch.position.set(0,1.85,0);g.add(ch);const w=new T.Mesh(new T.BoxGeometry(.06,.9,.45),M("#e8c88a"));w.position.set(.55,1.1,.3);w.rotation.z=-.4;g.add(w)},
+ drink:(g,d)=>{glass(g,.55,0,1,d.c1,d.c2);glass(g,-.7,.35,.72,d.c1,d.c2)},
+ coffee:(g,d)=>{const t=new T.Mesh(new T.CylinderGeometry(.5,.42,.95,28),M("#d7dce3",{metalness:.85,roughness:.28}));t.position.set(-.5,.55,0);g.add(t);
+   const dv=new T.Mesh(new T.LatheGeometry([[0,0],[.5,0],[.8,.2],[.86,.45],[.8,.45],[.74,.22],[.4,.06],[0,.06]].map(q=>new T.Vector2(q[0],q[1])),32),M("#d7dce3",{metalness:.85,roughness:.28,side:T.DoubleSide}));dv.position.set(.8,.06,.2);g.add(dv);
+   const f=new T.Mesh(new T.CylinderGeometry(.74,.74,.03,28),M(d.c2));f.position.set(.8,.38,.2);g.add(f);steam(g,.8,.2,0xe8e0d0)},
+ leaf:(g,d)=>{const sh=new T.Shape();sh.moveTo(-2.3,0);sh.bezierCurveTo(-1.5,1.6,1.4,1.8,2.4,.2);sh.bezierCurveTo(1.4,-1.6,-1.5,-1.6,-2.3,0);
+   const lf=new T.Mesh(new T.ExtrudeGeometry(sh,{depth:.05,bevelEnabled:false,curveSegments:24}),M("#3a8a3f",{roughness:.7}));lf.rotation.x=-Math.PI/2;lf.position.y=.02;g.add(lf);
+   const rib=new T.Mesh(new T.BoxGeometry(4.6,.02,.04),M("#2a6b30"));rib.position.y=.08;g.add(rib);
+   const rice=new T.Mesh(new T.SphereGeometry(.55,24,12,0,TAU,0,Math.PI/2),M("#fffefa"));rice.scale.set(1,.55,.8);rice.position.set(-1.1,.08,.1);g.add(rice);
+   const cols=["#f2c14e","#e58a2f","#6aa84f","#ffffff","#b7312c","#f5d15a","#8a4a22","#c58d3f","#6aa84f","#e8b64a"];cols.forEach((c,i)=>{const m=new T.Mesh(new T.SphereGeometry(.17,14,10),M(c,{roughness:.45}));m.scale.set(1,.55,1);const x=-.2+(i%5)*.55,z=(i<5?-.55:.5);m.position.set(x,.14,z);g.add(m)})}
+};
+function dish3d(d){const g=new T.Group();if(d.kind!=="leaf"&&d.kind!=="leafbase")plateMesh(g);else{const s=new T.Mesh(new T.CircleGeometry(2.6,40),shadowMat());s.rotation.x=-Math.PI/2;s.position.y=-.01;g.add(s)}
+  (KIND[d.kind]||KIND.curry)(g,d);const t=g.userData.tick;g.userData.tick=t||null;return g}
+function tickAll(g,t){g.traverse(o=>{if(o.userData&&o.userData.tick)o.userData.tick(t)})}
+
+/* ---------- hero ---------- */
+(function hero(){const box=document.getElementById("heroArt");if(!box)return;const cv=document.createElement("canvas");cv.id="heroCv";cv.style.cssText="position:absolute;inset:0;width:100%;height:100%";
+  box.appendChild(cv);box.classList.add("is3d");
+  try{const st=stage(cv,{cam:[0,7.6,10.8],fov:34,tilt:.0,spin:.0035,lookY:.2});
+    const leafG=dish3d({id:"hl",kind:"leafbase"});leafG.scale.setScalar(1.55);leafG.position.y=-.35;st.root.add(leafG);
+    const big=dish3d({id:"hb",kind:"biryani",c1:"#e0a03a",c2:"#6e3a1e"});big.scale.setScalar(.95);big.position.set(0,-.1,.2);st.root.add(big);
+    const sm=[[{id:"h1",kind:"curry",c1:"#c4381e",c2:"#7a2410"},-3.0,1.0],[{id:"h2",kind:"sweet",c1:"#6e2a14",c2:"#e9a22a"},3.0,1.1],[{id:"h3",kind:"drink",c1:"#f08aa8",c2:"#e9549a"},2.6,-2.4],[{id:"h4",kind:"fry",c1:"#c4381e",c2:"#8a1f10"},-2.7,-2.4]];
+    sm.forEach(a=>{const o=dish3d(a[0]);o.scale.setScalar(.5);o.position.set(a[1],-.05,a[2]);st.root.add(o)});
+    st.root.rotation.y=.4;st.ticks.push(t=>tickAll(st.root,t));
+    const hint=document.createElement("div");hint.className="hint3d";hint.textContent="Drag to rotate ↻";box.appendChild(hint)}catch(e){box.classList.remove("is3d")}})();
+
+/* ---------- 3D viewer for one dish ---------- */
+let vst=null,vid=null;
+const modal=document.createElement("div");modal.className="modal";modal.id="modal3d";
+modal.innerHTML=`<div class="box v3d-box"><button class="v3d-x" aria-label="Close">×</button><canvas id="v3dCv"></canvas><div class="v3d-tag">Drag to rotate ↻</div><div class="v3d-info"><div class="cat" id="v3dCat"></div><h3 id="v3dName"></h3><div class="nm2 ta" id="v3dTa"></div><div class="price" id="v3dPrice"></div></div><div class="v3d-act"><button class="btn btn-maroon" id="v3dAdd"></button><button class="btn btn-line dark" id="v3dNext">Next dish →</button></div></div>`;
+document.body.appendChild(modal);
+function closeV(){modal.classList.remove("on");if(vst){vst.dispose();vst=null}}
+function showV(id){const d=MAP[id];if(!d)return;vid=id;
+  if(vst){vst.dispose();vst=null}
+  const old=document.getElementById("v3dCv"),cv=old.cloneNode(false);old.replaceWith(cv);
+  vst=stage(cv,{cam:[0,5.6,6.4],fov:36,tilt:.1,spin:.006,lookY:.35});const g=dish3d(d);g.scale.setScalar(1.15);vst.root.add(g);vst.ticks.push(t=>tickAll(g,t));
+  $("#v3dCat").textContent=d.cat+" · "+(d.diet==="n"?"Non-veg":"Veg");$("#v3dName").textContent=d.name;$("#v3dTa").textContent=d.ta;$("#v3dPrice").innerHTML=inr(d.price)+" <small>/ plate</small>";updV()}
+function updV(){$("#v3dAdd").textContent=sel.has(vid)?"✓ Added · Remove":"Add to my menu"}
+window.open3D=function(id){modal.classList.add("on");showV(id)};
+modal.addEventListener("click",e=>{if(e.target===modal||e.target.closest(".v3d-x"))closeV()});
+$("#v3dAdd").onclick=()=>{const c=document.querySelector(`.dish[data-id="${vid}"]`);if(c)toggleDish(c);else{sel.has(vid)?sel.delete(vid):sel.add(vid);renderMenu();refresh()}updV()};
+$("#v3dNext").onclick=()=>{const l=[...document.querySelectorAll("#menuGrid .dish")].map(x=>x.dataset.id);const i=l.indexOf(vid);showV(l[(i+1)%l.length]||MENU[0].id)};
+addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("on"))closeV()});
+
+/* ---------- "your table" ---------- */
+(function table(){const host=document.getElementById("tableBox");if(!host)return;const cv=document.getElementById("tableCv");
+  const st=stage(cv,{cam:[0,8.0,8.4],fov:36,tilt:0,spin:.003,lookY:-.2});
+  const tb=new T.Group();st.root.add(tb);
+  const top=new T.Mesh(new T.CylinderGeometry(4.2,4.2,.2,64),M("#7A2236",{roughness:.8}));top.position.y=-.1;tb.add(top);
+  const ring=new T.Mesh(new T.TorusGeometry(4.2,.06,8,80),M("#E6BE6E",{metalness:.7,roughness:.3}));ring.rotation.x=Math.PI/2;ring.position.y=0;tb.add(ring);
+  const sh=new T.Mesh(new T.CircleGeometry(5.2,48),shadowMat());sh.rotation.x=-Math.PI/2;sh.position.y=-.45;tb.add(sh);
+  const leg=new T.Mesh(new T.CylinderGeometry(.35,.6,.9,20),M("#4a101e"));leg.position.y=-.65;tb.add(leg);
+  const lamp=new T.Group();const lb=new T.Mesh(new T.CylinderGeometry(.22,.3,.34,20),M("#E6BE6E",{metalness:.8,roughness:.25}));lb.position.y=.17;lamp.add(lb);
+  const fl=new T.Mesh(new T.ConeGeometry(.09,.3,12),new T.MeshBasicMaterial({color:0xffa826}));fl.position.y=.5;lamp.add(fl);tb.add(lamp);
+  st.ticks.push(t=>{fl.scale.y=1+Math.sin(t*9)*.15;fl.scale.x=1+Math.cos(t*7)*.08});
+  const items=new Map();let lastN=-1;st.ticks.push(()=>{const a=cv.clientWidth/Math.max(1,cv.clientHeight),f=a<1.4?1.4:1;st.cam.position.set(0,8*f,8.4*f);st.cam.lookAt(0,-.2,0)});
+  function layout(){const ids=[...sel];const n=ids.length;const s=n<=6?.6:n<=12?.5:n<=20?.42:.36;
+    const rings=n<=8?[n]:n<=18?[Math.ceil(n/2)]:[Math.ceil(n*.4),Math.floor(n*.6)];
+    // two rings when many dishes
+    let pos=[];if(n<=8){for(let i=0;i<n;i++)pos.push([Math.cos(i/n*TAU)*2.75,Math.sin(i/n*TAU)*2.75])}
+    else{const inner=Math.floor(n/3),outer=n-inner;for(let i=0;i<outer;i++)pos.push([Math.cos(i/outer*TAU)*3.0,Math.sin(i/outer*TAU)*3.0]);for(let i=0;i<inner;i++)pos.push([Math.cos(i/inner*TAU+.3)*1.4,Math.sin(i/inner*TAU+.3)*1.4])}
+    ids.forEach((id,i)=>{let it=items.get(id);if(!it){const o=dish3d(MAP[id]);o.position.set(pos[i][0],5,pos[i][1]);o.scale.setScalar(.01);tb.add(o);it={o,born:performance.now()+i*30};items.set(id,it)}it.tx=pos[i][0];it.tz=pos[i][1];it.ts=s;it.dead=false});
+    for(const [id,it] of items)if(!sel.has(id))it.dead=true;
+    host.classList.toggle("empty3d",n===0);const c=document.getElementById("tableCount");if(c)c.textContent=n?`${n} dish${n>1?"es":""} on your table`:"Your table is empty"}
+  st.ticks.push(t=>{const now=performance.now();for(const [id,it] of items){const o=it.o;
+      if(it.dead){o.scale.multiplyScalar(.82);o.position.y+=.1;if(o.scale.x<.03){tb.remove(o);items.delete(id)}continue}
+      if(now<it.born)continue;o.position.x+=(it.tx-o.position.x)*.14;o.position.z+=(it.tz-o.position.z)*.14;const ty=.02;o.position.y+=(ty-o.position.y)*.16;
+      const k=o.scale.x+(it.ts-o.scale.x)*.18;o.scale.setScalar(k);o.rotation.y=Math.atan2(o.position.x,o.position.z)*1;
+      o.traverse(m=>{if(m.userData&&m.userData.tick)m.userData.tick(t)})}});
+  const origRefresh=window.refresh;window.refresh=function(){origRefresh();layout()};
+  const origSum=window.renderSum;window.renderSum=function(){origSum();if(sel.size!==lastN){lastN=sel.size;layout()}};
+  layout()})();
+
+/* ---------- gentle 3D tilt on cards (mouse devices) ---------- */
+if(matchMedia("(hover:hover)").matches&&!REDUCE){document.addEventListener("pointermove",e=>{const c=e.target.closest&&e.target.closest(".card:not(.dish)");
+  if(!c){return}const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(800px) rotateY(${x*9}deg) rotateX(${-y*9}deg) translateY(-3px)`;c.style.transition="transform .08s"});
+  document.addEventListener("pointerout",e=>{const c=e.target.closest&&e.target.closest(".card:not(.dish)");if(c&&!c.contains(e.relatedTarget)){c.style.transform="";c.style.transition="transform .25s"}})}
+})();
+</script>
+</body></html>
