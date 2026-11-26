@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#5E1626">
+<title>Thaalam Catering & Events</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;600&family=Noto+Sans+Malayalam:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#5E1626; --maroon2:#7A2236; --gold:#C8963E; --gold2:#E6BE6E; --cream:#FFF8EC; --cream2:#F8EDD8;
+  --leaf:#2F6B3A; --ink:#2B1A17; --muted:#7B6A62; --line:#E9DCC4; --white:#fff; --veg:#2E9B4B; --nonveg:#B3261E;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --sans:'Inter','Noto Sans Tamil','Noto Sans Malayalam',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:74px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;
+  padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px);-webkit-text-size-adjust:100%}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;margin:0;text-wrap:balance}
+.ta{font-family:'Noto Sans Tamil','Noto Sans Malayalam',var(--sans)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+section{padding:64px 0}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.sec-h{margin:8px 0 10px;font-size:clamp(28px,4.4vw,42px);color:var(--maroon)}
+.sec-p{color:var(--muted);max-width:640px;margin:0 0 30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 15px var(--sans);
+  padding:13px 22px;border-radius:999px;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:var(--gold);color:#2B1A17}.btn-gold:hover{background:var(--gold2)}
+.btn-maroon{background:var(--maroon);color:#fff}.btn-maroon:hover{background:var(--maroon2)}
+.btn-line{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)}
+.btn-line.dark{color:var(--maroon);box-shadow:inset 0 0 0 1.5px var(--maroon)}
+.btn-wa{background:#1FA855;color:#fff}.btn-wa:hover{background:#17924a}
+.btn-sm{padding:8px 14px;font-size:13px}
+
+/* top ribbon + header */
+.demo-bar{background:#2B1A17;color:#e9dcc4;font-size:12px;text-align:center;padding:7px 12px}
+.demo-bar b{color:var(--gold2)}
+header.top{position:sticky;top:0;z-index:50;background:rgba(255,248,236,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:40px;height:40px;flex:none}
+.brand b{font:700 19px var(--serif);color:var(--maroon);display:block;line-height:1}
+.brand small{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+nav.links{margin-left:auto;display:flex;gap:4px;align-items:center}
+nav.links a{padding:8px 11px;border-radius:999px;text-decoration:none;font-weight:500;font-size:14px;color:var(--ink)}
+nav.links a:hover{background:var(--cream2)}
+.menu-btn{display:none;margin-left:auto;background:none;border:0;padding:8px;cursor:pointer}
+.menu-btn span{display:block;width:22px;height:2px;background:var(--maroon);margin:5px 0;border-radius:2px}
+@media(max-width:900px){
+  .menu-btn{display:block}
+  nav.links{position:absolute;left:0;right:0;top:66px;background:var(--cream);flex-direction:column;align-items:stretch;
+    padding:10px 18px 16px;border-bottom:1px solid var(--line);display:none;margin:0}
+  nav.links.open{display:flex}
+  nav.links a{padding:12px 10px}
+}
+
+/* hero */
+.hero{background:radial-gradient(1000px 500px at 85% 20%,#8a2b42 0,transparent 60%),linear-gradient(135deg,#4a101e,#5E1626 55%,#6f1f33);color:#fff;padding:54px 0 70px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;opacity:.08;
+  background-image:radial-gradient(circle at 20px 20px,#E6BE6E 2px,transparent 3px);background-size:40px 40px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;position:relative}
+.hero h1{font-size:clamp(34px,6vw,64px);margin:12px 0 14px}
+.hero h1 em{font-style:normal;color:var(--gold2)}
+.hero p.lead{font-size:17px;color:#f0dfd0;max-width:540px;margin:0 0 26px}
+.hero .ta-line{font-size:15px;color:var(--gold2);margin-bottom:6px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
+.hero-stats div b{font:700 28px var(--serif);color:var(--gold2);display:block;line-height:1}
+.hero-stats div span{font-size:12px;color:#e8d3c3;letter-spacing:.04em}
+.hero-art{position:relative;height:420px}
+.hero-art .c{position:absolute;border-radius:50%;overflow:hidden;border:4px solid var(--gold);box-shadow:0 18px 40px rgba(0,0,0,.35);background:#fff3dc}
+.hero-art .c svg{width:100%;height:100%;display:block}
+.hero-art .c1{width:290px;height:290px;right:30px;top:0}
+.hero-art .c2{width:190px;height:190px;left:0;top:150px}
+.hero-art .c3{width:170px;height:170px;right:0;bottom:0}
+.hero-art .tag{position:absolute;left:30px;bottom:10px;background:var(--gold);color:#2B1A17;padding:10px 16px;border-radius:14px;font-weight:600;font-size:13px;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-art{height:300px;order:-1}
+  .hero-art .c1{width:200px;height:200px;right:10%;}
+  .hero-art .c2{width:130px;height:130px;left:4%;top:120px}
+  .hero-art .c3{width:120px;height:120px;right:2%;bottom:0}
+  .hero-art .tag{left:6%;bottom:6px}
+  .hero{padding-top:30px}
+}
+
+/* trust strip */
+.strip{background:var(--cream2);border-block:1px solid var(--line);padding:18px 0}
+.strip .wrap{display:flex;gap:10px 30px;flex-wrap:wrap;justify-content:center;font-weight:500;font-size:14px;color:var(--maroon)}
+.strip span::before{content:"✦ ";color:var(--gold)}
+
+/* services */
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 2px 0 rgba(94,22,38,.03);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(94,22,38,.12)}
+.card .img{aspect-ratio:4/3;background:linear-gradient(160deg,#fff3dc,#f6dfb8);display:flex;align-items:center;justify-content:center}
+.card .img svg{width:100%;height:100%;display:block}
+.card .body{padding:16px 18px 18px}
+.card h3{font-size:19px;color:var(--maroon)}
+.card .tn{font-size:13px;color:var(--gold);font-weight:600;margin-top:2px}
+.card p{margin:8px 0 0;color:var(--muted);font-size:14px}
+
+/* occasions */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{padding:9px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:500;font-size:14px}
+
+/* menu */
+.menu-bg{background:linear-gradient(#FFF8EC,#FBF0DC)}
+.menu-tools{position:sticky;top:66px;z-index:20;background:rgba(255,248,236,.96);backdrop-filter:blur(6px);padding:12px 0;margin:0 -18px 18px;padding-inline:18px;border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;cursor:pointer;font:500 14px var(--sans);color:var(--ink)}
+.tab.on{background:var(--maroon);color:#fff;border-color:var(--maroon)}
+.tool-row{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+.seg button{border:0;background:none;padding:8px 14px;font:500 13px var(--sans);cursor:pointer;color:var(--ink)}
+.seg button.on{background:var(--gold);color:#2B1A17;font-weight:600}
+.search{flex:1;min-width:160px;max-width:300px;padding:9px 14px;border-radius:999px;border:1px solid var(--line);font:14px var(--sans);background:#fff}
+.dish{position:relative;cursor:pointer;user-select:none}
+.dish .img{position:relative}
+.dish .vd{position:absolute;left:10px;top:10px;width:18px;height:18px;border:2px solid var(--veg);border-radius:4px;background:#fff;display:flex;align-items:center;justify-content:center}
+.dish .vd::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--veg)}
+.dish .vd.n{border-color:var(--nonveg)}.dish .vd.n::after{background:var(--nonveg)}
+.dish .tick{position:absolute;right:10px;top:10px;width:30px;height:30px;border-radius:50%;background:#fff;border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;transition:.15s}
+.dish.sel{outline:3px solid var(--gold);outline-offset:-3px}
+.dish.sel .tick{background:var(--gold);color:#2B1A17}
+.dish .meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.price{font-weight:700;color:var(--maroon)}
+.price small{font-weight:500;color:var(--muted);font-size:11px}
+.cat{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.dish h3{font-size:17px}
+.dish .nm2{font-size:13px;color:var(--gold);font-weight:600}
+.empty{padding:40px;text-align:center;color:var(--muted)}
+
+/* guests box */
+.gbox{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--maroon);background:#fff;border:1.5px solid var(--gold);border-radius:999px;padding:4px 6px 4px 14px}
+.gbox input{width:104px;border:0;background:var(--cream2);border-radius:999px;padding:7px 12px;font:600 14px var(--sans);color:var(--ink)}
+.gbox input:focus{outline:2px solid var(--gold)}
+.gbox.sm{padding:3px 4px 3px 10px;border-color:var(--gold2)}
+.gbox.sm input{width:84px;padding:7px 10px}
+.fbar .in{gap:10px}.fbar .in>div:first-child{flex:1;min-width:0}
+/* compact menu rows */
+#menuGrid{grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px}
+.dish{display:flex;align-items:stretch;border-radius:14px}
+.dish:hover{transform:none}
+.dish .img{flex:none;width:118px;aspect-ratio:auto;min-height:92px}
+.dish .img svg{width:100%;height:100%;object-fit:cover}
+.dish .body{padding:8px 52px 8px 12px;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:1px}
+.dish h3{font-size:15px;line-height:1.25}
+.dish .cat{font-size:10px}
+.dish .nm2{font-size:12px}
+.dish .price{margin-top:3px;font-size:14px}
+.dish .vd{left:6px;top:6px;width:14px;height:14px;border-width:1.5px;border-radius:3px}
+.dish .vd::after{width:6px;height:6px}
+.dish>.tick{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:28px;height:28px;font-size:16px}
+@media(max-width:560px){#menuGrid{grid-template-columns:1fr;gap:10px}.dish .img{width:104px}}
+/* packages */
+.pk{display:flex;flex-direction:column}
+.pk .body{display:flex;flex-direction:column;flex:1}
+.pk ul{margin:10px 0 14px;padding-left:18px;color:var(--muted);font-size:13.5px;flex:1}
+.pk .pp{font:700 26px var(--serif);color:var(--maroon)}
+.pk .pp small{font:500 12px var(--sans);color:var(--muted)}
+.pk .badge{position:absolute;right:12px;top:12px;background:var(--maroon);color:#fff;font-size:11px;padding:4px 10px;border-radius:999px;letter-spacing:.06em}
+.pk .img{position:relative}
+
+/* add-ons */
+.addon .body{display:flex;flex-direction:column;gap:6px}
+.addon .row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px}
+.addon .ap{font-weight:700;color:var(--maroon)}
+.addon .ap small{display:block;font-weight:500;font-size:11px;color:var(--muted)}
+.step{display:inline-flex;align-items:center;border:1.5px solid var(--gold);border-radius:999px;overflow:hidden;background:#fff}
+.step button{width:34px;height:34px;border:0;background:none;font:600 18px var(--sans);cursor:pointer;color:var(--maroon)}
+.step b{min-width:26px;text-align:center;font-size:14px}
+.addon.sel{outline:3px solid var(--gold);outline-offset:-3px}
+
+/* why + testimonials */
+.why{background:var(--maroon);color:#fff}
+.why .sec-h{color:#fff}.why .sec-p{color:#e7cfc0}
+.why-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.why-grid div{border:1px solid rgba(230,190,110,.35);border-radius:16px;padding:20px}
+.why-grid b{display:block;font:600 19px var(--serif);color:var(--gold2);margin-bottom:6px}
+.why-grid p{margin:0;color:#ecd7c8;font-size:14px}
+.quote{padding:22px}
+.quote p{margin:0 0 14px;font-size:15px}
+.quote .who{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted)}
+.quote .av{width:40px;height:40px;border-radius:50%;background:var(--maroon);color:var(--gold2);display:flex;align-items:center;justify-content:center;font:600 16px var(--serif)}
+.stars{color:var(--gold);letter-spacing:2px;margin-bottom:8px}
+
+/* quote builder */
+.qb{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
+@media(max-width:900px){.qb{grid-template-columns:1fr}}
+.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}
+.panel h3{font-size:22px;color:var(--maroon);margin-bottom:14px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.f2{grid-template-columns:1fr}}
+label.f{display:block;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+label.f input,label.f select,label.f textarea{display:block;width:100%;margin-top:5px;padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;
+  font:15px var(--sans);color:var(--ink);background:#fffdf8;text-transform:none;letter-spacing:0}
+label.f input:focus,label.f select:focus,label.f textarea:focus{outline:none;border-color:var(--gold)}
+label.f.err input,label.f.err select{border-color:var(--nonveg)}
+.errmsg{color:var(--nonveg);font-size:13px;margin-top:10px;min-height:18px}
+.sum{position:sticky;top:84px}
+.sum .grp{margin:12px 0 4px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.sum .ln{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.sum .ln button{background:none;border:0;color:var(--nonveg);cursor:pointer;font-size:16px;padding:0 4px}
+.sum .tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding-top:12px;border-top:2px solid var(--maroon)}
+.sum .tot b{font:700 30px var(--serif);color:var(--maroon)}
+.sum .sub{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-top:6px}
+.note{font-size:12.5px;color:var(--muted);margin-top:10px}
+.sum .empty{padding:18px 0}
+
+/* floating bar */
+.fbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--maroon);color:#fff;transform:translateY(110%);transition:transform .25s;
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  box-shadow:0 -8px 24px rgba(0,0,0,.25)}
+.fbar.show{transform:none}
+.fbar .in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:14px;justify-content:space-between}
+.fbar small{display:block;color:#ecd7c8;font-size:12px}
+.fbar b{font:700 20px var(--serif);color:var(--gold2)}
+
+/* faq + contact */
+details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600;color:var(--maroon)}
+details p{margin:10px 0 0;color:var(--muted)}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:800px){.contact{grid-template-columns:1fr}}
+.ci{display:flex;gap:14px;margin-bottom:16px}
+.ci i{flex:none;width:42px;height:42px;border-radius:12px;background:var(--cream2);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:19px}
+.ci b{display:block;color:var(--maroon)}
+.map{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#f1e6cf;min-height:260px}
+.map svg{width:100%;height:100%;display:block}
+footer{background:#2B1A17;color:#cdbca9;padding:36px 0 90px;font-size:13.5px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+footer a{color:var(--gold2)}
+
+/* modal + toast */
+.modal{position:fixed;inset:0;background:rgba(30,10,10,.6);z-index:100;display:none;align-items:center;justify-content:center;padding:18px}
+.modal.on{display:flex}
+.modal .box{background:#fff;border-radius:22px;max-width:480px;width:100%;padding:28px;text-align:center;max-height:92vh;overflow:auto}
+.modal .ok{width:64px;height:64px;border-radius:50%;background:var(--leaf);color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.modal h3{font-size:26px;color:var(--maroon)}
+.modal .ref{display:inline-block;margin:12px 0;padding:6px 14px;background:var(--cream2);border-radius:999px;font-weight:700;letter-spacing:.06em}
+.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:#2B1A17;color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;
+  opacity:0;pointer-events:none;transition:.25s;z-index:120;max-width:90vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* admin */
+#adminView{display:none;min-height:100vh;background:#f4ecdc}
+.ad-top{background:var(--maroon);color:#fff;padding:14px 0}
+.ad-top .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.ad-top h2{font-size:22px;color:#fff}
+.ad-top .sp{flex:1}
+.ad-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0}
+.ad-stats div{background:#fff;border-radius:14px;padding:14px 16px;border:1px solid var(--line)}
+.ad-stats b{display:block;font:700 26px var(--serif);color:var(--maroon)}
+.ad-stats span{font-size:12px;color:var(--muted)}
+.enq{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px}
+.enq-h{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-start}
+.enq-h h3{font-size:20px;color:var(--maroon)}
+.st{font-size:11px;font-weight:700;letter-spacing:.08em;padding:4px 10px;border-radius:999px;text-transform:uppercase}
+.st.New{background:#FDE9C9;color:#8a5a00}.st.Quoted{background:#DDEBFB;color:#1b4d8c}.st.Confirmed{background:#D9F0DF;color:#1c6b36}
+.enq-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px 16px;margin:12px 0;font-size:14px}
+.enq-g small{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.enq details{margin:8px 0 12px;background:#fffdf8}
+.enq-act{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.enq-act input{width:130px;padding:9px 12px;border:1.5px solid var(--line);border-radius:999px;font:14px var(--sans)}
+/* scroll story */
+.story{padding:0;background:radial-gradient(900px 500px at 70% 20%,#7a2236 0,transparent 60%),linear-gradient(160deg,#3d0c18,#5E1626 60%,#4a101e);color:#fff;position:relative}
+.story-track{height:auto}
+.has3d .story-track{height:620vh;position:relative}
+.story-sticky{position:static}
+.has3d .story-sticky{position:sticky;top:66px;height:calc(100vh - 66px);height:calc(100svh - 66px);overflow:hidden}
+.story canvas{display:none;position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.has3d .story canvas{display:block}
+.story-fb{padding:60px 0}
+.has3d .story-fb{display:none}
+.story-fb .grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.story-fb .card{background:rgba(255,255,255,.06);border-color:rgba(230,190,110,.3);padding:18px}
+.story-fb h3{color:var(--gold2);font-size:18px}.story-fb p{color:#ecd7c8;font-size:14px;margin:6px 0 0}
+.story-top{position:absolute;left:0;right:0;top:0;z-index:2;padding:22px max(18px,env(safe-area-inset-left,0px)) 0;pointer-events:none}
+.story-top .eyebrow{color:var(--gold2)}
+.story-top h2{font-size:clamp(22px,3.6vw,36px);margin-top:6px;color:#fff;max-width:560px}
+.story-card{position:absolute;z-index:3;left:max(18px,env(safe-area-inset-left,0px));bottom:26px;max-width:400px;background:rgba(30,8,14,.72);backdrop-filter:blur(8px);border:1px solid rgba(230,190,110,.4);border-radius:18px;padding:16px 20px;transition:opacity .3s,transform .3s}
+.story-card.swap{opacity:0;transform:translateY(10px)}
+.story-card .n{font:700 13px var(--sans);letter-spacing:.14em;color:var(--gold2)}
+.story-card h3{font-size:24px;color:#fff;margin:4px 0 2px}
+.story-card .ta{color:var(--gold2);font-weight:600;font-size:15px}
+.story-card p{margin:8px 0 0;color:#ecd7c8;font-size:14px}
+.story-card .btn{margin-top:12px;display:none}
+.story-card.last .btn{display:inline-flex}
+.story-card .btn{pointer-events:auto}
+.story-dots{position:absolute;right:max(14px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);z-index:3;display:flex;flex-direction:column;gap:10px}
+.story-dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.3);transition:.3s}
+.story-dots i.on{background:var(--gold2);transform:scale(1.5)}
+.story-hint{position:absolute;z-index:3;right:max(18px,env(safe-area-inset-right,0px));bottom:30px;font-size:13px;color:#ecd7c8;letter-spacing:.08em;transition:opacity .4s;animation:nudge 1.6s infinite}
+@keyframes nudge{50%{transform:translateY(6px)}}
+@media(max-width:700px){.story-card{right:14px;left:14px;max-width:none;bottom:14px;padding:12px 16px}.story-card h3{font-size:20px}.story-card p{font-size:13px;margin-top:4px}.story-hint{display:none}.story-top h2{font-size:20px}}
+/* 3D layer */
+.hero-art.is3d .c,.hero-art.is3d .tag{display:none}
+.hint3d,.v3d-tag{position:absolute;left:50%;transform:translateX(-50%);background:rgba(30,10,10,.45);color:#fff;font-size:12px;padding:5px 12px;border-radius:999px;pointer-events:none;white-space:nowrap}
+.hint3d{bottom:0}
+.v3d{display:none;position:absolute;left:6px;bottom:6px;z-index:2;border:0;background:rgba(94,22,38,.88);color:#fff;font:700 11px var(--sans);letter-spacing:.04em;padding:4px 9px;border-radius:999px;cursor:pointer}
+.has3d .v3d{display:block}
+.v3d-box{max-width:460px;padding:0;overflow:hidden;position:relative}
+.v3d-box canvas{display:block;width:100%;height:300px;background:radial-gradient(circle at 50% 40%,#fff3dc,#f2d9ac)}
+.v3d-box .v3d-tag{top:262px}
+.v3d-x{position:absolute;right:10px;top:10px;z-index:3;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.9);font-size:22px;cursor:pointer;color:var(--maroon)}
+.v3d-info{padding:14px 20px 4px;text-align:left}
+.v3d-info h3{font-size:22px;color:var(--maroon)}
+.v3d-info .price{font-size:18px;margin-top:4px}
+.v3d-act{display:flex;gap:10px;padding:12px 20px 20px}
+.v3d-act .btn{flex:1;padding:12px 10px;font-size:14px}
+.table3d{display:none;position:relative;margin-bottom:24px;padding:0;overflow:hidden;background:linear-gradient(160deg,#fff3dc,#f2d9ac)}
+.has3d .table3d{display:block}
+.table3d canvas{display:block;width:100%;height:340px}
+.t3h{position:absolute;left:18px;top:14px;z-index:2;pointer-events:none}
+.t3h h3{font-size:22px;margin:0;color:var(--maroon)}
+.t3h span{font-size:13px;color:var(--muted)}
+.table3d .v3d-tag{bottom:10px}
+.t3empty{display:none;position:absolute;inset:auto 0 60px;text-align:center;color:var(--maroon);font-weight:600;pointer-events:none;padding:0 20px}
+.table3d.empty3d .t3empty{display:block}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="site">
+<div class="demo-bar">Sample website for demonstration · Business, phone and address are fictional · <b>Made by ZorbaTech</b></div>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top"><span id="logo"></span><span><b>Thaalam</b><small>Catering &amp; Events</small></span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav class="links" id="nav">
+    <a href="#services">Services</a><a href="#menu">Menu</a><a href="#packages">Packages</a><a href="#addons">Add-ons</a><a href="#events">Events</a><a href="#contact">Contact</a>
+    <a class="btn btn-gold btn-sm" href="#quote">Get a quote</a>
+  </nav>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <div>
+    <div class="eyebrow" style="color:var(--gold2)">Weddings · Celebrations · Corporate</div>
+    <h1>Every great function begins with a <em>great feast</em></h1>
+    <div class="ta-line ta">சுவையான சாப்பாடு · சிறப்பான விழா · முழுமையான சேவை</div>
+    <p class="lead">From the first welcome drink to the last payasam, we handle food, stage, music and every detail in between. Pick your menu, build your event, and get a quotation on WhatsApp.</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#menu">Build your menu</a>
+      <a class="btn btn-line" href="#packages">See packages</a>
+    </div>
+    <div class="hero-stats">
+      <div><b>15+</b><span>Years of service</span></div>
+      <div><b>2,400+</b><span>Events catered</span></div>
+      <div><b>3,000</b><span>Guests at a time</span></div>
+      <div><b>60+</b><span>Dishes, TN &amp; Kerala</span></div>
+    </div>
+  </div>
+  <div class="hero-art" id="heroArt"></div>
+</div></section>
+
+<div class="strip"><div class="wrap">
+  <span>Pure veg &amp; non-veg kitchens</span><span>Tamil Nadu &amp; Kerala specialists</span><span>Trained cooks &amp; serving staff</span><span>Banana-leaf service</span><span>FSSAI licensed</span>
+</div></div>
+
+<section class="story" id="story"><div class="story-track" id="storyTrack"><div class="story-sticky">
+  <canvas id="storyCv"></canvas>
+  <div class="story-top"><div class="eyebrow">From our kitchen to your table</div><h2>See how your feast is made</h2></div>
+  <div class="story-card" id="storyCard"><div class="n" id="stN"></div><h3 id="stT"></h3><div class="ta" id="stTa"></div><p id="stP"></p><a class="btn btn-gold" href="#menu">Build your menu</a></div>
+  <div class="story-dots" id="stDots"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="story-hint" id="stHint">Scroll ↓</div>
+</div>
+<div class="story-fb"><div class="wrap"><div class="eyebrow" style="color:var(--gold2)">From our kitchen to your table</div><h2 class="sec-h" style="color:#fff">How your feast is made</h2><div class="grid" id="stFb"></div></div></div>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <div class="eyebrow">What we do</div>
+  <h2 class="sec-h">One team for your whole function</h2>
+  <p class="sec-p">You do not need five different vendors. Choose only the food, or hand us the full event. We plan it, cook it, decorate it and run it on the day.</p>
+  <div class="grid" id="svcGrid"></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="eyebrow">Occasions</div>
+  <h2 class="sec-h" style="font-size:28px">We cater for every kind of celebration</h2>
+  <div class="chips" id="occ"></div>
+</div></section>
+
+<section id="menu" class="menu-bg"><div class="wrap">
+  <div class="eyebrow">Our menu</div>
+  <h2 class="sec-h">Tick the dishes you want</h2>
+  <p class="sec-p">Tamil Nadu and Kerala favourites, North Indian classics, sweets and drinks. Prices are per plate. Tap a dish to add it, and your estimate updates as you go.</p>
+  <div class="menu-tools">
+    <div class="tabs" id="tabs"></div>
+    <div class="tool-row">
+      <div class="seg" id="dietSeg"><button data-d="all" class="on">All</button><button data-d="v">Veg</button><button data-d="n">Non-veg</button></div>
+      <input class="search" id="q" type="search" placeholder="Search dishes…">
+      <label class="gbox">👥 Guests <input class="gsync" type="number" min="10" inputmode="numeric" placeholder="How many?"></label>
+    </div>
+  </div>
+  <div class="grid" id="menuGrid"></div>
+</div></section>
+
+<section id="packages"><div class="wrap">
+  <div class="eyebrow">Ready packages</div>
+  <h2 class="sec-h">Not sure what to choose? Start here</h2>
+  <p class="sec-p">Pick a package and we will tick the dishes for you. You can still add or remove anything before you ask for a quote.</p>
+  <div class="grid" id="pkGrid"></div>
+</div></section>
+
+<section id="addons" class="menu-bg"><div class="wrap">
+  <div class="eyebrow">Add-on services</div>
+  <h2 class="sec-h">Everything else your function needs</h2>
+  <p class="sec-p">Stage, flowers, welcome girls, chenda melam, photography and more. Tap Add and set the quantity.</p>
+  <div class="grid" id="adGrid"></div>
+</div></section>
+
+<section class="why"><div class="wrap">
+  <div class="eyebrow" style="color:var(--gold2)">Why families choose us</div>
+  <h2 class="sec-h">Taste you can trust, on time, every time</h2>
+  <p class="sec-p">A function is only once in a while. We make sure nothing goes wrong on the day.</p>
+  <div class="why-grid">
+    <div><b>Fresh, same-day cooking</b><p>Our kitchen cooks on the morning of your event, never the day before.</p></div>
+    <div><b>Clear, fixed pricing</b><p>You see the price per plate and the full quote before you pay a rupee.</p></div>
+    <div><b>Tasting before booking</b><p>For events above 300 guests, we arrange a free tasting for your family.</p></div>
+    <div><b>One coordinator</b><p>A single person looks after your food, decor and music from start to finish.</p></div>
+  </div>
+</div></section>
+
+<section id="events"><div class="wrap">
+  <div class="eyebrow">Recent events</div>
+  <h2 class="sec-h">A few celebrations we were part of</h2>
+  <p class="sec-p">Sample entries for the demo. Real photographs of your own events will go here.</p>
+  <div class="grid" id="evGrid"></div>
+</div></section>
+
+<section class="menu-bg"><div class="wrap">
+  <div class="eyebrow">Kind words</div>
+  <h2 class="sec-h">What our customers say</h2>
+  <p class="sec-p">Sample reviews for the demo.</p>
+  <div class="grid" id="tmGrid"></div>
+</div></section>
+
+<section id="quote"><div class="wrap">
+  <div class="eyebrow">Get your quotation</div>
+  <h2 class="sec-h">Tell us about your function</h2>
+  <p class="sec-p">Fill this in and we will send your detailed quotation on WhatsApp, usually within two hours. This is only an enquiry, so there is no payment and no commitment.</p>
+  <div class="panel table3d empty3d" id="tableBox"><div class="t3h"><h3>Your table</h3><span id="tableCount"></span></div><canvas id="tableCv"></canvas><div class="t3empty">Pick dishes from the menu and watch them fill your table</div><div class="v3d-tag">Drag to rotate ↻</div></div>
+  <div class="qb">
+    <form class="panel" id="form" novalidate>
+      <h3>Event details</h3>
+      <div class="f2">
+        <label class="f" data-k="name">Your name<input id="fName" autocomplete="name" placeholder="e.g. Karthik"></label>
+        <label class="f" data-k="phone">WhatsApp number<input id="fPhone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile"></label>
+        <label class="f" data-k="type">Event type<select id="fType"></select></label>
+        <label class="f" data-k="date">Event date<input id="fDate" type="date"></label>
+        <label class="f" data-k="slot">Meal / time<select id="fSlot"><option>Breakfast</option><option selected>Lunch</option><option>Dinner</option><option>Breakfast + Lunch</option><option>Full day</option></select></label>
+        <label class="f" data-k="guests">Number of guests<input id="fGuests" class="gsync" type="number" min="10" step="1" inputmode="numeric" placeholder="e.g. 250"></label>
+        <label class="f" data-k="venue" style="grid-column:1/-1">Venue / city<input id="fVenue" placeholder="Hall name and town"></label>
+        <label class="f" data-k="email" style="grid-column:1/-1">Email (optional)<input id="fEmail" type="email" autocomplete="email" placeholder="you@example.com"></label>
+        <label class="f" data-k="notes" style="grid-column:1/-1">Anything else we should know?<textarea id="fNotes" rows="3" placeholder="Special diet, jain food, timing, budget idea…"></textarea></label>
+      </div>
+      <div class="errmsg" id="err"></div>
+      <button class="btn btn-maroon" type="submit" style="width:100%;margin-top:6px">Send enquiry</button>
+      <p class="note">We use your number only to send the quotation. Demo: nothing is sent to a real business, data stays in this browser.</p>
+    </form>
+    <aside class="panel sum" id="sum"></aside>
+  </div>
+</div></section>
+
+<section class="menu-bg"><div class="wrap" style="max-width:820px">
+  <div class="eyebrow">Questions</div>
+  <h2 class="sec-h">Before you book</h2>
+  <div id="faq" style="margin-top:20px"></div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <div class="eyebrow">Contact</div>
+  <h2 class="sec-h">Visit us or call</h2>
+  <div class="contact">
+    <div>
+      <div class="ci"><i>📍</i><div><b>Our kitchen &amp; office</b>24, Temple Road, Vadasery<br>Nagercoil, Kanyakumari – 629 001</div></div>
+      <div class="ci"><i>📞</i><div><b>Phone / WhatsApp</b><span id="phoneTxt"></span><br><span style="color:var(--muted);font-size:13px">Sample number for demo</span></div></div>
+      <div class="ci"><i>✉️</i><div><b>Email</b>hello@thaalam-catering.example</div></div>
+      <div class="ci"><i>🕘</i><div><b>Office hours</b>Mon – Sat, 9:00 am – 8:00 pm<br>Sunday by appointment</div></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+        <a class="btn btn-wa" id="waBtn" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <a class="btn btn-maroon" href="#quote">Get a quote</a>
+      </div>
+    </div>
+    <div class="map" id="mapArt"></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div>© Thaalam Catering &amp; Events · FSSAI Lic. No. 12345678901234 (sample)</div>
+  <div>Demo website by <a href="https://zorbatech.in" target="_blank" rel="noopener">ZorbaTech</a> · <a href="#admin">Owner view (demo)</a></div>
+</div></footer>
+
+<div class="fbar" id="fbar"><div class="in">
+  <div><small id="fbCount">0 dishes</small><b id="fbTotal">₹0</b></div>
+  <label class="gbox sm">👥 <input class="gsync" type="number" min="10" inputmode="numeric" placeholder="Guests"></label>
+  <a class="btn btn-gold" href="#quote">Get quote</a>
+</div></div>
+</div>
+
+<div id="adminView">
+  <div class="ad-top"><div class="wrap">
+    <span id="logo2"></span><h2>Owner dashboard</h2><span style="font-size:12px;color:#e7cfc0">Demo · enquiries from the website arrive here</span>
+    <span class="sp"></span>
+    <button class="btn btn-gold btn-sm" id="seedBtn">Load sample enquiries</button>
+    <button class="btn btn-line btn-sm" id="clearBtn">Clear all</button>
+    <a class="btn btn-line btn-sm" href="#top">← Back to website</a>
+  </div></div>
+  <div class="wrap" style="padding-top:6px;padding-bottom:60px">
+    <div class="ad-stats" id="adStats"></div>
+    <div id="adList"></div>
+  </div>
+</div>
+
+<div class="modal" id="modal"><div class="box" id="modalBox"></div></div>
+<div class="toast" id="toast"></div>
+<script>
+"use strict";
+/* ============ CONFIG (replace for a real client) ============ */
+const CONFIG={name:"Thaalam Catering & Events",phoneShow:"+91 90000 00000",wa:"" /* e.g. 919876543210 */,
+  advance:30};
+
+/* ============ ILLUSTRATION ENGINE ============ */
+function rng(seed){let s=0;for(const ch of String(seed))s=(s*31+ch.charCodeAt(0))>>>0;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296}}
+const E=(cx,cy,rx,ry,f,x="")=>`<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${f}" ${x}/>`;
+const C=(cx,cy,r,f,x="")=>`<circle cx="${cx}" cy="${cy}" r="${r}" fill="${f}" ${x}/>`;
+const P=(d,f,x="")=>`<path d="${d}" fill="${f}" ${x}/>`;
+const L=(d,s,w,x="")=>`<path d="${d}" fill="none" stroke="${s}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" ${x}/>`;
+const R=(x,y,w,h,f,rx=0,e="")=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${f}" ${e}/>`;
+const PLATE=E(100,112,84,28,"#000",'opacity=".10"')+E(100,98,84,38,"#fffdf8",'stroke="#e6d9c2" stroke-width="2"')+E(100,97,68,29,"#f7efe0");
+const svg=b=>`<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">${b}</svg>`;
+const SPOON=(x,y)=>L(`M${x} ${y} l18 -16`,"#c9ced6",3)+E(x-1,y+1,5,3.2,"#dfe3e9",'transform="rotate(-40 '+x+' '+y+')"');
+
+function bowl(c1,inner,rim="#fff"){ // ceramic bowl w/ liquid, returns svg parts
+  return P("M42 70 Q100 58 158 70 Q152 106 100 108 Q48 106 42 70Z",rim,'stroke="#e6d9c2" stroke-width="2"')+
+    E(100,70,58,15,"#efe5d2",'stroke="#e6d9c2" stroke-width="2"')+E(100,71,52,12.5,c1);
+}
+const ART={
+rice(c1,c2,id){const r=rng(id);let g="";
+  for(let i=0;i<46;i++){const a=r()*6.28,d=Math.sqrt(r());const x=100+Math.cos(a)*d*40,y=78+Math.sin(a)*d*17-8;g+=E(x,y,2.4,1.1,"#fff",`opacity=".55" transform="rotate(${(r()*180)|0} ${x} ${y})"`)}
+  let t="";for(let i=0;i<9;i++)t+=C(78+r()*44,60+r()*18,1.8,c2);
+  return svg(PLATE+P("M52 96 Q56 50 100 46 Q144 50 148 96 Q100 116 52 96Z",c1)+L("M70 84 Q82 60 104 55","#fff",5,'opacity=".5"')+g+t)},
+biryani(c1,c2,id){const r=rng(id);let sp="";
+  for(let i=0;i<44;i++){const a=r()*6.28,d=Math.sqrt(r());sp+=E(100+Math.cos(a)*d*42,76+Math.sin(a)*d*16,2.6,1.3,r()>.5?c2:"#fff3c4",`opacity=".8" transform="rotate(${(r()*180)|0} 100 76)"`)}
+  return svg(PLATE+P("M46 98 Q50 46 98 42 Q146 46 150 98 Q98 118 46 98Z",c1)+sp+
+   E(150,100,13,8,"#fff",'stroke="#e6d9c2"')+C(150,100,5,"#f4b400")+E(34,102,11,7,"#fff",'stroke="#e6d9c2"')+C(34,102,4.4,"#f4b400")+
+   P("M96 40 q8 -14 18 -4 q-6 12 -18 4Z","#2f8f3f")+P("M84 44 q-6 -12 -16 -4 q8 10 16 4Z","#3aa14c")+
+   P("M20 70 q10 -8 20 0 q-2 14 -10 14 q-8 0 -10 -14Z","#fff",'stroke="#e6d9c2"')+E(30,72,10,3,"#fbf3e2"))},
+curry(c1,c2,id){const r=rng(id);let pc="";
+  for(let i=0;i<7;i++)pc+=E(68+r()*64,66+r()*10,7+r()*3,5+r()*2,c2,'opacity=".95"');
+  let cr="";for(let i=0;i<8;i++)cr+=C(70+r()*60,64+r()*14,1.6,"#2f9a45");
+  return svg(E(100,112,84,26,"#000",'opacity=".10"')+E(100,100,84,34,"#fffdf8",'stroke="#e6d9c2" stroke-width="2"')+bowl(c1,0)+pc+L("M70 72 Q100 62 130 72","#fff",3,'opacity=".6"')+cr)},
+fry(c1,c2,id){const r=rng(id);let p="";
+  const pos=[[78,74],[104,66],[128,78],[92,92],[120,98],[66,96],[100,80]];
+  pos.forEach(([x,y],i)=>{const rot=(r()*80-40)|0;p+=`<g transform="rotate(${rot} ${x} ${y})">`+E(x,y,15,10,c1)+E(x-3,y-3,9,5,c2,'opacity=".55"')+C(x+4,y+2,2,c2)+C(x-6,y+3,1.6,c2)+`</g>`});
+  return svg(PLATE+p+P("M146 66 a14 14 0 0 1 0 28 z","#f7d84a")+L("M146 68 v24","#fff3a8",1.5)+C(52,78,9,"none",'stroke="#9b5ca0" stroke-width="3"')+C(52,78,4,"none",'stroke="#b57bb9" stroke-width="2"')+L("M38 108 q22 12 40 4","#2f9a45",4))},
+dosa(c1,c2){return svg(PLATE+P("M26 98 Q92 22 170 62 Q150 108 100 108 Q56 110 26 98Z",c1)+L("M40 94 Q96 40 158 66","#fff",3,'opacity=".35"')+L("M50 100 Q100 58 150 78","#fff",2,'opacity=".25"')+
+  P("M130 62 q26 -4 38 8 q-12 14 -34 10 q-8 -8 -4 -18Z","#f2c14e")+
+  E(48,112,17,8,"#fff",'stroke="#e6d9c2"')+E(48,110,13,5.5,"#f8f8f2")+E(150,114,17,8,"#fff",'stroke="#e6d9c2"')+E(150,112,13,5.5,c2))},
+idli(c1,c2){let d="";[[70,86],[102,76],[134,88]].forEach(([x,y])=>{d+=P(`M${x-24} ${y} Q${x} ${y-44} ${x+24} ${y}Q${x} ${y+9} ${x-24} ${y}Z`,"#fffefa",'stroke="#eadfc9" stroke-width="1.5"')+L(`M${x-10} ${y-14} q6 -8 14 -9`,"#fff",3)});
+  return svg(PLATE+d+E(46,108,16,7,"#fff",'stroke="#e6d9c2"')+E(46,106,12,4.6,c1)+E(154,108,16,7,"#fff",'stroke="#e6d9c2"')+E(154,106,12,4.6,c2))},
+vada(c1,c2){let d="";[[64,84],[104,70],[140,90],[98,100]].forEach(([x,y])=>{d+=E(x,y,22,13,c1,'stroke="'+c2+'" stroke-width="2"')+E(x,y,7,4,"#f2e6cf")+L(`M${x-14} ${y-6} q8 -5 16 -5`,"#fff",2.5,'opacity=".5"')});
+  return svg(PLATE+d+E(40,108,12,5.6,"#fff",'stroke="#e6d9c2"')+E(40,106.5,8.6,3.6,"#e8e0cd"))},
+sweet(c1,c2,id){let b="";const r=rng(id);[[78,70],[104,64],[130,72],[91,80],[118,82],[104,76]].forEach(([x,y])=>{b+=C(x,y,11,c1)+C(x-3,y-3,3.5,"#fff",'opacity=".28"')});
+  return svg(E(100,112,84,26,"#000",'opacity=".1"')+E(100,100,84,34,"#fffdf8",'stroke="#e6d9c2" stroke-width="2"')+bowl(c2,0)+L("M62 76 Q100 88 140 76","#fff",3,'opacity=".4"')+b+L("M96 58 l6 -6","#6bbf59",2)+L("M114 60 l5 -5","#6bbf59",2))},
+payasam(c1,c2,id){const r=rng(id);let n="";for(let i=0;i<22;i++)n+=E(60+r()*80,66+r()*14,3.2,1.8,i%4?c2:"#5a2a14",`transform="rotate(${(r()*180)|0} 100 72)"`);
+  return svg(E(100,112,84,26,"#000",'opacity=".1"')+E(100,100,84,34,"#fffdf8",'stroke="#e6d9c2" stroke-width="2"')+bowl(c1,0)+L("M64 74 Q100 84 138 74","#fff",3,'opacity=".7"')+n+SPOON(152,110))},
+halwa(c1,c2,id){const r=rng(id);let b="";[[72,84],[106,78],[138,88],[90,98],[124,102]].forEach(([x,y],i)=>{b+=P(`M${x-17} ${y} l13 -12 h22 l-5 12z`,c2,'opacity=".9"')+R(x-17,y,34,15,c1,3)+P(`M${x-17} ${y} l13 -12 h22 l-5 12z`,c1)+C(x-4,y-5,1.6,"#6a8f3a")+C(x+6,y-4,1.6,"#6a8f3a")+L(`M${x-12} ${y+4} h22`,"#fff",2,'opacity=".25"')});
+  return svg(PLATE+b)},
+drink(c1,c2){return svg(E(100,128,60,10,"#000",'opacity=".12"')+
+  P("M118 52 h46 l-6 70 q-17 8 -34 0z",c1,'stroke="#fff" stroke-width="2"')+P("M118 52 h46 l-1.6 18 h-42.8z","#fff",'opacity=".35"')+L("M148 56 l12 -34","#d9a02b",4)+
+  P("M42 66 h40 l-6 56 q-14 7 -28 0z",c1,'opacity=".9" stroke="#fff" stroke-width="2"')+P("M42 66 h40 l-1.4 12 h-37z","#fff",'opacity=".4"')+
+  R(126,78,12,12,"#fff",3,'opacity=".5" transform="rotate(12 132 84)"')+R(140,92,11,11,"#fff",3,'opacity=".45" transform="rotate(-10 146 98)"')+C(52,60,7,c2)+C(150,50,6,c2,'opacity=".95"')+L("M122 60 q4 30 2 56","#fff",3,'opacity=".35"'))},
+coffee(c1,c2){return svg(E(100,128,70,10,"#000",'opacity=".12"')+E(138,112,36,10,"#cfd5dc")+P("M108 104 q-2 -22 6 -26 h48 q8 4 6 26 q-30 12 -60 0z","#dfe4ea",'stroke="#b8c0ca" stroke-width="1.6"')+E(138,78,25,6,c1)+E(138,80,22,3.5,c2,'opacity=".9"')+
+  P("M50 110 q-6 -38 4 -52 h36 q10 14 4 52z","#cfd5dc",'stroke="#a9b2be" stroke-width="1.6"')+E(72,58,18,5,"#f4f6f8",'stroke="#a9b2be"')+L("M58 80 q14 6 28 0","#fff",3,'opacity=".6"')+
+  L("M60 40 q-8 -10 0 -20 q8 -10 0 -18","#c9bfae",3,'opacity=".6"')+L("M80 38 q-8 -10 0 -20","#c9bfae",3,'opacity=".5"')+L("M140 66 q-8 -10 0 -18","#c9bfae",3,'opacity=".5"'))},
+snack(c1,c2){let s="";[[70,80],[112,70],[134,96]].forEach(([x,y],i)=>{s+=P(`M${x-24} ${y+14} L${x} ${y-24} L${x+24} ${y+14}Z`,c1,'stroke="'+c2+'" stroke-width="2.4" stroke-linejoin="round"')+L(`M${x-9} ${y+2} q9 -8 18 0`,"#fff",2.4,'opacity=".4"')+C(x-3,y+8,1.8,c2)+C(x+6,y+4,1.6,c2)});
+  return svg(PLATE+s+E(44,110,13,6,"#fff",'stroke="#e6d9c2"')+E(44,108.4,9.5,4,"#4b9b3a")+E(158,112,12,5.6,"#fff",'stroke="#e6d9c2"')+E(158,110.6,8.6,3.6,"#c43b2a"))},
+leaf(c1,c2){return svg(P("M8 104 Q54 14 192 54 Q158 134 8 104Z","#3a8a3f")+L("M10 104 Q100 70 190 56","#2a6b30",3)+P("M8 104 Q54 14 192 54 Q130 40 60 70Z","#4aa04f",'opacity=".5"')+
+  E(54,86,22,13,"#fffefa")+C(40,80,3,"#f3e9d0",'opacity=".9"')+
+  C(88,66,6,"#f2c14e")+C(104,60,6,"#e58a2f")+C(120,58,6,"#6aa84f")+C(136,58,6,"#fff")+C(152,58,6,"#b7312c")+C(168,58,5,"#f5d15a")+
+  C(92,90,6,"#6aa84f")+C(110,86,6,"#fff7e0")+C(128,84,6,"#e8b64a")+C(146,80,6,"#8a4a22")+C(162,76,5,"#c58d3f")+
+  E(72,104,10,4,"#e4a63a")+E(94,108,9,3.6,"#a9332a")+SPOON(0,0).slice(0,0))},
+fish(c1,c2){return svg(E(100,98,88,38,"#3a8a3f",'opacity=".9"')+L("M20 100 Q100 70 182 98","#2a6b30",2)+
+  P("M38 92 Q80 52 134 74 Q150 84 138 100 Q86 128 38 100Q30 96 38 92Z",c1)+P("M134 74 L170 56 Q166 84 168 108 L138 100Z",c1)+P("M134 74 L170 56 Q166 84 168 108 L138 100Z",c2,'opacity=".35"')+
+  L("M58 94 Q88 76 118 82","#fff",3,'opacity=".4"')+L("M60 100 Q92 110 122 98","#fff",2.4,'opacity=".25"')+C(56,90,4,"#fff")+C(55,90,2,"#222")+
+  C(96,86,3,c2)+C(110,92,3,c2)+C(84,96,2.6,c2)+P("M150 112 a14 14 0 0 1 0 -26 z","#f7d84a",'transform="translate(-6 8)"'))},
+chicken(c1,c2){const leg=(x,y,rot)=>`<g transform="rotate(${rot} ${x} ${y})">`+R(x+14,y-3,34,6,"#f3ead5",3)+C(x+50,y-4,5,"#f3ead5")+C(x+50,y+4,5,"#f3ead5")+E(x,y,22,15,c1)+E(x-5,y-5,13,6,c2,'opacity=".55"')+L(`M${x-10} ${y-9} q8 -5 16 -3`,"#fff",3,'opacity=".4"')+`</g>`;
+  return svg(PLATE+leg(70,84,-16)+leg(90,106,12)+C(138,70,9,"none",'stroke="#9b5ca0" stroke-width="3"')+C(150,92,8,"none",'stroke="#b57bb9" stroke-width="2.4"')+L("M120 58 q8 -6 14 2","#2f9a45",3)+L("M122 98 q14 8 28 0","#2f9a45",3))},
+appam(c1,c2){const ap=(x,y)=>E(x,y,26,13,c1,'stroke="'+c2+'" stroke-width="2.4"')+E(x,y,9,5,"#fff",'opacity=".8"')+L(`M${x-22} ${y-4} q6 -7 12 -8`,"#fff",2,'opacity=".6"');
+  return svg(PLATE+ap(66,82)+ap(104,96)+E(146,76,24,14,"#fff",'stroke="#e6d9c2"')+E(146,75,19,10,"#f7f1e1")+C(138,74,3.4,"#f2a93b")+C(150,72,3.4,"#6aa84f")+C(156,79,3,"#f2a93b"))},
+parotta(c1,c2){let s="";for(let i=0;i<5;i++)s+=E(100,96-i*7,56-i*1.6,18,i%2?c1:c2,'stroke="#a5662a" stroke-width="1"');
+  return svg(PLATE+s+E(100,62,52,13,c1,'stroke="#a5662a" stroke-width="1"')+L("M62 60 q20 -8 40 -2","#fff",2.4,'opacity=".4"')+L("M108 66 q18 4 32 -2","#a5662a",2,'opacity=".6"')+E(158,106,10,6,"#fff3b0",'stroke="#e6d9c2"'))},
+naan(c1,c2){return svg(PLATE+P("M36 84 Q66 40 140 56 Q168 70 156 96 Q110 118 52 104Q30 96 36 84Z",c1,'stroke="#d9a35f" stroke-width="1.6"')+C(80,76,3.4,c2)+C(104,70,4,c2)+C(122,84,3,c2)+C(92,92,3.4,c2)+C(64,90,2.6,c2)+R(98,74,16,10,"#fff3a8",2,'transform="rotate(-8 106 79)"')+L("M60 70 q20 -14 50 -10","#fff",3,'opacity=".4"')+
+  E(158,112,14,6,"#fff",'stroke="#e6d9c2"')+E(158,110.6,10.4,4,"#e58a2f"))},
+icecream(c1,c2){return svg(E(100,128,56,9,"#000",'opacity=".12"')+P("M56 82 h88 l-10 38 q-34 10 -68 0z","#fff",'stroke="#e6d9c2" stroke-width="2"')+R(72,118,56,6,"#e6d9c2",3)+
+  C(76,70,19,c1)+C(124,70,19,c2)+C(100,52,21,"#fff3dc",'stroke="#f0e2c4"')+C(100,36,5,"#c43b2a")+L("M118 18 l-14 28","#d9a02b",4)+L("M64 62 q6 -8 14 -8","#fff",3,'opacity=".6"')+L("M130 62 q6 -8 14 -8","#fff",3,'opacity=".5"'))},
+dry(c1,c2,id){const r=rng(id);let b="";for(let i=0;i<70;i++){const a=r()*6.28,d=Math.sqrt(r());const x=100+Math.cos(a)*d*46,y=82+Math.sin(a)*d*18-6;b+=`<rect x="${x-3}" y="${y-2}" width="${5+r()*4}" height="${3+r()*2}" rx="1.6" fill="${r()>.35?c1:c2}" transform="rotate(${(r()*180)|0} ${x} ${y})"/>`}
+  return svg(PLATE+P("M50 98 Q54 56 100 52 Q146 56 150 98 Q100 116 50 98Z",c1,'opacity=".9"')+b+P("M92 54 q6 -10 14 -3 q-4 9 -14 3Z","#2f8f3f")+P("M120 62 q6 -8 14 -2 q-4 8 -14 2Z","#3aa14c")+C(152,104,3,"#b7312c"))},
+papad(c1,c2,id){const r=rng(id);let s="";[[78,78,34],[122,72,32],[100,98,30]].forEach(([x,y,rr])=>{s+=E(x,y,rr,rr*.52,c1,'stroke="#d3a24a" stroke-width="1.6"');for(let i=0;i<7;i++)s+=C(x-rr*.6+r()*rr*1.2,y-rr*.28+r()*rr*.56,1.5,c2,'opacity=".7"')});
+  return svg(PLATE+s)},
+puttu(c1,c2){const p=(x,y)=>R(x-12,y-34,24,44,"#fffefa",4,'stroke="#eadfc9" stroke-width="1.6"')+E(x,y-34,12,4,"#f7f1e1",'stroke="#eadfc9"')+L(`M${x-8} ${y-26} v32`,"#fff",3,'opacity=".7"');
+  return svg(PLATE+p(60,100)+p(88,92)+E(138,92,32,17,"#fff",'stroke="#e6d9c2" stroke-width="2"')+E(138,90,26,12,c1)+C(128,88,4,c2)+C(140,92,4,c2)+C(148,86,3.4,c2)+C(136,84,3.4,c2))},
+};
+function dishArt(d){const f=ART[d.kind]||ART.curry;return f(d.c1,d.c2,d.id)}
+
+/* ============ SCENES (services & add-ons) ============ */
+const gar=(x1,y1,x2,y2,n,cols)=>{let s="";for(let i=0;i<=n;i++){const t=i/n,x=x1+(x2-x1)*t,y=y1+(y2-y1)*t+Math.sin(t*Math.PI)*10;s+=C(x,y,4.6,cols[i%cols.length])}return s};
+const girl=(x,col,pal)=>P(`M${x-17} 64 L${x+17} 64 L${x+27} 138 L${x-27} 138Z`,col)+P(`M${x-17} 64 L${x-6} 64 L${x+8} 138 L${x-27} 138Z`,pal,'opacity=".55"')+L(`M${x-20} 100 H${x+22}`,"#E6BE6E",2.4)+
+  R(x-6,52,12,14,"#e8b88a",4)+C(x,42,11,"#e8b88a")+P(`M${x-12} 42 Q${x} 24 ${x+12} 42 Q${x} 34 ${x-12} 42Z`,"#2b1a17")+C(x+12,34,6,"#2b1a17")+gar(x-12,40,x+12,40,5,["#fff"]).replace(/r="4.6"/g,'r="1.8"')+
+  L(`M${x+8} 74 L${x+30} 66`,"#e8b88a",5)+E(x+34,66,13,4,"#E6BE6E")+P(`M${x+34} 62 q-4 -8 0 -12 q4 4 0 12Z`,"#ff8a1f")+L(`M${x-8} 74 L${x-18} 96`,"#e8b88a",5);
+const SC={
+catering(){return svg(E(100,128,76,8,"#000",'opacity=".12"')+P("M32 104 Q32 46 100 44 Q168 46 168 104Z","#d7dce3",'stroke="#b8bec6" stroke-width="2"')+R(22,104,156,12,"#b8bec6",6)+C(100,36,8,"#b8bec6")+L("M52 90 Q56 62 84 54","#fff",5,'opacity=".6"')+
+  L("M82 28 q-8 -10 0 -20","#e0b05a",3,'opacity=".7"')+L("M120 28 q-8 -10 0 -20","#e0b05a",3,'opacity=".7"')+P("M150 132 l10 -22 l8 22Z","#2f8f3f",'opacity=".0"'))},
+stage(){return svg(R(0,0,200,150,"#fff3dc",0,'opacity="0"')+P("M70 136 V74 Q100 24 130 74 V136Z","#E6BE6E")+P("M80 136 V78 Q100 40 120 78 V136Z","#C8963E")+gar(72,76,100,40,6,["#e9549a","#f5a623"])+gar(128,76,100,40,6,["#e9549a","#f5a623"])+
+  P("M6 8 H64 Q46 70 56 138 H6Z","#7A2236")+P("M194 8 H136 Q154 70 144 138 H194Z","#7A2236")+R(6,8,188,14,"#5E1626")+L("M10 22 H190","#E6BE6E",2)+
+  R(36,128,128,12,"#8a5a2b",3)+R(78,98,44,28,"#b3261e",8)+R(82,86,36,18,"#c0392b",8)+R(74,106,8,20,"#8e1c16",3)+R(118,106,8,20,"#8e1c16",3)+
+  R(46,104,4,24,"#E6BE6E")+P("M48 98 q-4 -8 0 -12 q4 4 0 12Z","#ff8a1f")+R(150,104,4,24,"#E6BE6E")+P("M152 98 q-4 -8 0 -12 q4 4 0 12Z","#ff8a1f"))},
+flower(){return svg(P("M22 52 L100 14 L178 52Z","#b3261e")+R(22,50,156,8,"#E6BE6E")+gar(26,60,174,60,18,["#f5a623","#ffd24a","#e9549a"])+R(32,58,8,74,"#C8963E")+R(160,58,8,74,"#C8963E")+gar(40,64,100,64,8,["#fff","#f5a623"])+gar(100,64,160,64,8,["#fff","#f5a623"])+
+  R(26,130,148,8,"#8a5a2b",2)+E(100,118,26,6,"#f5d57a")+R(84,92,32,26,"#b3261e",6)+P("M92 92 q8 -22 16 0Z","#E6BE6E")+L("M100 70 v-10","#E6BE6E",3)+C(100,56,6,"#ff8a1f")+gar(34,120,66,126,4,["#e9549a","#f5a623"])+gar(134,126,166,120,4,["#e9549a","#f5a623"]))},
+balloon(){const cols=["#e9549a","#f5a623","#2f9aa6","#7A2236","#6aa84f","#ffd24a"];let b="";for(let i=0;i<13;i++){const a=Math.PI+(i/12)*Math.PI,x=100+Math.cos(a)*76,y=122+Math.sin(a)*92;b+=E(x,y,11,13,cols[i%cols.length])+C(x-3,y-4,2.6,"#fff",'opacity=".55"')}
+  for(let i=0;i<8;i++){const a=Math.PI+((i+.5)/8)*Math.PI,x=100+Math.cos(a)*62,y=122+Math.sin(a)*72;b+=E(x,y,9,11,cols[(i+2)%cols.length])}
+  return svg(R(0,128,200,22,"#e8d4aa",0,'opacity=".6"')+L("M24 130 V110","#8a5a2b",3)+L("M176 130 V110","#8a5a2b",3)+b+E(100,100,22,5,"#C8963E",'opacity=".0"')+R(40,138,120,6,"#5E1626",3,'opacity=".0"'))},
+welcome(){return svg(R(0,126,200,24,"#e8d4aa",0,'opacity=".6"')+girl(60,"#7A2236","#C8963E")+girl(140,"#2F6B3A","#E6BE6E")+L("M92 70 Q100 82 108 70","#E6BE6E",2.4,'opacity="0"'))},
+staff(){return svg(E(100,136,80,6,"#000",'opacity=".12"')+P("M30 68 h74 v44 q0 14 -14 14 h-46 q-14 0 -14 -14z","#b8bec6",'stroke="#9aa3ae" stroke-width="2"')+E(67,68,40,8,"#d7dce3",'stroke="#9aa3ae" stroke-width="2"')+R(26,78,8,6,"#9aa3ae",3)+R(100,78,8,6,"#9aa3ae",3)+
+  L("M50 56 q-6 -10 2 -20 q8 -10 0 -18","#c9bfae",3,'opacity=".7"')+L("M78 54 q-6 -10 2 -18","#c9bfae",3,'opacity=".6"')+
+  R(124,92,44,40,"#fff",8,'stroke="#e6d9c2"')+R(136,92,20,40,"#E6BE6E",0,'opacity=".25"')+C(146,76,13,"#e8b88a")+P("M133 72 Q146 44 159 72Z","#fff",'stroke="#e6d9c2"')+R(134,54,24,12,"#fff",6,'stroke="#e6d9c2"')+C(146,52,10,"#fff",'stroke="#e6d9c2"')+L("M170 96 L184 70","#8a5a2b",4)+E(186,66,8,5,"#b8bec6"))},
+coordinator(){return svg(E(100,138,60,6,"#000",'opacity=".12"')+R(54,22,92,112,"#fff",10,'stroke="#d9c6a0" stroke-width="2"')+R(84,14,32,16,"#C8963E",5)+
+  [0,1,2,3].map(i=>R(70,48+i*21,10,10,"#fff",2,'stroke="#C8963E" stroke-width="2"')+L(`M72 ${54+i*21} l3 3 l6 -8`,"#2E9B4B",2.6)+R(88,50+i*21,44-(i%2)*10,6,"#e6d9c2",3)).join("")+
+  C(160,40,16,"#7A2236")+L("M160 30 v10 l7 4","#fff",2.4)+R(30,70,24,26,"#fff",4,'stroke="#d9c6a0" transform="rotate(-8 42 83)"')+R(30,70,24,8,"#b3261e",3,'transform="rotate(-8 42 83)"'))},
+drum(){return svg(E(100,138,80,6,"#000",'opacity=".12"')+R(38,58,74,36,"#8a4a22",10)+E(38,76,9,18,"#f3e3c0",'stroke="#5a2f12" stroke-width="2"')+E(112,76,9,18,"#f3e3c0",'stroke="#5a2f12" stroke-width="2"')+
+  [0,1,2,3,4].map(i=>L(`M${52+i*14} 58 v36`,"#e4b04a",2.4)).join("")+R(50,94,6,26,"#5a2f12",2)+R(94,94,6,26,"#5a2f12",2)+
+  L("M26 36 L84 66","#d9a35f",4)+L("M124 36 L70 62","#d9a35f",4)+C(26,36,4,"#b3261e")+C(124,36,4,"#b3261e")+
+  P("M128 76 Q150 60 172 76 L168 120 Q150 130 132 120Z","#8a4a22")+E(150,76,22,8,"#f3e3c0",'stroke="#5a2f12" stroke-width="2"')+[0,1,2].map(i=>L(`M${136+i*14} 80 l4 40`,"#e4b04a",2)).join("")+C(180,50,3,"#E6BE6E")+C(188,64,2.4,"#E6BE6E"))},
+nadaswaram(){return svg(E(100,138,80,6,"#000",'opacity=".12"')+P("M26 112 L142 46 L152 62 L36 128Z","#5a3a1c")+P("M10 108 L38 98 L46 132 L20 140Z","#C8963E")+[0,1,2,3].map(i=>L(`M${58+i*20} ${106-i*11} l8 12`,"#E6BE6E",3)).join("")+R(140,38,14,10,"#d9a35f",3,'transform="rotate(-30 147 43)"')+
+  E(150,108,30,22,"#8a4a22")+E(150,108,18,12,"#f3e3c0",'stroke="#5a2f12" stroke-width="2"')+L("M126 98 Q150 130 174 98","#e4b04a",2.4,'opacity=".0"')+C(176,56,3,"#E6BE6E")+C(186,70,2.4,"#E6BE6E"))},
+camera(){return svg(R(18,34,44,56,"#fff",4,'stroke="#e6d9c2" transform="rotate(-10 40 62)"')+R(23,39,34,34,"#f0c27a",2,'transform="rotate(-10 40 62)"')+R(144,28,40,52,"#fff",4,'stroke="#e6d9c2" transform="rotate(9 164 54)"')+R(149,33,30,32,"#d98fa6",2,'transform="rotate(9 164 54)"')+
+  E(100,138,56,6,"#000",'opacity=".12"')+R(50,62,100,66,"#2B1A17",12)+R(80,52,40,14,"#2B1A17",5)+R(58,68,18,8,"#E6BE6E",3)+C(100,96,27,"#444")+C(100,96,19,"#1f3a5f")+C(100,96,11,"#0f2038")+C(93,89,5,"#9bd0ff",'opacity=".8"')+C(136,72,4,"#b3261e"))},
+led(){return svg(E(100,140,50,5,"#000",'opacity=".12"')+R(94,112,12,22,"#444")+R(70,132,60,6,"#444",3)+R(22,24,156,90,"#111",8)+R(30,31,140,76,"#7A2236",4)+C(100,68,22,"#E6BE6E")+C(100,68,14,"#ffd24a")+L("M44 98 H156","#E6BE6E",3)+gar(36,40,164,40,10,["#e9549a","#f5a623"]).replace(/r="4.6"/g,'r="2"'))},
+sound(){return svg(P("M96 0 L40 132 L84 132Z","#E6BE6E",'opacity=".28"')+P("M104 0 L160 132 L116 132Z","#e9549a",'opacity=".24"')+C(100,10,9,"#E6BE6E")+C(50,12,6,"#e9549a")+C(150,12,6,"#2f9aa6")+
+  R(24,44,56,90,"#2B1A17",9)+C(52,70,13,"#555")+C(52,70,6,"#222")+C(52,108,19,"#555")+C(52,108,10,"#222")+R(120,44,56,90,"#2B1A17",9)+C(148,70,13,"#555")+C(148,70,6,"#222")+C(148,108,19,"#555")+C(148,108,10,"#222")+
+  R(86,110,28,22,"#444",4)+C(94,121,4,"#E6BE6E")+C(106,121,4,"#2E9B4B"))},
+counter(){return svg(E(100,140,84,6,"#000",'opacity=".12"')+R(18,96,164,38,"#8a5a2b",5)+R(18,90,164,10,"#b07a3c",4)+E(66,88,38,8,"#2B1A17")+E(66,86,30,5.5,"#e5b660")+L("M48 84 q18 -6 36 0","#fff",2,'opacity=".4"')+
+  L("M56 74 q-6 -10 2 -18","#c9bfae",3,'opacity=".7"')+L("M76 72 q-6 -10 2 -16","#c9bfae",3,'opacity=".6"')+
+  R(132,64,34,32,"#fff",8,'stroke="#e6d9c2"')+C(149,48,12,"#e8b88a")+R(136,26,26,10,"#fff",3,'stroke="#e6d9c2"')+C(142,28,8,"#fff",'stroke="#e6d9c2"')+C(156,28,8,"#fff",'stroke="#e6d9c2"')+C(149,25,8,"#fff",'stroke="#e6d9c2"')+
+  R(150,104,24,14,"#fff",3)+C(162,111,4,"#f5a623"))},
+gift(){return svg(E(100,140,76,6,"#000",'opacity=".12"')+R(30,78,52,52,"#b3261e",5)+R(52,78,8,52,"#E6BE6E")+R(30,98,52,8,"#E6BE6E")+C(48,70,8,"none",'stroke="#E6BE6E" stroke-width="3.4"')+C(64,70,8,"none",'stroke="#E6BE6E" stroke-width="3.4"')+
+  R(92,92,44,38,"#2F6B3A",5)+R(110,92,8,38,"#E6BE6E")+R(92,108,44,7,"#E6BE6E")+C(106,86,6,"none",'stroke="#E6BE6E" stroke-width="3"')+C(122,86,6,"none",'stroke="#E6BE6E" stroke-width="3"')+
+  R(140,70,36,60,"#7A2236",5)+R(155,70,6,60,"#E6BE6E")+R(140,92,36,7,"#E6BE6E")+C(152,64,7,"none",'stroke="#E6BE6E" stroke-width="3"')+C(164,64,7,"none",'stroke="#E6BE6E" stroke-width="3"'))},
+tent(){let ch="";for(let r=0;r<2;r++)for(let i=0;i<6;i++)ch+=R(34+i*24,104+r*18,16,14,"#7A2236",3)+R(34+i*24,96+r*18,16,8,"#9a2b44",3);
+  return svg(P("M16 66 L100 20 L184 66Z","#fff",'stroke="#e6d9c2" stroke-width="2"')+P("M16 66 L100 20 L58 66Z","#f3e3c0",'opacity=".6"')+R(16,64,168,6,"#C8963E")+R(22,70,5,56,"#C8963E")+R(173,70,5,56,"#C8963E")+gar(30,74,170,74,16,["#f5a623","#e9549a"]).replace(/r="4.6"/g,'r="3"')+ch)},
+banana(){return ART.leaf("","")}
+};
+SC.stage2=()=>SC.stage().replace(/#7A2236/g,"#1F5F5B").replace(/#5E1626/g,"#0f3d3a");
+function sceneArt(k){return (SC[k]||SC.catering)()}
+
+/* ============ DATA ============ */
+const D=(id,name,ta,reg,diet,cat,price,kind,c1,c2)=>({id,name,ta,reg,diet,cat,price,kind,c1,c2});
+const MENU=[
+/* Tamil Nadu */
+D("t1","Idli with Sambar & Chutney","இட்லி, சாம்பார், சட்னி","TN","v","Breakfast",30,"idli","#fff","#c43b2a"),
+D("t2","Ghee Pongal","நெய் பொங்கல்","TN","v","Breakfast",40,"rice","#f3e3a8","#7a4a1c"),
+D("t3","Medu Vada","மெது வடை","TN","v","Breakfast",20,"vada","#d9962f","#a96b17"),
+D("t4","Masala Dosa","மசாலா தோசை","TN","v","Breakfast",45,"dosa","#e9b55a","#e0782c"),
+D("t5","Sambar","சாம்பார்","TN","v","Gravy",25,"curry","#d9741e","#e9b02f"),
+D("t6","Rasam","ரசம்","TN","v","Gravy",15,"curry","#b8441e","#7aa33a"),
+D("t7","Poriyal (Beans & Carrot)","பொரியல்","TN","v","Side dish",25,"dry","#6aa84f","#f08a2f"),
+D("t8","Kootu","கூட்டு","TN","v","Side dish",25,"curry","#e8cf6a","#a8c25a"),
+D("t9","Curd Rice","தயிர் சாதம்","TN","v","Rice",30,"rice","#fffef8","#2f9a45"),
+D("t10","Lemon Rice","எலுமிச்சை சாதம்","TN","v","Rice",30,"rice","#f4dc3e","#2f7a35"),
+D("t11","Veg Biryani with Raita","வெஜ் பிரியாணி","TN","v","Rice",90,"biryani","#e8b24a","#8a4a1c"),
+D("t12","Appalam & Pickle","அப்பளம், ஊறுகாய்","TN","v","Side dish",10,"papad","#f1cf8a","#7a4a1c"),
+D("t13","Chicken Chettinad","செட்டிநாடு சிக்கன்","TN","n","Main",120,"curry","#a8341c","#7a2410"),
+D("t14","Chicken 65","சிக்கன் 65","TN","n","Starter",90,"fry","#c4381e","#8a1f10"),
+D("t15","Mutton Chukka","மட்டன் சுக்கா","TN","n","Main",180,"dry","#6e3a1e","#3a1c0e"),
+D("t16","Madurai Mutton Biryani","மதுரை மட்டன் பிரியாணி","TN","n","Rice",220,"biryani","#e0a03a","#6e3a1e"),
+D("t17","Fish Fry (Vanjaram)","வஞ்சிரம் மீன் வறுவல்","TN","n","Starter",150,"fish","#d9762a","#8a3a12"),
+D("t18","Prawn Thokku","இறால் தொக்கு","TN","n","Main",160,"curry","#a8341c","#f08a5a"),
+D("t19","Egg Podimas","முட்டை பொடிமாஸ்","TN","n","Side dish",40,"dry","#f5d24a","#e58a2f"),
+D("t20","Nattu Kozhi Kuzhambu","நாட்டுக்கோழி குழம்பு","TN","n","Main",130,"curry","#9a3a1c","#c9701f"),
+/* Kerala */
+D("k1","Kerala Sadya (Full Banana Leaf)","സദ്യ","KL","v","Feast",180,"leaf","#fff","#fff"),
+D("k2","Appam with Veg Stew","ആപ്പം, സ്റ്റൂ","KL","v","Breakfast",60,"appam","#fffaf0","#c99a52"),
+D("k3","Avial","അവിയൽ","KL","v","Side dish",30,"curry","#f1ecc6","#6aa84f"),
+D("k4","Olan","ഓലൻ","KL","v","Side dish",25,"curry","#eaf1d8","#7bb55a"),
+D("k5","Cabbage Thoran","തോരൻ","KL","v","Side dish",25,"dry","#6aa84f","#fff6c4"),
+D("k6","Parippu with Ghee","പരിപ്പ്","KL","v","Gravy",25,"curry","#f1c842","#d9962f"),
+D("k7","Puttu & Kadala Curry","പുട്ട്, കടല കറി","KL","v","Breakfast",55,"puttu","#8a4a22","#c9701f"),
+D("k8","Palada Payasam","പാലട പായസം","KL","v","Dessert",45,"payasam","#f9e6c4","#e9b84a"),
+D("k9","Pazham Pori (Banana Fritter)","പഴംപൊരി","KL","v","Snack",20,"fry","#e8b24a","#b87a1e"),
+D("k10","Kerala Parotta","പൊറോട്ട","KL","v","Bread",20,"parotta","#f0d08a","#e3b862"),
+D("k11","Karimeen Pollichathu","കരിമീൻ പൊള്ളിച്ചത്","KL","n","Main",200,"fish","#c9561e","#7a2410"),
+D("k12","Malabar Chicken Biryani","മലബാർ ബിരിയാണി","KL","n","Rice",160,"biryani","#f0c24a","#a8641e"),
+D("k13","Kerala Chicken Roast","ചിക്കൻ റോസ്റ്റ്","KL","n","Main",110,"chicken","#a8341c","#d9622a"),
+D("k14","Meen Curry (Fish Curry)","മീൻ കറി","KL","n","Gravy",90,"curry","#c4381e","#e8a07a"),
+D("k15","Prawn Roast","ചെമ്മീൻ റോസ്റ്റ്","KL","n","Main",170,"dry","#b8441e","#e86a3a"),
+D("k16","Egg Roast","മുട്ട റോസ്റ്റ്","KL","n","Side dish",60,"curry","#b8441e","#fff3dc"),
+/* North Indian */
+D("n1","Paneer Butter Masala","பனீர் பட்டர் மசாலா","NI","v","Main",70,"curry","#e9772a","#f7e2b0"),
+D("n2","Dal Makhani","தால் மக்கனி","NI","v","Main",50,"curry","#6e3a1e","#a8683a"),
+D("n3","Butter Naan","பட்டர் நான்","NI","v","Bread",20,"naan","#f0cf94","#8a5a2b"),
+D("n4","Jeera Rice","ஜீரா ரைஸ்","NI","v","Rice",30,"rice","#f7edc4","#8a5a2b"),
+D("n5","Veg Pulao","வெஜ் புலாவ்","NI","v","Rice",45,"rice","#f0c860","#2f9a45"),
+D("n6","Chicken Butter Masala","சிக்கன் பட்டர் மசாலா","NI","n","Main",130,"curry","#e0561e","#b8341c"),
+D("n7","Chole Bhature","சோலே பத்தூரா","NI","v","Main",55,"naan","#e8b24a","#8a4a1c"),
+/* Sweets */
+D("s1","Gulab Jamun","குலாப் ஜாமுன்","SW","v","Sweet",25,"sweet","#6e2a14","#e9a22a"),
+D("s2","Mysore Pak","மைசூர் பாக்","SW","v","Sweet",30,"halwa","#f2b93a","#e0962a"),
+D("s3","Tirunelveli Halwa","திருநெல்வேலி அல்வா","SW","v","Sweet",35,"halwa","#c9701f","#e8b24a"),
+D("s4","Ada Pradhaman","அடை பிரதமன்","SW","v","Dessert",50,"payasam","#c9854a","#f2c85a"),
+D("s5","Rava Kesari","கேசரி","SW","v","Sweet",25,"halwa","#f08a1f","#f7c85a"),
+D("s6","Rasmalai","ரசமலாய்","SW","v","Sweet",40,"sweet","#fff3dc","#f6e3b8"),
+D("s7","Ice Cream (Vanilla, Mango, Strawberry)","ஐஸ் கிரீம்","SW","v","Dessert",35,"icecream","#f6b73c","#f19ab4"),
+D("s8","Fruit Salad with Ice Cream","ஃப்ரூட் சாலட்","SW","v","Dessert",40,"icecream","#e9549a","#ffd24a"),
+/* Snacks & Drinks */
+D("d1","Rose Milk (Welcome Drink)","ரோஸ் மில்க்","SD","v","Drink",20,"drink","#f08aa8","#e9549a"),
+D("d2","Filter Coffee","பில்டர் காபி","SD","v","Drink",15,"coffee","#f4efe6","#7a4a24"),
+D("d3","Tender Coconut Water","இளநீர்","SD","v","Drink",40,"drink","#e8f2d4","#6aa84f"),
+D("d4","Spiced Buttermilk","மோர்","SD","v","Drink",10,"drink","#fff8e6","#6aa84f"),
+D("d5","Samosa & Chutney","சமோசா","SD","v","Snack",20,"snack","#e0a238","#a86a16"),
+D("d6","Onion Bajji","வெங்காய பஜ்ஜி","SD","v","Snack",20,"fry","#e9b24a","#a8741e"),
+D("d7","Sundal","சுண்டல்","SD","v","Snack",15,"dry","#e8c46a","#6aa84f"),
+D("d8","Fresh Fruit Juice","பழச்சாறு","SD","v","Drink",30,"drink","#f6a02a","#e9549a")
+];
+const MAP=Object.fromEntries(MENU.map(m=>[m.id,m]));
+const TABS=[["all","All dishes"],["TN","Tamil Nadu"],["KL","Kerala"],["NI","North Indian"],["SW","Sweets & Desserts"],["SD","Snacks & Drinks"]];
+const PACKS=[
+ {id:"p1",name:"Classic Veg Meals",ta:"கிளாசிக் சைவ விருந்து",tag:"Most booked",items:["d1","t3","t5","t6","t7","t8","t9","t10","t12","s1","s5"],kind:"leaf",c:["#fff","#fff"],desc:"Traditional Tamil vegetarian lunch on banana leaf."},
+ {id:"p2",name:"Kerala Sadya",ta:"കേരള സദ്യ",tag:"Festival favourite",items:["k1","k3","k6","k5","k9","d4","k8"],kind:"leaf",c:["#fff","#fff"],desc:"Onam-style sadya with payasam, served on a banana leaf."},
+ {id:"p3",name:"Royal Non-Veg Feast",ta:"ராயல் அசைவ விருந்து",tag:"Weddings",items:["d1","t14","t16","t13","t17","t9","t12","s1","s7","d2"],kind:"biryani",c:["#e0a03a","#6e3a1e"],desc:"Biryani, Chettinad chicken and fish fry with sweets."},
+ {id:"p4",name:"Grand Wedding Spread",ta:"திருமண சிறப்பு விருந்து",tag:"Full wedding",items:["d1","d2","t1","t2","t3","k2","k3","t5","t6","t7","k5","t9","t12","k8","s1","s2"],kind:"leaf",c:["#fff","#fff"],desc:"Breakfast and lunch, Tamil and Kerala dishes together."}
+];
+const ADDONS=[
+ {id:"a1",name:"Stage Decoration – Standard",ta:"மேடை அலங்காரம்",desc:"Backdrop, curtains, lamps, two sofas and flower garlands.",price:25000,unit:"event",scene:"stage"},
+ {id:"a2",name:"Grand Floral Stage & Backdrop",ta:"மலர் மேடை அலங்காரம்",desc:"Fresh-flower stage, entrance walkway and lighting.",price:65000,unit:"event",scene:"stage2"},
+ {id:"a3",name:"Mandap / Flower Decoration",ta:"மணமேடை",desc:"Wedding mandap with marigold, jasmine and rose garlands.",price:40000,unit:"event",scene:"flower"},
+ {id:"a4",name:"Entrance Arch & Balloon Decor",ta:"வரவேற்பு வளைவு",desc:"Balloon arch and welcome board at the hall entrance.",price:8000,unit:"event",scene:"balloon"},
+ {id:"a5",name:"Welcome Girls (set of 4)",ta:"வரவேற்பு பெண்கள்",desc:"Traditional saree, aarathi plate, flowers and sandal for guests.",price:6000,unit:"unit",label:"set",scene:"welcome"},
+ {id:"a6",name:"Chenda Melam (8 artists)",ta:"செண்டை மேளம்",desc:"Kerala chenda team for procession and welcome.",price:28000,unit:"event",scene:"drum"},
+ {id:"a7",name:"Nadaswaram & Thavil",ta:"நாதஸ்வரம், தவில்",desc:"Traditional wedding music through the muhurtham.",price:22000,unit:"event",scene:"nadaswaram"},
+ {id:"a8",name:"Photography & Video (full day)",ta:"புகைப்படம், வீடியோ",desc:"Two photographers, one videographer, edited album and film.",price:30000,unit:"event",scene:"camera"},
+ {id:"a9",name:"LED Wall & Live Screen",ta:"LED திரை",desc:"Big screen for live stage view and photo slideshow.",price:15000,unit:"event",scene:"led"},
+ {id:"a10",name:"Sound, Lights & DJ",ta:"ஒலி, ஒளி அமைப்பு",desc:"PA system, stage lights and a DJ for reception evening.",price:12000,unit:"event",scene:"sound"},
+ {id:"a11",name:"Live Counter (dosa, chaat, juice)",ta:"லைவ் கவுண்டர்",desc:"Chef-run live counter, one per cuisine of your choice.",price:8000,unit:"unit",label:"counter",scene:"counter"},
+ {id:"a12",name:"Tent, Chairs & Tables",ta:"பந்தல், நாற்காலி",desc:"Pandal, seating and dining tables for open-air events.",price:15,unit:"guest",scene:"tent"},
+ {id:"a13",name:"Banana-leaf Service Upgrade",ta:"வாழை இலை சேவை",desc:"Fresh banana leaf, steel tumbler and water for every guest.",price:8,unit:"guest",scene:"banana"},
+ {id:"a14",name:"Return Gifts",ta:"தாம்பூலம் / பரிசு",desc:"Thamboolam bag with coconut, fruit and a small keepsake.",price:40,unit:"guest",scene:"gift"},
+ {id:"a15",name:"Event Coordinator & Supervisor",ta:"நிகழ்ச்சி ஒருங்கிணைப்பாளர்",desc:"One person managing every vendor and the timeline on the day.",price:10000,unit:"event",scene:"coordinator"}
+];
+const SERV=[
+ ["Catering – Tamil Nadu & Kerala","சமையல் & கேட்டரிங்","Full meals, tiffin, snacks and sweets cooked fresh for 50 to 3,000 guests.","catering"],
+ ["Stage & Floral Decoration","மேடை, மலர் அலங்காரம்","Mandap, stage, entrance arch and flower garlands designed to your colours.","stage"],
+ ["Welcome Girls & Hospitality","வரவேற்பு பெண்கள்","Traditional dressed hosts to greet guests with flowers, sandal and rose water.","welcome"],
+ ["Cooking & Serving Staff","சமையல், பரிமாறும் குழு","Experienced cooks and uniformed servers, so your family can enjoy the function.","staff"],
+ ["Event Management","நிகழ்ச்சி மேலாண்மை","Timeline, vendors, seating and guest handling, all through one coordinator.","coordinator"],
+ ["Chenda Melam & Music","செண்டை மேளம், இசை","Chenda, nadaswaram, thavil and band for processions and the muhurtham.","drum"],
+ ["Photography & Videography","புகைப்படம், வீடியோ","Candid photos, cinematic video and drone shots, delivered as album and film.","camera"],
+ ["Sound, Lights & LED","ஒலி, ஒளி, LED","Speakers, stage lights and big screens, set up and run by our crew.","sound"]
+];
+const OCC=["Weddings","Engagements","Receptions","Housewarming (Gruhapravesham)","Birthday & Baby Shower","Puberty & Ear-piercing Functions","Corporate Lunches","Temple Festivals","Church & Community Events","Memorial Meals"];
+const EVENTS=[["Wedding Reception","1,200 guests","Nagercoil","stage"],["Housewarming","350 guests","Marthandam","flower"],["Birthday Celebration","180 guests","Thuckalay","balloon"],["Temple Festival Annadhanam","2,500 guests","Kanyakumari","drum"],["Engagement","500 guests","Thiruvananthapuram","welcome"],["Corporate Annual Day","400 guests","Tirunelveli","counter"]];
+const TEST=[["Priya & Arun","Wedding, Nagercoil","The sadya was exactly like home. Our relatives from Kerala asked for the cook's name. Everything was on time."],["Joseph Mathew","Anniversary lunch, Marthandam","Fish curry and appam were wonderful. The staff were polite and cleared plates quickly."],["Lakshmi Narayanan","Housewarming, Thiruvananthapuram","They handled decoration, food and music. I only had to welcome my guests."],["Ramesh Kumar","Annual day, Tirunelveli","400 people served in 40 minutes. Our management was very happy with the live counters."]];
+const FAQ=[["What is the minimum number of guests?","For full catering with staff we usually take events from 50 guests. For smaller functions we offer packed meals and food delivery. Call us and we will suggest the best option."],
+ ["How much advance do I need to pay?",`${CONFIG.advance}% of the quoted amount confirms your date. The balance is paid before the event starts. Taxes are extra as applicable.`],
+ ["Can I change the menu after getting the quote?","Yes. Tell us on WhatsApp and we will send a revised quotation. You can change dishes up to 5 days before the event."],
+ ["Do you offer a tasting?","Yes, free tasting for events above 300 guests. For smaller events a tasting box can be arranged for a small charge."],
+ ["How far do you travel?","Within 60 km of Nagercoil there is no travel charge. Beyond that we charge only the actual transport cost."],
+ ["How early should I book?","For weddings and festival days, book 3 to 4 weeks ahead. For regular functions, one week is usually enough."]];
+
+/* ============ HELPERS ============ */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const inr=n=>"₹"+Math.round(n).toLocaleString("en-IN");
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const LOGO=`<svg viewBox="0 0 48 48" width="40" height="40"><circle cx="24" cy="24" r="23" fill="#5E1626" stroke="#C8963E" stroke-width="2"/><path d="M11 29 Q11 14 24 13 Q37 14 37 29Z" fill="#E6BE6E"/><rect x="9" y="29" width="30" height="4" rx="2" fill="#C8963E"/><circle cx="24" cy="12" r="2.6" fill="#E6BE6E"/><path d="M16 26 Q17 19 23 17" stroke="#fff" stroke-opacity=".6" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M17 38 q7 5 14 0" stroke="#E6BE6E" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`;
+let toastT;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("on"),2400)}
+
+/* ============ STATE ============ */
+const sel=new Set(), ad={}; let tab="all", diet="all", qs="";
+const ENQ_KEY="thaalam-enq-v1";
+let memEnq=[];
+function loadEnq(){try{return JSON.parse(localStorage.getItem(ENQ_KEY)||"[]")}catch(e){return memEnq}}
+function saveEnq(a){memEnq=a;try{localStorage.setItem(ENQ_KEY,JSON.stringify(a))}catch(e){}}
+const guests=()=>Math.max(0,parseInt($("#fGuests").value,10)||0);
+const perPlate=()=>[...sel].reduce((s,id)=>s+MAP[id].price,0);
+function addonCost(a,g){const q=ad[a.id]||0;if(!q)return 0;return a.unit==="guest"?a.price*g:a.price*q}
+function calc(){const g=guests(),pp=perPlate(),food=pp*g;let svc=0;ADDONS.forEach(a=>svc+=addonCost(a,g));return{g,pp,food,svc,total:food+svc}}
+
+/* ============ RENDER: STATIC ============ */
+function heroArt(){const mk=(d)=>`<div class="c ${d.cls}">${dishArt(d)}</div>`;
+  $("#heroArt").innerHTML=mk({id:"h1",kind:"leaf",c1:"",c2:"",cls:"c1"})+mk({id:"h2",kind:"biryani",c1:"#e0a03a",c2:"#6e3a1e",cls:"c2"})+mk({id:"h3",kind:"sweet",c1:"#6e2a14",c2:"#e9a22a",cls:"c3"})+`<div class="tag ta">Since 2010 · சுவை, தரம், நம்பிக்கை</div>`}
+function renderStatic(){
+  $("#logo").innerHTML=LOGO;$("#logo2").innerHTML=LOGO;
+  $("#svcGrid").innerHTML=SERV.map(s=>`<article class="card"><div class="img">${sceneArt(s[3])}</div><div class="body"><h3>${s[0]}</h3><div class="tn ta">${s[1]}</div><p>${s[2]}</p></div></article>`).join("");
+  $("#occ").innerHTML=OCC.map(o=>`<span class="chip">${o}</span>`).join("");
+  $("#evGrid").innerHTML=EVENTS.map(e=>`<article class="card"><div class="img">${sceneArt(e[3])}</div><div class="body"><h3>${e[0]}</h3><p>${e[1]} · ${e[2]}</p></div></article>`).join("");
+  $("#tmGrid").innerHTML=TEST.map(t=>`<article class="card quote"><div class="stars">★★★★★</div><p>“${t[2]}”</p><div class="who"><span class="av">${t[0][0]}</span><span><b style="color:var(--ink)">${t[0]}</b><br>${t[1]}</span></div></article>`).join("");
+  $("#faq").innerHTML=FAQ.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("");
+  $("#fType").innerHTML=["Wedding","Engagement","Reception","Housewarming","Birthday / Baby Shower","Puberty / Ear-piercing","Corporate event","Temple / Community festival","Memorial meal","Other"].map(x=>`<option>${x}</option>`).join("");
+  $("#phoneTxt").textContent=CONFIG.phoneShow;
+  $("#waBtn").href=waUrl(CONFIG.wa,"Hello, I would like to know more about your catering services.");
+  const t=new Date();t.setDate(t.getDate()+1);$("#fDate").min=t.toISOString().slice(0,10);
+  $("#mapArt").innerHTML=`<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#efe3c8"/><path d="M0 210 Q120 180 200 220 T400 190" stroke="#fff" stroke-width="16" fill="none"/><path d="M90 0 Q110 120 80 300" stroke="#fff" stroke-width="12" fill="none"/><path d="M0 90 H400" stroke="#fff" stroke-width="10"/><path d="M250 0 V300" stroke="#fff" stroke-width="9"/><rect x="300" y="120" width="70" height="50" rx="6" fill="#cfe3b8"/><rect x="20" y="130" width="50" height="60" rx="6" fill="#cfe3b8"/><circle cx="330" cy="240" r="34" fill="#cbe0ee"/><g transform="translate(200 128)"><path d="M0 0 C-24 -30 -22 -58 0 -58 C22 -58 24 -30 0 0Z" fill="#B3261E" stroke="#fff" stroke-width="3"/><circle cx="0" cy="-40" r="8" fill="#fff"/></g><text x="214" y="124" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#5E1626">Thaalam Catering</text><text x="16" y="284" font-size="11" fill="#7B6A62" font-family="Inter,sans-serif">Illustrative map (demo)</text></svg>`;
+}
+
+/* ============ RENDER: MENU ============ */
+function renderTabs(){$("#tabs").innerHTML=TABS.map(([k,l])=>`<button class="tab ${tab===k?"on":""}" data-tab="${k}">${l}</button>`).join("")}
+function renderMenu(){
+  const list=MENU.filter(m=>(tab==="all"||m.reg===tab)&&(diet==="all"||m.diet===diet)&&(!qs||(m.name+" "+m.ta+" "+m.cat).toLowerCase().includes(qs)));
+  $("#menuGrid").innerHTML=list.length?list.map(m=>`<article class="card dish ${sel.has(m.id)?"sel":""}" data-id="${m.id}" tabindex="0" role="checkbox" aria-checked="${sel.has(m.id)}">
+    <div class="img">${dishArt(m)}<span class="vd ${m.diet==="n"?"n":""}" title="${m.diet==="n"?"Non-veg":"Veg"}"></span><button class="v3d" data-v3d="${m.id}" aria-label="View ${esc(m.name)} in 3D">⟲ 3D</button></div>
+    <div class="body"><div class="cat">${m.cat}</div><h3>${m.name}</h3><div class="nm2 ta">${m.ta}</div><div class="price">${inr(m.price)} <small>/ plate</small></div></div>
+    <span class="tick">${sel.has(m.id)?"✓":"+"}</span></article>`).join(""):`<div class="empty">No dishes match. Try another filter.</div>`;
+}
+function renderPacks(){
+  $("#pkGrid").innerHTML=PACKS.map(p=>{const pr=p.items.reduce((s,i)=>s+MAP[i].price,0),on=p.items.length===sel.size&&p.items.every(i=>sel.has(i));
+    const art=dishArt({id:p.id,kind:p.kind,c1:p.c[0],c2:p.c[1]});
+    return `<article class="card pk"><div class="img">${art}<span class="badge" style="position:absolute">${p.tag}</span></div><div class="body"><h3>${p.name}</h3><div class="tn ta" style="font-size:13px;color:var(--gold);font-weight:600">${p.ta}</div>
+    <p style="margin:6px 0 0">${p.desc}</p><ul>${p.items.slice(0,6).map(i=>`<li>${MAP[i].name}</li>`).join("")}${p.items.length>6?`<li>+ ${p.items.length-6} more dishes</li>`:""}</ul>
+    <div class="pp">${inr(pr)} <small>per plate</small></div><button class="btn ${on?"btn-gold":"btn-maroon"}" data-pk="${p.id}" style="margin-top:12px">${on?"✓ Selected":"Choose this package"}</button></div></article>`}).join("");
+}
+function addonUnit(a){return a.unit==="guest"?"per guest":a.unit==="unit"?"per "+a.label:"per event"}
+function renderAddons(){
+  $("#adGrid").innerHTML=ADDONS.map(a=>{const q=ad[a.id]||0;
+    const ctl=a.unit==="unit"?(q?`<span class="step"><button data-dec="${a.id}" aria-label="Less">−</button><b>${q}</b><button data-inc="${a.id}" aria-label="More">+</button></span>`:`<button class="btn btn-maroon btn-sm" data-inc="${a.id}">Add</button>`)
+      :`<button class="btn ${q?"btn-gold":"btn-maroon"} btn-sm" data-tog="${a.id}">${q?"✓ Added":"Add"}</button>`;
+    return `<article class="card addon ${q?"sel":""}"><div class="img">${sceneArt(a.scene)}</div><div class="body"><h3 style="font-size:17px">${a.name}</h3><div class="tn ta" style="font-size:13px;color:var(--gold);font-weight:600">${a.ta}</div><p style="margin:2px 0 0;font-size:13.5px;color:var(--muted)">${a.desc}</p>
+    <div class="row"><div class="ap">${inr(a.price)}<small>${addonUnit(a)}</small></div>${ctl}</div></div></article>`}).join("");
+}
+
+/* ============ RENDER: SUMMARY + BAR ============ */
+function renderSum(){
+  const c=calc(),items=[...sel].map(i=>MAP[i]),adds=ADDONS.filter(a=>ad[a.id]);
+  let h=`<h3>Your selection</h3>`;
+  if(!items.length&&!adds.length){h+=`<div class="empty">Nothing selected yet.<br>Choose dishes from the <a href="#menu" style="color:var(--maroon);font-weight:600">menu</a> or start with a <a href="#packages" style="color:var(--maroon);font-weight:600">package</a>.</div>`}
+  else{
+    if(items.length){h+=`<div class="grp">Menu · ${items.length} dishes</div>`+items.map(m=>`<div class="ln"><span>${m.name}</span><span>${inr(m.price)} <button data-rm="${m.id}" aria-label="Remove ${esc(m.name)}">×</button></span></div>`).join("");
+      h+=`<div class="sub"><span>Price per plate</span><b style="color:var(--ink)">${inr(c.pp)}</b></div>`+(c.g?`<div class="sub"><span>Food (${c.g} guests × ${inr(c.pp)})</span><span>${inr(c.food)}</span></div>`:`<div class="sub" style="color:var(--nonveg)"><span>Enter the number of guests (box at the top of the menu) to see the food total</span></div>`)}
+    if(adds.length){h+=`<div class="grp">Add-on services</div>`+adds.map(a=>{const q=ad[a.id];return `<div class="ln"><span>${a.name}${a.unit==="unit"?` × ${q}`:a.unit==="guest"?` (${c.g} guests)`:""}</span><span>${inr(addonCost(a,c.g))} <button data-rma="${a.id}" aria-label="Remove">×</button></span></div>`}).join("");
+      h+=`<div class="sub"><span>Services total</span><span>${inr(c.svc)}</span></div>`}
+    h+=c.g||!items.length?`<div class="tot"><span>Estimated total</span><b>${inr(c.total)}</b></div>`:`<div class="tot"><span>Estimated total</span><b style="font-size:18px">Add guest count</b></div>`;
+  }
+  h+=`<p class="note">This is an estimate. The final quotation may change with venue, timing and quantity. GST extra as applicable.</p>`;
+  $("#sum").innerHTML=h;
+  const n=sel.size+Object.keys(ad).filter(k=>ad[k]).length;
+  $("#fbCount").textContent=`${sel.size} dish${sel.size===1?"":"es"}${adds.length?` + ${adds.length} service${adds.length>1?"s":""}`:""}`;
+  $("#fbTotal").textContent=(c.g||!sel.size)?inr(c.total):inr(c.pp)+" / plate";
+  barState.has=n>0;updateBar();
+}
+const barState={has:false,qvis:false,admin:false};
+function updateBar(){$("#fbar").classList.toggle("show",barState.has&&!barState.qvis&&!barState.admin)}
+function refresh(){renderSum();renderPacks()}
+
+/* ============ EVENTS ============ */
+$("#menuBtn").onclick=()=>$("#nav").classList.toggle("open");
+$("#nav").addEventListener("click",e=>{if(e.target.closest("a"))$("#nav").classList.remove("open")});
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(!b)return;tab=b.dataset.tab;renderTabs();renderMenu()});
+$("#dietSeg").addEventListener("click",e=>{const b=e.target.closest("[data-d]");if(!b)return;diet=b.dataset.d;$$("#dietSeg button").forEach(x=>x.classList.toggle("on",x===b));renderMenu()});
+$("#q").addEventListener("input",e=>{qs=e.target.value.trim().toLowerCase();renderMenu()});
+function toggleDish(card){const id=card.dataset.id;if(sel.has(id))sel.delete(id);else sel.add(id);
+  const on=sel.has(id);card.classList.toggle("sel",on);card.setAttribute("aria-checked",on);card.querySelector(".tick").textContent=on?"✓":"+";
+  refresh()}
+$("#menuGrid").addEventListener("click",e=>{const v=e.target.closest("[data-v3d]");if(v){e.stopPropagation();if(window.open3D)open3D(v.dataset.v3d);return}const c=e.target.closest(".dish");if(c)toggleDish(c)});
+$("#menuGrid").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("dish")){e.preventDefault();toggleDish(e.target)}});
+$("#pkGrid").addEventListener("click",e=>{const b=e.target.closest("[data-pk]");if(!b)return;const p=PACKS.find(x=>x.id===b.dataset.pk);
+  sel.clear();p.items.forEach(i=>sel.add(i));renderMenu();refresh();toast(`${p.name} added. You can still change dishes in the menu.`);});
+$("#adGrid").addEventListener("click",e=>{const t=e.target.closest("[data-tog],[data-inc],[data-dec]");if(!t)return;
+  const id=t.dataset.tog||t.dataset.inc||t.dataset.dec;
+  if(t.dataset.tog)ad[id]=ad[id]?0:1;else if(t.dataset.inc)ad[id]=Math.min(20,(ad[id]||0)+1);else ad[id]=Math.max(0,(ad[id]||0)-1);
+  renderAddons();renderSum()});
+$("#sum").addEventListener("click",e=>{const r=e.target.closest("[data-rm],[data-rma]");if(!r)return;
+  if(r.dataset.rm){sel.delete(r.dataset.rm);renderMenu();renderPacks()}else{ad[r.dataset.rma]=0;renderAddons()}renderSum()});
+$$(".gsync").forEach(i=>i.addEventListener("input",()=>{$$(".gsync").forEach(o=>{if(o!==i)o.value=i.value});renderSum()}));
+new IntersectionObserver(es=>{barState.qvis=es[0].isIntersecting;updateBar()},{threshold:.15}).observe($("#quote"));
+
+/* ============ WHATSAPP ============ */
+function waUrl(num,text){let n=String(num||"").replace(/\D/g,"");if(n.length===10)n="91"+n;return `https://wa.me/${n}?text=${encodeURIComponent(text)}`}
+function enqText(e){const items=e.items.map(i=>MAP[i]);
+  let t=`*New enquiry – ${CONFIG.name}*\nRef: ${e.ref}\n\n*${e.name}* · ${e.phone}\n${e.type} · ${fmtDate(e.date)} · ${e.slot}\nGuests: ${e.guests}\nVenue: ${e.venue}\n`;
+  if(items.length)t+=`\n*Menu (${inr(e.pp)} per plate)*\n`+items.map(m=>"• "+m.name).join("\n")+"\n";
+  const ads=ADDONS.filter(a=>e.addons[a.id]);if(ads.length)t+=`\n*Services*\n`+ads.map(a=>`• ${a.name}${a.unit==="unit"?" × "+e.addons[a.id]:""}`).join("\n")+"\n";
+  t+=`\nEstimate: ${inr(e.total)}`+(e.notes?`\nNote: ${e.notes}`:"");return t}
+function fmtDate(d){try{return new Date(d+"T00:00:00").toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"})}catch(x){return d}}
+function quoteText(e,disc){const items=e.items.map(i=>MAP[i]),ads=ADDONS.filter(a=>e.addons[a.id]);
+  const food=e.pp*e.guests;let svc=0;ads.forEach(a=>svc+=a.unit==="guest"?a.price*e.guests:a.price*e.addons[a.id]);
+  const total=Math.max(0,food+svc-(disc||0));
+  let t=`வணக்கம் ${e.name}! 🙏\nThank you for choosing *${CONFIG.name}*.\n\n*QUOTATION · ${e.ref}*\n${e.type} · ${fmtDate(e.date)} · ${e.slot}\nVenue: ${e.venue}\nGuests: ${e.guests}\n`;
+  if(items.length)t+=`\n*Menu – ${inr(e.pp)} per plate*\n`+items.map(m=>"• "+m.name).join("\n")+`\n`;
+  if(ads.length)t+=`\n*Services*\n`+ads.map(a=>{const amt=a.unit==="guest"?a.price*e.guests:a.price*e.addons[a.id];return `• ${a.name}${a.unit==="unit"?" × "+e.addons[a.id]:""} – ${inr(amt)}`}).join("\n")+`\n`;
+  t+=`\nFood: ${e.guests} × ${inr(e.pp)} = ${inr(food)}`;if(ads.length)t+=`\nServices: ${inr(svc)}`;if(disc)t+=`\nDiscount: −${inr(disc)}`;
+  t+=`\n\n*TOTAL: ${inr(total)}* (GST extra as applicable)\n\nTo confirm your date, ${CONFIG.advance}% advance (${inr(total*CONFIG.advance/100)}) is required. Balance before the event.\nThis quotation is valid for 7 days.\n\nReply *YES* to confirm or tell us what to change. 🙏\n${CONFIG.name} · ${CONFIG.phoneShow}`;
+  return {text:t,total}}
+
+/* ============ SUBMIT ============ */
+function setErr(k,on){const l=$(`label[data-k="${k}"]`);if(l)l.classList.toggle("err",on)}
+$("#form").addEventListener("submit",ev=>{ev.preventDefault();
+  const v={name:$("#fName").value.trim(),phone:$("#fPhone").value.replace(/\D/g,""),type:$("#fType").value,date:$("#fDate").value,slot:$("#fSlot").value,guests:guests(),venue:$("#fVenue").value.trim(),email:$("#fEmail").value.trim(),notes:$("#fNotes").value.trim()};
+  ["name","phone","date","guests","venue"].forEach(k=>setErr(k,false));let m="";
+  if(!v.name){setErr("name",1);m="Please enter your name."}
+  else if(!/^[6-9]\d{9}$/.test(v.phone.slice(-10))||v.phone.length<10){setErr("phone",1);m="Please enter a valid 10-digit mobile number."}
+  else if(!v.date){setErr("date",1);m="Please choose the event date."}
+  else if(v.guests<10){setErr("guests",1);m="Please enter the number of guests (minimum 10)."}
+  else if(!v.venue){setErr("venue",1);m="Please tell us the venue or city."}
+  else if(!sel.size&&!Object.values(ad).some(Boolean))m="Please pick at least one dish or service above, or start with a package.";
+  $("#err").textContent=m;if(m){return}
+  const c=calc(),ref="TC-"+new Date().toISOString().slice(2,10).replace(/-/g,"")+"-"+String(Math.floor(100+Math.random()*900));
+  const e={ref,created:Date.now(),...v,phone:v.phone.slice(-10),items:[...sel],addons:Object.fromEntries(Object.entries(ad).filter(([,q])=>q)),pp:c.pp,food:c.food,svc:c.svc,total:c.total,status:"New"};
+  const all=loadEnq();all.unshift(e);saveEnq(all);
+  const box=$("#modalBox");
+  box.innerHTML=`<div class="ok">✓</div><h3>Enquiry received</h3><div class="ref">${ref}</div>
+   <p>Thank you, <b>${esc(v.name)}</b>. We have your details for <b>${esc(v.type)}</b> on <b>${fmtDate(v.date)}</b> for <b>${v.guests}</b> guests.</p>
+   <p style="color:var(--muted);font-size:14px">Our team will check availability and send your detailed quotation on WhatsApp within 2 hours.</p>
+   <div style="display:grid;gap:10px;margin-top:16px"><a class="btn btn-wa" target="_blank" rel="noopener" href="${waUrl(CONFIG.wa,enqText(e))}">Also send this on WhatsApp</a>
+   <a class="btn btn-maroon" href="#admin" id="seeOwner">See how the owner receives it →</a><button class="btn btn-line dark" id="closeM">Close</button></div>`;
+  $("#modal").classList.add("on")});
+$("#modal").addEventListener("click",e=>{if(e.target.id==="modal"||e.target.id==="closeM"||e.target.id==="seeOwner")$("#modal").classList.remove("on")});
+
+/* ============ OWNER VIEW ============ */
+function renderAdmin(){
+  const a=loadEnq(),val=a.reduce((s,e)=>s+e.total,0);
+  $("#adStats").innerHTML=`<div><b>${a.length}</b><span>Total enquiries</span></div><div><b>${a.filter(e=>e.status==="New").length}</b><span>Waiting for quotation</span></div><div><b>${a.filter(e=>e.status==="Quoted").length}</b><span>Quotation sent</span></div><div><b>${a.filter(e=>e.status==="Confirmed").length}</b><span>Confirmed</span></div><div><b>${inr(val)}</b><span>Estimated value</span></div>`;
+  $("#adList").innerHTML=a.length?a.map(e=>{const items=e.items.map(i=>MAP[i]).filter(Boolean),ads=ADDONS.filter(x=>e.addons[x.id]);
+    return `<article class="enq" data-ref="${e.ref}"><div class="enq-h"><div><h3>${esc(e.name)} · ${esc(e.type)}</h3><div style="color:var(--muted);font-size:13px">${e.ref} · ${new Date(e.created).toLocaleString("en-IN",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}</div></div><span class="st ${e.status}">${e.status}</span></div>
+    <div class="enq-g"><div><small>Event date</small>${fmtDate(e.date)} · ${e.slot}</div><div><small>Guests</small>${e.guests}</div><div><small>Venue</small>${esc(e.venue)}</div><div><small>Phone</small>${esc(e.phone)}</div><div><small>Per plate</small>${inr(e.pp)}</div><div><small>Estimate</small><b style="color:var(--maroon)">${inr(e.total)}</b></div></div>
+    ${e.notes?`<div style="font-size:14px;margin-bottom:6px"><small style="color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-size:11px">Customer note</small><br>${esc(e.notes)}</div>`:""}
+    <details><summary>Selected menu &amp; services (${items.length} dishes${ads.length?`, ${ads.length} services`:""})</summary><p style="color:var(--ink)">${items.map(m=>esc(m.name)).join(" · ")||"No dishes"}${ads.length?`<br><b>Services:</b> ${ads.map(x=>esc(x.name)+(x.unit==="unit"?" ×"+e.addons[x.id]:"")).join(" · ")}`:""}</p></details>
+    <div class="enq-act"><input type="number" min="0" step="500" placeholder="Discount ₹" data-disc><button class="btn btn-wa btn-sm" data-send>Send quotation on WhatsApp</button><button class="btn btn-maroon btn-sm" data-conf>Mark confirmed</button><button class="btn btn-line dark btn-sm" data-del>Delete</button></div></article>`}).join(""):`<div class="panel empty">No enquiries yet. Submit one from the website, or tap “Load sample enquiries”.</div>`;
+}
+$("#adList").addEventListener("click",ev=>{const card=ev.target.closest(".enq");if(!card)return;const all=loadEnq(),e=all.find(x=>x.ref===card.dataset.ref);if(!e)return;
+  if(ev.target.closest("[data-send]")){const d=parseInt(card.querySelector("[data-disc]").value,10)||0;const q=quoteText(e,d);
+    window.open(waUrl(/X/i.test(e.phone)?"":e.phone,q.text),"_blank","noopener");if(e.status==="New")e.status="Quoted";saveEnq(all);renderAdmin();toast("Quotation opened in WhatsApp")}
+  else if(ev.target.closest("[data-conf]")){e.status="Confirmed";saveEnq(all);renderAdmin()}
+  else if(ev.target.closest("[data-del]")){saveEnq(all.filter(x=>x!==e));renderAdmin()}});
+$("#seedBtn").onclick=()=>{const t=Date.now(),mk=(n,ph,ty,dt,sl,g,v,it,adn,note,st,ago)=>{const items=it,pp=items.reduce((s,i)=>s+MAP[i].price,0),svc=Object.entries(adn).reduce((s,[k,q])=>{const a=ADDONS.find(x=>x.id===k);return s+(a.unit==="guest"?a.price*g:a.price*q)},0);
+    return{ref:"TC-DEMO-"+n.slice(0,2).toUpperCase()+g,created:t-ago,name:n,phone:ph,email:"",type:ty,date:dt,slot:sl,guests:g,venue:v,notes:note,items,addons:adn,pp,food:pp*g,svc,total:pp*g+svc,status:st}};
+  const d=n=>{const x=new Date();x.setDate(x.getDate()+n);return x.toISOString().slice(0,10)};
+  const s=[mk("Meena Krishnan","98XXXXXX01","Wedding",d(46),"Breakfast + Lunch",600,"Rajam Hall, Nagercoil",PACKS[3].items,{a3:1,a5:2,a7:1,a8:1},"Mostly Tamil guests. Few Kerala relatives need sadya items.","New",36e5),
+    mk("Thomas George","97XXXXXX02","Reception",d(30),"Dinner",350,"St. Mary's Hall, Marthandam",PACKS[2].items,{a1:1,a10:1,a14:1},"Non-veg only for dinner.","Quoted",864e5),
+    mk("Suresh Babu","96XXXXXX03","Housewarming",d(12),"Lunch",150,"Home, Thuckalay",PACKS[0].items,{a13:1},"","Confirmed",2*864e5)];
+  saveEnq(s.concat(loadEnq()));renderAdmin();toast("3 sample enquiries added")};
+$("#clearBtn").onclick=()=>{saveEnq([]);renderAdmin()};
+
+/* ============ ROUTING + INIT ============ */
+function route(){const adm=location.hash==="#admin";barState.admin=adm;$("#site").style.display=adm?"none":"";$("#adminView").style.display=adm?"block":"none";
+  if(adm){renderAdmin();window.scrollTo(0,0)}updateBar()}
+addEventListener("hashchange",route);
+renderStatic();heroArt();renderTabs();renderMenu();renderPacks();renderAddons();renderSum();route();
+</script>
+<script src="../three.min.js"></script>
+<script>
+"use strict";
+/* ============ 3D LAYER (Three.js r160, loaded from three.min.js beside this page) ============ */
+(function(){
+if(!window.THREE)return;
+const T=THREE;
+let ok=false;try{const c=document.createElement("canvas");ok=!!(c.getContext("webgl2")||c.getContext("webgl"))}catch(e){}
+if(!ok)return;
+document.body.classList.add("has3d");
+const REDUCE=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const M=(c,o)=>new T.MeshStandardMaterial(Object.assign({color:new T.Color(c||"#ffffff"),roughness:.62,metalness:0},o||{}));
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const TAU=Math.PI*2;
+const dummy=new T.Object3D();
+let shadowTex;function shadowMat(){if(!shadowTex){const c=document.createElement("canvas");c.width=c.height=64;const x=c.getContext("2d"),g=x.createRadialGradient(32,32,2,32,32,32);g.addColorStop(0,"rgba(40,10,10,.55)");g.addColorStop(1,"rgba(40,10,10,0)");x.fillStyle=g;x.fillRect(0,0,64,64);shadowTex=new T.CanvasTexture(c)}
+  return new T.MeshBasicMaterial({map:shadowTex,transparent:true,depthWrite:false})}
+
+/* ---------- stage: renderer, lights, drag-to-rotate ---------- */
+function stage(canvas,opt){opt=opt||{};
+  const r=new T.WebGLRenderer({canvas,antialias:true,alpha:true});
+  r.setPixelRatio(Math.min(devicePixelRatio||1,2));r.outputColorSpace=T.SRGBColorSpace;
+  const scene=new T.Scene(),cam=new T.PerspectiveCamera(opt.fov||34,1,.1,100);
+  const cp=opt.cam||[0,6,9];cam.position.set(cp[0],cp[1],cp[2]);cam.lookAt(0,opt.lookY||0,0);
+  scene.add(new T.HemisphereLight(0xfff4e0,0x7a3a2a,1.0));
+  const dl=new T.DirectionalLight(0xffffff,1.9);dl.position.set(4,9,5);scene.add(dl);
+  const dl2=new T.DirectionalLight(0xffd29a,.6);dl2.position.set(-6,3,-4);scene.add(dl2);
+  if(opt.shadows){r.shadowMap.enabled=true;r.shadowMap.type=T.PCFSoftShadowMap;dl.castShadow=true;dl.shadow.mapSize.set(2048,2048);const sc=dl.shadow.camera;sc.left=-10;sc.right=10;sc.top=9;sc.bottom=-9;sc.near=1;sc.far=45;dl.shadow.bias=-.0006;dl.shadow.normalBias=.03;dl.shadow.radius=5}
+  if(opt.tone){r.toneMapping=T.ACESFilmicToneMapping;r.toneMappingExposure=opt.tone}
+  if(opt.fog)scene.fog=new T.Fog(opt.fog[0],opt.fog[1],opt.fog[2]);
+  const root=new T.Group();scene.add(root);
+  const base=opt.auto===false||REDUCE?0:(opt.spin||.004);let spin=base,drag=false,lx=0,ly=0,tilt=opt.tilt||0;root.rotation.x=tilt;
+  if(!opt.static){canvas.style.touchAction="pan-y";canvas.style.cursor="grab";}
+  if(!opt.static)canvas.addEventListener("pointerdown",e=>{drag=true;lx=e.clientX;ly=e.clientY;try{canvas.setPointerCapture(e.pointerId)}catch(x){}canvas.style.cursor="grabbing"});
+  if(!opt.static)canvas.addEventListener("pointermove",e=>{if(!drag)return;const dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;root.rotation.y+=dx*.012;spin=clamp(dx*.0016,-.06,.06);
+    if(e.pointerType==="mouse")tilt=clamp(tilt+dy*.004,(opt.tilt||0)-.25,(opt.tilt||0)+.3)});
+  const end=()=>{drag=false;canvas.style.cursor="grab"};if(!opt.static){canvas.addEventListener("pointerup",end);canvas.addEventListener("pointercancel",end)}
+  const ticks=[];let running=false,raf=0,vis=true;
+  function size(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;const pr=r.getPixelRatio();if(canvas.width!==Math.round(w*pr)||canvas.height!==Math.round(h*pr)){r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}}
+  function frame(now){raf=requestAnimationFrame(frame);size();
+    if(!opt.static){if(!drag)spin+=(base-spin)*.03;root.rotation.y+=spin;root.rotation.x+=(tilt-root.rotation.x)*.12}
+    for(const f of ticks)f(now/1000);r.render(scene,cam)}
+  function start(){if(!running&&vis&&!document.hidden){running=true;raf=requestAnimationFrame(frame)}}
+  function stop(){running=false;cancelAnimationFrame(raf)}
+  const io=new IntersectionObserver(es=>{vis=es[0].isIntersecting;vis?start():stop()},{threshold:.01});io.observe(canvas);
+  document.addEventListener("visibilitychange",()=>document.hidden?stop():start());
+  function dispose(){stop();io.disconnect();scene.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material)(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>m.dispose())});r.dispose()}
+  start();return{scene,cam,root,ticks,start,stop,dispose,dl,dl2}}
+
+/* ---------- food builders ---------- */
+function plateMesh(g){const pts=[[0,0],[1.1,0],[1.45,.1],[1.66,.26],[1.72,.26],[1.72,.22],[1.5,.1],[1.15,.05],[0,.05]].map(p=>new T.Vector2(p[0],p[1]));
+  g.add(new T.Mesh(new T.LatheGeometry(pts,56),M("#fffdf8",{roughness:.3,side:T.DoubleSide})));
+  const s=new T.Mesh(new T.CircleGeometry(2.3,40),shadowMat());s.rotation.x=-Math.PI/2;s.position.y=-.01;g.add(s)}
+function mound(g,c1,c2,seed,h,r,x,z){const R=rng(seed),grp=new T.Group();grp.position.set(x||0,.05,z||0);
+  const m=new T.Mesh(new T.SphereGeometry(1,32,16,0,TAU,0,Math.PI/2),M(c1));m.scale.set(r,h,r);grp.add(m);
+  const n=170,im=new T.InstancedMesh(new T.SphereGeometry(.03,6,4),M("#fff6d2",{roughness:.5}),n);
+  for(let i=0;i<n;i++){const th=R()*TAU,ph=Math.acos(.08+R()*.92);dummy.position.set(r*Math.sin(ph)*Math.cos(th)*1.01,h*Math.cos(ph)*1.01,r*Math.sin(ph)*Math.sin(th)*1.01);
+    dummy.rotation.set(R()*3,R()*3,R()*3);dummy.scale.set(1.9,.8,.8);dummy.updateMatrix();im.setMatrixAt(i,dummy.matrix)}grp.add(im);
+  if(c2){const sp=new T.InstancedMesh(new T.SphereGeometry(.04,6,4),M(c2),26);for(let i=0;i<26;i++){const th=R()*TAU,ph=Math.acos(.35+R()*.65);
+    dummy.position.set(r*Math.sin(ph)*Math.cos(th),h*Math.cos(ph)+.02,r*Math.sin(ph)*Math.sin(th));dummy.rotation.set(0,0,0);dummy.scale.set(1,1,1);dummy.updateMatrix();sp.setMatrixAt(i,dummy.matrix)}grp.add(sp)}
+  g.add(grp);return grp}
+function bowl(g,x,z,s,liq,opt){opt=opt||{};const b=new T.Group();b.position.set(x,.05,z);b.scale.setScalar(s);
+  const pts=[[0,0],[.45,0],[.75,.12],[.92,.45],[.98,.5],[.98,.46],[.9,.4],[.7,.1],[.4,.04],[0,.04]].map(p=>new T.Vector2(p[0],p[1]));
+  b.add(new T.Mesh(new T.LatheGeometry(pts,40),M(opt.rim||"#fffdf8",{roughness:.3,side:T.DoubleSide})));
+  const l=new T.Mesh(new T.CylinderGeometry(.9,.82,.03,36),M(liq,{roughness:.25}));l.position.y=.4;b.add(l);g.add(b);return b}
+function bits(b,c,n,rad,y,seed,sz,flat){const R=rng(seed);for(let i=0;i<n;i++){const a=R()*TAU,d=Math.sqrt(R())*rad;const m=new T.Mesh(new T.SphereGeometry(sz*(.8+R()*.5),12,8),M(c));
+  m.position.set(Math.cos(a)*d,y,Math.sin(a)*d);m.scale.set(1,flat||.7,.9);m.rotation.y=R()*3;b.add(m)}}
+function steam(g,x,z,c){const ps=[];for(let i=0;i<4;i++){const m=new T.Mesh(new T.SphereGeometry(.14,10,8),new T.MeshBasicMaterial({color:c||0xffffff,transparent:true,opacity:0,depthWrite:false}));g.add(m);ps.push(m)}
+  g.userData.tick=t=>{ps.forEach((m,i)=>{const p=((t*.28+i/4)%1);m.position.set(x+Math.sin(t+i*2)*.12,.9+p*1.5,z+Math.cos(t*.8+i)*.1);m.scale.setScalar(.7+p*1.5);m.material.opacity=Math.sin(p*Math.PI)*.22})}}
+function disc(g,x,z,r,h,y,c,rot){const m=new T.Mesh(new T.CylinderGeometry(r,r,h,36),M(c));m.position.set(x,y,z);if(rot)m.rotation.set(rot[0],rot[1],rot[2]);g.add(m);return m}
+function lemon(g,x,z){const m=new T.Mesh(new T.CylinderGeometry(.22,.22,.08,24,1,false,0,Math.PI),M("#f7d84a",{roughness:.4}));m.rotation.z=Math.PI/2;m.rotation.y=.6;m.scale.set(1,1,1.2);m.position.set(x,.2,z);g.add(m)}
+function glass(g,x,z,s,liq,straw){const gr=new T.Group();gr.position.set(x,.06,z);gr.scale.setScalar(s);
+  const gl=new T.Mesh(new T.CylinderGeometry(.5,.38,1.4,32,1,true),M("#dfefff",{transparent:true,opacity:.32,roughness:.1,side:T.DoubleSide}));gl.position.y=.7;gr.add(gl);
+  const lq=new T.Mesh(new T.CylinderGeometry(.46,.37,1.15,32),M(liq,{roughness:.3,transparent:true,opacity:.95}));lq.position.y=.62;gr.add(lq);
+  const st=new T.Mesh(new T.CylinderGeometry(.04,.04,1.6,8),M(straw||"#e9549a"));st.position.set(.15,.9,0);st.rotation.z=-.2;gr.add(st);g.add(gr)}
+const KIND={
+ leafbase:(g)=>{const sh=new T.Shape();sh.moveTo(-2.3,0);sh.bezierCurveTo(-1.5,1.6,1.4,1.8,2.4,.2);sh.bezierCurveTo(1.4,-1.6,-1.5,-1.6,-2.3,0);const lf=new T.Mesh(new T.ExtrudeGeometry(sh,{depth:.05,bevelEnabled:false,curveSegments:24}),M("#3a8a3f",{roughness:.7}));lf.rotation.x=-Math.PI/2;lf.position.y=.02;g.add(lf);const rib=new T.Mesh(new T.BoxGeometry(4.6,.02,.04),M("#2a6b30"));rib.position.y=.08;g.add(rib)},
+ rice:(g,d)=>mound(g,d.c1,d.c2,d.id,.8,1.15),
+ biryani:(g,d)=>{mound(g,d.c1,d.c2||"#8a4a1c",d.id,.95,1.1,-.1,0);
+   [[1.15,.7],[.8,-.95]].forEach(p=>{const w=new T.Mesh(new T.SphereGeometry(.26,16,10),M("#fffefa"));w.scale.set(1,.5,1);w.position.set(p[0],.2,p[1]);g.add(w);const y=new T.Mesh(new T.SphereGeometry(.12,12,8),M("#f4b400"));y.position.set(p[0],.27,p[1]);g.add(y)});
+   const R=rng(d.id+"m");for(let i=0;i<3;i++){const l=new T.Mesh(new T.SphereGeometry(.14,10,8),M("#2f8f3f"));l.scale.set(1,.3,.6);l.position.set(-.3+R()*.4,1.0,-.1+R()*.3);l.rotation.y=R()*3;g.add(l)}
+   steam(g,0,0)},
+ dry:(g,d)=>{const R=rng(d.id),n=240,im=new T.InstancedMesh(new T.BoxGeometry(.13,.06,.07),M("#ffffff",{roughness:.7}),n);const A=new T.Color(d.c1),B=new T.Color(d.c2);
+   for(let i=0;i<n;i++){const th=R()*TAU,ph=Math.acos(.05+R()*.95),rr=1.1,h=.75;dummy.position.set(rr*Math.sin(ph)*Math.cos(th)*R(),.05+h*Math.cos(ph),rr*Math.sin(ph)*Math.sin(th)*R()+0);
+     dummy.rotation.set(R()*3,R()*3,R()*3);dummy.scale.set(1,1,1);dummy.updateMatrix();im.setMatrixAt(i,dummy.matrix);im.setColorAt(i,R()>.35?A:B)}g.add(im);
+   const c=new T.Mesh(new T.SphereGeometry(.08,8,6),M("#b7312c"));c.position.set(1.3,.12,.5);g.add(c)},
+ curry:(g,d)=>{const b=bowl(g,0,0,1.15,d.c1);bits(b,d.c2,7,.55,.46,d.id,.2);const sw=new T.Mesh(new T.TorusGeometry(.4,.025,6,32,Math.PI*1.3),M("#fff4e0",{transparent:true,opacity:.8}));sw.rotation.x=-Math.PI/2;sw.position.y=.43;b.add(sw);
+   bits(b,"#2f9a45",8,.7,.45,d.id+"c",.05,.5);steam(g,0,0,0xfff0e0)},
+ payasam:(g,d)=>{const b=bowl(g,0,0,1.15,d.c1);const R=rng(d.id);for(let i=0;i<22;i++){const a=R()*TAU,r=Math.sqrt(R())*.7,m=new T.Mesh(new T.SphereGeometry(.07,8,6),M(i%4?d.c2:"#5a2a14"));m.scale.set(1.4,.5,.9);m.position.set(Math.cos(a)*r,.43,Math.sin(a)*r);b.add(m)}
+   const sp=new T.Mesh(new T.CylinderGeometry(.03,.03,1.4,8),M("#d7dce3",{metalness:.8,roughness:.25}));sp.position.set(1.15,.6,.5);sp.rotation.z=.9;g.add(sp)},
+ sweet:(g,d)=>{const b=bowl(g,0,0,1.15,d.c2,{});const R=rng(d.id);[[0,0],[.35,.12],[-.34,.1],[.1,.36],[-.12,-.34],[.3,-.28]].forEach((p,i)=>{const m=new T.Mesh(new T.SphereGeometry(.26,18,14),M(d.c1,{roughness:.35}));m.position.set(p[0],.55+(i===0?.18:0),p[1]);b.add(m)})},
+ fry:(g,d)=>{const R=rng(d.id);[[-.5,.2],[.1,-.5],[.7,.3],[.2,.55],[-.7,-.5],[.8,-.3],[0,0]].forEach((p,i)=>{const m=new T.Mesh(new T.SphereGeometry(.34,18,12),M(d.c1,{roughness:.55}));m.scale.set(1.05,.62,.8);m.position.set(p[0],.35+(i===6?.2:0),p[1]);m.rotation.y=R()*3;g.add(m)});
+   lemon(g,1.2,.9);const t=new T.Mesh(new T.TorusGeometry(.2,.04,8,20),M("#9b5ca0"));t.rotation.x=Math.PI/2;t.position.set(-1.2,.12,.8);g.add(t)},
+ vada:(g,d)=>{[[-.6,.3],[.6,.3],[0,-.55],[0,.5]].forEach((p,i)=>{if(i>2)return;const m=new T.Mesh(new T.TorusGeometry(.42,.2,16,32),M(d.c1,{roughness:.55}));m.rotation.x=Math.PI/2;m.position.set(p[0],.28,p[1]);g.add(m)});bowl(g,1.2,-.9,.4,"#e8e0cd")},
+ snack:(g,d)=>{[[-.65,.3,.4],[.55,.4,-.5],[.1,-.6,.1]].forEach(p=>{const m=new T.Mesh(new T.ConeGeometry(.5,.7,3),M(d.c1,{roughness:.55}));m.rotation.set(Math.PI/2.4,p[2],0);m.scale.set(1,1,.7);m.position.set(p[0],.4,p[1]);g.add(m)});bowl(g,1.3,.9,.32,"#4b9b3a");bowl(g,-1.25,-.8,.3,"#c43b2a")},
+ halwa:(g,d)=>{[[-.55,-.3,0],[.1,-.3,0],[.75,-.3,0],[-.2,.35,0],[.45,.35,0],[.12,0,.35]].forEach((p,i)=>{const m=new T.Mesh(new T.BoxGeometry(.6,.3,.6),M(d.c1,{roughness:.5}));m.position.set(p[0]+(i===5?0:0),.2+(i===5?.32:0),p[1]);m.rotation.y=(i%3)*.2;g.add(m);
+     const n=new T.Mesh(new T.SphereGeometry(.05,8,6),M("#6a8f3a"));n.position.set(p[0],.38+(i===5?.32:0),p[1]);g.add(n)})},
+ papad:(g,d)=>{[[-.5,.2,.1],[.5,.1,-.15],[0,-.5,.2]].forEach((p,i)=>{const m=disc(g,p[0],p[1],.85,.04,.12+i*.05,d.c1,[p[2],0,-p[2]]);const R=rng(d.id+i);for(let k=0;k<7;k++){const s=new T.Mesh(new T.SphereGeometry(.03,6,4),M(d.c2));s.position.set((R()-.5)*1.1,.03,(R()-.5)*1.1);m.add(s)}})},
+ naan:(g,d)=>{const m=new T.Mesh(new T.SphereGeometry(1,28,14),M(d.c1,{roughness:.6}));m.scale.set(1.35,.07,.9);m.position.set(-.1,.14,0);m.rotation.y=.3;g.add(m);const R=rng(d.id);for(let i=0;i<9;i++){const s=new T.Mesh(new T.SphereGeometry(.06,8,6),M("#8a5a2b"));s.scale.set(1,.3,1);s.position.set(-.8+R()*1.4,.22,-.5+R()),g.add(s)}
+   const bt=new T.Mesh(new T.BoxGeometry(.25,.1,.2),M("#fff3a8"));bt.position.set(-.1,.27,0);g.add(bt);bowl(g,1.15,.9,.42,"#e58a2f")},
+ parotta:(g,d)=>{for(let i=0;i<6;i++)disc(g,0,0,1.0-i*.02,.1,.1+i*.1,i%2?d.c1:d.c2,[0,i*.4,0]);disc(g,.3,.1,.5,.02,.74,d.c1)},
+ appam:(g,d)=>{[[-.65,.3],[.45,-.55]].forEach(p=>{const m=new T.Mesh(new T.LatheGeometry([[0,0],[.5,.02],[.78,.12],[.84,.2],[.8,.2],[.74,.14],[.45,.07],[0,.06]].map(q=>new T.Vector2(q[0],q[1])),32),M(d.c1,{side:T.DoubleSide}));m.position.set(p[0],.1,p[1]);g.add(m);const c=new T.Mesh(new T.CylinderGeometry(.5,.5,.1,24),M("#ffffff"));c.position.set(p[0],.12,p[1]);g.add(c)});bowl(g,1.0,.8,.42,"#f7f1e1");},
+ idli:(g,d)=>{[[-.75,.1],[0,-.2],[.7,.2]].forEach(p=>{const m=new T.Mesh(new T.SphereGeometry(.5,24,12,0,TAU,0,Math.PI/2),M("#fffefa",{roughness:.8}));m.scale.set(1.05,.7,1.05);m.position.set(p[0],.06,p[1]);g.add(m)});bowl(g,-1.2,-.9,.36,d.c1);bowl(g,1.25,-.9,.36,d.c2)},
+ dosa:(g,d)=>{const m=new T.Mesh(new T.CylinderGeometry(.22,.46,2.6,28,1,true,0,TAU*.92),M(d.c1,{side:T.DoubleSide,roughness:.6}));m.rotation.z=Math.PI/2;m.rotation.y=.35;m.position.set(-.1,.48,0);g.add(m);
+   const f=new T.Mesh(new T.SphereGeometry(.28,12,8),M("#f2c14e"));f.position.set(1.15,.5,.1);g.add(f);bowl(g,-1.1,.95,.36,"#f8f8f2");bowl(g,1.1,-.95,.36,d.c2)},
+ puttu:(g,d)=>{[[-.55,.2],[.1,-.35]].forEach(p=>{const m=new T.Mesh(new T.CylinderGeometry(.3,.3,1.0,24),M("#fffefa",{roughness:.8}));m.position.set(p[0],.55,p[1]);g.add(m)});const b=bowl(g,1.0,.7,.6,d.c1);bits(b,d.c2,4,.45,.45,d.id,.14)},
+ chicken:(g,d)=>{[[-.5,.35,.2],[.2,-.4,-.3]].forEach(p=>{const gr=new T.Group();gr.position.set(p[0],.38,p[1]);gr.rotation.y=p[2];const m=new T.Mesh(new T.SphereGeometry(.5,22,16),M(d.c1,{roughness:.45}));m.scale.set(1.2,.78,.8);gr.add(m);
+     const bn=new T.Mesh(new T.CylinderGeometry(.07,.07,.9,10),M("#f3ead5"));bn.rotation.z=Math.PI/2;bn.position.x=.9;gr.add(bn);[-.07,.07].forEach(z=>{const k=new T.Mesh(new T.SphereGeometry(.11,10,8),M("#f3ead5"));k.position.set(1.35,0,z);gr.add(k)});g.add(gr)});
+   const t=new T.Mesh(new T.TorusGeometry(.2,.04,8,20),M("#9b5ca0"));t.rotation.x=Math.PI/2;t.position.set(1.0,.12,.9);g.add(t)},
+ fish:(g,d)=>{const f=new T.Group();f.position.y=.34;const body=new T.Mesh(new T.SphereGeometry(.7,26,16),M(d.c1,{roughness:.45}));body.scale.set(1.45,.5,.72);f.add(body);
+   const tail=new T.Mesh(new T.ConeGeometry(.5,.8,3),M(d.c1,{roughness:.5}));tail.rotation.set(0,0,Math.PI/2);tail.scale.set(1,1,.2);tail.position.x=-1.25;tail.rotation.z=-Math.PI/2;f.add(tail);
+   const e=new T.Mesh(new T.SphereGeometry(.07,8,6),M("#111"));e.position.set(.75,.1,.38);f.add(e);const R=rng(d.id);for(let i=0;i<8;i++){const s=new T.Mesh(new T.SphereGeometry(.06,6,4),M(d.c2));s.position.set(-.7+R()*1.3,.28+(R()-.5)*.1,(R()-.5)*.5);f.add(s)}g.add(f);lemon(g,1.1,1.0)},
+ icecream:(g,d)=>{const cup=new T.Mesh(new T.CylinderGeometry(.85,.5,.6,28,1,true),M("#ffffff",{side:T.DoubleSide,roughness:.3}));cup.position.y=.42;g.add(cup);
+   [[-.4,.95,.1,d.c1],[.4,.95,-.05,d.c2],[0,1.35,0,"#fff3dc"]].forEach(p=>{const s=new T.Mesh(new T.SphereGeometry(.46,22,16),M(p[3],{roughness:.5}));s.position.set(p[0],p[1],p[2]);g.add(s)});
+   const ch=new T.Mesh(new T.SphereGeometry(.11,10,8),M("#c43b2a",{roughness:.2}));ch.position.set(0,1.85,0);g.add(ch);const w=new T.Mesh(new T.BoxGeometry(.06,.9,.45),M("#e8c88a"));w.position.set(.55,1.1,.3);w.rotation.z=-.4;g.add(w)},
+ drink:(g,d)=>{glass(g,.55,0,1,d.c1,d.c2);glass(g,-.7,.35,.72,d.c1,d.c2)},
+ coffee:(g,d)=>{const t=new T.Mesh(new T.CylinderGeometry(.5,.42,.95,28),M("#d7dce3",{metalness:.85,roughness:.28}));t.position.set(-.5,.55,0);g.add(t);
+   const dv=new T.Mesh(new T.LatheGeometry([[0,0],[.5,0],[.8,.2],[.86,.45],[.8,.45],[.74,.22],[.4,.06],[0,.06]].map(q=>new T.Vector2(q[0],q[1])),32),M("#d7dce3",{metalness:.85,roughness:.28,side:T.DoubleSide}));dv.position.set(.8,.06,.2);g.add(dv);
+   const f=new T.Mesh(new T.CylinderGeometry(.74,.74,.03,28),M(d.c2));f.position.set(.8,.38,.2);g.add(f);steam(g,.8,.2,0xe8e0d0)},
+ leaf:(g,d)=>{const sh=new T.Shape();sh.moveTo(-2.3,0);sh.bezierCurveTo(-1.5,1.6,1.4,1.8,2.4,.2);sh.bezierCurveTo(1.4,-1.6,-1.5,-1.6,-2.3,0);
+   const lf=new T.Mesh(new T.ExtrudeGeometry(sh,{depth:.05,bevelEnabled:false,curveSegments:24}),M("#3a8a3f",{roughness:.7}));lf.rotation.x=-Math.PI/2;lf.position.y=.02;g.add(lf);
+   const rib=new T.Mesh(new T.BoxGeometry(4.6,.02,.04),M("#2a6b30"));rib.position.y=.08;g.add(rib);
+   const rice=new T.Mesh(new T.SphereGeometry(.55,24,12,0,TAU,0,Math.PI/2),M("#fffefa"));rice.scale.set(1,.55,.8);rice.position.set(-1.1,.08,.1);g.add(rice);
+   const cols=["#f2c14e","#e58a2f","#6aa84f","#ffffff","#b7312c","#f5d15a","#8a4a22","#c58d3f","#6aa84f","#e8b64a"];cols.forEach((c,i)=>{const m=new T.Mesh(new T.SphereGeometry(.17,14,10),M(c,{roughness:.45}));m.scale.set(1,.55,1);const x=-.2+(i%5)*.55,z=(i<5?-.55:.5);m.position.set(x,.14,z);g.add(m)})}
+};
+function dish3d(d){const g=new T.Group();if(d.kind!=="leaf"&&d.kind!=="leafbase")plateMesh(g);else{const s=new T.Mesh(new T.CircleGeometry(2.6,40),shadowMat());s.rotation.x=-Math.PI/2;s.position.y=-.01;g.add(s)}
+  (KIND[d.kind]||KIND.curry)(g,d);const t=g.userData.tick;g.userData.tick=t||null;return g}
+function tickAll(g,t){g.traverse(o=>{if(o.userData&&o.userData.tick)o.userData.tick(t)})}
+
+/* ---------- hero ---------- */
+(function hero(){const box=document.getElementById("heroArt");if(!box)return;const cv=document.createElement("canvas");cv.id="heroCv";cv.style.cssText="position:absolute;inset:0;width:100%;height:100%";
+  box.appendChild(cv);box.classList.add("is3d");
+  try{const st=stage(cv,{cam:[0,7.6,10.8],fov:34,tilt:.0,spin:.0035,lookY:.2});
+    const leafG=dish3d({id:"hl",kind:"leafbase"});leafG.scale.setScalar(1.55);leafG.position.y=-.35;st.root.add(leafG);
+    const big=dish3d({id:"hb",kind:"biryani",c1:"#e0a03a",c2:"#6e3a1e"});big.scale.setScalar(.95);big.position.set(0,-.1,.2);st.root.add(big);
+    const sm=[[{id:"h1",kind:"curry",c1:"#c4381e",c2:"#7a2410"},-3.0,1.0],[{id:"h2",kind:"sweet",c1:"#6e2a14",c2:"#e9a22a"},3.0,1.1],[{id:"h3",kind:"drink",c1:"#f08aa8",c2:"#e9549a"},2.6,-2.4],[{id:"h4",kind:"fry",c1:"#c4381e",c2:"#8a1f10"},-2.7,-2.4]];
+    sm.forEach(a=>{const o=dish3d(a[0]);o.scale.setScalar(.5);o.position.set(a[1],-.05,a[2]);st.root.add(o)});
+    st.root.rotation.y=.4;st.ticks.push(t=>tickAll(st.root,t));
+    const hint=document.createElement("div");hint.className="hint3d";hint.textContent="Drag to rotate ↻";box.appendChild(hint)}catch(e){box.classList.remove("is3d")}})();
+
+/* ---------- 3D viewer for one dish ---------- */
+let vst=null,vid=null;
+const modal=document.createElement("div");modal.className="modal";modal.id="modal3d";
+modal.innerHTML=`<div class="box v3d-box"><button class="v3d-x" aria-label="Close">×</button><canvas id="v3dCv"></canvas><div class="v3d-tag">Drag to rotate ↻</div><div class="v3d-info"><div class="cat" id="v3dCat"></div><h3 id="v3dName"></h3><div class="nm2 ta" id="v3dTa"></div><div class="price" id="v3dPrice"></div></div><div class="v3d-act"><button class="btn btn-maroon" id="v3dAdd"></button><button class="btn btn-line dark" id="v3dNext">Next dish →</button></div></div>`;
+document.body.appendChild(modal);
+function closeV(){modal.classList.remove("on");if(vst){vst.dispose();vst=null}}
+function showV(id){const d=MAP[id];if(!d)return;vid=id;
+  if(vst){vst.dispose();vst=null}
+  const old=document.getElementById("v3dCv"),cv=old.cloneNode(false);old.replaceWith(cv);
+  vst=stage(cv,{cam:[0,5.6,6.4],fov:36,tilt:.1,spin:.006,lookY:.35});const g=dish3d(d);g.scale.setScalar(1.15);vst.root.add(g);vst.ticks.push(t=>tickAll(g,t));
+  $("#v3dCat").textContent=d.cat+" · "+(d.diet==="n"?"Non-veg":"Veg");$("#v3dName").textContent=d.name;$("#v3dTa").textContent=d.ta;$("#v3dPrice").innerHTML=inr(d.price)+" <small>/ plate</small>";updV()}
+function updV(){$("#v3dAdd").textContent=sel.has(vid)?"✓ Added · Remove":"Add to my menu"}
+window.open3D=function(id){modal.classList.add("on");showV(id)};
+modal.addEventListener("click",e=>{if(e.target===modal||e.target.closest(".v3d-x"))closeV()});
+$("#v3dAdd").onclick=()=>{const c=document.querySelector(`.dish[data-id="${vid}"]`);if(c)toggleDish(c);else{sel.has(vid)?sel.delete(vid):sel.add(vid);renderMenu();refresh()}updV()};
+$("#v3dNext").onclick=()=>{const l=[...document.querySelectorAll("#menuGrid .dish")].map(x=>x.dataset.id);const i=l.indexOf(vid);showV(l[(i+1)%l.length]||MENU[0].id)};
+addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("on"))closeV()});
+
+/* ---------- "your table" ---------- */
+(function table(){const host=document.getElementById("tableBox");if(!host)return;const cv=document.getElementById("tableCv");
+  const st=stage(cv,{cam:[0,8.0,8.4],fov:36,tilt:0,spin:.003,lookY:-.2});
+  const tb=new T.Group();st.root.add(tb);
+  const top=new T.Mesh(new T.CylinderGeometry(4.2,4.2,.2,64),M("#7A2236",{roughness:.8}));top.position.y=-.1;tb.add(top);
+  const ring=new T.Mesh(new T.TorusGeometry(4.2,.06,8,80),M("#E6BE6E",{metalness:.7,roughness:.3}));ring.rotation.x=Math.PI/2;ring.position.y=0;tb.add(ring);
+  const sh=new T.Mesh(new T.CircleGeometry(5.2,48),shadowMat());sh.rotation.x=-Math.PI/2;sh.position.y=-.45;tb.add(sh);
+  const leg=new T.Mesh(new T.CylinderGeometry(.35,.6,.9,20),M("#4a101e"));leg.position.y=-.65;tb.add(leg);
+  const lamp=new T.Group();const lb=new T.Mesh(new T.CylinderGeometry(.22,.3,.34,20),M("#E6BE6E",{metalness:.8,roughness:.25}));lb.position.y=.17;lamp.add(lb);
+  const fl=new T.Mesh(new T.ConeGeometry(.09,.3,12),new T.MeshBasicMaterial({color:0xffa826}));fl.position.y=.5;lamp.add(fl);tb.add(lamp);
+  st.ticks.push(t=>{fl.scale.y=1+Math.sin(t*9)*.15;fl.scale.x=1+Math.cos(t*7)*.08});
+  const items=new Map();let lastN=-1;st.ticks.push(()=>{const a=cv.clientWidth/Math.max(1,cv.clientHeight),f=a<1.4?1.4:1;st.cam.position.set(0,8*f,8.4*f);st.cam.lookAt(0,-.2,0)});
+  function layout(){const ids=[...sel];const n=ids.length;const s=n<=6?.6:n<=12?.5:n<=20?.42:.36;
+    const rings=n<=8?[n]:n<=18?[Math.ceil(n/2)]:[Math.ceil(n*.4),Math.floor(n*.6)];
+    // two rings when many dishes
+    let pos=[];if(n<=8){for(let i=0;i<n;i++)pos.push([Math.cos(i/n*TAU)*2.75,Math.sin(i/n*TAU)*2.75])}
+    else{const inner=Math.floor(n/3),outer=n-inner;for(let i=0;i<outer;i++)pos.push([Math.cos(i/outer*TAU)*3.0,Math.sin(i/outer*TAU)*3.0]);for(let i=0;i<inner;i++)pos.push([Math.cos(i/inner*TAU+.3)*1.4,Math.sin(i/inner*TAU+.3)*1.4])}
+    ids.forEach((id,i)=>{let it=items.get(id);if(!it){const o=dish3d(MAP[id]);o.position.set(pos[i][0],5,pos[i][1]);o.scale.setScalar(.01);tb.add(o);it={o,born:performance.now()+i*30};items.set(id,it)}it.tx=pos[i][0];it.tz=pos[i][1];it.ts=s;it.dead=false});
+    for(const [id,it] of items)if(!sel.has(id))it.dead=true;
+    host.classList.toggle("empty3d",n===0);const c=document.getElementById("tableCount");if(c)c.textContent=n?`${n} dish${n>1?"es":""} on your table`:"Your table is empty"}
+  st.ticks.push(t=>{const now=performance.now();for(const [id,it] of items){const o=it.o;
+      if(it.dead){o.scale.multiplyScalar(.82);o.position.y+=.1;if(o.scale.x<.03){tb.remove(o);items.delete(id)}continue}
+      if(now<it.born)continue;o.position.x+=(it.tx-o.position.x)*.14;o.position.z+=(it.tz-o.position.z)*.14;const ty=.02;o.position.y+=(ty-o.position.y)*.16;
+      const k=o.scale.x+(it.ts-o.scale.x)*.18;o.scale.setScalar(k);o.rotation.y=Math.atan2(o.position.x,o.position.z)*1;
+      o.traverse(m=>{if(m.userData&&m.userData.tick)m.userData.tick(t)})}});
+  const origRefresh=window.refresh;window.refresh=function(){origRefresh();layout()};
+  const origSum=window.renderSum;window.renderSum=function(){origSum();if(sel.size!==lastN){lastN=sel.size;layout()}};
+  layout()})();
+
+
+/* ---------- scroll story: ingredients -> chop -> grind -> cook -> serve ---------- */
+(function story(){
+ const track=document.getElementById("storyTrack"),cv=document.getElementById("storyCv");if(!track||!cv)return;
+ const sticky=track.querySelector(".story-sticky"),card=document.getElementById("storyCard");
+ const STEPS=[["01","Fresh from the market","சந்தையிலிருந்து புதிதாக","Red chillies, onion, tomato and coconut, picked the same morning."],
+  ["02","Cut and cleaned","நறுக்கி, சுத்தம் செய்து","Every vegetable is cut by hand by our kitchen team."],
+  ["03","Stone-ground masala","அம்மிக்கல்லில் அரைத்த மசாலா","Ground fresh each morning for the day's cooking."],
+  ["04","Slow-cooked","மெதுவாகக் கொதித்து","Simmered in big vessels over a steady flame until it is just right."],
+  ["05","Served at your function","உங்கள் விழாவில் சூடாகப் பரிமாறுவோம்","Hot, fresh and on time for every guest."]];
+ document.getElementById("stFb").innerHTML=STEPS.map(s=>`<article class="card"><div class="eyebrow" style="color:var(--gold2)">Step ${s[0]}</div><h3>${s[1]}</h3><div class="ta" style="color:var(--gold2);font-size:14px">${s[2]}</div><p>${s[3]}</p></article>`).join("");
+ const st=stage(cv,{cam:[0,6,9],fov:32,static:true,auto:false,shadows:true,tone:1.12,fog:[0x4a1220,15,36]});const S=st.scene,cam=st.cam;
+ const M=(c,o)=>new T.MeshPhysicalMaterial(Object.assign({color:new T.Color(c||"#ffffff"),roughness:.34,clearcoat:.55,clearcoatRoughness:.28},o||{}));
+ st.dl.color.set(0xfff0dc);st.dl.intensity=2.4;st.dl2.color.set(0xff8a6a);st.dl2.intensity=1.1;S.add(st.dl.target);
+ function rrect(w,h,r){const s=new T.Shape(),x=-w/2,y=-h/2;s.moveTo(x+r,y);s.lineTo(x+w-r,y);s.quadraticCurveTo(x+w,y,x+w,y+r);s.lineTo(x+w,y+h-r);s.quadraticCurveTo(x+w,y+h,x+w-r,y+h);s.lineTo(x+r,y+h);s.quadraticCurveTo(x,y+h,x,y+h-r);s.lineTo(x,y+r);s.quadraticCurveTo(x,y,x+r,y);return s}
+ let glowTex;(function(){const c=document.createElement("canvas");c.width=c.height=128;const x=c.getContext("2d"),g=x.createRadialGradient(64,64,4,64,64,64);g.addColorStop(0,"rgba(255,196,120,.55)");g.addColorStop(1,"rgba(255,196,120,0)");x.fillStyle=g;x.fillRect(0,0,128,128);glowTex=new T.CanvasTexture(c)})();
+ [0,7,14,21].forEach(x=>{const gl=new T.Mesh(new T.CircleGeometry(6.2,40),new T.MeshBasicMaterial({map:glowTex,transparent:true,opacity:.32,depthWrite:false,blending:T.AdditiveBlending}));gl.rotation.x=-Math.PI/2;gl.position.set(x,-.42,0);S.add(gl)});
+ const sm=x=>x*x*(3-2*x),ease=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2,seg=(p,a,b)=>clamp((p-a)/(b-a),0,1),lerp=(a,b,t)=>a+(b-a)*t;
+ const bounce=x=>{const n=7.5625,d=2.75;if(x<1/d)return n*x*x;if(x<2/d)return n*(x-=1.5/d)*x+.75;if(x<2.5/d)return n*(x-=2.25/d)*x+.9375;return n*(x-=2.625/d)*x+.984375};
+ const back=x=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+ const XA=0,XB=7,XC=14,XD=21;
+ /* A: prep table (round wooden plinth + rounded board) */
+ const tA=new T.Mesh(new T.CylinderGeometry(4.0,4.15,.4,64),M("#9a6a3a",{clearcoat:.2}));tA.position.set(XA,-.2,0);S.add(tA);
+ const rimA=new T.Mesh(new T.TorusGeometry(4.02,.07,10,80),M("#E6BE6E",{metalness:.5,roughness:.3}));rimA.rotation.x=Math.PI/2;rimA.position.set(XA,0,0);S.add(rimA);
+ const bd=new T.Mesh(new T.ExtrudeGeometry(rrect(5.0,2.8,.45),{depth:.1,bevelEnabled:true,bevelSize:.05,bevelThickness:.04,bevelSegments:4}),M("#e3c28c",{clearcoat:.15,roughness:.6}));bd.rotation.x=-Math.PI/2;bd.position.set(XA,.0,0);S.add(bd);
+ const shadowA=new T.Mesh(new T.CircleGeometry(4.4,40),shadowMat());shadowA.visible=false;S.add(shadowA);
+ /* produce that can be split */
+ function fruit(o){const g=new T.Group(),top=new T.Group(),bot=new T.Group();g.add(bot,top);const R=rng(o.k+o.x);
+  const half=(ts)=>{const m=new T.Mesh(new T.SphereGeometry(1,28,14,0,TAU,ts,Math.PI/2),M(o.c,{roughness:.4,side:T.DoubleSide}));m.scale.set(o.r[0],o.r[1],o.r[2]);return m};
+  top.add(half(0));bot.add(half(Math.PI/2));
+  const face=(up)=>{const f=new T.Group();const d=new T.Mesh(new T.CircleGeometry(1,28),M(o.ic,{roughness:.6,side:T.DoubleSide}));d.rotation.x=-Math.PI/2;d.scale.set(o.r[0],o.r[2],1);f.add(d);
+   if(o.rings)for(let i=1;i<4;i++){const t=new T.Mesh(new T.TorusGeometry(.22*i,.018,6,28),M("#e9c6d8"));t.rotation.x=-Math.PI/2;t.scale.set(o.r[0]/.7*.9,o.r[2]/.7*.9,1);t.position.y=.004;f.add(t)}
+   if(o.seeds){for(let i=0;i<14;i++){const s=new T.Mesh(new T.SphereGeometry(.045,6,4),M(o.seeds));const a=R()*TAU,r=Math.sqrt(R())*.7;s.position.set(Math.cos(a)*r*o.r[0],.01,Math.sin(a)*r*o.r[2]);f.add(s)}}
+   if(!up)f.rotation.x=Math.PI;return f};
+  bot.add(face(true));top.add(face(false));
+  if(o.k==="tomato"){const cx=new T.Group();for(let q=0;q<5;q++){const l=new T.Mesh(new T.ConeGeometry(.09,.3,6),M("#3a8a3f"));l.rotation.z=1.25;l.rotation.y=q/5*TAU;l.position.set(Math.cos(q/5*TAU)*.14,0,Math.sin(q/5*TAU)*-.14);cx.add(l)}const st2=new T.Mesh(new T.CylinderGeometry(.03,.04,.14,6),M("#3a8a3f"));st2.position.y=.07;cx.add(st2);cx.position.y=o.r[1]*.98;top.add(cx)}
+  if(o.stem){const s=new T.Mesh(new T.CylinderGeometry(.04,.06,.28,8),M("#3a8a3f"));s.rotation.z=Math.PI/2;s.position.x=-o.r[0]-.1;g.add(s)}
+  g.userData.split=(s)=>{top.position.set(s*o.r[0]*.45,s*(o.r[1]+.28),s*.05);top.rotation.z=-s*1.15};return g}
+ const defs=[{k:"onion",x:-.4,z:.1,r:[.5,.44,.5],c:"#b0457a",ic:"#fbeee0",rings:1},{k:"tomato",x:1.0,z:.7,r:[.5,.4,.5],c:"#d83a2a",ic:"#f2915f",seeds:"#f5d96a"},
+  {k:"chilli",x:-1.6,z:.75,r:[.8,.15,.15],c:"#c8201c",ic:"#f4e6c8",seeds:"#fff6d8",stem:1},{k:"chilli",x:-1.1,z:-.75,r:[.8,.15,.15],c:"#d3321e",ic:"#f4e6c8",seeds:"#fff6d8",stem:1},
+  {k:"coconut",x:1.7,z:-.6,r:[.58,.5,.58],c:"#6b3f1f",ic:"#fffefa"}];
+ const items=defs.map((d,i)=>{const g=fruit(d);g.rotation.y=(i%2?.5:-.3);S.add(g);return{g,d,i}});
+ const R2=rng("leaves");const leaves=[];for(let i=0;i<9;i++){const m=new T.Mesh(new T.SphereGeometry(.16,10,6),M("#3a8a3f"));m.scale.set(1.6,.12,.8);S.add(m);leaves.push({m,x:-1.8+R2()*3.6,z:-.9+R2()*1.8,r:R2()*3})}
+ /* knife */
+ const knife=new T.Group();const bl=new T.Mesh(new T.BoxGeometry(1.5,.05,.5),M("#e4e8ee",{metalness:.8,roughness:.2}));knife.add(bl);const hd=new T.Mesh(new T.BoxGeometry(.7,.12,.16),M("#4a2a14"));hd.position.x=1.05;knife.add(hd);S.add(knife);
+ /* B: grinder */
+ const gB=new T.Group();gB.position.set(XB,0,0);S.add(gB);
+ const gt=new T.Mesh(new T.CylinderGeometry(2.6,2.75,.4,56),M("#9a6a3a",{clearcoat:.2}));gt.position.y=-.2;gB.add(gt);const rimB=new T.Mesh(new T.TorusGeometry(2.62,.06,10,64),M("#E6BE6E",{metalness:.5,roughness:.3}));rimB.rotation.x=Math.PI/2;gB.add(rimB);
+ const gbase=new T.Mesh(new T.CylinderGeometry(1.3,1.4,.55,40),M("#8f8982",{roughness:.55}));gbase.position.y=.27;gB.add(gbase);
+ const stone=new T.Group();stone.position.y=.72;const gs=new T.Mesh(new T.CylinderGeometry(1.0,1.02,.4,40),M("#5d5953",{roughness:.45}));stone.add(gs);
+ const hole=new T.Mesh(new T.CylinderGeometry(.22,.22,.02,20),M("#2a2420"));hole.position.y=.21;stone.add(hole);
+ const hv=new T.Mesh(new T.CylinderGeometry(.07,.07,.9,10),M("#4a2a14"));hv.position.set(.78,.6,0);stone.add(hv);const hh=new T.Mesh(new T.CylinderGeometry(.05,.05,.7,10),M("#4a2a14"));hh.rotation.x=Math.PI/2;hh.position.set(.78,1.05,0);stone.add(hh);gB.add(stone);
+ const ring=new T.Mesh(new T.TorusGeometry(1.2,.11,10,40),M("#c4381e",{roughness:.35}));ring.rotation.x=Math.PI/2;ring.position.y=.52;gB.add(ring);
+ const shB=new T.Mesh(new T.CircleGeometry(3,32),shadowMat());shB.rotation.x=-Math.PI/2;shB.position.y=-.32;gB.add(shB);
+ const blob=new T.Mesh(new T.SphereGeometry(.4,18,14),M("#c4381e",{roughness:.3}));blob.scale.y=.8;S.add(blob);
+ /* C: stove + pot */
+ const gC=new T.Group();gC.position.set(XC,0,0);S.add(gC);
+ const stv=new T.Mesh(new T.CylinderGeometry(2.7,2.85,.4,56),M("#3b2a44",{roughness:.4}));stv.position.y=-.2;gC.add(stv);const rimC=new T.Mesh(new T.TorusGeometry(2.72,.06,10,64),M("#E6BE6E",{metalness:.5,roughness:.3}));rimC.rotation.x=Math.PI/2;gC.add(rimC);
+ const flames=[];for(let i=0;i<10;i++){const f=new T.Mesh(new T.ConeGeometry(.12,.45,8),new T.MeshBasicMaterial({color:i%2?0xffa826:0x4aa3ff}));const a=i/10*TAU;f.position.set(Math.cos(a)*.95,.22,Math.sin(a)*.95);gC.add(f);flames.push(f)}
+ const pot=new T.Group();pot.position.y=.38;gC.add(pot);
+ const pm=new T.Mesh(new T.LatheGeometry([[0,0],[1.3,0],[1.46,.12],[1.52,1.3],[1.6,1.38],[1.52,1.42],[1.42,1.3],[1.38,.2],[0,.14]].map(q=>new T.Vector2(q[0],q[1])),48),M("#2a9d96",{roughness:.25,clearcoat:.8,side:T.DoubleSide}));pot.add(pm);
+ const prim=new T.Mesh(new T.TorusGeometry(1.52,.06,10,60),M("#E6BE6E",{metalness:.5,roughness:.3}));prim.rotation.x=Math.PI/2;prim.position.y=1.4;pot.add(prim);
+ [-1,1].forEach(s=>{const h=new T.Mesh(new T.TorusGeometry(.26,.05,8,20),M("#E6BE6E",{metalness:.5,roughness:.3}));h.position.set(s*1.58,1.0,0);h.rotation.y=Math.PI/2;pot.add(h)});
+ const liq=new T.Mesh(new T.CylinderGeometry(1.4,1.4,.04,40),M("#f0c84a",{roughness:.25}));liq.position.y=1.05;pot.add(liq);
+ const bubs=[];const R3=rng("bub");for(let i=0;i<12;i++){const b=new T.Mesh(new T.SphereGeometry(1,10,8),M("#e8603a",{roughness:.2}));const a=R3()*TAU,r=Math.sqrt(R3())*1.15;b.position.set(Math.cos(a)*r,1.07,Math.sin(a)*r);pot.add(b);bubs.push({b,ph:R3()*6})}
+ const lad=new T.Group();lad.position.y=1.06;pot.add(lad);const ls=new T.Mesh(new T.CylinderGeometry(.05,.05,2.3,8),M("#8a5a2b"));ls.position.set(.55,.75,0);ls.rotation.z=-.5;lad.add(ls);const lb=new T.Mesh(new T.SphereGeometry(.28,14,10,0,TAU,Math.PI/2,Math.PI/2),M("#e4e8ee",{roughness:.25,side:T.DoubleSide}));lb.position.set(.05,-.05,0);lad.add(lb);
+ const puffs=[];for(let i=0;i<6;i++){const m=new T.Mesh(new T.SphereGeometry(.28,10,8),new T.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:0,depthWrite:false}));gC.add(m);puffs.push(m)}
+ const shC=new T.Mesh(new T.CircleGeometry(3.2,32),shadowMat());shC.rotation.x=-Math.PI/2;shC.position.y=-.32;gC.add(shC);
+ /* D: serving table */
+ const gD=new T.Group();gD.position.set(XD,0,0);S.add(gD);
+ const tD=new T.Group();gD.add(tD);const tt=new T.Mesh(new T.CylinderGeometry(4.0,4.0,.22,64),M("#7A2236",{roughness:.8}));tt.position.y=-.11;tD.add(tt);
+ const tr=new T.Mesh(new T.TorusGeometry(4.0,.06,8,80),M("#E6BE6E",{metalness:.7,roughness:.3}));tr.rotation.x=Math.PI/2;tD.add(tr);
+ const tl=new T.Mesh(new T.CylinderGeometry(.4,.7,.9,20),M("#4a101e"));tl.position.y=-.67;tD.add(tl);
+ const shD=new T.Mesh(new T.CircleGeometry(5,40),shadowMat());shD.rotation.x=-Math.PI/2;shD.position.y=-.5;gD.add(shD);
+ const serve=[{id:"s1",kind:"curry",c1:"#c4381e",c2:"#7a2410"},{id:"s2",kind:"biryani",c1:"#e0a03a",c2:"#6e3a1e"},{id:"s3",kind:"fry",c1:"#c4381e",c2:"#8a1f10"},{id:"s4",kind:"rice",c1:"#fffef8",c2:"#2f9a45"},{id:"s5",kind:"sweet",c1:"#6e2a14",c2:"#e9a22a"},{id:"s6",kind:"drink",c1:"#f08aa8",c2:"#e9549a"},{id:"s7",kind:"leaf"}];
+ const plates=serve.map((d,i)=>{const o=dish3d(d);const center=i===0;const a=(i-1)/6*TAU+.4,r=center?0:2.45;o.position.set(Math.cos(a)*r,.02,Math.sin(a)*r);o.rotation.y=center?0:Math.atan2(Math.cos(a),Math.sin(a));o.scale.setScalar(.001);o.userData.s=center?.78:.6;gD.add(o);return o});
+ plates[6].userData.s=.46;
+/* sparkles */
+ const NS=80,spos=new Float32Array(NS*3),sb=[],sr=rng("spk");for(let i=0;i<NS;i++)sb.push([sr()*16-8,sr()*5.5+.6,sr()*7-3.5,sr()*6]);
+ const sgeo=new T.BufferGeometry();sgeo.setAttribute("position",new T.BufferAttribute(spos,3));
+ const spark=new T.Points(sgeo,new T.PointsMaterial({color:0xffd98a,size:.12,transparent:true,opacity:.85,blending:T.AdditiveBlending,depthWrite:false}));spark.frustumCulled=false;S.add(spark);
+ S.traverse(o=>{if(o.isMesh&&o.material){if(o.material.map===shadowTex){o.visible=false}else if(!o.material.transparent&&!o.material.isMeshBasicMaterial){o.castShadow=true;o.receiveShadow=true}}});
+ /* ---- per-frame ---- */
+ const camX=p=>XA+7*sm(seg(p,.37,.45))+7*sm(seg(p,.56,.64))+7*sm(seg(p,.78,.85));
+ let pS=0,kx=0,kz=0,lastIdx=-1;
+ function setCard(idx){if(idx===lastIdx)return;lastIdx=idx;card.classList.add("swap");setTimeout(()=>{const s=STEPS[idx];$("#stN").textContent=s[0]+" / 05";$("#stT").textContent=s[1];$("#stTa").textContent=s[2];$("#stP").textContent=s[3];card.classList.toggle("last",idx===4);card.classList.remove("swap")},180);
+  $$("#stDots i").forEach((d,i)=>d.classList.toggle("on",i===idx))}
+ function apply(p,t){
+  const BY=.1;
+  items.forEach((it,i)=>{const d=it.d,g=it.g;const drop=seg(p,.0+.018*i,.13+.018*i),sp=ease(seg(p,.22+.035*i,.25+.035*i)),f=seg(p,.40+.015*i,.50+.015*i),q=seg(p,.5+.012*i,.56+.012*i);
+   const bx=XA+d.x,bz=d.z,by=BY+d.r[1];const e=ease(f);
+   g.position.set(lerp(bx,XB+.3*Math.cos(i*1.7),e),lerp(lerp(7.5,by,bounce(drop)),1.5,e)+Math.sin(f*Math.PI)*2.4-ease(q)*.7,lerp(bz,.3*Math.sin(i*1.7),e));
+   g.rotation.y=(i%2?.5:-.3)+(1-drop)*4+f*5;g.userData.split(sp*(1-e));const sc=1-ease(q);const hk=bounce(drop),k=drop<1?Math.max(0,(hk-.965)/.035)*(1-drop*.7):0,fs=Math.sin(f*Math.PI)*.16;g.scale.set(Math.max(.001,sc)*(1+.13*k-fs*.5),Math.max(.001,sc)*(1-.22*k+fs),Math.max(.001,sc)*(1+.13*k-fs*.5));g.visible=sc>.02&&p<.62})
+  leaves.forEach((l,i)=>{const drop=seg(p,.04+.01*i,.14+.01*i),f=seg(p,.41+.01*i,.5+.01*i),q=seg(p,.5+.008*i,.55+.008*i),e=ease(f);
+   l.m.position.set(lerp(XA+l.x,XB+.2*Math.cos(i),e),lerp(lerp(7,.15,bounce(drop)),1.5,e)+Math.sin(f*Math.PI)*2-ease(q)*.7,lerp(l.z,.2*Math.sin(i),e));l.m.rotation.y=l.r+f*6;const sc=1-ease(q);l.m.scale.set(1.6*sc,.12*sc,.8*sc);l.m.visible=sc>.02&&p<.62});
+  /* knife */
+  const kp=(p-.22)/.035,kk=clamp(Math.floor(kp),0,4),ph=clamp(kp-kk,0,1);const kd=items[kk].d;kx+=((XA+kd.x)-kx)*.25;kz+=(kd.z-kz)*.25;
+  const ky=ph<.15?lerp(2.6,.55,ease(ph/.15)):lerp(.55,2.6,ease(clamp((ph-.15)/.5,0,1)));
+  knife.position.set(kx+.2,ky,kz);knife.rotation.set(0,.3,-.12);const kv=seg(p,.205,.225)*(1-seg(p,.385,.405));knife.scale.setScalar(Math.max(.001,kv));knife.visible=kv>.02;
+  /* grinder */
+  stone.rotation.y=p*46;const rg=ease(seg(p,.5,.6))*(1-ease(seg(p,.58,.63)));ring.scale.set(1,1,Math.max(.001,rg));ring.visible=rg>.01;
+  /* paste blob B -> pot */
+  const bf=seg(p,.58,.67),bs=ease(seg(p,.67,.72));blob.visible=bf>0&&bs<1;blob.position.set(lerp(XB,XC,ease(bf)),lerp(1.3,1.9,Math.sin(Math.min(1,bf)*Math.PI*.5))+Math.sin(bf*Math.PI)*2.6-bs*.9,0);blob.scale.setScalar(Math.max(.01,(1-bs)*(.2+.8*seg(p,.58,.6))));
+  /* pot */
+  const cook=ease(seg(p,.66,.74)),boil=seg(p,.68,.8);liq.material.color.set("#f0c84a").lerp(new T.Color("#c4381e"),cook);
+  lad.rotation.y=p*70;lad.visible=p>.64;lad.position.y=1.06+Math.sin(t*2)*.01;
+  bubs.forEach(b=>{const s=Math.max(0,Math.sin(t*3+b.ph))*.13*boil;b.b.scale.setScalar(Math.max(.001,s))});
+  flames.forEach((f,i)=>{const on=seg(p,.5,.58)*(1-seg(p,.86,.9)*.6);f.scale.set(1,(.6+.5*Math.abs(Math.sin(t*9+i)))*on+.001,1)});
+  puffs.forEach((m,i)=>{const u=((t*.25+i/6)%1);m.position.set(Math.sin(t+i*2)*.5,2.1+u*2.2,Math.cos(t*.8+i)*.4);m.scale.setScalar(.7+u*1.6);m.material.opacity=Math.sin(u*Math.PI)*.2*boil});
+  /* serving */
+  tD.scale.setScalar(Math.max(.001,back(seg(p,.8,.86))));
+  plates.forEach((o,i)=>{const k=Math.max(.001,back(seg(p,.85+.018*i,.91+.018*i)));o.scale.setScalar(o.userData.s*k);o.traverse(m=>{if(m.userData&&m.userData.tick)m.userData.tick(t)})});
+  /* camera */
+  const a=cv.clientWidth/Math.max(1,cv.clientHeight),f=Math.max(1,Math.min(2.1,1.5/a)),cx=camX(p),e=ease(seg(p,.9,1));
+  const sway=Math.sin(p*7)*.5;
+  cam.position.set(cx+sway,(6.2+3.2*e)*f,(8.4+5.2*e)*f);cam.lookAt(cx,.5-(f-1)*.7,0);st.dl.position.set(cx+5,10,6);st.dl.target.position.set(cx,0,0);st.dl.target.updateMatrixWorld();
+  for(let i=0;i<NS;i++){const b=sb[i];spos[i*3]=cx+b[0]*(f>1.2?1.3:1);spos[i*3+1]=b[1]+Math.sin(t*.7+b[3])*.35;spos[i*3+2]=b[2]}sgeo.attributes.position.needsUpdate=true;spark.material.opacity=.55+.3*Math.sin(t*2)}
+ st.ticks.push(t=>{const r=track.getBoundingClientRect(),h=sticky.clientHeight||1,total=Math.max(1,r.height-h);const top=66;const p=clamp((top-r.top)/total,0,1);
+  pS+=(p-pS)*.14;if(Math.abs(p-pS)<.0004)pS=p;apply(pS,t);setCard(pS<.2?0:pS<.4?1:pS<.6?2:pS<.8?3:4);const hint=document.getElementById("stHint");if(hint)hint.style.opacity=pS<.03?1:0});
+ setCard(0);window.__story={apply};
+})();
+
+/* ---------- gentle 3D tilt on cards (mouse devices) ---------- */
+if(matchMedia("(hover:hover)").matches&&!REDUCE){document.addEventListener("pointermove",e=>{const c=e.target.closest&&e.target.closest(".card:not(.dish)");
+  if(!c){return}const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(800px) rotateY(${x*9}deg) rotateX(${-y*9}deg) translateY(-3px)`;c.style.transition="transform .08s"});
+  document.addEventListener("pointerout",e=>{const c=e.target.closest&&e.target.closest(".card:not(.dish)");if(c&&!c.contains(e.relatedTarget)){c.style.transform="";c.style.transition="transform .25s"}})}
+})();
+</script>
+</body></html>
