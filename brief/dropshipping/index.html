@@ -73,13 +73,14 @@ footer a{color:var(--navy)}
 <div id="done"></div>
 </div></main>
 
-<div class="bar" id="bar"><div class="wrap"><small>Tap <b>Send</b> and WhatsApp will open with your answers ready. Just press send there.</small><button class="btn btn-lime" id="go" type="button">Send my details</button></div></div>
+<div class="bar" id="bar"><div class="wrap"><small>Tap <b>Send</b> to submit. We will contact you on WhatsApp.</small><button class="btn btn-lime" id="go" type="button">Send my details</button></div></div>
 <footer>© ZorbaTech · <a href="https://zorbatech.in">zorbatech.in</a></footer>
 
 <script>
 "use strict";
 const WA="918610212131";
 const REF="https://zorbakart.in";
+const API="https://zorbatech-briefs.REPLACE.workers.dev"; // Worker URL
 /* ---- form definition ---- */
 const S=[
  {t:"About you",s:"So we know who to talk to.",q:[
@@ -134,22 +135,29 @@ function val(q){if(q.type==="radio"){const c=f.querySelector(`input[name="${q.id
   return document.getElementById(q.id).value.trim()}
 function build(){let t="*Online store requirement – ZorbaTech*\n";
   S.forEach(s=>{const rows=s.q.map(q=>[q,val(q)]).filter(r=>r[1]);if(!rows.length)return;t+=`\n*${s.t}*\n`+rows.map(([q,v])=>`${q.l}: ${v}`).join("\n")+"\n"});return t.trim()}
+function sections(){return S.map(s=>({t:s.t,rows:s.q.map(q=>({l:q.l,v:val(q)})).filter(r=>r.v)})).filter(s=>s.rows.length)}
 const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-document.getElementById("go").onclick=()=>{
+document.getElementById("go").onclick=async()=>{
   const nm=document.getElementById("name"),ph=document.getElementById("phone");[nm,ph].forEach(x=>x.classList.remove("err"));
   const digits=ph.value.replace(/\D/g,"").slice(-10);let m="";
   if(!nm.value.trim()){nm.classList.add("err");m="Please enter your name.";nm.focus()}
   else if(!/^[6-9]\d{9}$/.test(digits)){ph.classList.add("err");m="Please enter a valid 10-digit WhatsApp number.";ph.focus()}
   document.getElementById("msg").textContent=m;if(m){document.getElementById("msg").scrollIntoView({block:"center",behavior:"smooth"});return}
   const text=build(),url=`https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
+  const btn=document.getElementById("go");btn.disabled=true;btn.textContent="Sending…";
+  let saved=false;
+  if(!API.includes("REPLACE")){try{const r=await fetch(API+"/submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({kind:"dropshipping",name:nm.value.trim(),phone:digits,website:"",sections:sections()})});saved=r.ok&&(await r.json()).ok}catch(x){}}
+  btn.disabled=false;btn.textContent="Send my details";
   f.style.display="none";document.getElementById("bar").style.display="none";
   const d=document.getElementById("done");d.style.display="block";
-  d.innerHTML=`<div class="card"><div class="ok">✓</div><h2 style="justify-content:center">Almost done!</h2><p class="sub" style="font-size:15px">Tap the green button. WhatsApp will open with your answers ready, then press send. We will reply with questions, a plan and a price.</p>
+  d.innerHTML=saved?`<div class="card"><div class="ok">✓</div><h2 style="justify-content:center">Thank you, ${esc(nm.value.trim())}!</h2><p class="sub" style="font-size:15px">We have received your details. We will contact you on WhatsApp shortly with questions, a plan and a price.</p>
+   <div style="display:grid;gap:10px;margin:16px 0"><a class="btn btn-wa" href="https://wa.me/${WA}?text=${encodeURIComponent("Hi, I have filled the online store requirement form.")}" target="_blank" rel="noopener">Say hi on WhatsApp</a></div></div>`
+  :`<div class="card"><div class="ok">✓</div><h2 style="justify-content:center">Almost done!</h2><p class="sub" style="font-size:15px">Tap the green button. WhatsApp will open with your answers ready, then press send. We will reply with questions, a plan and a price.</p>
    <div style="display:grid;gap:10px;margin:16px 0"><a class="btn btn-wa" href="${url}" target="_blank" rel="noopener">Send on WhatsApp</a><button class="btn btn-line" id="cp" type="button">Copy my answers</button><button class="btn btn-line" id="ed" type="button">← Edit my answers</button></div>
    <pre>${esc(text)}</pre></div>`;
   window.scrollTo({top:0,behavior:"smooth"});
-  document.getElementById("cp").onclick=async e=>{try{await navigator.clipboard.writeText(text);e.target.textContent="Copied ✓"}catch(x){const r=document.createRange();r.selectNodeContents(d.querySelector("pre"));const s=getSelection();s.removeAllRanges();s.addRange(r);e.target.textContent="Selected, now copy"}};
-  document.getElementById("ed").onclick=()=>{d.style.display="none";f.style.display="";document.getElementById("bar").style.display="";window.scrollTo({top:0})}};
+  const cpb=document.getElementById("cp");if(cpb)cpb.onclick=async e=>{try{await navigator.clipboard.writeText(text);e.target.textContent="Copied ✓"}catch(x){const r=document.createRange();r.selectNodeContents(d.querySelector("pre"));const s=getSelection();s.removeAllRanges();s.addRange(r);e.target.textContent="Selected, now copy"}};
+  const edb=document.getElementById("ed");if(edb)edb.onclick=()=>{d.style.display="none";f.style.display="";document.getElementById("bar").style.display="";window.scrollTo({top:0})}};
 </script>
 </body>
 </html>

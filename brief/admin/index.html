@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Client Briefs | ZorbaTech</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D0C2B;--lime:#C6F432;--bg:#F5F6FB;--ink:#16163A;--mut:#6A6C8A;--line:#DDE0EE}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,sans-serif}
+h1{font:700 22px Outfit;margin:0}
+header{background:var(--navy);color:#fff;padding:16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+header span{color:var(--lime)}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+input,select,button{font:inherit}
+input[type=password]{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:10px}
+.btn{background:var(--lime);color:var(--navy);border:0;border-radius:10px;padding:11px 18px;font:700 15px Outfit;cursor:pointer}
+.btn.l{background:#fff;border:1.5px solid var(--navy)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.top{display:flex;gap:10px;align-items:center;padding:14px;cursor:pointer}
+.top .n{flex:1;min-width:0}.top b{display:block}.top small{color:var(--mut)}
+.pill{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;background:#E8EAF7}
+.pill.new{background:var(--lime)}.pill.won{background:#BDEBC8}.pill.lost{background:#F3CACA}
+.body{display:none;padding:0 14px 14px;border-top:1px solid var(--line)}
+.card.open .body{display:block}
+.sec{margin-top:12px}.sec h3{font:700 14px Outfit;margin:0 0 4px;color:var(--navy)}
+.row{padding:3px 0;font-size:14px}.row i{font-style:normal;color:var(--mut)}
+.act{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+select{padding:9px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+#msg{color:#D63A3A;margin-top:8px}
+</style>
+</head>
+<body>
+<header><h1>Client <span>Briefs</span></h1><button class="btn l" id="out" style="display:none">Log out</button></header>
+<div class="wrap">
+<div id="login"><p>Enter the admin password.</p><input id="pw" type="password" autocomplete="current-password"><div id="msg"></div><p><button class="btn" id="in">Open</button></p></div>
+<div id="app" style="display:none"><p id="count" style="color:var(--mut)"></p><div id="list"></div></div>
+</div>
+<script>
+"use strict";
+const API="https://zorbatech-briefs.REPLACE.workers.dev";
+const $=id=>document.getElementById(id);
+let PW="";try{PW=sessionStorage.getItem("zb-pw")||""}catch(e){}
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+async function api(path,opt={}){const r=await fetch(API+path,{...opt,headers:{"Authorization":"Bearer "+PW,"Content-Type":"application/json"}});return r.status===401?null:r.json()}
+async function load(){
+  const j=await api("/admin/list").catch(()=>({ok:false,error:"network"}));
+  if(!j||!j.ok){$("login").style.display="";$("app").style.display="none";$("out").style.display="none";$("msg").textContent=j===null?"Wrong password.":"Could not reach the server.";return}
+  try{sessionStorage.setItem("zb-pw",PW)}catch(e){}
+  $("login").style.display="none";$("app").style.display="";$("out").style.display="";
+  $("count").textContent=j.rows.length+" brief"+(j.rows.length===1?"":"s");
+  const L=$("list");L.textContent="";
+  j.rows.forEach(r=>{
+    let secs=[];try{secs=JSON.parse(r.data)}catch(e){}
+    const c=el("div","card"),top=el("div","top"),n=el("div","n");
+    n.append(el("b",0,r.name),el("small",0,"+91 "+r.phone+" · "+new Date(r.created_at).toLocaleString("en-IN",{dateStyle:"medium",timeStyle:"short"})));
+    const p=el("span","pill "+r.status,r.status);top.append(n,p);
+    const b=el("div","body");
+    secs.forEach(s=>{const d=el("div","sec");d.append(el("h3",0,s.t));s.rows.forEach(x=>{const w=el("div","row");w.append(el("i",0,x.l+": "),document.createTextNode(x.v));d.append(w)});b.append(d)});
+    const a=el("div","act"),wa=el("a","btn","WhatsApp");wa.href="https://wa.me/91"+r.phone;wa.target="_blank";wa.rel="noopener";wa.style.textDecoration="none";
+    const sel=el("select");["new","contacted","quoted","won","lost"].forEach(s=>{const o=el("option",0,s);o.value=s;if(s===r.status)o.selected=true;sel.append(o)});
+    sel.onchange=async()=>{await api("/admin/status",{method:"POST",body:JSON.stringify({id:r.id,status:sel.value})});p.textContent=sel.value;p.className="pill "+sel.value};
+    const del=el("button","btn l","Delete");del.onclick=async()=>{if(del.dataset.s!=="1"){del.dataset.s="1";del.textContent="Tap again to delete";return}await api("/admin/delete",{method:"POST",body:JSON.stringify({id:r.id})});c.remove()};
+    a.append(wa,sel,del);b.append(a);top.onclick=()=>c.classList.toggle("open");c.append(top,b);L.append(c)});
+}
+$("in").onclick=()=>{PW=$("pw").value;load()};$("pw").onkeydown=e=>{if(e.key==="Enter")$("in").click()};
+$("out").onclick=()=>{try{sessionStorage.removeItem("zb-pw")}catch(e){}PW="";location.reload()};
+if(PW)load();
+</script>
+</body>
+</html>
