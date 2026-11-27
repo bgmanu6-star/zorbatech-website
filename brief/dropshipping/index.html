@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0D0C2B">
+<title>Online Store Requirement Form | ZorbaTech</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D0C2B;--navy2:#17164a;--lime:#C6F432;--amber:#FFB020;--bg:#F5F6FB;--ink:#16163A;--mut:#6A6C8A;--line:#DDE0EE;--err:#D63A3A;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:Outfit,Inter,sans-serif;margin:0;line-height:1.15}
+header{background:radial-gradient(700px 300px at 85% 0,#2a2880 0,transparent 60%),var(--navy);color:#fff;padding:34px 18px 54px}
+.wrap{max-width:720px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;font:700 20px Outfit;color:#fff;text-decoration:none;margin-bottom:26px}
+.brand i{width:30px;height:30px;border-radius:8px;background:var(--lime);display:inline-block;position:relative}
+.brand i::after{content:"Z";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--navy);font:800 18px Outfit}
+header h1{font-size:clamp(28px,6vw,40px)}
+header h1 em{font-style:normal;color:var(--lime)}
+header p{color:#c9cbe8;margin:12px 0 0;max-width:560px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.chips span{font-size:13px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:5px 12px;border-radius:999px;color:#e5e6f7}
+main{margin-top:-30px;padding:0 14px 120px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px;box-shadow:0 6px 20px rgba(13,12,43,.05)}
+.card h2{font-size:21px;display:flex;align-items:center;gap:10px}
+.card h2 b{width:28px;height:28px;border-radius:50%;background:var(--navy);color:var(--lime);font:700 14px Outfit;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.card .sub{color:var(--mut);font-size:14px;margin:6px 0 4px}
+.q{margin-top:18px}
+.q>label,.q>.l{display:block;font-weight:600;font-size:15px;margin-bottom:6px}
+.q small{display:block;color:var(--mut);font-weight:400;font-size:13px;margin-top:1px}
+.req{color:var(--err)}
+input[type=text],input[type=tel],input[type=email],input[type=url],textarea,select{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;font:16px Inter,sans-serif;color:var(--ink);background:#fff}
+textarea{min-height:90px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy2);box-shadow:0 0 0 3px rgba(23,22,74,.12)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer;margin:0}
+.opt span{display:block;padding:9px 15px;border:1.5px solid var(--line);border-radius:999px;font-size:14.5px;background:#fff;transition:.15s}
+.opt input:checked+span{background:var(--navy);color:#fff;border-color:var(--navy)}
+.opt input:focus-visible+span{outline:2px solid var(--amber);outline-offset:2px}
+.opt input[type=checkbox]:checked+span::before{content:"✓ ";color:var(--lime)}
+.err{border-color:var(--err)!important}
+.msg{color:var(--err);font-size:14px;min-height:20px;margin-top:10px}
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}
+.bar .wrap{display:flex;gap:12px;align-items:center}
+.bar small{color:var(--mut);font-size:12.5px;line-height:1.3;flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:700 16px Outfit,sans-serif;padding:14px 22px;border-radius:12px;text-decoration:none}
+.btn-lime{background:var(--lime);color:var(--navy)}
+.btn-wa{background:#1FA855;color:#fff}
+.btn-line{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
+#done{display:none}
+#done .card{text-align:center}
+#done .ok{width:64px;height:64px;border-radius:50%;background:#1FA855;color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+pre{white-space:pre-wrap;word-break:break-word;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;font:13.5px/1.5 Inter,sans-serif;max-height:300px;overflow:auto}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:0 16px 150px}
+footer a{color:var(--navy)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="https://zorbatech.in"><i></i>ZorbaTech</a>
+  <h1>Tell us about your <em>online store</em></h1>
+  <p>This takes about 5 minutes. Your answers help us plan the right store for you and give you an accurate price and timeline. Skip anything you are not sure about.</p>
+  <div class="chips"><span>Online store / dropshipping</span><span>No payment needed</span><span>Free quote</span></div>
+</div></header>
+
+<main><div class="wrap" id="formWrap">
+<form id="f" novalidate></form>
+<div id="done"></div>
+</div></main>
+
+<div class="bar" id="bar"><div class="wrap"><small>Tap <b>Send</b> and WhatsApp will open with your answers ready. Just press send there.</small><button class="btn btn-lime" id="go" type="button">Send my details</button></div></div>
+<footer>© ZorbaTech · <a href="https://zorbatech.in">zorbatech.in</a></footer>
+
+<script>
+"use strict";
+const WA="918610212131";
+const REF="https://zorbakart.in";
+/* ---- form definition ---- */
+const S=[
+ {t:"About you",s:"So we know who to talk to.",q:[
+  {id:"name",l:"Your name",type:"text",req:1,ph:"Full name"},
+  {id:"phone",l:"WhatsApp number",type:"tel",req:1,ph:"10-digit mobile number"},
+  {id:"email",l:"Email",type:"email",ph:"you@example.com",hint:"Optional"},
+  {id:"city",l:"City and state",type:"text",ph:"e.g. Madurai, Tamil Nadu"},
+  {id:"call",l:"Best time for a call",type:"radio",o:["Morning","Afternoon","Evening","Only WhatsApp, please"]}]},
+ {t:"Your business",s:"A little about what you plan to sell.",q:[
+  {id:"stage",l:"Where are you now?",type:"radio",o:["Starting from zero","Selling on Instagram / WhatsApp","Selling on Amazon / Meesho / Flipkart","Already have a store, need a better one"]},
+  {id:"niche",l:"What will you sell?",type:"text",ph:"e.g. home decor, kitchen items, gadgets, fashion",hint:"Your product type or niche"},
+  {id:"brand",l:"Store / brand name",type:"text",ph:"If you have one. If not, write 'not decided'"},
+  {id:"supplier",l:"Where will your products come from?",type:"radio",o:["DeoDap","Meesho / other dropship supplier","Own stock","Not decided, need advice"]},
+  {id:"count",l:"How many products at launch?",type:"radio",o:["Under 20","20 – 100","100 – 500","500+","Not sure"]},
+  {id:"content",l:"Product photos and descriptions",type:"radio",o:["I have them","Take them from my supplier","Need help creating them"]},
+  {id:"reg",l:"Business registration (GST / Udyam)",type:"radio",o:["GST registered","Udyam only","Not yet, in process","None"]}]},
+ {t:"Look and feel",s:"Your store can look like ZorbaKart or completely different.",q:[
+  {id:"like",l:"What do you like in ZorbaKart?",type:"check",o:["Home page layout","Category menu","Product page","Cart and checkout","WhatsApp order button","Colours and style","Everything, make it similar"],hint:"See it at "+REF},
+  {id:"refs",l:"Websites you like (up to 3 links)",type:"textarea",ph:"Paste links here. Anything that looks the way you want yours to look."},
+  {id:"logo",l:"Logo",type:"radio",o:["I have a logo","Need a logo","Will do later"]},
+  {id:"domain",l:"Website address (domain)",type:"radio",o:["I own a domain","Please buy one for me","Not sure"]},
+  {id:"lang",l:"Store language",type:"radio",o:["English","Tamil","English + Tamil","Other"]}]},
+ {t:"Features",s:"Tick everything you would like. We will tell you what is included and what costs extra.",q:[
+  {id:"feat",l:"What should the store do?",type:"check",o:["Product catalogue and categories","Shopping cart and checkout","Online payments (UPI / cards)","Cash on delivery","Order tracking for customers","WhatsApp order button","Coupons and discounts","Customer login","Product reviews","Admin panel to manage products and orders","Supplier product import","GST invoices","Shipping charges by pincode","Blog / offers page","Mobile app (installable)","Google and Meta analytics","SEO setup"]},
+  {id:"pay",l:"Payment gateway",type:"radio",o:["Razorpay","PhonePe / Cashfree / other","Not yet, need help","No online payment, WhatsApp orders only"]},
+  {id:"ship",l:"Shipping",type:"radio",o:["Supplier ships directly","Shiprocket / Delhivery","I will ship myself","Not sure"]}]},
+ {t:"Timeline and budget",s:"Helps us suggest the right plan. There is no obligation.",q:[
+  {id:"when",l:"When do you want it live?",type:"radio",o:["Within 2 weeks","Within a month","1 to 3 months","No rush"]},
+  {id:"budget",l:"Budget you have in mind",type:"radio",o:["Under ₹15,000","₹15,000 – ₹30,000","₹30,000 – ₹60,000","Above ₹60,000","Not sure, suggest me"]},
+  {id:"manage",l:"After launch, who will manage the store?",type:"radio",o:["I will","I need training","I need ZorbaTech to manage it"]},
+  {id:"notes",l:"Anything else we should know?",type:"textarea",ph:"Special requests, questions, ideas…"}]}
+];
+const f=document.getElementById("f");
+let n=0;
+f.innerHTML=S.map((s,si)=>`<section class="card"><h2><b>${si+1}</b>${s.t}</h2><div class="sub">${s.s}</div>`+s.q.map(q=>{
+  const lab=`${q.l}${q.req?' <span class="req">*</span>':""}${q.hint?`<small>${q.hint}</small>`:""}`;let inp;
+  if(q.type==="radio"||q.type==="check"){const t=q.type==="radio"?"radio":"checkbox";inp=`<div class="opts" data-id="${q.id}">`+q.o.map(o=>`<label class="opt"><input type="${t}" name="${q.id}" value="${o.replace(/"/g,"&quot;")}"><span>${o}</span></label>`).join("")+`</div>`}
+  else if(q.type==="textarea")inp=`<textarea id="${q.id}" placeholder="${q.ph||""}"></textarea>`;
+  else inp=`<input id="${q.id}" type="${q.type}" placeholder="${q.ph||""}" ${q.type==="tel"?'inputmode="numeric" autocomplete="tel"':""}${q.id==="name"?' autocomplete="name"':""}${q.id==="email"?' autocomplete="email"':""}>`;
+  return `<div class="q">${q.type==="radio"||q.type==="check"?`<div class="l">${lab}</div>`:`<label for="${q.id}">${lab}</label>`}${inp}</div>`}).join("")+`</section>`).join("")+`<div class="msg" id="msg" role="alert"></div>`;
+
+/* ---- collect + build message ---- */
+function val(q){if(q.type==="radio"){const c=f.querySelector(`input[name="${q.id}"]:checked`);return c?c.value:""}
+  if(q.type==="check")return [...f.querySelectorAll(`input[name="${q.id}"]:checked`)].map(x=>x.value).join(", ");
+  return document.getElementById(q.id).value.trim()}
+function build(){let t="*Online store requirement – ZorbaTech*\n";
+  S.forEach(s=>{const rows=s.q.map(q=>[q,val(q)]).filter(r=>r[1]);if(!rows.length)return;t+=`\n*${s.t}*\n`+rows.map(([q,v])=>`${q.l}: ${v}`).join("\n")+"\n"});return t.trim()}
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+document.getElementById("go").onclick=()=>{
+  const nm=document.getElementById("name"),ph=document.getElementById("phone");[nm,ph].forEach(x=>x.classList.remove("err"));
+  const digits=ph.value.replace(/\D/g,"").slice(-10);let m="";
+  if(!nm.value.trim()){nm.classList.add("err");m="Please enter your name.";nm.focus()}
+  else if(!/^[6-9]\d{9}$/.test(digits)){ph.classList.add("err");m="Please enter a valid 10-digit WhatsApp number.";ph.focus()}
+  document.getElementById("msg").textContent=m;if(m){document.getElementById("msg").scrollIntoView({block:"center",behavior:"smooth"});return}
+  const text=build(),url=`https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
+  f.style.display="none";document.getElementById("bar").style.display="none";
+  const d=document.getElementById("done");d.style.display="block";
+  d.innerHTML=`<div class="card"><div class="ok">✓</div><h2 style="justify-content:center">Almost done!</h2><p class="sub" style="font-size:15px">Tap the green button. WhatsApp will open with your answers ready, then press send. We will reply with questions, a plan and a price.</p>
+   <div style="display:grid;gap:10px;margin:16px 0"><a class="btn btn-wa" href="${url}" target="_blank" rel="noopener">Send on WhatsApp</a><button class="btn btn-line" id="cp" type="button">Copy my answers</button><button class="btn btn-line" id="ed" type="button">← Edit my answers</button></div>
+   <pre>${esc(text)}</pre></div>`;
+  window.scrollTo({top:0,behavior:"smooth"});
+  document.getElementById("cp").onclick=async e=>{try{await navigator.clipboard.writeText(text);e.target.textContent="Copied ✓"}catch(x){const r=document.createRange();r.selectNodeContents(d.querySelector("pre"));const s=getSelection();s.removeAllRanges();s.addRange(r);e.target.textContent="Selected, now copy"}};
+  document.getElementById("ed").onclick=()=>{d.style.display="none";f.style.display="";document.getElementById("bar").style.display="";window.scrollTo({top:0})}};
+</script>
+</body>
+</html>
