@@ -93,6 +93,11 @@ const S=[
   {id:"niche",l:"What will you sell?",type:"text",ph:"e.g. home decor, kitchen items, gadgets, fashion",hint:"Your product type or niche"},
   {id:"brand",l:"Store / brand name",type:"text",ph:"If you have one. If not, write 'not decided'"},
   {id:"supplier",l:"Where will your products come from?",type:"radio",o:["DeoDap","Meesho / other dropship supplier","Own stock","Not decided, need advice"]},
+  {id:"supnote",l:"Supplier details",type:"textarea",ph:"Supplier name / website / link, if you already have one. How do you place orders with them today?",hint:"How you source products"},
+  {id:"source",l:"How do you plan to source products?",type:"check",o:["Supplier dropships to my customer","I buy stock and ship myself","Import from China / abroad","Local wholesalers","Own manufacturing / handmade","Not decided"]},
+  {id:"upload",l:"How will products be added to the store?",type:"check",o:["I will add them one by one","Bulk upload (Excel / CSV)","Auto-import from supplier","Please add them for me","Not sure, suggest the best way"]},
+  {id:"market",l:"Who will you sell to?",type:"radio",o:["Only India","India now, international later","India + international from day one","Only international"]},
+  {id:"countries",l:"Which countries?",type:"text",ph:"e.g. UAE, USA, UK, Singapore",hint:"If you chose international"},
   {id:"count",l:"How many products at launch?",type:"radio",o:["Under 20","20 – 100","100 – 500","500+","Not sure"]},
   {id:"content",l:"Product photos and descriptions",type:"radio",o:["I have them","Take them from my supplier","Need help creating them"]},
   {id:"reg",l:"Business registration (GST / Udyam)",type:"radio",o:["GST registered","Udyam only","Not yet, in process","None"]}]},
@@ -105,7 +110,9 @@ const S=[
  {t:"Features",s:"Tick everything you would like. We will tell you what is included and what costs extra.",q:[
   {id:"feat",l:"What should the store do?",type:"check",o:["Product catalogue and categories","Shopping cart and checkout","Online payments (UPI / cards)","Cash on delivery","Order tracking for customers","WhatsApp order button","Coupons and discounts","Customer login","Product reviews","Admin panel to manage products and orders","Supplier product import","GST invoices","Shipping charges by pincode","Blog / offers page","Mobile app (installable)","Google and Meta analytics","SEO setup"]},
   {id:"pay",l:"Payment gateway",type:"radio",o:["Razorpay","PhonePe / Cashfree / other","Not yet, need help","No online payment, WhatsApp orders only"]},
-  {id:"ship",l:"Shipping",type:"radio",o:["Supplier ships directly","Shiprocket / Delhivery","I will ship myself","Not sure"]}]},
+  {id:"ship",l:"Shipping",type:"radio",o:["Supplier ships directly","Shiprocket / Delhivery","I will ship myself","Not sure"]},
+  {id:"intl",l:"If selling internationally",type:"check",o:["Multiple currencies","International payment gateway (Stripe / PayPal)","International shipping partner","Customs and duties info","Multi-language store","Not applicable"]},
+  {id:"returns",l:"Returns and refunds",type:"radio",o:["Need a return policy page","I will handle returns manually","No returns","Not sure"]}]},
  {t:"Timeline and budget",s:"Helps us suggest the right plan. There is no obligation.",q:[
   {id:"when",l:"When do you want it live?",type:"radio",o:["Within 2 weeks","Within a month","1 to 3 months","No rush"]},
   {id:"budget",l:"Budget you have in mind",type:"radio",o:["Under ₹15,000","₹15,000 – ₹30,000","₹30,000 – ₹60,000","Above ₹60,000","Not sure, suggest me"]},
